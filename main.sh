@@ -68,8 +68,10 @@ source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlight
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # pyenv setup
+
 eval "$(pyenv init -)"
 
+source ${0:a:h}/setup.sh
 source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
@@ -80,6 +82,13 @@ source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 
 
+if [[ ! -d ~/.pyenv ]]
+then
+	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+	cd ~/.pyenv && src/configure && make -C src && cd -
+fi
+
+# gitfetch https://github.com/pyenv/pyenv.git ~/.pyenv
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
 #  finish
