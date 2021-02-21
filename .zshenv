@@ -158,4 +158,3 @@ function cheat { curl cheat.sh/"$@"; }
 function compressgif {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
-source "$HOME/.cargo/env"
