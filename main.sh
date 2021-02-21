@@ -88,10 +88,11 @@ then
 	cd ~/.pyenv && src/configure && make -C src && cd -
 fi
 
-if [[ ! -f "$HOME/.cargo/env "]]
+if [[ ! -f "$HOME/.cargo/env" ]]
 then
 	source "$HOME/.cargo/env"
 fi
+
 # gitfetch https://github.com/pyenv/pyenv.git ~/.pyenv
 # When started as 'evim', evim.vim will already have done these settings, bail out.
 # if v:progname =~? "evim"
