@@ -1,4 +1,6 @@
-FROM ubuntu:lastest
+FROM ubuntu
+
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -9,19 +11,28 @@ RUN apt-get install -y \
 	yarn \
 	make \
 	cmake \
-	doas \
+	# doas \
+	neovim \
 	nmap \
 	zsh
 
 # Install docker in the docker container
 
-RUN chsh /usr/bin/zsh
-RUN exec /usr/bin/zsh
+RUN chsh -s /usr/bin/zsh
+RUN exec zsh
 
-RUN mkdir .config
-RUN git clone -C .config https://github.com/marcpartensky/nvim
+SHELL ["/usr/bin/zsh", "-c"]
 
-RUN mkdir git
-RUN git clone -C git https://github.com/marcpartensky/dotfiles
+RUN git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+RUN cd ~/.pyenv && src/configure && make -C src
 
+RUN mkdir ~/git
+RUN git clone https://marcpartensky:marcgptl44@github.com/marcpartensky/dotfiles ~/git/dotfiles
+
+RUN mkdir ~/.config
+RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
+RUN nvim --headless +PlugInstall +qall
+# RUN nvim --headless +PlugInstall +qall >/dev/null 2>&1
+
+RUN zsh ~/git/dotfiles/main.sh
 RUN source ~/git/dotfiles/main.sh

@@ -82,6 +82,10 @@ ln -snf ${0:a:h}/.p10k.zsh ~
 source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 
+if [[ ! -f .vimrc ]]
+then
+	touch ~/.vimrc
+fi
 
 if [[ ! -d ~/.pyenv ]]
 then
