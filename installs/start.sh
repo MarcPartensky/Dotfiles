@@ -31,8 +31,12 @@ case `uname` in
 		# install nvm/node
 		brew cask install rectangle
 		brew cask install alfred
+<<<<<<< HEAD
 		# brew cask install visual-studio-code
 		# brew cask install hyperswitch
+=======
+		brew install bat
+>>>>>>> f2b0542 (better dockerfile)
   ;;
   Linux)
     # commands for Linux go here

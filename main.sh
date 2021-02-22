@@ -67,8 +67,12 @@ source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlight
 # export GREP_OPTIONS="--color=always"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
-# pyenv setup
+# "bat" as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# "nvim" as manpager
+# export MANPAGER="nvim -c 'set ft=man' -"
 
+# pyenv setup
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
