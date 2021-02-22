@@ -1,5 +1,4 @@
 alias mcd="mkcdir"
-alias go="mkcdir"
 alias dotfiles="cd $DOTFILES_PATH"
 alias dotmain="v $DOTFILES_PATH/main.sh"
 alias dotaliases="v $DOTFILES_PATH/aliases.sh"
