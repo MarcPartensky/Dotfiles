@@ -2,6 +2,8 @@ FROM ubuntu
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# USER marc
+
 RUN apt-get update
 RUN apt-get install -y \
 	git \
@@ -31,6 +33,9 @@ RUN git clone https://marcpartensky:marcgptl44@github.com/marcpartensky/dotfiles
 
 RUN mkdir ~/.config
 RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
+
+# RUN chmod -R +rwx ~/.config/nvim
+RUN chmod +rwx ~/.vimrc
 RUN nvim --headless +PlugInstall +qall
 # RUN nvim --headless +PlugInstall +qall >/dev/null 2>&1
 
