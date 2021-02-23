@@ -11,34 +11,37 @@ set clipboard=unnamedplus
 
 
 #\\\_ COMPLETIONS _///#
- # zstyle :compinstall filename '/Users/fd0/.zshrc'
+
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' extra-verbose yes
+zstyle ':autocomplete:tab:*' fzf-completion yes
+
+zstyle ':autocomplete:*' config on
+zstyle ':autocomplete:*' min-input 3
+
 autoload -Uz compinit
 compinit
 autoload -Uz bashcompinit
 bashcompinit
+
 # The following lines were added by compinstall
 # zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
 
 # autoload -Uz compinit
 # compinit
 
-# autocompletion
-# source ~/.zsh-plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# zstyle ':autocomplete:*' config off
-zstyle ':autocomplete:*' min-input 3
-
 
 # pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-}
-compctl -K _pip_completion pip3
+# function _pip_completion {
+#   local words cword
+#   read -Ac words
+#   read -cn cword
+#   reply=( $( COMP_WORDS="$words[*]" \
+#              COMP_CWORD=$(( cword-1 )) \
+#              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+# }
+# compctl -K _pip_completion pip3
 
 # Antigen
 ANTIGEN_CACHE=false
@@ -50,13 +53,26 @@ antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
 antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 #antigen bundle soimort/translate-shell
 antigen apply
 
 bindkey '\t' autosuggest-accept
 
+if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]
+then
+	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
+else
+	cd ~/.antigen/bundles/marlonrichert/zsh-autocomplete
+	git pull --quiet https://github.com/marlonrichert/zsh-autocomplete.git
+	cd -
+fi
+
+# autocompletion
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
@@ -83,9 +99,14 @@ ln -snf ${0:a:h}/.p10k.zsh ~
 source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 
-if [[ ! -f .vimrc ]]
+if [[ ! -f ~/.vimrc ]]
 then
 	touch ~/.vimrc
+fi
+
+if [[ ! -f ~/.zshrc ]]
+then
+	echo "source '$DOTFILES_PATH/main.sh'" > ~/.zshrc
 fi
 
 if [[ ! -d ~/.pyenv ]]
@@ -94,7 +115,7 @@ then
 	cd ~/.pyenv && src/configure && make -C src && cd -
 fi
 
-if [[ ! -d ~/$(pyenv root)/plugins/pyenv-virtualenv ]]
+if [[ ! -d $(pyenv root)/plugins/pyenv-virtualenv ]]
 then
 	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 fi
@@ -107,12 +128,6 @@ fi
 # pyenv setup
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
-# gitfetch https://github.com/pyenv/pyenv.git ~/.pyenv
-# When started as 'evim', evim.vim will already have done these settings, bail out.
-# if v:progname =~? "evim"
-#  finish
-# endif
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim

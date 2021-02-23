@@ -1,4 +1,3 @@
-FROM ubuntu
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -26,16 +25,21 @@ RUN apt-get install -y \
         golang \
         nodejs \
         yarn \
+				nvm \
         # doas \
+				bat \
 				tmux \
 				ranger \
         neovim \
+        zsh \
         nmap \
-        zsh
+				openssh \
+				docker \
+				docker.io
 
 RUN apt-get update
 
-RUN chsh -s /usr/bin/zsh
+RUN chsh -s $(which zsh)
 RUN exec zsh
 
 SHELL ["/usr/bin/zsh", "-c"]
@@ -52,6 +56,8 @@ RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
 # RUN chmod -R +rwx ~/.config/nvim
 # RUN chmod +rwx ~/.vimrc
 RUN nvim --headless +PlugInstall +qall
+# RUN source ~/.config/nvim/vim-plug/plugins.vim
+# RUN nvim --headless +PlugInstall +qall >/dev/null 2>&1
 
 RUN zsh ~/git/dotfiles/main.sh
 RUN exec zsh
@@ -59,5 +65,12 @@ RUN exec zsh
 RUN restart
 RUN source ~/git/dotfiles/main.sh
 
-# RUN source ~/.config/nvim/vim-plug/plugins.vim
-# RUN nvim --headless +PlugInstall +qall >/dev/null 2>&1
+# RUN sshd
+
+# RUN addgroup -S guest
+# RUN useradd -ms /usr/bin/zsh guest
+
+# RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1001 ubuntu
+# USER ubuntu
+# WORKDIR /home/ubuntu
+
