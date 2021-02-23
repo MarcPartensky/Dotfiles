@@ -46,6 +46,7 @@ bashcompinit
 # Antigen
 ANTIGEN_CACHE=false
 source ${0:a:h}/antigen.zsh
+# zsh $DOTFILES_PATH/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan
@@ -106,7 +107,7 @@ fi
 
 if [[ ! -f ~/.zshrc ]]
 then
-	echo "source '$DOTFILES_PATH/main.sh'" > ~/.zshrc
+	echo "zsh '$DOTFILES_PATH/main.sh'" > ~/.zshrc
 fi
 
 if [[ ! -d ~/.pyenv ]]
