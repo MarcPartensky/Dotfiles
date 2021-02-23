@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
 # $(readlink -f "$(which $0)/..")
@@ -45,8 +47,8 @@ bashcompinit
 
 # Antigen
 ANTIGEN_CACHE=false
-source ${0:a:h}/antigen.zsh
-# zsh $DOTFILES_PATH/antigen.zsh
+# source ${0:a:h}/antigen.zsh
+source $DOTFILES_PATH/antigen.zsh
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan

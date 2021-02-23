@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Marc Partensky marc.partensky@gmail.com
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV PATH="/usr/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+# ENV PATH="/usr/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
 # USER marc
 
