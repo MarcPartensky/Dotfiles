@@ -7,7 +7,7 @@
 	name = marc
 	email = marc.partensky@gmail.com
 [core]
-	excludesfile = /Users/marcpartensky/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	editor = nvim
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -16,6 +16,6 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/marcpartensky/.stCommitMsg
+	template = ~/.stCommitMsg
 [pull]
 	rebase = true
