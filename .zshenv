@@ -5,11 +5,11 @@ alias e='nvim ~/.zshenv'
 alias mem="du -sh"
 alias memfiles="du -sh * | sort -rh;"
 alias vimrc='nvim ~/.vimrc'
-alias ev='nvim ~/.config/nvim'
+alias ev="cd ~/.config/nvim"
 alias todo="nvim ~/programs/markdown/todolist/todolist.md"
 alias t="todo"
 alias pip="python -m pip"
-alias pip3="python2 -m pip"
+alias pip2="python2 -m pip"
 alias pip3="python3 -m pip"
 
 alias alacritty="v ~/.config/alacritty/alacritty.yml"
