@@ -33,7 +33,6 @@ bashcompinit
 # autoload -Uz compinit
 # compinit
 
-
 # pip zsh completion start
 # function _pip_completion {
 #   local words cword
