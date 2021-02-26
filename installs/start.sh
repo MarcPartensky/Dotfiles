@@ -54,7 +54,7 @@ esac
 # npm install -g lite-server eslint
 
 # dynamic history search
-pip install percol
+pip install percol bpytop
 
 if [ -d "~/.config" ]; then
     makedir ~/.config
