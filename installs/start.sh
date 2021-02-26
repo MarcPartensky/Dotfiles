@@ -31,17 +31,17 @@ case `uname` in
 		# install nvm/node
 		brew cask install rectangle
 		brew cask install alfred
-<<<<<<< HEAD
 		# brew cask install visual-studio-code
 		# brew cask install hyperswitch
-=======
 		brew install bat
->>>>>>> f2b0542 (better dockerfile)
+		brew install sk
   ;;
   Linux)
     # commands for Linux go here
 		apt-get install pyenv
 		apt-get install pyenv-virtualenv
+		apt-get install bat
+		apt-get install skim
   ;;
   FreeBSD)
     # commands for FreeBSD go here
@@ -63,4 +63,3 @@ fi
 if [ -d "~/.config/nvim" ]; then
     git clone https://github.com/MarcPartensky/nvim.git ~./config
 fi
-
