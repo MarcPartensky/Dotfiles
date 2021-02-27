@@ -63,3 +63,6 @@ fi
 if [ -d "~/.config/nvim" ]; then
     git clone https://github.com/MarcPartensky/nvim.git ~./config
 fi
+
+# dont be bothered by text when ssh-ing into this machine
+touch .hushlogin
