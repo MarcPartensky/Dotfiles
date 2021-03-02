@@ -1,30 +1,11 @@
-alias v=nvim
-alias restart='exec $SHELL'
-alias ez='nvim ~/.zshrc'
-alias e='nvim ~/.zshenv'
 alias mem="du -sh"
 alias memfiles="du -sh * | sort -rh;"
-alias vimrc='nvim ~/.vimrc'
-alias ev="cd ~/.config/nvim"
-alias todo="nvim ~/programs/markdown/todolist/todolist.md"
-alias t="todo"
+alias py="python"
 alias pip="python -m pip"
 alias pip2="python2 -m pip"
 alias pip3="python3 -m pip"
 
-alias alacritty="v ~/.config/alacritty/alacritty.yml"
-alias isep="cd /Volumes/$/isep"
-alias desk="desktop"
-alias ports="lsof -Pn -i4"
-alias ports2="netstat -ap tcp"
-alias network="watch -n 1 \"netstat -p tcp\""
 # alias cat=ccat
-
-### Games ###
-alias tetris=bastet
-alias spaceinvader=ninvaders
-# alias tshark="/Applications/Wireshark.app/Contents/MacOS/tshark"
-
 # Git shortcuts
 alias gi="git init"
 alias ga="echo 'git add -A'; git add -A"
@@ -50,28 +31,6 @@ function gfp {
 	git push -u origin master
 }
 
-# Navigation shortcuts
-alias home='cd ~'
-alias desktop="cd ~/desktop"
-alias documents="cd ~/documents"
-alias images="cd ~/images"
-alias downloads="cd ~/downloads"
-
-# Programming shortcuts
-alias programs='cd ~/programs/'
-alias website='cd ~/programs/website'
-alias web='cd ~/programs/web'
-alias javascript='cd ~/programs/web/javascript'
-alias canvas='cd ~/programs/web/javascript/canvas'
-alias html='cd ~/programs/web/html'
-alias css="cd ~/programs/web/css"
-alias markdown="cd ~/programs/markdown"
-alias wadjet='cd ~/unity games/asteroids'
-alias gitprojects="cd ~/git-projects"
-alias brain="cd ~/programs/brainperformer"
-
-# Quick temporary aliases
-alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
 
 function p { cd ~/programs/$@ }
 function pj { cd ~/git-projects/$@ }
@@ -82,12 +41,10 @@ function nodesktopicon {
 	killall Finder
 }
 
-
 function desktopicon {
 	defaults write com.apple.finder CreateDesktop true
 	killall Finder
 }
-
 
 # python programs
 alias webpfix='py /users/marcpartensky/programs/python/repository-2020/webpfix.py'
@@ -129,14 +86,10 @@ alias postman="open -a 'postman'"
 alias keybr="chrome https://www.keybr.com/"
 alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
-function finder { open . }
 function search { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
 function youtube { open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1" }
-alias yt=youtube
 function messenger { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
 function messenger-terminal { exec "fb-messenger-cli"; }
-
-alias youtube='cd /Volumes/\$/Youtube'
 
 filename=""
 function copy {
@@ -144,7 +97,6 @@ function copy {
 	echo $filename is copied
 	cat $1 | pbcopy
 }
-
 alias filename='echo $filename'
 
 function paste {
