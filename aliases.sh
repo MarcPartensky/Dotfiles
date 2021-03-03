@@ -1,4 +1,5 @@
 alias v="nvim"
+alias ls="exa"
 alias restart="exec $SHELL"
 alias finder="open ."
 alias mcd="mkcdir"
@@ -43,7 +44,7 @@ alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
 alias isep="cd /Volumes/$/isep"
 alias youtube='cd /Volumes/\$/Youtube'
-alias yt=youtube
+alias yt="youtube"
 
 # Navigation shortcuts
 alias home='cd'
