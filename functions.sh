@@ -3,8 +3,8 @@ mkcdir()  {
       cd -P -- "$1"
 }
 
-alias startmamp='cd /Applications/MAMP/bin && ./start.sh'
-alias stopmamp='cd /Applications/MAMP/bin && ./stop.sh'
+alias startmamp='/Applications/MAMP/bin/start.sh'
+alias stopmamp='/Applications/MAMP/bin/stop.sh'
 
 function exists { which $1 &> /dev/null }
 
