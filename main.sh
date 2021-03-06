@@ -2,6 +2,7 @@
 
 export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
+export FPATH=$HOME/usr/share/zsh/*/functions:$FPATH
 # $(readlink -f "$(which $0)/..")
 
 # vim mode inside the terminal
@@ -25,16 +26,12 @@ zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
 
-autoload -Uz compinit
-compinit
-autoload -Uz bashcompinit
-bashcompinit
+# autoload -Uz compdef && compdef
+autoload -Uz compinit && compinit
+# autoload -Uz bashcompinit && bashcompinit
 
 # The following lines were added by compinstall
 # zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
-
-# autoload -Uz compinit
-# compinit
 
 # pip zsh completion start
 # function _pip_completion {
@@ -78,7 +75,7 @@ source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 # ZSH_THEME="eastwood"
 
 # Deprecated
