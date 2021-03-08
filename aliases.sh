@@ -26,8 +26,8 @@ alias dotzshenv="v $DOTFILES_PATH/.zshenv"
 alias esclave="cd ~/discordbot/esclave"
 alias servant="cd ~/discordbot/servant-de-marc"
 alias esclaveaws="ssh -i 'discordbotofmarcpartensky.pem' ubuntu@ec2-15-236-33-61.eu-west-3.compute.amazonaws.com"
-alias mampstart='~/Library/Applications/MAMP/bin/start.sh'
-alias mampstop='~/Library/Applications/MAMP/bin/stop.sh'
+alias mampstart='/Applications/MAMP/bin/start.sh && echo http://localhost:8888/phpmyadmin'
+alias mampstop='/Applications/MAMP/bin/stop.sh'
 alias jsonbeautify="chrome https://jsonformatter.curiousconcept.com/"
 alias github="chrome https://github.com/MarcPartensky/"
 alias activate="source venv/bin/activate"
@@ -43,7 +43,7 @@ alias ports="lsof -Pn -i4"
 alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
 alias isep="cd /Volumes/$/isep"
-alias youtube='cd /Volumes/\$/Youtube'
+alias youtube='cd /Volumes/\$/Musique/Youtube'
 alias yt="youtube"
 
 # Navigation shortcuts

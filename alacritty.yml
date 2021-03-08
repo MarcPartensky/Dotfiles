@@ -65,7 +65,8 @@ window:
   startup_mode: Windowed
 
   # Window title
-  title: Marc Partensky
+  # title: Marc Partensky
+  title: ""
 
   # Window class (Linux/BSD only):
   #class:
