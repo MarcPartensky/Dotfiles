@@ -4,6 +4,6 @@ services:
     image: marcpartensky/env
     build: .
     ports:
-      - "8022:8022"
+      - "7022:7022"
     stdin_open: true
     tty: true
