@@ -14,7 +14,6 @@ set clipboard=unnamedplus
 
 
 #\\\_ COMPLETIONS _///#
-
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' extra-verbose yes
@@ -83,8 +82,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # "bat" as manpager
-# if [[ uname == "Darw" ]]
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+	if [ $DISTRIB = "ubuntu" ]; then
+		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+	else
+		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+	fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
