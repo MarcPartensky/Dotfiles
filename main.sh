@@ -84,7 +84,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # "bat" as manpager
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-	if [ $DISTRIB = "ubuntu" ]; then
+	if [ $DISTRIB = "Ubuntu" ]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
