@@ -52,9 +52,9 @@ window:
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
   # decorations: full
-  # decorations: buttonless
+  decorations: buttonless
   # decorations: transparent
-  decorations: none
+  # decorations: none
 
   # Startup Mode (changes require restart)
   #
@@ -174,6 +174,7 @@ colors:
   # Default colors
   primary:
     background: '#111111'
+    # background: '#1e1e20'
     foreground: '#c5c8c6'
 
     # Bright and dim foreground colors
@@ -669,7 +670,7 @@ key_bindings:
 
   # (macOS only)
   - { key: K,      mods: Command, mode: ~Vi, chars: "\x0c"            }
-  - { key: Key0,   mods: Command,            action: ResetFontSize    }
+  # - { key: Key0,   mods: Command,            action: ResetFontSize    }
   - { key: Equals, mods: Command,            action: IncreaseFontSize }
    # - { key: Add,    mods: Command,            action: IncreaseFontSize }
   - { key: Minus,  mods: Command,            action: DecreaseFontSize }
@@ -689,13 +690,26 @@ key_bindings:
 
   - { key: S,      mods: Command,            chars: "\x1b:w\x0a" }
   - { key: W,      mods: Command,            chars: "\x1b:q\x0a" }
-  - { key: T,      mods: Command,            chars: ":tabnew | terminal\x0a" }
+  # - { key: T,      mods: Command,            chars: ":tabnew | :CocCommand explorer\x0a" }
+  - { key: T,      mods: Command,            chars: ":tabnew\x0a" }
   - { key: Left,   mods: Command|Alt,        chars: ":tabprevious\x0a" }
   - { key: Right,  mods: Command|Alt,        chars: ":tabnext\x0a" }
   - { key: Slash,  mods: Command,            chars: ":Commentary\x0a" }
   - { key: I,      mods: Command,            chars: "\x1b:!\"%:p\"\x0a" }
   - { key: Y,      mods: Command,            chars: "\x1b:!pylint %\x0a" }
   - { key: A,      mods: Command,            chars: "\x1bggVG" }
+
+  # tabs
+  - { key: Key1,      mods: Command,            chars: ":tabn 1\x0a" }
+  - { key: Key2,      mods: Command,            chars: ":tabn 2\x0a" }
+  - { key: Key3,      mods: Command,            chars: ":tabn 3\x0a" }
+  - { key: Key4,      mods: Command,            chars: ":tabn 4\x0a" }
+  - { key: Key5,      mods: Command,            chars: ":tabn 5\x0a" }
+  - { key: Key6,      mods: Command,            chars: ":tabn 6\x0a" }
+  - { key: Key7,      mods: Command,            chars: ":tabn 7\x0a" }
+  - { key: Key8,      mods: Command,            chars: ":tabn 8\x0a" }
+  - { key: Key9,      mods: Command,            chars: ":tabn 9\x0a" }
+  - { key: Key0,      mods: Command,            chars: ":tabn 0\x0a" }
   # - { key: J,      mods: Command,            chars: "v\x0a" }
 
 # debug:
