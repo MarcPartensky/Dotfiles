@@ -17,16 +17,30 @@ set clipboard=unnamedplus
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' extra-verbose yes
+zstyle ':completion:*:' group-order \
+  expansions history-words options \
+  aliases functions builtins reserved-words \
+  executables local-directories directories suffix-aliases
 
 zstyle ':autocomplete:*' config on
-zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' min-input 0
+# zstyle ':autocomplete:*' default-context ''
+zstyle ':autocomplete:*' default-context \
+	expansions history-words options \
+  aliases functions builtins reserved-words \
+  executables local-directories directories suffix-aliases
+# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+zstyle ':autocomplete:*' ignored-input ''
 zstyle ':autocomplete:tab:*' fzf-completion yes
 zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
+# zstyle ':autocomplete:tab:*' widget-style complete-word
+zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+
 
 # autoload -Uz compdef && compdef
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 # autoload -Uz bashcompinit && bashcompinit
 
 # The following lines were added by compinstall
@@ -54,13 +68,13 @@ antigen theme kardan
 antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
+# antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle agkozak/zsh-z
 #antigen bundle soimort/translate-shell
 antigen apply
 
-bindkey '\t' autosuggest-accept
 
 if [[ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]]
 then
@@ -70,8 +84,19 @@ fi
 # autocompletion
 source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+# source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+
+# bindkey '\t' autosuggest-accept
+# bindkey $key[Space] list-expand
+# bindkey -M menuselect $key[Tab] .accept-line
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 ZSH_THEME="powerlevel10k/powerlevel10k"
