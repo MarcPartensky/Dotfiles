@@ -23,7 +23,7 @@ zstyle ':completion:*:' group-order \
   executables local-directories directories suffix-aliases
 
 zstyle ':autocomplete:*' config on
-zstyle ':autocomplete:*' min-input 0
+zstyle ':autocomplete:*' min-input 1
 # zstyle ':autocomplete:*' default-context ''
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
