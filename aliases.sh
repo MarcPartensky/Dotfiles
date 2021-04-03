@@ -68,3 +68,4 @@ alias brain="cd ~/programs/brainperformer"
 
 # Quick temporary aliases
 alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
+alias server="ssh remote-root"

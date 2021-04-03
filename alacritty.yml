@@ -692,9 +692,8 @@ key_bindings:
   - { key: W,      mods: Command,            action: Quit             }
   - { key: N,      mods: Command,            action: SpawnNewInstance }
   - { key: F,      mods: Command|Control,    action: ToggleFullscreen }
-
   - { key: S,      mods: Command,            chars: "\x1b:w\x0a" }
-  - { key: W,      mods: Command,            chars: "\x1b:q\x0a" }
+  # - { key: W,      mods: Command,            chars: "\x1b:q\x0a" }
   # - { key: T,      mods: Command,            chars: ":tabnew | :CocCommand explorer\x0a" }
   - { key: T,      mods: Command,            chars: ":tabnew\x0a" }
   - { key: Left,   mods: Command|Alt,        chars: ":tabprevious\x0a" }
