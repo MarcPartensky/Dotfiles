@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env sh
+
 # pyenv setup
 
 if [[ ! -d ~/.pyenv ]]

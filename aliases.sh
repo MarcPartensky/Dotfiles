@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 alias v="nvim"
 alias ls="exa"
 alias restart="exec $SHELL"

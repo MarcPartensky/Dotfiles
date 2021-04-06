@@ -1,9 +1,10 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env sh
 
 # It is inspired from https://gist.github.com/w3cj/76cd9fb9f346e153b6f0dc46fd025620
 
 case `uname` in
   Darwin)
+		brew bundle 
     # commands for OS X go here
 		# xcode-select --install /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 		/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   local DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
   if [[ ${DISTRIB} = "Ubuntu"* ]]; then
