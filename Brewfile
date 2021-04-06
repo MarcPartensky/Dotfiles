@@ -1,3 +1,5 @@
+# Install with brew bundle
+
 tap "adoptopenjdk/openjdk"
 tap "d12frosted/emacs-plus"
 tap "dart-lang/dart"

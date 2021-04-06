@@ -120,6 +120,7 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
+source installs/pyenv.sh
 
 source ${0:a:h}/setup.sh
 source ${0:a:h}/exports.sh
@@ -143,25 +144,10 @@ then
 	echo "source ${0:a:h}/main.sh" > ~/.zshrc
 fi
 
-if [[ ! -d ~/.pyenv ]]
-then
-	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-	cd ~/.pyenv && src/configure && make -C src && cd -
-fi
-
-if [[ ! -d $(pyenv root)/plugins/pyenv-virtualenv ]]
-then
-	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
-fi
-
 if [[ -f "$HOME/.cargo/env" ]]
 then
 	source "$HOME/.cargo/env"
 fi
-
-# pyenv setup
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
