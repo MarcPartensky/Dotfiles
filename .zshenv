@@ -7,22 +7,36 @@ alias pip3="python3 -m pip"
 
 # alias cat=ccat
 # Git shortcuts
+alias ga="git add -A"
 alias gi="git init"
-alias ga="echo 'git add -A'; git add -A"
+alias gs="git status"
+alias gpo="git push origin"
+alias gtd="git tag --delete"
+alias gtdr="git tag --delete origin"
 alias gr="git remote"
 alias grv="git remote -v"
-alias gs="git status"
+alias gbr="git branch -r"
+alias gplo="git pull origin"
+alias gb="git branch "
+alias gc="git commit"
+alias gd="git diff"
+alias gco="git checkout "
+alias gl="git log"
+alias gr="git remote"
+alias grs="git remote show"
+alias glo="git log --pretty=\"oneline\""
+alias glol="git log --graph --oneline --decorate"
 alias grmc="git rm -r --cached ."
+
+function gp { git push $@ }
 function gc { echo "git commit -m \"$@\""; eval "git commit -m \"$@\"" }
-function gp {
-    if [ "$#" -eq 0 ]; then
-        echo "git push"
-        eval "git push"
-    else
-        echo "git push \"$@\""
-        eval "git push \"$@\""
-    fi
-}
+# function ga {
+#     if [ "$#" -eq 0 ]; then
+#         eval "git push"
+#     else
+#         eval "git push \"$@\""
+#     fi
+# }
 function gn { ga; gc $@ }
 function gt { ga; gc $@; git push }
 function gfp {
