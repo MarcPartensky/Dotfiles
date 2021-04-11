@@ -114,3 +114,7 @@ function install-docker {
 	sh get-docker.sh
 }
 
+function clearswap {
+	rm ~/.local/share/nvim/swap/*
+}
+
