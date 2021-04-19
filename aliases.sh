@@ -63,7 +63,6 @@ alias javascript='cd ~/programs/web/javascript'
 alias canvas='cd ~/programs/web/javascript/canvas'
 alias html='cd ~/programs/web/html'
 alias css="cd ~/programs/web/css"
-alias markdown="cd ~/programs/markdown"
 alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
 alias brain="cd ~/programs/brainperformer"
