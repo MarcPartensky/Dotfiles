@@ -42,4 +42,4 @@ export LESS=-Xr
 # export DOCKER_HOST="tcp://marcpartensky.com:2375"
 export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
 # export LS_COLORS="auto"
-# export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
