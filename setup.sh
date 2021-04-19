@@ -1,27 +1,28 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
-# $1 url
-# $2 path
+# This file aims to install my dotfiles config in any unix system.
 
-function gitfetch {
-	if [ ! -d $2 ]
-	then
-		git clone $2 $1
-	else
-		git --git-dir=$2 pull $1
-	fi
-}
+# install git no matter the os
+if [[ $(uname Darwin) ]]; then
+	brew install git
+elif [[ $(uname Linux) ]]; then
+	apt update
+	apt install -y git
+fi
 
-function pullall {
-	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
-		echo $repo_name/.git
-		git --work-tree=$repo_name --git-dir=$repo_name/.git pull
-	done
-}
+# clone dotfiles repo
+git clone https://github.com/marcpartensky/dotfiles -C $HOME
+source $HOME/main.sh
 
-function pushall {
-	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
-		echo $repo_name/.git
-		git push --repo $repo_name
-	done
-}
+# install docker if not installed
+if [[ -d $(which docker) ]]; then
+	getdocker
+fi
+
+# install docker-compose
+if [[ -d $(which docker) ]]; then
+	getdocker
+fi
+
+# docker-compse up with '/' as volume
+docker-compose up -d
