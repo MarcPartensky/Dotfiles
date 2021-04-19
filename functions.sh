@@ -142,4 +142,7 @@ function pushall {
 		echo $repo_name/.git
 		git push --repo $repo_name
 	done
+
+function secret {
+	openssl rand -base64 64
 }
