@@ -134,7 +134,7 @@ fi
 
 source ${0:a:h}/installs/pyenv.sh
 
-source ${0:a:h}/setup.sh
+# source ${0:a:h}/setup.sh
 source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
