@@ -106,15 +106,40 @@ function p {
 }
 
 function pj {
-	cd ~/git-projects/$@
+	cd ~/$GIT_PROJECTS/$@
 }
 
-function install-docker {
-	curl -fsSL https://get.docker.com -o get-docker.sh
-	sh get-docker.sh
+function getdocker {
+	curl -fsSL https://get.docker.com | sh
 }
 
 function clearswap {
 	rm ~/.local/share/nvim/swap/*
 }
 
+function giterase {
+	git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
+}
+
+function gitfetch {
+	if [ ! -d $2 ]
+	then
+		git clone $2 $1
+	else
+		git --git-dir=$2 pull $1
+	fi
+}
+
+function pullall {
+	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
+		echo $repo_name/.git
+		git --work-tree=$repo_name --git-dir=$repo_name/.git pull
+	done
+}
+
+function pushall {
+	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
+		echo $repo_name/.git
+		git push --repo $repo_name
+	done
+}
