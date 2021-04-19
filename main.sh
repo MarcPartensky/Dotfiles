@@ -12,23 +12,44 @@ set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
 
+zstyle -d ':completion:*' list-prompt
+zstyle -d ':completion:*' select-prompt
+
+# zstyle ':completion:*' list-prompt   ''
+# zstyle ':completion:*' select-prompt ''
+
+# zstyle ':completion:*' list-prompt   ''
+# zstyle ':completion:*' select-prompt ''
+
+# zstyle ':completion:*' commands base
 
 #\\\_ COMPLETIONS _///#
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
-zstyle ':completion:*' extra-verbose yes
+zstyle ':completion:*' extra-verbose no
+zstyle ':completion:*' max-matches-width 0
+zstyle ':completion:*' list-suffixes false
+zstyle ':completion:*' accept-exact true
+zstyle ':completion:*' menu select=0
+# zstyle ':completion:*:' group-order \
+#   expansions history-words options \
+#   aliases functions builtins reserved-words \
+#   executables local-directories directories suffix-aliases
 zstyle ':completion:*:' group-order \
-  expansions history-words options \
-  aliases functions builtins reserved-words \
-  executables local-directories directories suffix-aliases
+  expansions history-words options list=20 \
+  aliases \
+  local-directories directories
 
 zstyle ':autocomplete:*' config on
-zstyle ':autocomplete:*' min-input 1
+zstyle ':autocomplete:*' min-input 2
 # zstyle ':autocomplete:*' default-context ''
+# zstyle ':autocomplete:*' default-context \
+# 	expansions history-words options \
+#   aliases functions builtins reserved-words \
+#   executables local-directories directories suffix-aliases
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
-  aliases functions builtins reserved-words \
-  executables local-directories directories suffix-aliases
+  local-directories directories
 # zstyle ':autocomplete:*' default-context history-incremental-search-backward
 zstyle ':autocomplete:*' ignored-input ''
 zstyle ':autocomplete:tab:*' fzf-completion yes
@@ -36,7 +57,7 @@ zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
 # zstyle ':autocomplete:tab:*' widget-style complete-word
-zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 # autoload -Uz compdef && compdef
@@ -47,15 +68,6 @@ zstyle ':autocomplete:*' add-space executables aliases functions builtins reserv
 # zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
 
 # pip zsh completion start
-# function _pip_completion {
-#   local words cword
-#   read -Ac words
-#   read -cn cword
-#   reply=( $( COMP_WORDS="$words[*]" \
-#              COMP_CWORD=$(( cword-1 )) \
-#              PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
-# }
-# compctl -K _pip_completion pip3
 
 # Antigen
 ANTIGEN_CACHE=false
@@ -82,20 +94,20 @@ then
 fi
 
 # autocompletion
-source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 
 # bindkey '\t' autosuggest-accept
 # bindkey $key[Space] list-expand
-# bindkey -M menuselect $key[Tab] .accept-line
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
+# # bindkey -M menuselect $key[Tab] .accept-line
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char
 
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
@@ -120,7 +132,7 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
-source installs/pyenv.sh
+source ${0:a:h}/installs/pyenv.sh
 
 source ${0:a:h}/setup.sh
 source ${0:a:h}/exports.sh
@@ -128,6 +140,7 @@ source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 
 ln -snf ${0:a:h}/.gitconfig ~
+# ln -snf ${0:a:h}/.docker/config.json ~/.docker/config.json
 ln -snf ${0:a:h}/.zshenv ~
 ln -snf ${0:a:h}/.p10k.zsh ~
 source ${0:a:h}/.zshenv
@@ -148,6 +161,8 @@ if [[ -f "$HOME/.cargo/env" ]]
 then
 	source "$HOME/.cargo/env"
 fi
+
+# pip install --no-cache-dir --upgrade --force-reinstall --ignore-installed neovim
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
