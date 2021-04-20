@@ -147,3 +147,7 @@ function pushall {
 function secret {
 	openssl rand -base64 64
 }
+
+function readme {
+	bat README.md
+}
