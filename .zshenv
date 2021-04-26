@@ -8,35 +8,31 @@ alias pip3="python3 -m pip"
 # alias cat=ccat
 # Git shortcuts
 alias ga="git add -A"
-alias gi="git init"
-alias gs="git status"
 alias gpo="git push origin"
 alias gtd="git tag --delete"
 alias gtdr="git tag --delete origin"
-alias gr="git remote"
 alias grv="git remote -v"
 alias gbr="git branch -r"
 alias gplo="git pull origin"
-alias gb="git branch "
-alias gc="git commit"
-alias gd="git diff"
-alias gco="git checkout "
-alias gl="git log"
-alias gr="git remote"
 alias grs="git remote show"
 alias glo="git log --pretty=\"oneline\""
 alias glol="git log --graph --oneline --decorate"
+alias glg="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
 
+function gb { git branch $@ }
+function gi { git init $@}
+function gs { git status $@ }
+function gco { git checkout $@ }
+function gpl { git pull $@ }
+function gr { git remote $@ }
+function gl { git log $@ }
+function gd { git diff $@ }
 function gp { git push $@ }
-function gc { echo "git commit -m \"$@\""; eval "git commit -m \"$@\"" }
-# function ga {
-#     if [ "$#" -eq 0 ]; then
-#         eval "git push"
-#     else
-#         eval "git push \"$@\""
-#     fi
-# }
+function gc {
+	echo "git commit -m \"$@\""
+	eval "git commit -m \"$@\""
+}
 function gn { ga; gc $@ }
 function gt { ga; gc $@; git push }
 function gfp {
@@ -45,10 +41,8 @@ function gfp {
 	git push -u origin master
 }
 
-
-function p { cd ~/programs/$@ }
-function pj { cd ~/git-projects/$@ }
-export programs=~/programs
+function p { cd $PROGRAMS_PATH/$@ }
+function pj { cd $GIT_PROJECTS_PATH/$@ }
 
 function nodesktopicon {
 	defaults write com.apple.finder CreateDesktop false
