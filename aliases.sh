@@ -2,6 +2,8 @@
 
 alias v="nvim"
 alias ls="exa"
+alias ll="exa -la"
+alias la="exa -a"
 alias restart="exec $SHELL"
 alias finder="open ."
 alias mcd="mkcdir"
