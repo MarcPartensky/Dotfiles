@@ -1,12 +1,16 @@
-mkcdir()  {
+#!/bin/sh
+
+mkcdir() {
     mkdir -p -- "$1" &&
       cd -P -- "$1"
 }
 
-function exists { which $1 &> /dev/null }
+exists() {
+	which $1 &> /dev/null
+}
 
 if exists percol; then
-    function percol_select_history() {
+    percol_select_history() {
         local tac
         exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
         BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
@@ -18,7 +22,7 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
-function div {
+div() {
   local _d=${3:-2}
   local _n=0000000000
   _n=${_n:0:$_d}
@@ -28,37 +32,45 @@ function div {
 }
 
 # Ffmpeg
-function speed-up {
+speedup() {
 	local n=$(python3 -c "print(1/$3)" 2>&1)
 	ffmpeg -i $1 -filterv "setpts=$n*PTS" $2
 }
 
 filename=""
-function copy {
+copy() {
 	filename=$1
 	echo $filename is copied
 	cat $1 | pbcopy
 }
 
-function paste {
+paste() {
 	echo $filename is pasted
 	pbpaste > $filename
 }
 
-function search { open -a 'Google Chrome' "http://www.google.com/search?q=$1" }
+search() {
+	open -a 'Google Chrome' "http://www.google.com/search?q=$1"
+}
 alias chrome="open -a 'Google Chrome' $1";
 
 alias daisy="open -a 'DaisyDisk'"
 
-function youtube { open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1" }
+youtube() {
+	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
+}
 
-function messenger { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
+messenger() {
+	open -a 'Google Chrome' "https://www.facebook.com/messages"
+}
 
-function messenger-terminal { exec "fb-messenger-cli"; }
+messengerterminal() {
+	exec "fb-messenger-cli"
+}
 
 alias postman="open -a 'Postman'"
 
-function spam {
+spam() {
 	exec "messenger_terminal";
 	exec "/search $1";
 	exec "0";
@@ -68,7 +80,7 @@ function spam {
 	done
 }
 
-function troll {
+troll() {
 	sleep $1;
 	for i in {1..$2}
 	do
@@ -77,51 +89,51 @@ function troll {
 	done
 }
 
-function touch-typing {
+touchtyping() {
 	open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'
 }
 
-function keybr {
+keybr() {
 	open -a 'Google Chrome' 'https://keybr.com'
 }
 
-function speedtest {
+speedtest() {
 	python /usr/local/marc/speedtest.py
 }
 
-function dl-music {
+dlmusic() {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
 
-function ytdl {
+ytdl() {
 	youtube-dl -ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir
 }
 
-function weather {
+weather() {
 	curl wttr.in
 }
 
-function p {
+p() {
 	cd ~/Programs/$@
 }
 
-function pj {
+pj() {
 	cd ~/$GIT_PROJECTS/$@
 }
 
-function getdocker {
+getdocker() {
 	curl -fsSL https://get.docker.com | sh
 }
 
-function clearswap {
+clearswap() {
 	rm ~/.local/share/nvim/swap/*
 }
 
-function giterase {
+giterase() {
 	git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
 }
 
-function gitfetch {
+gitfetch() {
 	if [ ! -d $2 ]
 	then
 		git clone $2 $1
@@ -130,24 +142,24 @@ function gitfetch {
 	fi
 }
 
-function pullall {
+pullall() {
 	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
 		echo $repo_name/.git
 		git --work-tree=$repo_name --git-dir=$repo_name/.git pull
 	done
 }
 
-function pushall {
+pushall() {
 	for repo_name in $(find $PROGRAMS_PATH -maxdepth 1 -type d); do
 		echo $repo_name/.git
 		git push --repo $repo_name
 	done
 }
 
-function secret {
+secret() {
 	openssl rand -base64 64
 }
 
-function readme {
+readme() {
 	bat README.md
 }
