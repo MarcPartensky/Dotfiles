@@ -9,18 +9,18 @@ exists() {
 	which $1 &> /dev/null
 }
 
-if exists percol; then
-    percol_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
+# if exists percol; then
+#     percol_select_history() {
+#         local tac
+#         exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+#         BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
+#         CURSOR=$#BUFFER         # move cursor
+#         zle -R -c               # refresh
+#     }
 
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
-fi
+#     zle -N percol_select_history
+#     bindkey '^R' percol_select_history
+# fi
 
 div() {
   local _d=${3:-2}
@@ -49,18 +49,18 @@ paste() {
 	pbpaste > $filename
 }
 
+# alias chrome="open -a 'Google Chrome' $1"
+# alias daisy="open -a 'DaisyDisk'"
+
 search() {
 	open -a 'Google Chrome' "http://www.google.com/search?q=$1"
 }
-alias chrome="open -a 'Google Chrome' $1";
 
-alias daisy="open -a 'DaisyDisk'"
-
-youtube() {
+openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
 }
 
-messenger() {
+openmessenger() {
 	open -a 'Google Chrome' "https://www.facebook.com/messages"
 }
 
@@ -71,7 +71,7 @@ messengerterminal() {
 alias postman="open -a 'Postman'"
 
 spam() {
-	exec "messenger_terminal";
+	exec "messengerterminal";
 	exec "/search $1";
 	exec "0";
 	for i in {1...$3}

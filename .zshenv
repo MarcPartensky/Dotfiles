@@ -86,12 +86,12 @@ alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
-alias chrome="open -a 'google chrome' $1"
+# alias chrome="open -a 'google chrome' $1"
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
 alias postman="open -a 'postman'"
-alias keybr="chrome https://www.keybr.com/"
+# alias keybr="chrome https://www.keybr.com/"
 alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
 function search { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
@@ -113,7 +113,7 @@ function paste {
 }
 
 # This is why being lazyness in programming even exists
-function cheat { curl cheat.sh/"$@"; }
+# function cheat { curl cheat.sh/"$@"; }
 
 function compressgif {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
