@@ -95,7 +95,6 @@ alias postman="open -a 'postman'"
 alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
 function search { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
-function youtube { open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1" }
 function messenger { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
 function messenger-terminal { exec "fb-messenger-cli"; }
 
@@ -118,4 +117,7 @@ function paste {
 function compressgif {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
-source "$HOME/.cargo/env"
+
+if [[ -d "$HOME/.cargo/env" ]]; then
+	source "$HOME/.cargo/env"
+fi

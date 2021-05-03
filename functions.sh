@@ -55,6 +55,9 @@ paste() {
 search() {
 	open -a 'Google Chrome' "http://www.google.com/search?q=$1"
 }
+alias chrome="open -a 'Google Chrome' $1";
+
+alias daisy="open -a 'DaisyDisk'"
 
 openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
