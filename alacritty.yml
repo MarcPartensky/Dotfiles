@@ -108,7 +108,10 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: monospace
-    family: Source Code Pro
+    # family: Source Code Pro
+    family: MesloLGS NF
+    # family: Avenir
+    # family: Konokor
 
     # The `style` can be specified to pick a specific face.
     style: Regular
