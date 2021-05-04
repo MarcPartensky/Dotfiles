@@ -46,3 +46,5 @@
     echo \"Browsing to $url...\" \
     eval \"$tool $url\" 2> /dev/null || echo \"fatal: cannot browse to $url\" \
 	}; gitbrowse"
+[http]
+	postBuffer = 157286400

@@ -43,22 +43,20 @@ alias pyhome='cd ~/programs/python'
 alias pypackages='cd /library/frameworks/python.framework/versions/3.8/lib/python3.8/site-packages/'
 alias tetris="bastet"
 alias spaceinvader="ninvaders"
-alias alacritty="v ~/.config/alacritty/alacritty.yml"
+alias alacritty="nvim ~/.config/alacritty/alacritty.yml"
 alias ports="lsof -Pn -i4"
 alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
-alias isep="cd /Volumes/$/isep"
 # alias youtube='cd /Volumes/\$/Musique/Youtube'
 # alias yt="youtube"
 
 # Navigation shortcuts
-alias home='cd'
 alias desktop="cd ~/desktop"
 alias documents="cd ~/documents"
 alias images="cd ~/images"
 alias downloads="cd ~/downloads"
-
-# Programming shortcuts
+alias isep="cd /Volumes/$/isep"
+alias marc="cd ~/desktop/Marc\ Partensky"
 alias programs='cd ~/programs/'
 alias website='cd ~/programs/website'
 alias web='cd ~/programs/web'
@@ -69,7 +67,8 @@ alias css="cd ~/programs/web/css"
 alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
 alias brain="cd ~/programs/brainperformer"
-
-# Quick temporary aliases
 alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
-alias server="ssh remote-root"
+
+# commands
+alias cmd="nvim run.sh"
+alias ignore="nvim .gitignore"
