@@ -21,3 +21,7 @@
 	rebase = true
 [init]
 	defaultBranch = main
+[alias]
+	pushall = "!gitpushall() { \
+		git remote | xargs -L1 git push --all; \
+	}; gitpushall"
