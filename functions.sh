@@ -1,5 +1,14 @@
 #!/bin/sh
 
+function cd {
+    # actually change the directory with all args passed to the function
+    builtin cd "$@"
+    # if there's a regular file named `run.sh`
+    if [ -f "run.sh" ] ; then
+        source run.sh
+    fi
+}
+
 mkcdir() {
     mkdir -p -- "$1" &&
       cd -P -- "$1"

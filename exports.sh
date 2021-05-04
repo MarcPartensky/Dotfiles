@@ -12,6 +12,7 @@ export PATH="/Users/marcpartensky/flutter/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 
