@@ -26,5 +26,5 @@
 		git remote | xargs -L1 git push --all; \
 	}; gitpushall"
 	pullall = "!gitpullall() { \
-		git remote | xargs -L1 git pull --all; \
+		git remote | xargs -L1 git pull; \
 	}; gitpullall"
