@@ -22,12 +22,9 @@
 [init]
 	defaultBranch = main
 [alias]
-	pushall = "!gitpushall() { \
-		git remote | xargs -L1 git push --all; \
-	}; gitpushall"
-	pullall = "!gitpullall() { \
-		git remote | xargs -L1 git pull; \
-	}; gitpullall"
+	conf = "!nvim .git/config"
+	pushall = "!git remote | xargs -L1 git push --all"
+	pullall = "!git remote | xargs -L1 git pull"
 	browse = "!gitbrowse() { \
     if [[ -z \"$1\" ]]; then \
         echo -e \"warning: no remote name given. Using origin as default\n\" \
