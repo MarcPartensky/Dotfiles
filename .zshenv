@@ -20,36 +20,36 @@ alias glol="git log --graph --oneline --decorate"
 alias glg="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
 
-function gb { git branch $@ }
-function gi { git init $@}
-function gs { git status $@ }
-function gco { git checkout $@ }
-function gpl { git pull $@ }
-function gr { git remote $@ }
-function gl { git log $@ }
-function gd { git diff $@ }
-function gp { git push $@ }
-function gc {
+gb() { git branch $@ }
+gi() { git init $@}
+gs() { git status $@ }
+gco() { git checkout $@ }
+gpl() { git pull $@ }
+gr() { git remote $@ }
+gl() { git log $@ }
+gd() { git diff $@ }
+gp() { git push $@ }
+gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
 }
-function gn { ga; gc $@ }
-function gt { ga; gc $@; git push }
-function gfp {
+gn() { ga; gc $@ }
+gt() { ga; gc $@; git push }
+gfp() {
 	git remote add origin $@
 	git branch -M master
 	git push -u origin master
 }
 
-function p { cd $PROGRAMS_PATH/$@ }
-function pj { cd $GIT_PROJECTS_PATH/$@ }
+p() { cd $PROGRAMS_PATH/$@ }
+pj() { cd $GIT_PROJECTS_PATH/$@ }
 
-function nodesktopicon {
+nodesktopicon() {
 	defaults write com.apple.finder CreateDesktop false
 	killall Finder
 }
 
-function desktopicon {
+desktopicon() {
 	defaults write com.apple.finder CreateDesktop true
 	killall Finder
 }
@@ -94,19 +94,19 @@ alias postman="open -a 'postman'"
 # alias keybr="chrome https://www.keybr.com/"
 alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
-function search { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
-function messenger { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
-function messenger-terminal { exec "fb-messenger-cli"; }
+search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
+messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
+messenger-terminal() { exec "fb-messenger-cli"; }
 
 filename=""
-function copy {
+copy() {
 	filename=$1
 	echo $filename is copied
 	cat $1 | pbcopy
 }
 alias filename='echo $filename'
 
-function paste {
+paste() {
 	echo $filename is pasted
 	pbpaste > $filename
 }
@@ -114,7 +114,7 @@ function paste {
 # This is why being lazyness in programming even exists
 # function cheat { curl cheat.sh/"$@"; }
 
-function compressgif {
+compressgif() {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
 

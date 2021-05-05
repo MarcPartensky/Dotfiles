@@ -71,8 +71,8 @@ paste() {
 search() {
 	open -a 'Google Chrome' "http://www.google.com/search?q=$1"
 }
-alias chrome="open -a 'Google Chrome' $1";
 
+alias chrome="open -a 'Google Chrome' $1";
 alias daisy="open -a 'DaisyDisk'"
 
 openyoutube() {
@@ -133,7 +133,7 @@ weather() {
 }
 
 p() {
-	cd ~/Programs/$@
+	cd ~/$PROGRAMS_PATH/$@
 }
 
 pj() {
