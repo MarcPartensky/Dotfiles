@@ -1,11 +1,17 @@
 #!/bin/sh
 
-function cd {
+cd() {
     # actually change the directory with all args passed to the function
     builtin cd "$@"
     # if there's a regular file named `run.sh`
     if [ -f "run.sh" ] ; then
         source run.sh
+    fi
+    if [ -d ".git" ] ; then
+			git pull
+    fi
+    if [ -f "Pipfile" ] ; then
+			pipenv lock --pre --clear
     fi
 }
 
