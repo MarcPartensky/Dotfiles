@@ -11,7 +11,8 @@ cd() {
 			git pull
     fi
     if [ -f "Pipfile" ] ; then
-			pipenv lock --pre --clear
+			echo -e "\e[31mLocking\e[0m"
+			$(pipenv lock --pre --clear &> /var/log/pipenv.log && echo -e "\e[31mLocked\e[0m") &
     fi
 }
 
