@@ -56,6 +56,10 @@ alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
 # alias youtube='cd /Volumes/\$/Musique/Youtube'
 # alias yt="youtube"
+alias cmd="nvim run.sh"
+alias ignore="nvim .gitignore"
+alias preview="nvim +MarkdownPreview README.md"
+alias dockerfile="nvim Dockerfile"
 
 # Navigation shortcuts
 alias desktop="cd ~/desktop"
@@ -75,8 +79,3 @@ alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
 alias brain="cd ~/programs/brainperformer"
 alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
-
-# commands
-alias cmd="nvim run.sh"
-alias ignore="nvim .gitignore"
-alias preview="nvim +MarkdownPreview README.md"
