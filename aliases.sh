@@ -79,3 +79,4 @@ alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
 alias brain="cd ~/programs/brainperformer"
 alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
+alias updatepyenv="cd $PYENV_ROOT/plugins/python-build/../.. && git pull && cd -"

@@ -139,7 +139,7 @@ source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 
-source ${0:a:h}/installs/pyenv.sh
+# source ${0:a:h}/installs/pyenv.sh
 
 ln -snf ${0:a:h}/.gitconfig ~
 # ln -snf ${0:a:h}/.docker/config.json ~/.docker/config.json
