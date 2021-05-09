@@ -69,6 +69,7 @@ alias towerlocal="ssh tower"
 alias sharkhttp="tshark -d tcp.port==443,http"
 alias sharkwho="tshark -d tcp.port==22,ssh"
 alias sharkssh="tshark -d udp.port==53,who"
+alias redmatrix="cmatrix -C red"
 
 # Navigation shortcuts
 alias desktop="cd ~/desktop"
