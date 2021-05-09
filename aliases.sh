@@ -56,10 +56,16 @@ alias ports2="netstat -ap tcp"
 alias network="watch -n 1 \"netstat -p tcp\""
 # alias youtube='cd /Volumes/\$/Musique/Youtube'
 # alias yt="youtube"
-alias cmd="nvim run.sh"
+alias runsh="nvim run.sh"
 alias ignore="nvim .gitignore"
 alias preview="nvim +MarkdownPreview README.md"
 alias dockerfile="nvim Dockerfile"
+alias vps="ssh vps"
+alias tel="ssh tel"
+alias tablette="ssh tablette"
+alias mini="ssh mini"
+alias minilocal="ssh mini"
+alias towerlocal="ssh tower"
 
 # Navigation shortcuts
 alias desktop="cd ~/desktop"
