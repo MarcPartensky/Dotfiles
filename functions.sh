@@ -182,3 +182,9 @@ secret() {
 readme() {
 	bat README.md
 }
+
+
+cheat() {
+	curl cheat.sh/$@
+}
+
