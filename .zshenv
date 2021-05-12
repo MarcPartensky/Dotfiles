@@ -19,6 +19,7 @@ alias glo="git log --pretty=\"oneline\""
 alias glol="git log --graph --oneline --decorate"
 alias glg="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
+alias gcm="gitmoji -c"
 
 gb() { git branch $@ }
 gi() { git init $@}
