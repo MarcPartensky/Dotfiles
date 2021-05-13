@@ -1,5 +1,5 @@
 build:
-	docker build . -f Dockerfile -t marcpartensky/env
+	docker build /home/marc -f Dockerfile -t marcpartensky/env
 push:
 	docker push marcpartensky/env
 run:
