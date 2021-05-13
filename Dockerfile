@@ -58,8 +58,8 @@ RUN curl https://pyenv.run | bash
 RUN source ~/git/dotfiles/main.sh
 
 # RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
-COPY .config/nvim ~/.config/nvim
-COPY .config/coc ~/.config/coc
+COPY .config/nvim /root/.config/nvim
+COPY .config/coc /root/.config/coc
 # COPY .config/ranger ~/.config/ranger
 
 RUN wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip
