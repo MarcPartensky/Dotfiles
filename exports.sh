@@ -3,7 +3,8 @@
 # Path variables
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
+# export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH"
