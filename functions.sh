@@ -116,10 +116,6 @@ keybr() {
 	open -a 'Google Chrome' 'https://keybr.com'
 }
 
-speedtest() {
-	python /usr/local/marc/speedtest.py
-}
-
 dlmusic() {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
