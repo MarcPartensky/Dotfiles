@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# pyenv setup
-
 if [[ ! -d ~/.pyenv ]]
 then
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
