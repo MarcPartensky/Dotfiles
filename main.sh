@@ -133,12 +133,6 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
-ln -snf ${0:a:h}/.gitconfig ~
-ln -snf ${0:a:h}/.zshenv ~
-ln -snf ${0:a:h}/.p10k.zsh ~
-ln -snf ${0:a:h}/.tmux.conf ~
-# ln -snf ${0:a:h}/.alacritty.yml ~/.config/alacritty/alacritty.yml
-# ln -snf ${0:a:h}/.docker/config.json ~/.docker/config.json
 
 # source ${0:a:h}/setup.sh
 source ${0:a:h}/exports.sh
