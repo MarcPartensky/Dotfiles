@@ -164,7 +164,6 @@ then
 	source "$HOME/.cargo/env"
 fi
 
-# pip install --no-cache-dir --upgrade --force-reinstall --ignore-installed neovim
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
