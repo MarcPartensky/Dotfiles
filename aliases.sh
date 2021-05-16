@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 alias v="nvim"
+alias vim="nvim"
 alias ls="exa"
 alias ll="exa -la"
 alias la="exa -a"
@@ -12,6 +13,7 @@ alias t="todo"
 alias todo="nvim $PROGRAMS_PATH/markdown/todolist/todolist.md"
 alias tpic="nvim $PROGRAMS_PATH/markdown/todolist/pickup-todolist.md"
 alias dk="docker"
+alias d="docker"
 alias dc="docker-compose"
 alias dotd="dotfiles"
 alias dota="dotaliases"
