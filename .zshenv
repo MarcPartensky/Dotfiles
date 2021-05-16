@@ -45,6 +45,10 @@ gfp() {
 p() { cd $PROGRAMS_PATH/$@ }
 pj() { cd $GIT_PROJECTS_PATH/$@ }
 
+h() {
+	cd /home/$@
+}
+
 nodesktopicon() {
 	defaults write com.apple.finder CreateDesktop false
 	killall Finder
