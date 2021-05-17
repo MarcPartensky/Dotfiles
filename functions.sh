@@ -184,3 +184,7 @@ cheat() {
 	curl cheat.sh/$@
 }
 
+url() {
+	http -f --follow post https://marcpartensky.com/u$2 target=$1
+}
+
