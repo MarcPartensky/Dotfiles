@@ -91,5 +91,6 @@ RUN nvim \
 
 RUN echo "git -C ~/.config/nvim pull" >> ~/.zshrc
 RUN echo "git -C ~/git/dotfiles pull" >> ~/.zshrc
+RUN rm .profile
 
 ENTRYPOINT ["zsh"]
