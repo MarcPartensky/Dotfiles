@@ -94,6 +94,7 @@ alias isep="cd /Volumes/$/isep"
 alias marc="cd ~/desktop/Marc\ Partensky"
 alias programs='cd ~/programs/'
 alias website='cd ~/programs/website'
+alias domination="cd $PROGRAMS_PATH/kingdomino"
 alias web='cd ~/programs/web'
 alias javascript='cd ~/programs/web/javascript'
 alias canvas='cd ~/programs/web/javascript/canvas'

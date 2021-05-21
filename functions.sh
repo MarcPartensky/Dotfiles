@@ -185,6 +185,6 @@ cheat() {
 }
 
 url() {
-	http -f --follow post https://marcpartensky.com/u$2 target=$1
+	http -f --follow post https://marcpartensky.com/u$2 target=$1 description=$3
 }
 
