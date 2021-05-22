@@ -88,8 +88,10 @@ alias sshp="cat ~/.ssh/id_rsa.pub"
 alias sshps="ps aux | grep ssh"
 alias sshk="cat ~/.ssh/known_hosts"
 alias myip="curl ipconfig.io"
+alias updatepyenv="git -C pull $PYENV_ROOT/plugins/python-build/../.."
 
 # Navigation shortcuts
+alias cdd="cd ~/docker"
 alias desktop="cd ~/desktop"
 alias documents="cd ~/documents"
 alias images="cd ~/images"
@@ -108,4 +110,4 @@ alias wadjet='cd ~/unity games/asteroids'
 alias gitprojects="cd ~/git-projects"
 alias brain="cd ~/programs/brainperformer"
 alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
-alias updatepyenv="cd $PYENV_ROOT/plugins/python-build/../.. && git pull && cd -"
+alias junior="cd ~/junior"
