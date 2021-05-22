@@ -194,3 +194,11 @@ format() {
 	scp vps:pandoc/$2 $2
 	ssh vps rm /root/pandoc/$1 /root/pandoc/$2
 }
+
+compress() {
+	if [ $(uname) == Linux ]; then
+		tar cf - $1 -P | pv -s $(du -sb /$1 | awk '{print $1}') | gzip > big-$1.tar.gz
+	elif [ $(uname) == Darwin ]; then
+		tar cf - $1 -P | pv -s $(($(du -sk $1 | awk '{print $1}') * 1024)) | gzip > $1.tar.gz
+	fi
+}
