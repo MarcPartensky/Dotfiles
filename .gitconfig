@@ -27,5 +27,6 @@
 	pullall = "!git remote | xargs -L1 git pull"
 	browse = "!gh repo view --web"
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
+	; browse = "!gh repo view --web"
 [http]
 	postBuffer = 157286400
