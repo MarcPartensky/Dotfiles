@@ -17,6 +17,7 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
+# export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export CLICOLOR=1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

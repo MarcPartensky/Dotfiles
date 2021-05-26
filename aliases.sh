@@ -89,6 +89,8 @@ alias sshps="ps aux | grep ssh"
 alias sshk="cat ~/.ssh/known_hosts"
 alias myip="curl ipconfig.io"
 alias updatepyenv="git -C pull $PYENV_ROOT/plugins/python-build/../.."
+alias vpsvpn="sudo openvpn --config ~/junior/macdemarc.ovpn"
+alias osxupdate="softwareupdate --all --install --force"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
