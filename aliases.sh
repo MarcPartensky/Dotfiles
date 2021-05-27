@@ -91,6 +91,7 @@ alias myip="curl ipconfig.io"
 alias updatepyenv="git -C pull $PYENV_ROOT/plugins/python-build/../.."
 alias vpsvpn="sudo openvpn --config ~/junior/macdemarc.ovpn"
 alias osxupdate="softwareupdate --all --install --force"
+alias iplocal="open http://net.ipcalf.com"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
