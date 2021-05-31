@@ -87,10 +87,10 @@ alt - f : open .
 alt - d : nodesktopicon
 
 shift + alt - v : alacritty -e ssh vps
-shift + alt - d : alacritty -e ssh vps cd docker
-# shift + alt - t : alacritty -e ssh -J vps tower
+shift + alt - d : alacritty -e ssh docker
+shift + alt - t : alacritty -e ssh tower
 # shift + alt - m : alacritty -e ssh -J vps mini
-shift + alt - k : alacritty -e ssh vps && ssh kong
+shift + alt - k : alacritty -e ssh kong
 shift + alt - a : alacritty -e ssh aws
 
 # swap managed window
