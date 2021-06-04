@@ -92,6 +92,7 @@ alias updatepyenv="git -C pull $PYENV_ROOT/plugins/python-build/../.."
 alias vpsvpn="sudo openvpn --config ~/junior/macdemarc.ovpn"
 alias osxupdate="softwareupdate --all --install --force"
 alias iplocal="open http://net.ipcalf.com"
+alias to="nvim $PROGRAMS_PATH/markdown/oxivia.md"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
