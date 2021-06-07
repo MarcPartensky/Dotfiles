@@ -91,8 +91,10 @@ fn - g: open -a /Applications/Google\ Chrome.app
 alt - g: open -a /Applications/Google\ Chrome.app
 fn - a: open -a /Applications/Alacritty.app
 alt - a: open -a /Applications/Alacritty.app
-fn - p: open -a /System/Applications/Preview.app
-alt - p: open -a /System/Applications/Preview.app
+# fn - p: open -a /System/Applications/Preview.app
+# alt - p: open -a /System/Applications/Preview.app
+fn - p: alacritty -e ipython
+alt - p: open -a /Applications/Alacritty.app; ipython
 fn - d: open -a /Applications/Discord.app
 alt - d: open -a /Applications/Discord.app
 fn - t: open -a /Applications/Microsoft\ Teams.app
@@ -108,9 +110,9 @@ alt - return : brew services restart yabai
 shift + alt - return : brew services stop yabai
 shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
-shift + alt - t : alacritty -e echo 1 && ssh tower
-shift + alt - m : alacritty -e echo 1 && ssh mini
-shift + alt - k : alacritty -e echo 1 && ssh kong
+shift + alt - t : alacritty -e echo 1; ssh tower
+shift + alt - m : alacritty -e echo 1; ssh mini
+shift + alt - k : alacritty -e echo 1; ssh kong
 # ctrl + alt - h : alacritty -e htop
 # ctrl + alt - v : alacritty -e ssh vps -t htop
 # ctrl + alt - k : alacritty -e ssh kong -t htop
