@@ -61,6 +61,7 @@ alias yabairc="nvim ~/.yabairc"
 alias skhdrc="nvim ~/.config/skhd/skhdrc"
 alias ports="lsof -Pn -i4"
 alias ports2="netstat -ap tcp"
+alias openports="netstat -plant"
 alias network="watch -n 1 \"netstat -p tcp\""
 # alias youtube='cd /Volumes/\$/Musique/Youtube'
 # alias yt="youtube"
