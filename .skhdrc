@@ -102,7 +102,7 @@ fn - s: open -a /Applications/Slack.app
 alt - s: open -a /Applications/Slack.app
 fn - l: open -a /System/Applications/Calendar.app
 fn - m: open -a /System/Applications/Music.app
-alt - m: open -a /System/Applications/Music.app
+# alt - m: open -a /System/Applications/Music.app
 fn - f: open -a /System/Library/CoreServices/Finder.app
 alt - f: open -a /System/Library/CoreServices/Finder.app
 
