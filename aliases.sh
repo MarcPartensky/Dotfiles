@@ -94,6 +94,7 @@ alias vpsvpn="sudo openvpn --config ~/junior/macdemarc.ovpn"
 alias osxupdate="softwareupdate --all --install --force"
 alias iplocal="open http://net.ipcalf.com"
 alias to="nvim $PROGRAMS_PATH/markdown/oxivia.md"
+alias planformation="open /Users/marcpartensky/Desktop/Marc\ Partensky/AutoEntreprise/Formation/plan_de_formation.docx"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
