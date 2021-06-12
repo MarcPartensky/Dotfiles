@@ -82,9 +82,13 @@ alt - k : yabai -m window --focus north
 alt - j : yabai -m window --focus south
 alt - l : yabai -m window --focus east
 
-fn + ctrl - k : nodesktopicon
-ctrl + alt - k : desktopicon
-ctrl + alt - n : noscreenshots
+fn + ctrl - k : nodesktopicon && terminal-notifier -message "Disabled desktop icons"
+ctrl + alt - k : desktopicon && terminal-notifier -message "Enabled desktop icons"
+fn + alt - n : noscreenshots
+ctrl + alt - return : brew services restart yabai && terminal-notifier -message "Enabled yabai"
+fn + alt - return : brew services stop yabai && terminal-notifier -message "Disabled yabai"
+ctrl + alt - r : open -a /Applications/Rectangle.app && terminal-notifier -message "Enabled rectangle"
+fn + alt - r : kill $(pidof rectangle) && terminal-notifier -message "Disabled rectangle"
 
 # Open any app in 2 keys
 fn - g: open -a /Applications/Google\ Chrome.app
@@ -109,8 +113,6 @@ alt - f: open -a /System/Library/CoreServices/Finder.app
 fn + alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 fn + alt - a: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
 
-alt - return : brew services restart yabai
-shift + alt - return : brew services stop yabai
 shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
