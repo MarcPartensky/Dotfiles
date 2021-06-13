@@ -202,3 +202,13 @@ compress() {
 		tar cf - $1 -P | pv -s $(($(du -sk $1 | awk '{print $1}') * 1024)) | gzip > $1.tar.gz
 	fi
 }
+
+mac2ip() {
+	arp -a | grep $1 | awk '{print $2}' | sed -e 's/(//' -e 's/)//'
+	# arp -a | grep $1 | cut -d "(" -f2 | cut -d ")" -f1
+}
+
+sshtel() {
+	ssh -t -p 8022 u0_a425@$(mac2ip $MAC_TEL)
+}
+

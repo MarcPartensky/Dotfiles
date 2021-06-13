@@ -212,9 +212,9 @@ cmd + alt - d : yabai -m window --toggle zoom-parent
 cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 
 # balance size of windows
-alt - u : yabai -m space --balance
-# # rotate tree
-alt - i : yabai -m space --rotate 90
+alt - b : yabai -m space --balance
+# rotate tree
+alt - r : yabai -m space --rotate 90
 # toggle window split type
 alt - o : yabai -m window --toggle split
 # fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
@@ -227,7 +227,7 @@ shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus 
 shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 
 # float / unfloat window and center on screen
-fn + alt - t : yabai -m window --toggle float;\
+fn + alt - c : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:0:2:4
 
 # toggle sticky(+float), topmost, picture-in-picture

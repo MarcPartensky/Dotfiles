@@ -95,6 +95,8 @@ alias osxupdate="softwareupdate --all --install --force"
 alias iplocal="open http://net.ipcalf.com"
 alias to="nvim $PROGRAMS_PATH/markdown/oxivia.md"
 alias planformation="open /Users/marcpartensky/Desktop/Marc\ Partensky/AutoEntreprise/Formation/plan_de_formation.docx"
+alias iptel="arp -a | grep $MAC_TEL | cut -d "(" -f2 | cut -d ")" -f1"
+alias cv="open /Users/marcpartensky/Desktop/Marc\ Partensky/CV/cv-2p/cv-2p.pages"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
