@@ -77,11 +77,13 @@
 # ############################################################### #
 
 
+# navigation
 alt - h : yabai -m window --focus west
 alt - k : yabai -m window --focus north
 alt - j : yabai -m window --focus south
 alt - l : yabai -m window --focus east
 
+# toggle
 fn + ctrl - k : nodesktopicon && terminal-notifier -message "Disabled desktop icons"
 ctrl + alt - k : desktopicon && terminal-notifier -message "Enabled desktop icons"
 fn + alt - n : noscreenshots
@@ -90,29 +92,30 @@ fn + alt - return : brew services stop yabai && terminal-notifier -message "Disa
 ctrl + alt - r : open -a /Applications/Rectangle.app && terminal-notifier -message "Enabled rectangle"
 fn + alt - r : kill $(pidof rectangle) && terminal-notifier -message "Disabled rectangle"
 
-# Open any app in 2 keys
-fn - g: open -a /Applications/Google\ Chrome.app
-alt - g: open -a /Applications/Google\ Chrome.app
-fn - a: open -a /Applications/Alacritty.app
-alt - a: open -a /Applications/Alacritty.app
+# applications
+fn - g: open -a Google\ Chrome.app
+alt - g: open -a Google Chrome.app
+fn - a: open -a Alacritty.app
+alt - a: open -a Alacritty.app
 # fn - p: open -a /System/Applications/Preview.app
 # alt - p: open -a /System/Applications/Preview.app
 fn - p: alacritty -e ipython
-alt - p: open -a /Applications/Alacritty.app; ipython
-fn - d: open -a /Applications/Discord.app
-alt - d: open -a /Applications/Discord.app
-fn - t: open -a /Applications/Microsoft\ Teams.app
-fn - s: open -a /Applications/Slack.app
-alt - s: open -a /Applications/Slack.app
-fn - l: open -a /System/Applications/Calendar.app
-fn - m: open -a /System/Applications/Music.app
-# alt - m: open -a /System/Applications/Music.app
-fn - f: open -a /System/Library/CoreServices/Finder.app
-alt - f: open -a /System/Library/CoreServices/Finder.app
+alt - p: alacritty -e ipython
+fn - d: open -a Discord.app
+alt - d: open -a Discord.app
+fn - t: open -a Microsoft\ Teams.app
+fn - s: open -a Slack.app
+alt - s: open -a Slack.app
+fn - l: open -a Calendar.app
+fn - m: open -a Music.app
+# alt - m: open -a Music.app
+fn - f: open -a Finder.app
+alt - f: open -a Finder.app
 
 fn + alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 fn + alt - a: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
 
+# ssh
 shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
@@ -198,7 +201,6 @@ ctrl + cmd - k : yabai -m window --resize top:0:20
 # shift + cmd - w : yabai -m window --resize top:0:20
 # shift + cmd - d : yabai -m window --resize right:-20:0
 
-
 ctrl + alt - left : yabai -m window --move :-50:0
 # decrease window size
 # shift + cmd - s : yabai -m window --resize bottom:0:-20
@@ -211,20 +213,19 @@ ctrl + alt - left : yabai -m window --move :-50:0
 cmd + alt - d : yabai -m window --toggle zoom-parent
 cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 
-# balance size of windows
-alt - b : yabai -m space --balance
-# rotate tree
-alt - r : yabai -m space --rotate 90
-# toggle window split type
-alt - o : yabai -m window --toggle split
+alt - b : yabai -m space --balance # balance size of windows
+alt - r : yabai -m space --rotate 90 # rotate tree
+alt - o : yabai -m window --toggle split # toggle window split type
+
 # fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
 # fn + alt - c : yabai -m window --resize left:-20:0 && yabai -m window --resize right:20:0
 # fn + alt - c : if [ $(yabai -m config auto_balance) = "on" ]; then; yabai -m config auto_balance off; else; yabai -m config auto_balance on; fi
 
-# Stack up
-shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
-# Stack down
-shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first
+# stack windows
+shift + cmd - l : yabai -m window --stack next
+shift + cmd - m : yabai -m window --warp east
+shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last # stack up
+shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first # stack down
 
 # float / unfloat window and center on screen
 fn + alt - c : yabai -m window --toggle float;\
