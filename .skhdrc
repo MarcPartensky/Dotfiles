@@ -94,7 +94,7 @@ fn + alt - r : kill $(pidof rectangle) && terminal-notifier -message "Disabled r
 
 # applications
 fn - g: open -a Google\ Chrome.app
-alt - g: open -a Google Chrome.app
+alt - g: open -a Google\ Chrome.app
 fn - a: open -a Alacritty.app
 alt - a: open -a Alacritty.app
 # fn - p: open -a /System/Applications/Preview.app
