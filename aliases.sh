@@ -97,6 +97,7 @@ alias to="nvim $PROGRAMS_PATH/markdown/oxivia.md"
 alias planformation="open /Users/marcpartensky/Desktop/Marc\ Partensky/AutoEntreprise/Formation/plan_de_formation.docx"
 alias iptel="arp -a | grep $MAC_TEL | cut -d "(" -f2 | cut -d ")" -f1"
 alias cv="cd /Users/marcpartensky/Desktop/Marc\ Partensky/CV/cv-2p && open cv-2p.pages"
+alias f="find . -name"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
