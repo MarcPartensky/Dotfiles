@@ -112,8 +112,8 @@ fn - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
 
-fn + alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
-fn + alt - a: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
+alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
+alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
 
 # ssh
 shift + alt - v : alacritty -e ssh vps
