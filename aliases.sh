@@ -98,6 +98,11 @@ alias planformation="open /Users/marcpartensky/Desktop/Marc\ Partensky/AutoEntre
 alias iptel="arp -a | grep $MAC_TEL | cut -d "(" -f2 | cut -d ")" -f1"
 alias cv="cd /Users/marcpartensky/Desktop/Marc\ Partensky/CV/cv-2p && open cv-2p.pages"
 alias f="find . -name"
+alias steph="ssh -t kong ping 192.168.0.31"
+alias corinne="ssh -t kong ping 192.168.0.32"
+alias didier="ssh -t kong ping 192.168.0.33"
+alias boticellix="ssh -t kong ping 192.168.0.27"
+alias boulimix="ssh -t kong ping 192.168.0.19"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"

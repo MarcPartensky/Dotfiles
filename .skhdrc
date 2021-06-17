@@ -125,7 +125,8 @@ shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
 shift + alt - o : alacritty -e ssh -t vps ssh -t kong ssh memorix
 shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
-shift + alt - y : alacritty -e ssh -t vps ssh -t kong ssh docker-playground
+shift + alt - c : alacritty -e ssh -t vps ssh -t kong ssh -t gigabix pct enter 156
+shift + alt - y : alacritty -e ssh -t vps ssh -t kong ssh 193
 shift + alt - l : alacritty -e ssh -t vps ssh -t tel
 shift + alt - x : alacritty -e ssh -t vps ssh -t rtx
 
