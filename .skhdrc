@@ -97,18 +97,21 @@ fn - g: open -a Google\ Chrome.app
 alt - g: open -a Google\ Chrome.app
 fn - a: open -a Alacritty.app
 alt - a: open -a Alacritty.app
-# fn - p: open -a /System/Applications/Preview.app
-# alt - p: open -a /System/Applications/Preview.app
-fn - p: alacritty -e ipython
-alt - p: alacritty -e ipython
+fn - p: open -a Pages.app
+alt - p: open -a Pages.app
+fn - w: open -a Preview.app
+alt - w: open -a Preview.app
+fn - l: open -a Mail.app
+# fn - i: alacritty -e ipython
+# alt - i: alacritty -e ipython
 fn - d: open -a Discord.app
 alt - d: open -a Discord.app
 fn - t: open -a Microsoft\ Teams.app
 fn - s: open -a Slack.app
 alt - s: open -a Slack.app
-fn - l: open -a Calendar.app
+fn - r: open -a Calendar.app
 fn - m: open -a Music.app
-# alt - m: open -a Music.app
+alt - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
 
@@ -125,8 +128,9 @@ shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
 shift + alt - o : alacritty -e ssh -t vps ssh -t kong ssh memorix
 shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
-shift + alt - c : alacritty -e ssh -t vps ssh -t kong ssh -t gigabix pct enter 156
-shift + alt - y : alacritty -e ssh -t vps ssh -t kong ssh 193
+shift + alt - w : alacritty -e ssh -t vps ssh -t kong ssh -t pandemix pct enter 126
+shift + alt - s : alacritty -e ssh -t vps ssh -t kong ssh -t idefix pct enter 156
+shift + alt - y : alacritty -e ssh -t vps ssh -t kong ssh -t root@192.168.0.211
 shift + alt - l : alacritty -e ssh -t vps ssh -t tel
 shift + alt - x : alacritty -e ssh -t vps ssh -t rtx
 
