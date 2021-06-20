@@ -220,3 +220,19 @@ dns2ip() {
 	nslookup $1 | grep -E 'Address: [0-9]' | awk '{print $2}'
 }
 
+randomport() {
+	local port=${1:-1}
+	comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
+}
+
+randomvpsport() {
+	local port=${1:-1}
+	ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+}
+
+expose() {
+	local random_port=$(randomvpsport)
+	local host=${2:-"localhost"}
+	echo "marcpartensky.com:$random_port"
+	ssh -R $random_port:$host:$1 -i ~/.ssh/tunnel tunnel@marcpartensky.com -N -p 7022
+}
