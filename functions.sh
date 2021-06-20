@@ -212,3 +212,7 @@ sshtel() {
 	ssh -t -p 8022 u0_a425@$(mac2ip $MAC_TEL)
 }
 
+arpscanip() {
+	arp-scan -l | awk 'NR>3 { print $1 }' | sort | uniq | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+}
+
