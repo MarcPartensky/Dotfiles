@@ -216,3 +216,7 @@ arpscanip() {
 	arp-scan -l | awk 'NR>3 { print $1 }' | sort | uniq | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 }
 
+dns2ip() {
+	nslookup $1 | grep -E 'Address: [0-9]' | awk '{print $2}'
+}
+
