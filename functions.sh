@@ -225,9 +225,10 @@ randomport() {
 	comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
 }
 
+# ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
 randomvpsport() {
 	local port=${1:-1}
-	ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
 }
 
 expose() {
