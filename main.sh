@@ -82,7 +82,7 @@ antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
 # antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle agkozak/zsh-z
 #antigen bundle soimort/translate-shell
