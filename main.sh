@@ -97,7 +97,7 @@ fi
 # autocompletion
 # source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+# source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 
