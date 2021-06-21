@@ -202,3 +202,40 @@ compress() {
 		tar cf - $1 -P | pv -s $(($(du -sk $1 | awk '{print $1}') * 1024)) | gzip > $1.tar.gz
 	fi
 }
+
+mac2ip() {
+	arp -a | grep $1 | awk '{print $2}' | sed -e 's/(//' -e 's/)//'
+	# arp -a | grep $1 | cut -d "(" -f2 | cut -d ")" -f1
+}
+
+sshtel() {
+	ssh -t -p 8022 u0_a425@$(mac2ip $MAC_TEL)
+}
+
+arpscanip() {
+	arp-scan -l | awk 'NR>3 { print $1 }' | sort | uniq | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
+}
+
+dns2ip() {
+	nslookup $1 | grep -E 'Address: [0-9]' | awk '{print $2}'
+}
+
+randomport() {
+	local port=${1:-1}
+	comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
+}
+
+# default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
+randomvpsport() {
+	local port=${1:-1}
+	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+}
+
+expose() {
+	local source_port=$(randomvpsport)
+	local host=${2:-"localhost"}
+	local target_port=${1:-1}
+	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	echo "marcpartensky.com:$random_port"
+	ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+}

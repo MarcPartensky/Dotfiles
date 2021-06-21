@@ -76,22 +76,75 @@
 # A REFERENCE ONLY, WHEN MAKING YOUR OWN CONFIGURATION..          #
 # ############################################################### #
 
-alt - return : Alacritty
 
+# navigation
 alt - h : yabai -m window --focus west
 alt - k : yabai -m window --focus north
 alt - j : yabai -m window --focus south
 alt - l : yabai -m window --focus east
 
-alt - f : open .
-alt - d : nodesktopicon
+# toggle
+fn + ctrl - k : nodesktopicon && terminal-notifier -message "Disabled desktop icons"
+ctrl + alt - k : desktopicon && terminal-notifier -message "Enabled desktop icons"
+fn + alt - n : noscreenshots
+ctrl + alt - return : brew services restart yabai && terminal-notifier -message "Enabled yabai"
+fn + alt - return : brew services stop yabai && terminal-notifier -message "Disabled yabai"
+ctrl + alt - r : open -a /Applications/Rectangle.app && terminal-notifier -message "Enabled rectangle"
+fn + alt - r : kill $(pidof rectangle) && terminal-notifier -message "Disabled rectangle"
 
+# applications
+fn - g: open -a Google\ Chrome.app
+alt - g: open -a Google\ Chrome.app
+fn - a: open -a Alacritty.app
+alt - a: open -a Alacritty.app
+fn - p: open -a Pages.app
+alt - p: open -a Pages.app
+fn - w: open -a Preview.app
+alt - w: open -a Preview.app
+fn - l: open -a Mail.app
+# fn - i: alacritty -e ipython
+# alt - i: alacritty -e ipython
+fn - d: open -a Discord.app
+alt - d: open -a Discord.app
+fn - t: open -a Microsoft\ Teams.app
+fn - s: open -a Slack.app
+alt - s: open -a Slack.app
+fn - r: open -a Calendar.app
+fn - m: open -a Music.app
+alt - m: open -a Music.app
+fn - f: open -a Finder.app
+alt - f: open -a Finder.app
+
+alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
+alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
+
+# ssh
 shift + alt - v : alacritty -e ssh vps
-shift + alt - d : alacritty -e ssh vps cd docker
-# shift + alt - t : alacritty -e ssh -J vps tower
-# shift + alt - m : alacritty -e ssh -J vps mini
-shift + alt - k : alacritty -e ssh vps && ssh kong
-shift + alt - a : alacritty -e ssh aws
+shift + alt - d : alacritty -e ssh docker
+shift + alt - k : alacritty -e ssh -t vps ssh kong
+shift + alt - t : alacritty -e ssh -t vps ssh tower
+shift + alt - m : alacritty -e ssh -t vps ssh mini
+shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
+shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
+shift + alt - o : alacritty -e ssh -t vps ssh -t kong ssh memorix
+shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
+shift + alt - w : alacritty -e ssh -t vps ssh -t kong ssh -t pandemix pct enter 126
+shift + alt - s : alacritty -e ssh -t vps ssh -t kong ssh -t idefix pct enter 156
+shift + alt - y : alacritty -e ssh -A -t vps ssh -A -t kong ssh -A -t 192.168.0.211
+# shift + alt - b : alacritty -e ssh -A -t vps ssh -A -t kong ssh -A -t 192.168.0.19
+shift + alt - l : alacritty -e ssh -t vps ssh -t tel
+shift + alt - x : alacritty -e ssh -t vps ssh -t rtx
+
+# alt - 1 : yabai -m space --focus    i
+# alt - 2 : yabai -m space --focus   ii
+# alt - 3 : yabai -m space --focus  iii
+# alt - 4 : yabai -m space --focus   iv
+# alt - 5 : yabai -m space --focus    v
+# alt - 6 : yabai -m space --focus   vi
+# alt - 7 : yabai -m space --focus  vii
+# alt - 8 : yabai -m space --focus viii
+# alt - 9 : yabai -m space --focus   ix
+# alt - 0 : yabai -m space --focus    x
 
 # swap managed window
 shift + alt - h : yabai -m window --swap west
@@ -99,11 +152,12 @@ shift + alt - k : yabai -m window --swap north
 shift + alt - j : yabai -m window --swap south
 shift + alt - l : yabai -m window --swap east
 
+# change layout of desktop
+ctrl + alt - a : yabai -m space --layout bsp
+ctrl + alt - d : yabai -m space --layout float
+
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
-
-# balance size of windows
-shift + alt - x : yabai -m space --balance
 
 # make floating window fill screen
 # shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
@@ -134,12 +188,24 @@ shift + alt - x : yabai -m space --balance
 # ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
 
 # move floating window
-shift + ctrl - a : yabai -m window --move rel:-20:0
-shift + ctrl - s : yabai -m window --move rel:0:20
+# shift + ctrl - a : yabai -m window --move rel:-20:0
+# shift + ctrl - s : yabai -m window --move rel:0:20
 
 # increase window size
-shift + alt - a : yabai -m window --resize left:-20:0
-shift + alt - w : yabai -m window --resize top:0:-20
+# alt - 0x1E : yabai -m window --resize left:-20:0
+# shift + alt - 0x1E : yabai -m window --ratio rel:0.2
+# shift + alt - + : yabai -m window --ratio rel:0.2
+# shift + alt - 0x1E : yabai -m window --ratio rel:0.2
+ctrl + alt - w : yabai -m window --resize top:0:-20
+ctrl + alt - l : yabai -m window --ratio rel:0.2
+ctrl + alt - h : yabai -m window --ratio rel:-0.2
+ctrl + cmd - j : yabai -m window --resize bottom:0:-20
+ctrl + cmd - k : yabai -m window --resize top:0:20
+
+# shift + cmd - a : yabai -m window --resize left:20:0
+# shift + cmd - s : yabai -m window --resize bottom:0:-20
+# shift + cmd - w : yabai -m window --resize top:0:20
+# shift + cmd - d : yabai -m window --resize right:-20:0
 
 ctrl + alt - left : yabai -m window --move :-50:0
 # decrease window size
@@ -150,17 +216,28 @@ ctrl + alt - left : yabai -m window --move :-50:0
 # ctrl + alt - h : yabai -m window --insert west
 
 # toggle window zoom
-# alt - d : yabai -m window --toggle zoom-parent
-# alt - f : yabai -m window --toggle zoom-fullscreen
+cmd + alt - d : yabai -m window --toggle zoom-parent
+cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 
-# toggle window split type
-alt - t : yabai -m window --toggle split
+alt - b : yabai -m space --balance # balance size of windows
+alt - r : yabai -m space --rotate 90 # rotate tree
+alt - o : yabai -m window --toggle split # toggle window split type
+
+# fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
+# fn + alt - c : yabai -m window --resize left:-20:0 && yabai -m window --resize right:20:0
+# fn + alt - c : if [ $(yabai -m config auto_balance) = "on" ]; then; yabai -m config auto_balance off; else; yabai -m config auto_balance on; fi
+
+# stack windows
+shift + cmd - l : yabai -m window --stack next
+shift + cmd - m : yabai -m window --warp east
+shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus stack.last # stack up
+shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first # stack down
 
 # float / unfloat window and center on screen
-# alt - t : yabai -m window --toggle float;\
-#           yabai -m window --grid 4:4:1:1:2:2
+fn + alt - c : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:0:2:4
 
 # toggle sticky(+float), topmost, picture-in-picture
-# alt - p : yabai -m window --toggle sticky;\
-#           yabai -m window --toggle topmost;\
-#           yabai -m window --toggle pip
+fn + alt - p : yabai -m window --toggle sticky;\
+          yabai -m window --toggle topmost;\
+          yabai -m window --toggle pip
