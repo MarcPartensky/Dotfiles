@@ -106,6 +106,7 @@ alias corinne="ssh -t kong ping 192.168.0.32"
 alias didier="ssh -t kong ping 192.168.0.33"
 alias boticellix="ssh -t kong ping 192.168.0.27"
 alias boulimix="ssh -t kong ping 192.168.0.19"
+alias did="docker ps -a | awk '{ print $2 }'"
 
 # wtf etienne
 alias kingkong="docker start kong_kong_1"
