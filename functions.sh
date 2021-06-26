@@ -239,3 +239,8 @@ expose() {
 	echo "marcpartensky.com:$random_port"
 	ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
 }
+
+pst() {
+	pstree -ps $@
+}
+

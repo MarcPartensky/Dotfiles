@@ -106,6 +106,7 @@ fn - l: open -a Mail.app
 # alt - i: alacritty -e ipython
 fn - d: open -a Discord.app
 alt - d: open -a Discord.app
+alt - t: open -a Microsoft\ Teams.app
 fn - t: open -a Microsoft\ Teams.app
 fn - s: open -a Slack.app
 alt - s: open -a Slack.app
@@ -115,7 +116,7 @@ alt - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
 
-alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
+# alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
 
 # ssh
@@ -123,6 +124,7 @@ shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
 shift + alt - t : alacritty -e ssh -t vps ssh tower
+shift + alt - r : alacritty -e ssh -t vps ssh -t translator
 shift + alt - m : alacritty -e ssh -t vps ssh mini
 shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
