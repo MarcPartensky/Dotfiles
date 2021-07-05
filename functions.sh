@@ -228,14 +228,14 @@ randomport() {
 # default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
 randomvpsport() {
 	local port=${1:-1}
-	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
 }
 
 expose() {
 	local source_port=$(randomvpsport)
 	local host=${2:-"localhost"}
 	local target_port=${1:-1}
-	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
-	echo "marcpartensky.com:$random_port"
-	ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+	# ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	echo "marcpartensky.com:$source_port"
+	ssh -R $source_port:$host:$target_port -i ~/.ssh/tunnel tunnel@marcpartensky.com -N -p 7022
 }
