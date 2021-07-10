@@ -220,24 +220,34 @@ dns2ip() {
 	nslookup $1 | grep -E 'Address: [0-9]' | awk '{print $2}'
 }
 
+# default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
 randomport() {
 	local port=${1:-1}
-	comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
+	comm -23 <(seq 49152 65535 | sort) <(ss -htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
 }
 
-# default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
-randomvpsport() {
+# get a random vps port within allowed range using ssh
+sshrandomvpsport() {
 	local port=${1:-1}
-	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	ssh expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+}
+
+# get a random vps port within allowed range using http
+httprandomvpsport() {
+	local port=${1:-1}
+	curl https://marcpartensky.com/api/port
 }
 
 expose() {
-	local source_port=$(randomvpsport)
+	local source_port=$(httprandomvpsport)
 	local host=${2:-"localhost"}
 	local target_port=${1:-1}
-	ssh -i expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	if [ -f ~/.ssh/expose ]; then
+		ssh -i ~/.ssh/expose -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+	else
+		ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+	fi
 	echo "marcpartensky.com:$random_port"
-	ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
 }
 
 pst() {
@@ -248,6 +258,6 @@ wallpaper() {
 	osascript -e 'tell application "System Events" to tell first Desktop to get its picture'
 }
 
-akill() {
+killapp() {
 	osascript -e "quit app \"$1\""
 }
