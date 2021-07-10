@@ -242,12 +242,12 @@ expose() {
 	local source_port=$(httprandomvpsport)
 	local host=${2:-"localhost"}
 	local target_port=${1:-1}
+	echo "marcpartensky.com:$source_port"
 	if [ -f ~/.ssh/expose ]; then
 		ssh -i ~/.ssh/expose -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
 	else
 		ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
 	fi
-	echo "marcpartensky.com:$random_port"
 }
 
 pst() {
