@@ -235,7 +235,7 @@ sshrandomvpsport() {
 # get a random vps port within allowed range using http
 httprandomvpsport() {
 	local port=${1:-1}
-	curl https://marcpartensky.com/api/port
+	curl -s https://marcpartensky.com/api/port
 }
 
 expose() {
