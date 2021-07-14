@@ -126,11 +126,12 @@ shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
 shift + alt - t : alacritty -e ssh -t vps ssh tower
 shift + alt - r : alacritty -e ssh -t vps ssh -t translator
-shift + alt - m : alacritty -e ssh -t vps ssh mini
+shift + alt - n : alacritty -e ssh -t vps ssh mini
 shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
-shift + alt - o : alacritty -e ssh -t vps ssh -t kong ssh memorix
+shift + alt - m : alacritty -e ssh -t vps ssh -t kong ssh memorix
 shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
+shift + alt - b : alacritty -e ssh -t vps ssh -t kong ssh boulimix
 shift + alt - w : alacritty -e ssh -t vps ssh -t kong ssh -t pandemix pct enter 126
 shift + alt - s : alacritty -e ssh -t vps ssh -t kong ssh -t idefix pct enter 156
 shift + alt - y : alacritty -e ssh -A -t vps ssh -A -t kong ssh -A -t 192.168.0.211
