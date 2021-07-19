@@ -106,6 +106,8 @@ alias iptel="arp -a | grep \$MAC_TEL | cut -d \"(\" -f2 | cut -d \")\" -f1"
 alias iplocal="open http://net.ipcalf.com"
 alias ipdns="cat /etc/resolv.conf | grep -v # | awk '{print \$2}'"
 alias l="ls"
+alias s="ssh"
+alias notif="terminal-notifier"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
