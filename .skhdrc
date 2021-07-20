@@ -132,6 +132,7 @@ shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
 shift + alt - m : alacritty -e ssh -t vps ssh -t kong ssh memorix
 shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
 shift + alt - b : alacritty -e ssh -t vps ssh -t kong ssh boulimix
+shift + alt - f : alacritty -e ssh -t vps ssh -t kong ssh -t gigabix pct enter 106
 shift + alt - w : alacritty -e ssh -t vps ssh -t kong ssh -t pandemix pct enter 126
 shift + alt - s : alacritty -e ssh -t vps ssh -t kong ssh -t idefix pct enter 156
 shift + alt - y : alacritty -e ssh -A -t vps ssh -A -t kong ssh -A -t 192.168.0.211
