@@ -20,7 +20,7 @@
 [pull]
 	rebase = true
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [alias]
 	conf = "!nvim .git/config"
 	pushall = "!git remote | xargs -L1 git push --all"
