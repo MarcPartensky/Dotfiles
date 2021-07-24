@@ -242,15 +242,52 @@ httprandomvpsport() {
 	curl -s https://marcpartensky.com/api/port
 }
 
+
+urlparse() {
+	local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+	local url=$(echo $1 | sed -e s,$proto,,g)
+	local user="$(echo $url | grep @ | cut -d@ -f1)"
+	local hostport=$(echo $url | sed -e s,$user@,,g | cut -d/ -f1)
+	local host="$(echo $hostport | sed -e 's,:.*,,g')"
+	local port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
+	local path="$(echo $url | grep / | cut -d/ -f2-)"
+	echo $url
+	echo $proto
+	echo $user
+	echo $host
+	echo $port
+	echo $path
+}
+
 expose() {
+	echo $1
 	local source_port=$(httprandomvpsport)
-	local host=${2:-"localhost"}
-	local target_port=${1:-1}
-	echo "marcpartensky.com:$source_port"
+	# local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+	# local url=$(echo $1 | sed -e s,$proto,,g)
+	# local user="$(echo $url | grep @ | cut -d@ -f1)"
+	# local hostport=$(echo $url | sed -e s,$user@,,g | cut -d/ -f1)
+	# local host="$(echo $hostport | sed -e 's,:.*,,g')"
+	# local port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
+	# local path="$(echo $url | grep / | cut -d/ -f2-)"
+
+	if [ $# -eq 1 ]; then
+		local host=${2:-"localhost"}
+		local port=$1
+	elif [ $# -eq 2 ]; then
+		local host=$1
+		local port=$2
+	elif [ $# -eq 3 ]; then
+		# if [ $1 -eq http ]; then
+		local host=$1
+		local port=$2
+	fi
+	echo $host
+	echo $port
+	echo "${proto}marcpartensky.com:$source_port"
 	if [ -f ~/.ssh/expose ]; then
-		ssh -i ~/.ssh/expose -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+		ssh -i ~/.ssh/expose -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
 	else
-		ssh -R $source_port:$host:$target_port expose@marcpartensky.com -N -p 7022
+		ssh -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
 	fi
 }
 
@@ -264,4 +301,8 @@ wallpaper() {
 
 killapp() {
 	osascript -e "quit app \"$1\""
+}
+
+spy() {
+	watch -n 0.5 ps -jFu tunnel
 }

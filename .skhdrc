@@ -115,7 +115,7 @@ fn - m: open -a Music.app
 alt - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
-fn - k: open -a MacPass.app
+fn - k: open -a macpass.app
 
 # alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
