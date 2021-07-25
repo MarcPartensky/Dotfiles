@@ -86,7 +86,7 @@ alt - l : yabai -m window --focus east
 # toggle
 fn + ctrl - k : nodesktopicon && terminal-notifier -message "Disabled desktop icons"
 ctrl + alt - k : desktopicon && terminal-notifier -message "Enabled desktop icons"
-fn + alt - n : noscreenshots
+fn  - n : noscreenshots
 ctrl + alt - return : brew services restart yabai && terminal-notifier -message "Enabled yabai"
 fn + alt - return : brew services stop yabai && terminal-notifier -message "Disabled yabai"
 ctrl + alt - r : open -a /Applications/Rectangle.app && terminal-notifier -message "Enabled rectangle"

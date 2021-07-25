@@ -304,5 +304,9 @@ killapp() {
 }
 
 spy() {
-	watch -n 0.5 ps -jFu tunnel
+	watch -n 0.5 ps -jFu $@
+}
+
+countdown() {
+	$(sleep $1 && terminal-notifier -title "Time is up!" -message "$1 seconds passed") & disown
 }
