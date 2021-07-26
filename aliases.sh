@@ -108,6 +108,8 @@ alias ipdns="cat /etc/resolv.conf | grep -v # | awk '{print \$2}'"
 alias l="ls"
 alias s="ssh"
 alias notif="terminal-notifier"
+alias vd="nvim docker-compose.yml"
+alias sd="ssh docker"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
