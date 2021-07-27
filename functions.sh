@@ -310,3 +310,7 @@ spy() {
 countdown() {
 	$(sleep $1 && terminal-notifier -title "Time is up!" -message "$1 seconds passed") & disown
 }
+
+trim() {
+	echo $1 | awk '{$1=$1};1'
+}
