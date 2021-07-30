@@ -133,7 +133,6 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
-
 # source ${0:a:h}/setup.sh
 source ${0:a:h}/os.sh
 source ${0:a:h}/exports.sh
@@ -144,22 +143,10 @@ source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 source ${0:a:h}/installs/pyenv.sh
 
-
-if [[ ! -f ~/.vimrc ]]
-then
-	touch ~/.vimrc
-fi
-
-if [[ ! -f ~/.zshrc ]]
-then
-	echo "source ${0:a:h}/main.sh" > ~/.zshrc
-fi
-
-if [[ -f "$HOME/.cargo/env" ]]
-then
-	source "$HOME/.cargo/env"
-fi
-
+[[ -f ${0:a:h}/secrets.sh ]] && source ${0:a:h}/secrets.sh
+[[ -f ~/.vimrc ]]	|| touch ~/.vimrc
+[[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" > ~/.zshrc
+[[ -f "$HOME/.cargo/env" ]] || source "$HOME/.cargo/env"
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
