@@ -125,7 +125,7 @@ shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
 shift + alt - t : alacritty -e ssh -t vps ssh tower
-shift + alt - r : alacritty -e ssh -t vps ssh -t translator
+# shift + alt - r : alacritty -e ssh -t vps ssh -t translator
 shift + alt - n : alacritty -e ssh -t vps ssh mini
 shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
@@ -226,6 +226,7 @@ cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 
 alt - b : yabai -m space --balance # balance size of windows
 alt - r : yabai -m space --rotate 90 # rotate tree
+shift + alt - r : yabai -m space --rotate 270 # rotate tree
 alt - o : yabai -m window --toggle split # toggle window split type
 
 # fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
