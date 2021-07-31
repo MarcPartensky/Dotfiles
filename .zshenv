@@ -60,9 +60,9 @@ desktopicon() {
 }
 
 # python programs
-alias webpfix='py /users/marcpartensky/programs/python/repository-2020/webpfix.py'
-alias glou="py /users/marcpartensky/git-projects/glou"
-alias noscreenshots='python /users/marcpartensky/programs/python/repository-2020/no-screenshots.py'
+alias webpfix='python /users/marcpartensky/programs/python/repository-2020/webpfix.py'
+alias glou="python /users/marcpartensky/git-projects/glou"
+# alias noscreenshots='python /users/marcpartensky/programs/python/repository-2020/no-screenshots.py'
 alias video2gif='python /users/marcpartensky/programs/python/repository-2020/video2gif.py'
 alias hyperplanning="python /users/marcpartensky/programs/python/repository-2020/isep-hyperplanning.py"
 alias portail="python /users/marcpartensky/programs/python/repository-2020/isep-portal.py"
@@ -123,6 +123,12 @@ compressgif() {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
 
-if [[ -d "$HOME/.cargo/env" ]]; then
-	source "$HOME/.cargo/env"
+[[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+if command -v exa >& /dev/null; then
+	alias ls="exa --classify --icons --group-directories-first"
+	alias la="exa --classify --icons --group-directories-first --all"
+	alias ll="exa --classify --icons --group-directories-first --long --header --group --git"
+	alias lla="exa --classify --icons --group-directories-first --all --long --header --group --git"
 fi
+
