@@ -146,7 +146,7 @@ source ${0:a:h}/installs/pyenv.sh
 [[ -f ${0:a:h}/secrets.sh ]] && source ${0:a:h}/secrets.sh
 [[ -f ~/.vimrc ]]	|| touch ~/.vimrc
 [[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" > ~/.zshrc
-[[ -f "$HOME/.cargo/env" ]] || source "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 
 # Get the defaults that most users want.
