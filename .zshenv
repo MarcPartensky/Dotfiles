@@ -132,3 +132,9 @@ if command -v exa >& /dev/null; then
 	alias lla="exa --classify --icons --group-directories-first --all --long --header --group --git"
 fi
 
+if command -v bat >& /dev/null; then
+	alias b="bat"
+else
+	alias b="cat"
+fi
+
