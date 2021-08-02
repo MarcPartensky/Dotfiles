@@ -30,6 +30,7 @@ gr() { git remote $@ }
 gl() { git log $@ }
 gd() { git diff $@ }
 gp() { git push $@ }
+gk() { git checkout $@ }
 gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
