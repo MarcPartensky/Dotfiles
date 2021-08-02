@@ -96,8 +96,7 @@ spam() {
 
 troll() {
 	sleep $1;
-	for i in {1..$2}
-	do
+	for i in {1..$2}; do
 		osascript -e 'display notification "you are useless"'
 		say "you are useless"
 	done
