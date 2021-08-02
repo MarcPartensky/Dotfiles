@@ -74,6 +74,7 @@ search() {
 
 alias chrome="open -a 'Google Chrome' $1";
 alias daisy="open -a 'DaisyDisk'"
+alias postman="open -a 'Postman'"
 
 openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
@@ -83,11 +84,6 @@ openmessenger() {
 	open -a 'Google Chrome' "https://www.facebook.com/messages"
 }
 
-messengerterminal() {
-	exec "fb-messenger-cli"
-}
-
-alias postman="open -a 'Postman'"
 
 spam() {
 	exec "messengerterminal";

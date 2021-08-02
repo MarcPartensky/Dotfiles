@@ -33,7 +33,7 @@ gp() { git push $@ }
 gk() { git checkout $@ }
 gc() {
 	echo "git commit -m \"$@\""
-	echo $@ | xargs -I {} git commit -m {}
+	eval "git commit -m \"$@\""
 }
 gn() { ga; gc $@ }
 gt() { ga; gc $@; git push }
