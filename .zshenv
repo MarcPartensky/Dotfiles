@@ -45,10 +45,9 @@ gfp() {
 
 p() { cd $PROGRAMS_PATH/$@ }
 pj() { cd $GIT_PROJECTS_PATH/$@ }
-
-h() {
-	cd /home/$@
-}
+h() {	cd /home/$@ }
+n() { terminal-notifier -message $@ }
+cheat() { curl cheat.sh/$@ }
 
 nodesktopicon() {
 	defaults write com.apple.finder CreateDesktop false
@@ -116,9 +115,6 @@ paste() {
 	echo $filename is pasted
 	pbpaste > $filename
 }
-
-# This is why being lazyness in programming even exists
-# function cheat { curl cheat.sh/"$@"; }
 
 compressgif() {
     ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2

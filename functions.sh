@@ -111,20 +111,9 @@ ytdl() {
 }
 
 weather() {
-	curl wttr.in
+	curl wttr.in/$@
 }
 
-p() {
-	cd ~/$PROGRAMS_PATH/$@
-}
-
-pj() {
-	cd ~/$GIT_PROJECTS/$@
-}
-
-n() {
-	terminal-notifier -message $@
-}
 
 getdocker() {
 	curl -fsSL https://get.docker.com | sh
