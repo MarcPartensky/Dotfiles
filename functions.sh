@@ -89,8 +89,7 @@ spam() {
 	exec "messengerterminal";
 	exec "/search $1";
 	exec "0";
-	for i in {1...$3}
-	do
+	for i in {1...$3}; do
 		exec $2;
 	done
 }
