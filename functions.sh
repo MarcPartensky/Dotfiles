@@ -108,10 +108,6 @@ troll() {
 	done
 }
 
-touchtyping() {
-	open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'
-}
-
 keybr() {
 	open -a 'Google Chrome' 'https://keybr.com'
 }

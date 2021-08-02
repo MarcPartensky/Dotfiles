@@ -33,7 +33,7 @@ gp() { git push $@ }
 gk() { git checkout $@ }
 gc() {
 	echo "git commit -m \"$@\""
-	echo $@ | xargs git commit -m
+	echo $@ | xargs -I {} git commit -m {}
 }
 gn() { ga; gc $@ }
 gt() { ga; gc $@; git push }
@@ -98,8 +98,8 @@ alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
 alias postman="open -a 'postman'"
 # alias keybr="chrome https://www.keybr.com/"
-alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
-alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
+alias touchtyping="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
+alias changeextension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
 search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
 messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
 messenger-terminal() { exec "fb-messenger-cli"; }
