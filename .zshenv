@@ -102,7 +102,7 @@ alias touchtyping="open -a 'google chrome' 'https://www.typingclub.com/sportal/p
 alias changeextension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
 search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
 messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
-messenger-terminal() { exec "fb-messenger-cli"; }
+alias messengerterminal="fb-messenger-cli"
 
 filename=""
 copy() {
