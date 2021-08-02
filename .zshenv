@@ -1,5 +1,5 @@
 alias mem="du -sh"
-alias memfiles="du -sh * | sort -rh;"
+alias memfiles="du -sh * | sort -rh"
 alias py="python"
 alias pip="python -m pip"
 alias pip2="python2 -m pip"
@@ -19,7 +19,6 @@ alias glol="git log --graph --oneline --decorate"
 alias glg="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
 alias gcm="gitmoji -c"
-
 gb() { git branch $@ }
 gi() { git init $@}
 gs() { git status $@ }
@@ -90,7 +89,7 @@ alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
-function chrome { open -a 'Google Chrome' $1 }
+chrome() { open -a 'Google Chrome' $1 }
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
