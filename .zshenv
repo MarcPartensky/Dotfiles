@@ -5,7 +5,6 @@ alias pip="python -m pip"
 alias pip2="python2 -m pip"
 alias pip3="python3 -m pip"
 
-# alias cat=ccat
 # Git shortcuts
 alias ga="git add -A"
 alias gpo="git push origin"
@@ -91,14 +90,14 @@ alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
-# alias chrome="open -a 'google chrome' $1"
+function chrome { open -a 'Google Chrome' $1 }
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
 alias postman="open -a 'postman'"
 alias keybr="chrome https://www.keybr.com/"
 alias touchtyping="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
-alias changeextension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
+alias changeextension="for file in *.$1; do mv '$file' '${file%.$1}.$2'; done"
 search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
 messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
 alias messengerterminal="fb-messenger-cli"
