@@ -19,16 +19,16 @@ alias glol="git log --graph --oneline --decorate"
 alias glg="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
 alias gcm="gitmoji -c"
-gb() { git branch $@ }
-gi() { git init $@}
-gs() { git status $@ }
-gco() { git checkout $@ }
-gpl() { git pull $@ }
-gr() { git remote $@ }
-gl() { git log $@ }
-gd() { git diff $@ }
-gp() { git push $@ }
-gk() { git checkout $@ }
+alias gb="git branch"
+alias gi="git init"
+alias gs="git status"
+alias gpl="git pull"
+alias gr="git remote -v"
+alias gl="git log"
+alias gd="git diff"
+alias gp="git push"
+alias gk="git checkout"
+alias gm="git merge"
 gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
@@ -89,7 +89,7 @@ alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
-chrome() { open -a 'Google Chrome' $1 }
+# chrome() { open -a Google\ Chrome $@ }
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
