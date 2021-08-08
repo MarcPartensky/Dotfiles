@@ -57,5 +57,6 @@ export HISTFILE=/tmp/.zsh_history
 export MAC_TEL="fc:19:99:cd:6c:91"
 export MARCPARTENSKY_PATH="/Users/marcpartensky/Desktop/Marc\ Partensky"
 export BACKUPVPS_LOG="/var/log/backupvps.log"
+export BIND_MOUNTS="/srv"
 # export LS_COLORS="auto"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
