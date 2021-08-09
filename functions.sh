@@ -80,11 +80,6 @@ openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
 }
 
-openmessenger() {
-	open -a 'Google Chrome' "https://www.facebook.com/messages"
-}
-
-
 spam() {
 	exec "messengerterminal";
 	exec "/search $1";
@@ -285,4 +280,8 @@ countdown() {
 
 trim() {
 	echo $1 | awk '{$1=$1};1'
+}
+
+focus() {
+	index=$1; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
 }

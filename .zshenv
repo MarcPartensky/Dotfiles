@@ -89,6 +89,7 @@ alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
 # chrome() { open -a Google\ Chrome $@ }
+alias msg="fb-messenger-cli"
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
@@ -97,8 +98,6 @@ alias keybr="chrome https://www.keybr.com/"
 alias touchtyping="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
 alias changeextension="for file in *.$1; do mv '$file' '${file%.$1}.$2'; done"
 search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
-messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
-alias messengerterminal="fb-messenger-cli"
 
 filename=""
 copy() {
@@ -114,7 +113,7 @@ paste() {
 }
 
 compressgif() {
-    ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
+	ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
 
 [[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
