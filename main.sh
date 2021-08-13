@@ -148,6 +148,7 @@ source ${0:a:h}/installs/pyenv.sh
 [[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" > ~/.zshrc
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
+eval "$(mcfly init zsh)"
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
