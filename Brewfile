@@ -1,6 +1,5 @@
 tap "adoptopenjdk/openjdk"
 tap "cantino/mcfly"
-tap "caskroom/cask"
 tap "clementtsang/bottom"
 tap "d12frosted/emacs-plus"
 tap "dart-lang/dart"
