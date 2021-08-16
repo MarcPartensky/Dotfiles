@@ -291,5 +291,5 @@ focus() {
 }
 
 webserver() {
-	while true; do echo $2 | nc -lp $1 -c ; sleep 0.1; done
+	while true; do echo $2 | nc -vlp $1 -c ; sleep 0.1; done
 }
