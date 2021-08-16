@@ -291,5 +291,10 @@ focus() {
 }
 
 webserver() {
-	while true; do echo $2 | nc -vlp $1 -c ; sleep 0.1; done
+	while true; do echo "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c; sleep 1; done
+	# echo "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c
+}
+
+httpcode() {
+	while true; do echo "HTTP/1.1 $3\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c -w 0.5; done
 }
