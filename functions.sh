@@ -16,6 +16,17 @@ cd() {
     fi
 }
 
+dc() {
+	docker-compose $@
+	if [ "$1" = "up" ]; then
+		docker-compose logs -f ${2}
+	elif [ "$1" = "start" ]; then
+		docker-compose logs -f ${2}
+	elif [ "$1" = "restart" ]; then
+		docker-compose logs -f ${2}
+	fi
+}
+
 mkcdir() {
     mkdir -p -- "$1" &&
       cd -P -- "$1"
