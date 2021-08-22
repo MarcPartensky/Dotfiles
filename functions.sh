@@ -309,3 +309,7 @@ webserver() {
 httpcode() {
 	while true; do echo "HTTP/1.1 $3\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c -w 0.5; done
 }
+
+\#() {
+	echo $1 >> /var/log/hashtag.log
+}
