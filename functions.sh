@@ -11,7 +11,7 @@ cd() {
 			git pull
     fi
     if [ -f "Pipfile" ] ; then
-			n "Locking"
+			n Locking
 			$(pipenv lock --pre --clear &> /var/log/pipenv.log && n Locked) & disown
     fi
 }
