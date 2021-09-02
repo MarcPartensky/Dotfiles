@@ -149,6 +149,8 @@ source ${0:a:h}/installs/pyenv.sh
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
 if command -v mcfly >& /dev/null; then
+	mkdir -p $HOME/.local/share/zsh
+	touch $HISTFILE
 	eval "$(mcfly init zsh)"
 fi
 # Get the defaults that most users want.
