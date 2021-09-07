@@ -113,6 +113,7 @@ alias ipdns="cat /etc/resolv.conf | grep -v # | awk '{print \$2}'"
 alias notif="terminal-notifier"
 alias vd="nvim docker-compose.yml"
 alias sd="ssh docker"
+alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
