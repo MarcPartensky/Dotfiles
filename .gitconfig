@@ -22,10 +22,12 @@
 [init]
 	defaultBranch = master
 [alias]
+	globalconf = "!nvim ~/.gitconfig"
 	conf = "!nvim .git/config"
 	pushall = "!git remote | xargs -L1 git push --all"
 	pullall = "!git remote | xargs -L1 git pull"
 	browse = "!gh repo view --web"
+	refresh = "!git branch --show-current > /tmp/gitresfresh.txt; git checkout $1; git pull; git checkout $(cat /tmp/gitresfresh.txt); git merge $1; git push; echo Refreshed "
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
 [http]
 	postBuffer = 157286400
