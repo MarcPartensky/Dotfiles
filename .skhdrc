@@ -107,7 +107,7 @@ fn - l: open -a Mail.app
 fn - d: open -a Discord.app
 alt - d: open -a Discord.app
 alt - t: open -a Microsoft\ Teams.app
-fn - t: open -a Microsoft\ Teams.app
+fn - t: /Users/marcpartensky/Programs/Automation/tip.py
 fn - s: open -a Slack.app
 alt - s: open -a Slack.app
 fn - r: open -a Calendar.app
