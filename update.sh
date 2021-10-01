@@ -45,7 +45,7 @@ fi
 if command -v pip; then
 	pip install -U pip
 	pip freeze > /tmp/pipfreeze.txt
-	for $lib in $(cat /tmp/pipfreeze.txt); do
+	for lib in $(cat /tmp/pipfreeze.txt); do
 		pip install -U $lib
 	done
 fi
