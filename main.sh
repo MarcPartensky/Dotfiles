@@ -155,12 +155,12 @@ if command -v mcfly >& /dev/null; then
 fi
 
 mkdir -p ~/.local/bin
-if [[ :$PATH: != *:"~/.local/bin":* ]] ; then
-	echo "Adding ~/.local/bin to \$PATH"
-	export $PATH="$PATH:~/.local/bin"
+if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
+	echo "Adding $HOME/.local/bin to \$PATH"
+	export $PATH="$PATH:$HOME/.local/bin"
 fi
 
-ln -s ${0:a:h}/update.sh ~/.local/bin/update
+ln -s ${0:a:h}/update.sh $HOME/.local/bin/update
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
