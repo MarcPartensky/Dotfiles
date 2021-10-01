@@ -12,8 +12,8 @@ if command -v apt; then
 	apt autoremove
 fi
 if command -v dnf; then
-	dnf upgrade -y
-	dnf autoremove
+	sudo dnf upgrade -y
+	sudo dnf autoremove
 fi
 if command -v yum; then
 	yum update
