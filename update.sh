@@ -15,6 +15,17 @@ if command -v dnf; then
 	dnf upgrade -y
 	dnf autoremove
 fi
+if command -v yum; then
+	yum update
+fi
+if command -v zipper; then
+	zypper refresh
+	zypper update
+fi
+if command -v emerge; then
+	emerge --sync
+	emerge --update --deep --with-bdeps=y @world
+fi
 if command -v pacman; then
 	pacman -Syu
 fi
