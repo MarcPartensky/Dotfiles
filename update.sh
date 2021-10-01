@@ -19,7 +19,7 @@ if command -v pacman; then
 	pacman -Syu
 fi
 if command -v yay; then
-	yay update
+	yay -Syu
 fi
 if command -v apk; then
 	apk -U upgrade
@@ -31,8 +31,8 @@ if command -v pipupgrade; then
 	pipupgrade
 fi
 if command -v npm; then
-	npm config set registry https://registry.npmjs.org
 	npm install npm@latest -g
+	npm config set registry https://registry.npmjs.org
 	npm cache clean -f
 	npm update -g
 	npm prune
@@ -44,10 +44,22 @@ if command -v yarn; then
 fi
 if command -v pip; then
 	pip install -U pip
+	pip freeze > /tmp/pipfreeze.txt
+	for $lib in $(cat /tmp/pipfreeze.txt); do
+		pip install -U $lib
+	done
 fi
 if command -v pip3; then
 	pip3 install -U pip
 fi
 if command -v pip2; then
 	pip2 install -U pip
+fi
+if command -v cargo; then
+	cargo install cargo-update
+	cargo install-update -a
+	# cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
+fi
+if command -v go; then
+	go get -u all
 fi
