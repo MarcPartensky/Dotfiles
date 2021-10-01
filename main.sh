@@ -160,7 +160,7 @@ if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
 	export $PATH="$PATH:$HOME/.local/bin"
 fi
 
-ln -s ${0:a:h}/update.sh $HOME/.local/bin/update
+ln -sf ${0:a:h}/update.sh $HOME/.local/bin/update
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
