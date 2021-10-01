@@ -37,9 +37,9 @@ zstyle ':completion:*' menu select=0
 #   aliases functions builtins reserved-words \
 #   executables local-directories directories suffix-aliases
 zstyle ':completion:*:' group-order \
-  expansions history-words options list=20 \
-  aliases \
-  local-directories directories
+	expansions history-words options list=20 \
+	aliases \
+	local-directories directories
 
 zstyle ':autocomplete:*' config on
 zstyle ':autocomplete:*' min-input 2
@@ -50,15 +50,15 @@ zstyle ':autocomplete:*' min-input 2
 #   executables local-directories directories suffix-aliases
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
-  local-directories directories
-# zstyle ':autocomplete:*' default-context history-incremental-search-backward
-zstyle ':autocomplete:*' ignored-input ''
-zstyle ':autocomplete:tab:*' fzf-completion yes
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-complete
-zstyle ':autocomplete:tab:*' widget-style menu-select
-# zstyle ':autocomplete:tab:*' widget-style complete-word
-# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+	local-directories directories
+	# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+	zstyle ':autocomplete:*' ignored-input ''
+	zstyle ':autocomplete:tab:*' fzf-completion yes
+	zstyle ':autocomplete:tab:*' insert-unambiguous yes
+	zstyle ':autocomplete:tab:*' widget-style menu-complete
+	zstyle ':autocomplete:tab:*' widget-style menu-select
+	# zstyle ':autocomplete:tab:*' widget-style complete-word
+	# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 # autoload -Uz compdef && compdef
@@ -153,29 +153,38 @@ if command -v mcfly >& /dev/null; then
 	touch $HISTFILE
 	eval "$(mcfly init zsh)"
 fi
+
+mkdir -p ~/.local/bin
+if [[ :$PATH: != *:"~/.local/bin":* ]] ; then
+	echo "Adding ~/.local/bin to \$PATH"
+	export $PATH="$PATH:~/.local/bin"
+fi
+
+ln -s ${0:a:h}/update.sh ~/.local/bin/update
+
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
 
 # if has("vms"); then
 #  set nobackup
-  # do not keep a backup file, use versions instead
+# do not keep a backup file, use versions instead
 # else
 #  set backup
-  # keep a backup file (restore to previous version)
+# keep a backup file (restore to previous version)
 #  if has('persistent_undo'); then
 #    set undofile	# keep an undo file (undo changes after closing)
 #  fi
 # fi
 
 # if [&t_Co > 2 -o has("gui_running")]; then
-  # Switch on highlighting the last used search pattern.
+# Switch on highlighting the last used search pattern.
 #  set hlsearch
 # fi
 
 # Put these in an autocmd group, so that we can delete them easily.
 # augroup vimrcEx
 #  au!
-  # For all text files set 'textwidth' to 78 characters.
+# For all text files set 'textwidth' to 78 characters.
 #  autocmd FileType text setlocal textwidth=78
 # augroup END
 
