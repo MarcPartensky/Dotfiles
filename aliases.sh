@@ -2,7 +2,7 @@
 
 alias v="nvim"
 alias l="ls"
-alias s="ssh"
+alias s="systemctl"
 alias m="make"
 alias t="todo"
 alias f="find . -name"
