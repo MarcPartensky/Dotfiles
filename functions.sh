@@ -315,3 +315,9 @@ httpcode() {
 \#() {
 	echo $1 >> /var/log/hashtag.log
 }
+
+ms() {
+	echo "Playlist: $1"
+	mkdir /Volumes/\$/Musique/Youtube/$1
+	cd /Volumes/\$/Musique/Youtube/$1
+}
