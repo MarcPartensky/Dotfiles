@@ -63,3 +63,8 @@ export BIND_MOUNTS="/srv"
 export NOTIFY_MEMO="$HOME/Programs/automation/memo.yml"
 # export LS_COLORS="auto"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
+
+if command -v go > /dev/null; then
+	export PATH="$PATH:$(go env GOPATH)/bin"
+	export GOPATH=$(go env GOPATH)
+fi

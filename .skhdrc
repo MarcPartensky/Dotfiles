@@ -115,7 +115,8 @@ fn - m: open -a Music.app
 alt - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
-fn - k: open -a macpass.app
+fn - k: open -a MacPass.app
+alt - o: open -a OpenVPN\ Connect.app
 
 # alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
@@ -227,7 +228,7 @@ cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 alt - b : yabai -m space --balance # balance size of windows
 alt - r : yabai -m space --rotate 90 # rotate tree
 shift + alt - r : yabai -m space --rotate 270 # rotate tree
-alt - o : yabai -m window --toggle split # toggle window split type
+# alt - o : yabai -m window --toggle split # toggle window split type
 
 # fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
 # fn + alt - c : yabai -m window --resize left:-20:0 && yabai -m window --resize right:20:0
