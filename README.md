@@ -33,5 +33,5 @@ ln -s .gitignore_global ~/.gitignore_global
 
 ### Tmux
 ```sh
-ln -s .tmux.conf ~.tmux.conf
+ln -s .tmux.conf ~/.tmux.conf
 ```
