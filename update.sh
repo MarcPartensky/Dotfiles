@@ -46,6 +46,7 @@ if command -v npm; then
 	npm config set registry https://registry.npmjs.org
 	npm cache clean -f
 	npm update -g
+	npm audit fix
 	npm prune
 fi
 if command -v yarn; then
@@ -72,5 +73,7 @@ if command -v cargo; then
 	# cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 fi
 if command -v go; then
-	go get -u all
+	if [ -z "$GOPATH" ]; then
+		go get -u all
+	fi
 fi
