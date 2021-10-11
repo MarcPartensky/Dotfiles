@@ -69,6 +69,7 @@ alias ports="lsof -Pn -i4"
 alias ports2="netstat -ap tcp"
 alias openports="netstat -plant"
 alias network="watch -n 1 \"netstat -p tcp\""
+alias root="sudo su"
 # alias youtube='cd /Volumes/\$/Musique/Youtube'
 # alias yt="youtube"
 alias runsh="nvim run.sh"
