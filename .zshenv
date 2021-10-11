@@ -33,7 +33,7 @@ gc() {
 	eval "git commit -m \"$@\""
 }
 gn() { ga; gc $@ }
-gt() { ga; gc $@; git push }
+gt() { ga; gc $@; git pull; git push }
 gfp() {
 	git remote add origin $@
 	git branch -M master
