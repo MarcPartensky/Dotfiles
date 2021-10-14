@@ -20,11 +20,15 @@ cd() {
 dc() {
 	docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml $@
 	if [ "$1" = "up" ]; then
-		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${2}
+		if [ "$2" = "-d" ]; then
+			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 3}
+		else
+			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+		fi
 	elif [ "$1" = "start" ]; then
-		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${2}
+		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
 	elif [ "$1" = "restart" ]; then
-		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${2}
+		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
 	fi
 }
 
