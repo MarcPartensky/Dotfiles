@@ -324,3 +324,16 @@ ms() {
 	mkdir /Volumes/\$/Musique/Youtube/$1
 	cd /Volumes/\$/Musique/Youtube/$1
 }
+
+sshupdate(){
+	ssh vps $(curl -sL marcpartensky.com//update | bash) &
+	ssh tower $(curl -sL marcpartensky.com//update | bash) &
+	ssh boulimix $(curl -sL marcpartensky.com//update | bash) &
+	ssh gigabix $(curl -sL marcpartensky.com//update | bash) &
+	ssh idefix $(curl -sL marcpartensky.com//update | bash) &
+	ssh boulimix $(curl -sL marcpartensky.com//update | bash) &
+	ssh memorix $(curl -sL marcpartensky.com//update | bash) &
+	ssh pandemix $(curl -sL marcpartensky.com//update | bash) &
+	ssh phoenix $(curl -sL marcpartensky.com//update | bash) &
+	ssh phoenix-staging $(curl -sL marcpartensky.com//update | bash) &
+}
