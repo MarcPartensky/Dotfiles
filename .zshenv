@@ -43,7 +43,7 @@ gfp() {
 p() { cd $PROGRAMS_PATH/$@ }
 pj() { cd $GIT_PROJECTS_PATH/$@ }
 h() {	cd /home/$@ }
-n() { terminal-notifier -message $@ }
+n() { eval "terminal-notifier -message \"$@\"" }
 cheat() { curl cheat.sh/$@ }
 
 nodesktopicon() {
