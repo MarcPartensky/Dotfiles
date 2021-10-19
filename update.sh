@@ -30,59 +30,59 @@ main() {
 			emerge --update --deep --with-bdeps=y @world) >& $LOG_FOLDER/update_emerge.log &
 	fi
 	if command -v pacman; then
-		$(pacman -Syu) >& /var/log/update_pacman.log &
+		pacman -Syu >& $LOG_FOLDER/update_pacman.log &
 	fi
 	if command -v yay; then
-		$(yay -Syu) >& /var/log/update_yay.log &
+		yay -Syu >& $LOG_FOLDER/update_yay.log &
 	fi
 	if command -v apk; then
-		$(apk -U upgrade) >& /var/log/update_apk.log &
+		apk -U upgrade >& $LOG_FOLDER/update_apk.log &
 	fi
 	if command -v snap; then
-		sudo snap update &
+		snap update >& $LOG_FOLDER/update_snap.log &
 	fi
 	if command -v pipupgrade; then
-		pipupgrade &
+		pipupgrade >& $LOG_FOLDER &
 	fi
 	if command -v npm; then
-		npm install npm@latest -g &&
+		$(npm install npm@latest -g &&
 			npm config set registry https://registry.npmjs.org &&
 			npm cache clean -f &&
 			npm update -g &&
 			npm audit fix &&
-			npm prune &
+			npm prune) >& $LOG_FOLDER/update_npm.log &
 	fi
 	if command -v yarn; then
-		yarn add --dev yarn-upgrade-all &&
+		$(yarn add --dev yarn-upgrade-all &&
 			yarn yarn-upgrade-all &&
-			yarn upgrade --latest &
+			yarn upgrade --latest) >& $LOG_FOLDER/update_yarn.log &
 	fi
 	if command -v pip; then
-		pip install -U pip &&
-		pip freeze > /tmp/pipfreeze.txt &&
+		$(pip install -U pip &&
+			pip freeze > /tmp/pipfreeze.txt) &&
 		for lib in $(cat /tmp/pipfreeze.txt); do
 			pip install -U $lib &
 		done
 	fi
 	if command -v pip3; then
-		pip3 install -U pip &
+		pip3 install -U pip >& $LOG_FOLDER/update_pip3.log &
 	fi
 	if command -v pip2; then
-		pip2 install -U pip &
+		pip2 install -U pip >& $LOG_FOLDER/update_pip2.log &
 	fi
 	if command -v cargo; then
-		cargo install cargo-update &&
-			cargo install-update -a &
+		$(cargo install cargo-update &&
+			cargo install-update -a) >& $LOG_FOLDER/update_cargo.log &
 		# cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 	fi
 	if command -v go; then
 		if [ -z "$GOPATH" ]; then
-			go get -u all &
+			go get -u all >& $LOG_FOLDER/update_go.log &
 		fi
 	fi
 	if command -v tldr; then
-		tldr --update &
+		tldr --update >& $LOG_FOLDER/update_tldr.log &
 	fi
 }
 
-sudo && $(main && )
+sudo && $(main && $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log && n done)
