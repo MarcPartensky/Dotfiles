@@ -1,49 +1,53 @@
 #!/bin/sh
 
+# Update all package managers available in a system.
+
 LOG_FOLDER="/var/log"
 [ -d $LOG_FOLDER ] || echo Creating log folder && mkdir -p /var/log
+
+LOG_FILE="/tmp/update.log"
 
 main() {
 	if command -v brew; then
 		$(brew upgrade -f &&
 			brew autoremove &&
-			brew cleanup) >& $LOG_FOLDER/update_brew.log &
+			brew cleanup) | tee $LOG_FOLDER/update_brew.log >>& $LOG_FILE &
 	fi
 	if command -v apt; then
 		$(apt --fix-broken install &&
 			apt update &&
 			apt upgrade -y &&
-			apt autoremove) >& $LOG_FOLDER/update_apt.log &
+			apt autoremove) | tee $LOG_FOLDER/update_apt.log >>& $LOG_FILE &
 	fi
 	if command -v dnf; then
 		$(sudo dnf upgrade -y &&
-			sudo dnf autoremove) >& $LOG_FOLDER/update_dnf.log &
+			sudo dnf autoremove) tee | $LOG_FOLDER/update_dnf.log >>& $LOG_FILE &
 	fi
 	if command -v yum; then
-		$(yum update) >& $LOG_FOLDER/update_yum.log &
+		$(yum update) | tee $LOG_FOLDER/update_yum.log >>& $LOG_FILE &
 	fi
 	if command -v zipper; then
 		$(zypper refresh &&
-			zypper update) >& $LOG_FOLDER/update_zypper.log &
+			zypper update) | tee $LOG_FOLDER/update_zypper.log >>& $LOG_FILE &
 	fi
 	if command -v emerge; then
 		$(emerge --sync &&
-			emerge --update --deep --with-bdeps=y @world) >& $LOG_FOLDER/update_emerge.log &
+			emerge --update --deep --with-bdeps=y @world) | tee $LOG_FOLDER/update_emerge.log >>& $LOG_FILE &
 	fi
 	if command -v pacman; then
-		pacman -Syu >& $LOG_FOLDER/update_pacman.log &
+		pacman -Syu | tee $LOG_FOLDER/update_pacman.log >>& $LOG_FILE &
 	fi
 	if command -v yay; then
-		yay -Syu >& $LOG_FOLDER/update_yay.log &
+		yay -Syu | tee $LOG_FOLDER/update_yay.log >>& $LOG_FILE &
 	fi
 	if command -v apk; then
-		apk -U upgrade >& $LOG_FOLDER/update_apk.log &
+		apk -U upgrade | tee $LOG_FOLDER/update_apk.log >>& $LOG_FILE &
 	fi
 	if command -v snap; then
-		snap update >& $LOG_FOLDER/update_snap.log &
+		snap update | tee $LOG_FOLDER/update_snap.log >>& $LOG_FILE &
 	fi
 	if command -v pipupgrade; then
-		pipupgrade >& $LOG_FOLDER &
+		pipupgrade | tee $LOG_FOLDER/update_pipupgrade.log >>& $LOG_FILE &
 	fi
 	if command -v npm; then
 		$(npm install npm@latest -g &&
@@ -51,42 +55,42 @@ main() {
 			npm cache clean -f &&
 			npm update -g &&
 			npm audit fix &&
-			npm prune) >& $LOG_FOLDER/update_npm.log &
+			npm prune) | tee $LOG_FOLDER/update_npm >>& $LOG_FILE &
 	fi
 	if command -v yarn; then
 		$(yarn add --dev yarn-upgrade-all &&
 			yarn yarn-upgrade-all &&
-			yarn upgrade --latest) >& $LOG_FOLDER/update_yarn.log &
+			yarn upgrade --latest) | tee $LOG_FOLDER/update_yarn.log >>& $LOG_FILE &
 	fi
 	if command -v pip; then
-		$(pip install -U pip &&
+		$($(pip install -U pip &&
 			pip freeze > /tmp/pipfreeze.txt) &&
 		for lib in $(cat /tmp/pipfreeze.txt); do
 			pip install -U $lib &
-		done
+		done) | tee $LOG_FOLDER/update_yarn.log >>& $LOG_FILE &
 	fi
 	if command -v pip3; then
-		pip3 install -U pip >& $LOG_FOLDER/update_pip3.log &
+		pip3 install -U pip | tee $LOG_FOLDER/update_pip3.log >> $LOG_FILE &
 	fi
 	if command -v pip2; then
-		pip2 install -U pip >& $LOG_FOLDER/update_pip2.log &
+		pip2 install -U pip | tee $LOG_FOLDER/update_pip2.log >> $LOG_FILE &
 	fi
 	if command -v cargo; then
 		$(cargo install cargo-update &&
-			cargo install-update -a) >& $LOG_FOLDER/update_cargo.log &
+			cargo install-update -a) | tee $LOG_FOLDER/update_cargo >> $LOG_FILE .log &
 		# cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 	fi
 	if command -v go; then
 		if [ -z "$GOPATH" ]; then
-			go get -u all >& $LOG_FOLDER/update_go.log &
+			go get -u all | tee $LOG_FOLDER/update_go >> $LOG_FILE .log &
 		fi
 	fi
 	if command -v tldr; then
-		tldr --update >& $LOG_FOLDER/update_tldr.log &
+		tldr --update | tee $LOG_FOLDER/update_tldr >> $LOG_FILE .log &
 	fi
 }
 
 sudo eval "echo Updating the system" &&
-	$(main & watch -n 1 jobs -l &) &&
-	$LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log &&
+	$(main & tail -f $LOG_FILE) &&
+	$LOG_FOLDER/update_*.log > $LOG_FOLDER/update  &&
 	echo Update is done

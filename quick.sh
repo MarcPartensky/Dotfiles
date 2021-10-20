@@ -1,6 +1,6 @@
 #!/bin/sh
 
-eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/main/aliases.sh)"
-eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/main/functions.sh)"
-eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/main/exports.sh)"
-eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/main/.zshenv.sh)"
+eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/aliases.sh)"
+eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/functions.sh)"
+eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/exports.sh)"
+eval "$(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/.zshenv.sh)"
