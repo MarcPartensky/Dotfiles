@@ -1,6 +1,7 @@
 #!/bin/sh
 
 LOG_FOLDER="/var/log"
+[ -d $LOG_FOLDER ] || echo Creating log folder && mkdir -p /var/log
 
 main() {
 	if command -v brew; then
@@ -15,8 +16,8 @@ main() {
 			apt autoremove) >& $LOG_FOLDER/update_apt.log &
 	fi
 	if command -v dnf; then
-		$(dnf upgrade -y &&
-			dnf autoremove) >& $LOG_FOLDER/update_dnf.log &
+		$(sudo dnf upgrade -y &&
+			sudo dnf autoremove) >& $LOG_FOLDER/update_dnf.log &
 	fi
 	if command -v yum; then
 		$(yum update) >& $LOG_FOLDER/update_yum.log &
@@ -85,4 +86,7 @@ main() {
 	fi
 }
 
-sudo && $(main && $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log && n done)
+sudo eval "echo Updating the system" &&
+	$(main & watch -n 1 jobs -l &) &&
+	$LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log &&
+	echo Update is done
