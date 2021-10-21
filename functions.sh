@@ -416,3 +416,7 @@ progress-bar() {
 #   echo $(tput cnorm)
 #   trap - SIGINT
 # }
+
+docker-clean() {
+	docker service rm $(docker service ls -q)
+}
