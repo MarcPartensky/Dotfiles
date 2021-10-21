@@ -127,6 +127,7 @@ alias pandemix="ssh pandemix"
 alias memorix="ssh memorix"
 alias vpnix="ssh vpnix"
 alias playground="ssh playground"
+alias caddy="nvim ~/junior/caddix/Caddyfile"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"

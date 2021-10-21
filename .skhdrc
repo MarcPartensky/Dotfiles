@@ -241,7 +241,7 @@ shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus 
 shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first # stack down
 
 # float / unfloat window and center on screen
-fn + alt - c : yabai -m window --toggle float;\
+fn + alt - m : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:0:2:4
 
 # toggle sticky(+float), topmost, picture-in-picture

@@ -267,6 +267,7 @@ expose() {
 		# if [ $1 -eq http ]; then
 		local host=$1
 		local port=$2
+		source_port=$3
 	fi
 	echo $host
 	echo $port
