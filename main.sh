@@ -2,6 +2,7 @@
 
 export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
+export JUNIOR_PATH=~/junior
 export GIT_PROJECTS_PATH=/Volumes/$/git-project
 export FPATH=$HOME/usr/share/zsh/*/functions:$FPATH
 # $(readlink -f "$(which $0)/..")

@@ -353,6 +353,8 @@ progress-bar() {
   clean_line
 }
 
+
+
 # progress_bar()
 # {
 #   local DURATION=$1

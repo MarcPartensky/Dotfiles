@@ -42,6 +42,7 @@ gfp() {
 
 p() { cd $PROGRAMS_PATH/$@ }
 pj() { cd $GIT_PROJECTS_PATH/$@ }
+je() {cd $JUNIOR_PATH/$@ }
 h() {	cd /home/$@ }
 n() { eval "terminal-notifier -message \"$@\"" }
 cheat() { curl cheat.sh/$@ }

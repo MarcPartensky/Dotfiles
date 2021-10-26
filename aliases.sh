@@ -117,7 +117,9 @@ alias vd="nvim docker-compose.yml"
 alias sd="ssh docker"
 alias fm="nvim /tmp/fm.txt"
 alias timestamp="date +%s"
-alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
+alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder;"
+alias zshrc="nvim ~/.zshrc"
+
 # je
 alias phoenix="ssh phoenix"
 alias phoenixstaging="ssh phoenix-staging"
@@ -129,6 +131,7 @@ alias memorix="ssh memorix"
 alias vpnix="ssh vpnix"
 alias playground="ssh playground"
 alias caddy="nvim ~/junior/caddix/Caddyfile"
+alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"
