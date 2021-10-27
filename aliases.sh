@@ -2,6 +2,7 @@
 
 alias v="nvim"
 alias l="ls"
+alias c="cd"
 alias s="systemctl"
 alias m="make"
 alias t="todo"
