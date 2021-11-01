@@ -125,6 +125,10 @@ if command -v exa >& /dev/null; then
 	alias la="exa --classify --icons --group-directories-first --all"
 	alias ll="exa --classify --icons --group-directories-first --long --header --group --git"
 	alias lla="exa --classify --icons --group-directories-first --all --long --header --group --git"
+else:=
+	alias ll="ls -l"
+	alias la="ls -a"
+	alias lla="ls -la"
 fi
 
 if command -v bat >& /dev/null; then
