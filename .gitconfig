@@ -28,6 +28,11 @@
 	pullall = "!git remote | xargs -L1 git pull"
 	browse = "!gh repo view --web"
 	refresh = !gitrefresh
+	register = "!gitregister"
+	unregister = "!gitunregister"
+	record = "!gitrecord"
+	update = "!gitupdate"
+
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
 [http]
 	postBuffer = 157286400
