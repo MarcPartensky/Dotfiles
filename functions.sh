@@ -422,3 +422,13 @@ progress-bar() {
 docker-clean() {
 	docker service rm $(docker service ls -q)
 }
+
+git-register() {
+	echo $1 >> /etc/git-register.txt
+}
+
+git-update() {
+	for $gitpath in $(cat /etc/git-register.txt); do
+		git pull $gitpath
+	done
+}
