@@ -427,8 +427,6 @@ docker-clean() {
 	docker service rm $(docker service ls -q)
 }
 
-export GIT_RECORD="/etc/git-register.txt"
-
 git-register() {
 	echo $1 >> $GIT_RECORD
 }
@@ -438,7 +436,7 @@ git-unregister() {
 }
 
 git-update() {
-	for $gitpath in $(cat /etc/git-register.txt); do
+	for $gitpath in $(cat $GIT_RECORD); do
 		git -c $gitpath pull
 	done
 }
