@@ -18,7 +18,7 @@ cd() {
 }
 
 dc() {
-	if [ "$1" != "-f" ];
+	if [ "$1" != "-f" ]; then
 		if [ -f $PWD/docker-compose.yml ]; then
 			docker-compose --file $PWD/docker-compose.yml $@
 		else
