@@ -18,20 +18,22 @@ cd() {
 }
 
 dc() {
-	if [ -f $PWD/docker-compose.yml ]; then
-		docker-compose --file $PWD/docker-compose.yml $@
-	else
-		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml $@
-		if [ "$1" = "up" ]; then
-			if [ "$2" = "-d" ]; then
-				docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 3}
-			else
+	if [ "$1" != "-f" ];
+		if [ -f $PWD/docker-compose.yml ]; then
+			docker-compose --file $PWD/docker-compose.yml $@
+		else
+			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml $@
+			if [ "$1" = "up" ]; then
+				if [ "$2" = "-d" ]; then
+					docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 3}
+				else
+					docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+				fi
+			elif [ "$1" = "start" ]; then
+				docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+			elif [ "$1" = "restart" ]; then
 				docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
 			fi
-		elif [ "$1" = "start" ]; then
-			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
-		elif [ "$1" = "restart" ]; then
-			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
 		fi
 	fi
 }
