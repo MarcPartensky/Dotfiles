@@ -24,6 +24,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/Applications/MAMP/bin"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 # export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export CLICOLOR=1
