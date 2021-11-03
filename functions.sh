@@ -18,7 +18,9 @@ cd() {
 }
 
 dc() {
-	if [ ! -f $PWD/docker-compose.yml ]; then
+	if [ -f $PWD/docker-compose.yml ]; then
+		docker-compose --file $PWD/docker-compose.yml $@
+	else
 		docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml $@
 		if [ "$1" = "up" ]; then
 			if [ "$2" = "-d" ]; then
@@ -31,8 +33,6 @@ dc() {
 		elif [ "$1" = "restart" ]; then
 			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
 		fi
-	else
-		echo "Using local `docker-compose.yml` file"
 	fi
 }
 
