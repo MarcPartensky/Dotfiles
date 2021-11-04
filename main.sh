@@ -125,6 +125,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 	if [[ "$DISTRIB" == "Ubuntu" ]]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+	elif [[ "$DISTRIB" == "Fedora" ]]; then
+
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
