@@ -18,7 +18,6 @@ alias pt="nvim $PROGRAMS_PATH/Markdown/todolist/pickup-todolist.md"
 alias todo="nvim $PROGRAMS_PATH/markdown/todolist/todolist.md"
 alias tpic="nvim $PROGRAMS_PATH/markdown/todolist/pickup-todolist.md"
 alias dk="docker"
-
 alias dcy="nvim docker-compose.yml"
 alias d="docker"
 alias ds="dc ps"
@@ -120,6 +119,7 @@ alias fm="nvim /tmp/fm.txt"
 alias timestamp="date +%s"
 alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder;"
 alias zshrc="nvim ~/.zshrc"
+alias wh="which"
 
 # je
 alias phoenix="ssh phoenix"

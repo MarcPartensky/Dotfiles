@@ -1,3 +1,3 @@
 #!/bin/sh
 
-echo slt
+eval `curl -sSL marcpartensky.com//brew`
