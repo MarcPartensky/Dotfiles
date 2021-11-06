@@ -1,0 +1,10 @@
+bare
+core18
+core20
+discord
+gnome-3-28-1804
+gnome-3-38-2004
+gtk-common-themes
+mc-installer
+signal-desktop
+snapd

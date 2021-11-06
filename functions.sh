@@ -432,3 +432,13 @@ gitupdate() { for gitpath in $(cat $GIT_RECORD); do; git -c $gitpath pull; done 
 docker-clean() {
 	docker service rm $(docker service ls -q)
 }
+
+snapdump() {
+	snap list | tail -n +2 | awk '{print $1}' > snapfile.txt
+}
+
+snapbundle() {
+	for dependency in $(cat snapfile.txt); do
+		snap install $dependency
+	done
+}
