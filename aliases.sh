@@ -120,10 +120,11 @@ alias timestamp="date +%s"
 alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles -boolean true; killall Finder;"
 alias zshrc="nvim ~/.zshrc"
 alias wh="which"
-
+alias bindcapslock="gsettings set org.gnome.desktop.input-sources xkb-options \"['caps:escape']\""
 # je
 alias phoenix="ssh phoenix"
 alias phoenixstaging="ssh phoenix-staging"
+alias edgix="ssh edgix"
 alias boulimix="ssh boulimix"
 alias gigabix="ssh gigabix"
 alias idefix="ssh idefix"
@@ -133,6 +134,7 @@ alias vpnix="ssh vpnix"
 alias playground="ssh playground"
 alias caddy="nvim ~/junior/caddix/Caddyfile"
 alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
+alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 
 # Navigation shortcuts
 alias cdd="cd ~/docker"

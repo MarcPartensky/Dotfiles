@@ -136,6 +136,11 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+
 # source ${0:a:h}/setup.sh
 source ${0:a:h}/os.sh
 source ${0:a:h}/exports.sh
