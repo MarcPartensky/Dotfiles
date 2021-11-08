@@ -123,6 +123,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # "bat" as manpager
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+	export DISTRIB=$(echo $DISTRIB | sed -r 's/"//g' | sed -r 's/Linux//g' | sed -r 's/ //g')
 	if [[ "$DISTRIB" == "Ubuntu" ]]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	elif [[ "$DISTRIB" == "Fedora" ]]; then
@@ -135,6 +136,18 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
+
+# ssl certificates for dotnet
+if [ "$DISTRIB" = "Fedora" ]; then
+	export SSL_CERT_FILE="/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+	export SSL_CERT_DIR=/dev/null
+elif [ "$DISTRIB" = "OpenSUSE" ]; then
+	export SSL_CERT_FILE="/etc/ssl/ca-bundle.pem"
+	export SSL_CERT_DIR=/dev/null
+elif [ "$DISTRIB" = "Solus" ]; then
+	export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+	export SSL_CERT_DIR=/dev/null
+fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm

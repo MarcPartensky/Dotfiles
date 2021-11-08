@@ -67,6 +67,8 @@ export NOTIFY_MEMO="$HOME/Programs/automation/memo.yml"
 export PROGRAMS_DOCKER_PATH="$HOME/docker"
 export GIT_RECORD="/etc/gitrecord.txt"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM="true"
+export DOTNET_ROOT="/snap/dotnet-sdk/current"
+# ln -s /snap/dotnet-sdk/current/dotnet /usr/local/bin/dotnet
 # export LS_COLORS="auto"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
 
