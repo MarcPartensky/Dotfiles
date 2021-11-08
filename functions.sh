@@ -12,6 +12,7 @@ cd() {
     fi
     if [ -f "Pipfile" ] ; then
 			pipenv shell
+			pipenv install
 			n Locking
 			$(pipenv lock --pre --clear &> /var/log/pipenv.log && n Locked) & disown
     fi
@@ -36,6 +37,12 @@ dc() {
 			fi
 		fi
 	fi
+}
+
+
+gh() {
+	/usr/bin/env gh >& /dev/null || brew install gh
+	/usr/bin/env gh $@
 }
 
 mkcdir() {

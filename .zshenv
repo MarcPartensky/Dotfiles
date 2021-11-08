@@ -41,11 +41,32 @@ gfp() {
 	git push -u origin master
 }
 
-p() { cd $PROGRAMS_PATH/$@ }
+p() {
+	if [ -d $PROGRAMS_PATH/$1 ]; then
+		cd $PROGRAMS_PATH/$1
+	else
+		cd $PROGRAMS_PATH
+		if command -v gh; then
+			gh repo clone $1
+			cd $1
+		else
+			git clone https://github.com/$1 && cd $1 || cd $PROGRAMS_PATH
+			cd $1
+		fi
+	fi
+}
 pj() { cd $GIT_PROJECTS_PATH/$@ }
 je() {cd $JUNIOR_PATH/$@ }
 h() {	cd /home/$@ }
-n() { eval "terminal-notifier -message \"$@\"" }
+n() {
+	if command -v terminal-notifier; then
+		eval "terminal-notifier -message \"$@\""
+	elif command -v notify-send; then
+		notify-send $@
+	else
+		echo $@
+	fi
+}
 cheat() { curl cheat.sh/$@ }
 
 nodesktopicon() {
