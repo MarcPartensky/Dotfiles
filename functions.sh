@@ -47,10 +47,13 @@ p() {
 		if command -v gh; then
 			gh repo clone $1
 		else
-			git clone https://github.com/$1 && cd $1 || cd $PROGRAMS_PATH
+			git clone https://github.com/$1
 		fi
-		mv -v $1 "`echo $1 | tr '[A-Z]' '[a-z]'`"
-		cd $1
+		f=$(basename $1)
+		f=$(/bin/ls | grep -i $f)
+		fm=$(echo $f | tr '[A-Z]' '[a-z]')
+		mv -v $f $fm
+		cd $fm
 	fi
 }
 
