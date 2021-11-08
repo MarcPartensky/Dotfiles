@@ -66,6 +66,7 @@ export BIND_MOUNTS="/srv"
 export NOTIFY_MEMO="$HOME/Programs/automation/memo.yml"
 export PROGRAMS_DOCKER_PATH="$HOME/docker"
 export GIT_RECORD="/etc/gitrecord.txt"
+export GIT_DISCOVERY_ACROSS_FILESYSTEM="true"
 # export LS_COLORS="auto"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
 

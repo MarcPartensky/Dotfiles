@@ -57,6 +57,10 @@ p() {
 	fi
 }
 
+updategit() {
+	for f in `/bin/ls $PROGRAMS_PATH`; do; printf "\e[1m$f\e[0m: "; git -C $f pull ; done
+}
+
 
 # brew() {
 # 	/usr/bin/env brew >& /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
