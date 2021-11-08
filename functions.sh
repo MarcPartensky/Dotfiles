@@ -39,6 +39,31 @@ dc() {
 	fi
 }
 
+p() {
+	if [ -d $PROGRAMS_PATH/$1 ]; then
+		cd $PROGRAMS_PATH/$1
+	else
+		cd $PROGRAMS_PATH
+		if command -v gh; then
+			gh repo clone $1
+		else
+			git clone https://github.com/$1 && cd $1 || cd $PROGRAMS_PATH
+		fi
+		mv -v $1 "`echo $1 | tr '[A-Z]' '[a-z]'`"
+		cd $1
+	fi
+}
+
+
+# brew() {
+# 	/usr/bin/env brew >& /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# 	/usr/bin/env brew $@
+# }
+
+# rename() {
+# 	/usr/bin/env rename >& /dev/null || brew install rename
+# 	/usr/bin/env rename $@
+# }
 
 gh() {
 	/usr/bin/env gh >& /dev/null || brew install gh
@@ -185,8 +210,6 @@ secret() {
 readme() {
 	bat README.md
 }
-
-
 
 url() {
 	http -f --follow post https://marcpartensky.com/u$2 target=$1 description=$3
