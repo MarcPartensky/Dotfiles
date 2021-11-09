@@ -121,17 +121,18 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # "bat" as manpager
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ "$OSTYPE" = "linux-gnu"* ]]; then
 	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
 	export DISTRIB=$(echo $DISTRIB | sed -r 's/"//g' | sed -r 's/Linux//g' | sed -r 's/ //g')
-	if [[ "$DISTRIB" == "Ubuntu" ]]; then
+	if [ "$DISTRIB" = "Ubuntu" ]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
-	elif [[ "$DISTRIB" == "Fedora" ]]; then
+	elif [ "$DISTRIB" = "Fedora" ]; then
 
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+elif [ "$OSTYPE" = "darwin"* ]; then
+	export DISTRIB="darwin"
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 # "nvim" as manpager
