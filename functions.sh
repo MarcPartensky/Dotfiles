@@ -397,6 +397,19 @@ progress-bar() {
 }
 
 
+mountall() {
+	for i in $(/bin/ls /etc/systemd/system/*.mount); do
+		sudo systemctl start $(basename $i)
+	done
+}
+
+proxmox() {
+	pass -c proxmox
+	$(sleep 0.5 && xdg-open https://127.0.0.1:8006) &
+	ssh -NL 127.0.0.1:8006:192.168.0.16:8006 kong
+}
+
+
 
 # progress_bar()
 # {
