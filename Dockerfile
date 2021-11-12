@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM debian
 
 LABEL maintainer="Marc Partensky <marc.partensky@gmail.com>"
 ENV DEBIAN_FRONTEND=noninteractive
