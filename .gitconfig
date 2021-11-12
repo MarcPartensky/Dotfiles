@@ -6,6 +6,7 @@
 [user]
 	name = marc
 	email = marc.partensky@gmail.com
+	signingkey = 516EAE18A5512CE9
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
@@ -17,15 +18,23 @@
 	trustExitCode = true
 [commit]
 	template = ~/.stCommitMsg
+	gpgsign = true
 [pull]
 	rebase = true
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [alias]
+	globalconf = "!nvim ~/.gitconfig"
 	conf = "!nvim .git/config"
 	pushall = "!git remote | xargs -L1 git push --all"
 	pullall = "!git remote | xargs -L1 git pull"
 	browse = "!gh repo view --web"
+	refresh = !gitrefresh
+	register = "!gitregister"
+	unregister = "!gitunregister"
+	record = "!gitrecord"
+	update = "!gitupdate"
+
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
 [http]
 	postBuffer = 157286400

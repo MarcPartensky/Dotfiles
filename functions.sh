@@ -11,9 +11,70 @@ cd() {
 			git pull
     fi
     if [ -f "Pipfile" ] ; then
-			echo -e "\e[31mLocking\e[0m"
-			$(pipenv lock --pre --clear &> /var/log/pipenv.log && echo -e "\e[31mLocked\e[0m") &
+			pipenv shell
+			pipenv install
+			n Locking
+			$(pipenv lock --pre --clear &> /var/log/pipenv.log && n Locked) & disown
     fi
+}
+
+dc() {
+	if [ "$1" != "-f" ]; then
+		if [ -f $PWD/docker-compose.yml ]; then
+			docker-compose --file $PWD/docker-compose.yml $@
+		else
+			docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml $@
+			if [ "$1" = "up" ]; then
+				if [ "$2" = "-d" ]; then
+					docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 3}
+				else
+					docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+				fi
+			elif [ "$1" = "start" ]; then
+				docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+			elif [ "$1" = "restart" ]; then
+				docker-compose --file $PROGRAMS_DOCKER_PATH/docker-compose.yml logs -f ${@: 2}
+			fi
+		fi
+	fi
+}
+
+p() {
+	if [ -d $PROGRAMS_PATH/$1 ]; then
+		cd $PROGRAMS_PATH/$1
+	else
+		cd $PROGRAMS_PATH
+		if command -v gh; then
+			gh repo clone $1
+		else
+			git clone https://github.com/$1
+		fi
+		f=$(basename $1)
+		f=$(/bin/ls | grep -i $f)
+		fm=$(echo $f | tr '[A-Z]' '[a-z]')
+		mv -v $f $fm
+		cd $fm
+	fi
+}
+
+updategit() {
+	for f in `/bin/ls $PROGRAMS_PATH`; do; printf "\e[1m$f\e[0m: "; git -C $f pull ; done
+}
+
+
+# brew() {
+# 	/usr/bin/env brew >& /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# 	/usr/bin/env brew $@
+# }
+
+# rename() {
+# 	/usr/bin/env rename >& /dev/null || brew install rename
+# 	/usr/bin/env rename $@
+# }
+
+gh() {
+	/usr/bin/env gh >& /dev/null || brew install gh
+	/usr/bin/env gh $@
 }
 
 mkcdir() {
@@ -74,50 +135,35 @@ search() {
 
 alias chrome="open -a 'Google Chrome' $1";
 alias daisy="open -a 'DaisyDisk'"
+alias postman="open -a 'Postman'"
 
 openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
 }
 
-openmessenger() {
-	open -a 'Google Chrome' "https://www.facebook.com/messages"
-}
-
-messengerterminal() {
-	exec "fb-messenger-cli"
-}
-
-alias postman="open -a 'Postman'"
-
 spam() {
 	exec "messengerterminal";
 	exec "/search $1";
 	exec "0";
-	for i in {1...$3}
-	do
+	for i in {1...$3}; do
 		exec $2;
 	done
 }
 
 troll() {
 	sleep $1;
-	for i in {1..$2}
-	do
+	for i in {1..$2}; do
 		osascript -e 'display notification "you are useless"'
 		say "you are useless"
 	done
 }
 
-touchtyping() {
-	open -a 'Google Chrome' 'https://www.typingclub.com/sportal/program-3.game'
-}
-
-keybr() {
-	open -a 'Google Chrome' 'https://keybr.com'
-}
-
 dlmusic() {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
+}
+
+dlvideo() {
+	youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' -ciw --audio-quality 0 --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
 
 ytdl() {
@@ -125,16 +171,9 @@ ytdl() {
 }
 
 weather() {
-	curl wttr.in
+	curl wttr.in/$@
 }
 
-p() {
-	cd ~/$PROGRAMS_PATH/$@
-}
-
-pj() {
-	cd ~/$GIT_PROJECTS/$@
-}
 
 getdocker() {
 	curl -fsSL https://get.docker.com | sh
@@ -179,11 +218,6 @@ readme() {
 	bat README.md
 }
 
-
-cheat() {
-	curl cheat.sh/$@
-}
-
 url() {
 	http -f --follow post https://marcpartensky.com/u$2 target=$1 description=$3
 }
@@ -220,22 +254,258 @@ dns2ip() {
 	nslookup $1 | grep -E 'Address: [0-9]' | awk '{print $2}'
 }
 
+# default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
 randomport() {
 	local port=${1:-1}
-	comm -23 <(seq 49152 65535 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
+	comm -23 <(seq 49152 65535 | sort) <(ss -htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port
 }
 
-# default port range allocation should be within 49152 and 65535 but choosing ports within firewall exposed ports range
-randomvpsport() {
+# get a random vps port within allowed range using ssh
+sshrandomvpsport() {
 	local port=${1:-1}
-	ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+	ssh expose@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
+}
+
+# get a random vps port within allowed range using http
+httprandomvpsport() {
+	local port=${1:-1}
+	curl -s https://marcpartensky.com/api/port
+}
+
+
+urlparse() {
+	local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+	local url=$(echo $1 | sed -e s,$proto,,g)
+	local user="$(echo $url | grep @ | cut -d@ -f1)"
+	local hostport=$(echo $url | sed -e s,$user@,,g | cut -d/ -f1)
+	local host="$(echo $hostport | sed -e 's,:.*,,g')"
+	local port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
+	local path="$(echo $url | grep / | cut -d/ -f2-)"
+	echo $url
+	echo $proto
+	echo $user
+	echo $host
+	echo $port
+	echo $path
 }
 
 expose() {
-	local source_port=$(randomvpsport)
-	local host=${2:-"localhost"}
-	local target_port=${1:-1}
-	# ssh -i ~/.ssh/tunnel tunnel@marcpartensky.com -p 7022 "comm -23 <(seq 8000 8099 | sort) <(ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n $port"
-	echo "marcpartensky.com:$source_port"
-	ssh -R $source_port:$host:$target_port -i ~/.ssh/tunnel tunnel@marcpartensky.com -N -p 7022
+	echo $1
+	local source_port=$(httprandomvpsport)
+	# local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
+	# local url=$(echo $1 | sed -e s,$proto,,g)
+	# local user="$(echo $url | grep @ | cut -d@ -f1)"
+	# local hostport=$(echo $url | sed -e s,$user@,,g | cut -d/ -f1)
+	# local host="$(echo $hostport | sed -e 's,:.*,,g')"
+	# local port="$(echo $hostport | sed -e 's,^.*:,:,g' -e 's,.*:\([0-9]*\).*,\1,g' -e 's,[^0-9],,g')"
+	# local path="$(echo $url | grep / | cut -d/ -f2-)"
+
+	if [ $# -eq 1 ]; then
+		local host=${2:-"localhost"}
+		local port=$1
+	elif [ $# -eq 2 ]; then
+		local host=$1
+		local port=$2
+	elif [ $# -eq 3 ]; then
+		# if [ $1 -eq http ]; then
+		local host=$1
+		local port=$2
+		source_port=$3
+	fi
+	echo $host
+	echo $port
+	echo "${proto}marcpartensky.com:$source_port"
+	if [ -f ~/.ssh/expose ]; then
+		ssh -i ~/.ssh/expose -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
+	else
+		ssh -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
+	fi
+}
+
+pst() {
+	pstree -ps $@
+}
+
+wallpaper() {
+	osascript -e 'tell application "System Events" to tell first Desktop to get its picture'
+}
+
+killapp() {
+	osascript -e "quit app \"$1\""
+}
+
+spy() {
+	watch -n 0.5 ps -jFu $@
+}
+
+countdown() {
+	$(sleep $1 && terminal-notifier -title "Time is up!" -message "$1 seconds passed") & disown
+}
+
+trim() {
+	echo $1 | awk '{$1=$1};1'
+}
+
+focus() {
+	index=$1; eval "$(yabai -m query --spaces | jq --argjson index "${index}" -r '(.[] | select(.index == $index).windows[0]) as $wid | if $wid then "yabai -m window --focus \"" + ($wid | tostring) + "\"" else "skhd --key \"ctrl - " + (map(select(."native-fullscreen" == 0)) | index(map(select(.index == $index))) + 1 % 10 | tostring) + "\"" end')"
+}
+
+webserver() {
+	while true; do echo "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c; sleep 1; done
+	# echo "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c
+}
+
+httpcode() {
+	while true; do echo "HTTP/1.1 $3\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n\n" $2 | nc -vlp $1 -c -w 0.5; done
+}
+
+\#() {
+	echo $1 >> /var/log/hashtag.log
+}
+
+ms() {
+	echo "Playlist: $1"
+	mkdir /Volumes/\$/Musique/Youtube/$1
+	cd /Volumes/\$/Musique/Youtube/$1
+}
+
+sshupdate(){
+	ssh vps $(curl -sL marcpartensky.com//update | bash) &
+	ssh tower $(curl -sL marcpartensky.com//update | bash) &
+	ssh boulimix $(curl -sL marcpartensky.com//update | bash) &
+	ssh gigabix $(curl -sL marcpartensky.com//update | bash) &
+	ssh idefix $(curl -sL marcpartensky.com//update | bash) &
+	ssh boulimix $(curl -sL marcpartensky.com//update | bash) &
+	ssh memorix $(curl -sL marcpartensky.com//update | bash) &
+	ssh pandemix $(curl -sL marcpartensky.com//update | bash) &
+	ssh phoenix $(curl -sL marcpartensky.com//update | bash) &
+	ssh phoenix-staging $(curl -sL marcpartensky.com//update | bash) &
+}
+
+progress-bar() {
+  local duration=${1}
+    already_done() { for ((done=0; done<$elapsed; done++)); do printf "▇"; done }
+    remaining() { for ((remain=$elapsed; remain<$duration; remain++)); do printf " "; done }
+    percentage() { printf "| %s%%" $(( (($elapsed)*100)/($duration)*100/100 )); }
+    clean_line() { printf "\r"; }
+  for (( elapsed=1; elapsed<=$duration; elapsed++ )); do
+      already_done; remaining; percentage
+      sleep 1
+      clean_line
+  done
+  clean_line
+}
+
+
+mountall() {
+	for i in $(/bin/ls /etc/systemd/system/*.mount); do
+		sudo systemctl start $(basename $i)
+	done
+}
+
+proxmox() {
+	pass -c proxmox
+	$(sleep 0.5 && xdg-open https://127.0.0.1:8006) &
+	ssh -NL 127.0.0.1:8006:192.168.0.16:8006 kong
+}
+
+novpn() {
+	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong &
+	sudo ssh -NL 127.0.0.6:443:192.168.0.6:443 kong &
+	sudo ssh -NL 127.0.0.16:443:192.168.0.16:8006 kong &
+	# sudo ssh -NL 127.0.0.18:443:192.168.0.18:443 kong &
+	# sudo ssh -NL 127.0.0.19:443:192.168.0.19:443 kong &
+	# sudo ssh -NL 127.0.0.145:443:192.168.0.145:443 kong &
+	# sudo ssh -NL 127.0.0.29:80:192.168.0.29:80 kong &
+}
+
+darkproxmox() {
+	ssh marc@gigabix sudo ./PVEDiscordDark.sh install
+}
+
+whiteproxmox() {
+	ssh marc@gigabix sudo ./PVEDiscordDark.sh uninstall
+}
+
+
+# progress_bar()
+# {
+#   local DURATION=$1
+#   local INT=0.25      # refresh interval
+
+#   local TIME=0
+#   local CURLEN=0
+#   local SECS=0
+#   local FRACTION=0
+
+#   local FB=2588       # full block
+
+#   trap "echo -e $(tput cnorm); trap - SIGINT; return" SIGINT
+
+#   echo -ne "$(tput civis)\r$(tput el)│"                # clean line
+
+#   local START=$( date +%s%N )
+
+#   while [ $SECS -lt $DURATION ]; do
+#     local COLS=$( tput cols )
+
+#     # main bar
+#     local L=$( bc -l <<< "( ( $COLS - 5 ) * $TIME  ) / ($DURATION-$INT)" | awk '{ printf "%f", $0 }' )
+#     local N=$( bc -l <<< $L                                              | awk '{ printf "%d", $0 }' )
+
+#     [ $FRACTION -ne 0 ] && echo -ne "$( tput cub 1 )"  # erase partial block
+
+#     if [ $N -gt $CURLEN ]; then
+#       for i in $( seq 1 $(( N - CURLEN )) ); do
+#         echo -ne \\u$FB
+#       done
+#       CURLEN=$N
+#     fi
+
+#     # partial block adjustment
+#     FRACTION=$( bc -l <<< "( $L - $N ) * 8" | awk '{ printf "%.0f", $0 }' )
+
+#     if [ $FRACTION -ne 0 ]; then 
+#       local PB=$( printf %x $(( 0x258F - FRACTION + 1 )) )
+#       echo -ne \\u$PB
+#     fi
+
+#     # percentage progress
+#     local PROGRESS=$( bc -l <<< "( 100 * $TIME ) / ($DURATION-$INT)" | awk '{ printf "%.0f", $0 }' )
+#     echo -ne "$( tput sc )"                            # save pos
+#     echo -ne "\r$( tput cuf $(( COLS - 6 )) )"         # move cur
+#     echo -ne "│ $PROGRESS%"
+#     echo -ne "$( tput rc )"                            # restore pos
+
+#     TIME=$( bc -l <<< "$TIME + $INT" | awk '{ printf "%f", $0 }' )
+#     SECS=$( bc -l <<<  $TIME         | awk '{ printf "%d", $0 }' )
+
+#     # take into account loop execution time
+#     local END=$( date +%s%N )
+#     local DELTA=$( bc -l <<< "$INT - ( $END - $START )/1000000000" \
+#                    | awk '{ if ( $0 > 0 ) printf "%f", $0; else print "0" }' )
+#     sleep $DELTA
+#     START=$( date +%s%N )
+#   done
+
+#   echo $(tput cnorm)
+#   trap - SIGINT
+# }
+gitregister () { $(echo $1 || echo $PWD) >> $GIT_RECORD }
+gitunregister() { grep -v $1 $GIT_RECORD > /tmp/gitrecord; mv /tmp/gitrecord $GIT_RECORD }
+gitrecord() { cat $GIT_RECORD }
+gitupdate() { for gitpath in $(cat $GIT_RECORD); do; git -c $gitpath pull; done }
+
+docker-clean() {
+	docker service rm $(docker service ls -q)
+}
+
+snapdump() {
+	snap list | tail -n +2 | awk '{print $1}' > snapfile.txt
+}
+
+snapbundle() {
+	for dependency in $(cat snapfile.txt); do
+		snap install $dependency
+	done
 }

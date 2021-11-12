@@ -1,45 +1,45 @@
 FROM ubuntu:20.10
 
-LABEL maintainer="Marc Partensky <marc.partensky@gmail.com"
+LABEL maintainer="Marc Partensky <marc.partensky@gmail.com>"
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:neovim-ppa/unstable
 RUN apt-get install -y --no-install-recommends \
-        git \
-        golang \
-				nodejs \
-        npm \
-        make \
-        nmap \
-        curl \
-				wget \
-				unzip \
-				python3-dev \
-				python3-pip \
-				cowsay \
-				lolcat \
-				apt-transport-https \
-				ca-certificates \
-				gnupg-agent \
-				openssh-server \
-				tmate \
-				podman \
-				neovim \
-				locales \
-				sudo \
-        zsh
-				# file \
-				# ruby-full \
-				# build-essential
-        # doas
+			git \
+			golang \
+			nodejs \
+			npm \
+			make \
+			nmap \
+			curl \
+			wget \
+			unzip \
+			python3-dev \
+			python3-pip \
+			cowsay \
+			lolcat \
+			apt-transport-https \
+			ca-certificates \
+			gnupg-agent \
+			openssh-server \
+			tmate \
+			podman \
+			neovim \
+			locales \
+			sudo \
+			zsh
+# file \
+# ruby-full \
+# build-essential
+# doas
 
 RUN service ssh start
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 RUN add-apt-repository \
-	"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-	$(lsb_release -cs) stable"
+"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable"
 RUN apt update
 RUN apt install -y docker-ce
 
@@ -49,7 +49,7 @@ RUN pip3 install --user neovim
 # RUN rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash linuxbrew && \
-    echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
+echo 'linuxbrew ALL=(ALL) NOPASSWD:ALL' >>/etc/sudoers
 USER linuxbrew
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
@@ -83,11 +83,11 @@ RUN mv ngrok /usr/local/bin
 WORKDIR /root
 RUN touch .vimrc
 RUN nvim \
-	+"source ~/.config/nvim/vim-plug/plugins.vim" \
-	+PlugUpdate \
-	+UpdateRemotePlugins \
-	+CocUpdate \
-	+qall
++"source ~/.config/nvim/vim-plug/plugins.vim" \
++PlugUpdate \
++UpdateRemotePlugins \
++CocUpdate \
++qall
 
 RUN echo "git -C ~/.config/nvim pull" >> ~/.zshrc
 RUN echo "git -C ~/git/dotfiles pull" >> ~/.zshrc

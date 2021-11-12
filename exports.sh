@@ -1,14 +1,19 @@
 #!/bin/sh
 
 # Path variables
+export PATH="$PATH:$HOME/git/shell"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:${PATH}"
 # export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.2/bin:$PATH"
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 export PATH="/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH"
 export PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH"
+export PATH="/Users/marcpartensky/.pyenv/versions/3.10-dev/bin:$PATH"
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 export PATH="/Users/marcpartensky/flutter/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -16,7 +21,12 @@ export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/Applications/MAMP/bin"
+export PATH="$PATH:/var/lib/snapd/snap/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/sbin"
 # export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export CLICOLOR=1
@@ -48,8 +58,22 @@ export LESS=-Xr
 export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-export HISTFILE=/tmp/.zsh_history
+export HISTFILE="$HOME/.local/share/zsh/.zsh_history"
 export MAC_TEL="fc:19:99:cd:6c:91"
-export MARCPARTENSKY_PATH="/Users/marcpartensky/Desktop/Marc\ Partensky"
+export MARCPARTENSKY_PATH="$HOME/Desktop/Marc\ Partensky"
+export BACKUPVPS_LOG="/var/log/backupvps.log"
+export BIND_MOUNTS="/srv"
+export NOTIFY_MEMO="$HOME/Programs/automation/memo.yml"
+export PROGRAMS_DOCKER_PATH="$HOME/docker"
+export GIT_RECORD="/etc/gitrecord.txt"
+export GIT_DISCOVERY_ACROSS_FILESYSTEM="true"
+export DOTNET_ROOT="/snap/dotnet-sdk/current"
+export VAGRANT_DEFAULT_PROVIDER="virtualbox"
+# ln -s /snap/dotnet-sdk/current/dotnet /usr/local/bin/dotnet
 # export LS_COLORS="auto"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-13.jdk/Contents/Home"
+
+if command -v go > /dev/null; then
+	export PATH="$PATH:$(go env GOPATH)/bin"
+	export GOPATH=$(go env GOPATH)
+fi

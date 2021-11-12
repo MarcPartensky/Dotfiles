@@ -86,7 +86,7 @@ alt - l : yabai -m window --focus east
 # toggle
 fn + ctrl - k : nodesktopicon && terminal-notifier -message "Disabled desktop icons"
 ctrl + alt - k : desktopicon && terminal-notifier -message "Enabled desktop icons"
-fn + alt - n : noscreenshots
+fn  - n : /Users/marcpartensky/.local/bin/noscreenshots
 ctrl + alt - return : brew services restart yabai && terminal-notifier -message "Enabled yabai"
 fn + alt - return : brew services stop yabai && terminal-notifier -message "Disabled yabai"
 ctrl + alt - r : open -a /Applications/Rectangle.app && terminal-notifier -message "Enabled rectangle"
@@ -106,7 +106,8 @@ fn - l: open -a Mail.app
 # alt - i: alacritty -e ipython
 fn - d: open -a Discord.app
 alt - d: open -a Discord.app
-fn - t: open -a Microsoft\ Teams.app
+alt - t: open -a Microsoft\ Teams.app
+fn - t: /Users/marcpartensky/Programs/Automation/tip.py
 fn - s: open -a Slack.app
 alt - s: open -a Slack.app
 fn - r: open -a Calendar.app
@@ -114,8 +115,10 @@ fn - m: open -a Music.app
 alt - m: open -a Music.app
 fn - f: open -a Finder.app
 alt - f: open -a Finder.app
+fn - k: open -a MacPass.app
+alt - o: open -a OpenVPN\ Connect.app
 
-alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
+# alt - t: alacritty -e nvim /users/marcpartensky/programs/markdown/todolist/todolist.md
 alt - y: alacritty -e nvim /Users/marcpartensky/programs/Dotfiles/alacritty.yml
 
 # ssh
@@ -123,11 +126,14 @@ shift + alt - v : alacritty -e ssh vps
 shift + alt - d : alacritty -e ssh docker
 shift + alt - k : alacritty -e ssh -t vps ssh kong
 shift + alt - t : alacritty -e ssh -t vps ssh tower
-shift + alt - m : alacritty -e ssh -t vps ssh mini
+# shift + alt - r : alacritty -e ssh -t vps ssh -t translator
+shift + alt - n : alacritty -e ssh -t vps ssh mini
 shift + alt - g : alacritty -e ssh -t vps ssh -t kong ssh gigabix
 shift + alt - i : alacritty -e ssh -t vps ssh -t kong ssh idefix
-shift + alt - o : alacritty -e ssh -t vps ssh -t kong ssh memorix
+shift + alt - m : alacritty -e ssh -t vps ssh -t kong ssh memorix
 shift + alt - p : alacritty -e ssh -t vps ssh -t kong ssh pandemix
+shift + alt - b : alacritty -e ssh -t vps ssh -t kong ssh boulimix
+shift + alt - f : alacritty -e ssh -t vps ssh -t kong ssh -t gigabix pct enter 106
 shift + alt - w : alacritty -e ssh -t vps ssh -t kong ssh -t pandemix pct enter 126
 shift + alt - s : alacritty -e ssh -t vps ssh -t kong ssh -t idefix pct enter 156
 shift + alt - y : alacritty -e ssh -A -t vps ssh -A -t kong ssh -A -t 192.168.0.211
@@ -221,7 +227,8 @@ cmd + alt - f : yabai -m window --toggle zoom-fullscreen
 
 alt - b : yabai -m space --balance # balance size of windows
 alt - r : yabai -m space --rotate 90 # rotate tree
-alt - o : yabai -m window --toggle split # toggle window split type
+shift + alt - r : yabai -m space --rotate 270 # rotate tree
+# alt - o : yabai -m window --toggle split # toggle window split type
 
 # fn + alt - c : yabai -m window --grid 4:4:1:0:2:4
 # fn + alt - c : yabai -m window --resize left:-20:0 && yabai -m window --resize right:20:0
@@ -234,7 +241,7 @@ shift + cmd - k : yabai -m window --focus stack.prev || yabai -m window --focus 
 shift + cmd - j : yabai -m window --focus stack.next || yabai -m window --focus stack.first # stack down
 
 # float / unfloat window and center on screen
-fn + alt - c : yabai -m window --toggle float;\
+fn + alt - m : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:0:2:4
 
 # toggle sticky(+float), topmost, picture-in-picture

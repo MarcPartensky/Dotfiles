@@ -2,6 +2,7 @@
 
 export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
+export JUNIOR_PATH=~/junior
 export GIT_PROJECTS_PATH=/Volumes/$/git-project
 export FPATH=$HOME/usr/share/zsh/*/functions:$FPATH
 # $(readlink -f "$(which $0)/..")
@@ -37,9 +38,9 @@ zstyle ':completion:*' menu select=0
 #   aliases functions builtins reserved-words \
 #   executables local-directories directories suffix-aliases
 zstyle ':completion:*:' group-order \
-  expansions history-words options list=20 \
-  aliases \
-  local-directories directories
+	expansions history-words options list=20 \
+	aliases \
+	local-directories directories
 
 zstyle ':autocomplete:*' config on
 zstyle ':autocomplete:*' min-input 2
@@ -50,15 +51,15 @@ zstyle ':autocomplete:*' min-input 2
 #   executables local-directories directories suffix-aliases
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
-  local-directories directories
-# zstyle ':autocomplete:*' default-context history-incremental-search-backward
-zstyle ':autocomplete:*' ignored-input ''
-zstyle ':autocomplete:tab:*' fzf-completion yes
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-complete
-zstyle ':autocomplete:tab:*' widget-style menu-select
-# zstyle ':autocomplete:tab:*' widget-style complete-word
-# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+	local-directories directories
+	# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+	zstyle ':autocomplete:*' ignored-input ''
+	zstyle ':autocomplete:tab:*' fzf-completion yes
+	zstyle ':autocomplete:tab:*' insert-unambiguous yes
+	zstyle ':autocomplete:tab:*' widget-style menu-complete
+	zstyle ':autocomplete:tab:*' widget-style menu-select
+	# zstyle ':autocomplete:tab:*' widget-style complete-word
+	# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 # autoload -Uz compdef && compdef
@@ -82,7 +83,7 @@ antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
 # antigen bundle zsh-users/zsh-autosuggestions
-# antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle agkozak/zsh-z
 #antigen bundle soimort/translate-shell
@@ -120,70 +121,92 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # export GREP_COLORS="ms=01;31:mc=01;31:sl=:cx=:fn=35:ln=32:bn=32:se=36"
 
 # "bat" as manpager
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ "$OSTYPE" = "linux-gnu"* ]]; then
 	export DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
-	if [ $DISTRIB = "Ubuntu" ]; then
+	export DISTRIB=$(echo $DISTRIB | sed -r 's/"//g' | sed -r 's/Linux//g' | sed -r 's/ //g')
+	if [ "$DISTRIB" = "Ubuntu" ]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
+	elif [ "$DISTRIB" = "Fedora" ]; then
+
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+elif [ "$OSTYPE" = "darwin"* ]; then
+	export DISTRIB="darwin"
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
+# ssl certificates for dotnet
+if [ "$DISTRIB" = "Fedora" ]; then
+	export SSL_CERT_FILE="/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+	export SSL_CERT_DIR=/dev/null
+elif [ "$DISTRIB" = "OpenSUSE" ]; then
+	export SSL_CERT_FILE="/etc/ssl/ca-bundle.pem"
+	export SSL_CERT_DIR=/dev/null
+elif [ "$DISTRIB" = "Solus" ]; then
+	export SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+	export SSL_CERT_DIR=/dev/null
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 # source ${0:a:h}/setup.sh
-sh ${0:a:h}/os.sh
+source ${0:a:h}/os.sh
 source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/symlinks.sh
 source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
-# source ${0:a:h}/installs/pyenv.sh
+source ${0:a:h}/installs/pyenv.sh
 
+[[ -f ${0:a:h}/secrets.sh ]] && source ${0:a:h}/secrets.sh
+[[ -f ~/.vimrc ]]	|| touch ~/.vimrc
+[[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" > ~/.zshrc
+[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
 
-if [[ ! -f ~/.vimrc ]]
-then
-	touch ~/.vimrc
+if command -v mcfly >& /dev/null; then
+	mkdir -p $HOME/.local/share/zsh
+	touch $HISTFILE
+	eval "$(mcfly init zsh)"
 fi
 
-if [[ ! -f ~/.zshrc ]]
-then
-	echo "source ${0:a:h}/main.sh" > ~/.zshrc
+mkdir -p ~/.local/bin
+if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
+	echo "Adding $HOME/.local/bin to \$PATH"
+	export $PATH="$PATH:$HOME/.local/bin"
 fi
 
-if [[ -f "$HOME/.cargo/env" ]]
-then
-	source "$HOME/.cargo/env"
-fi
-
+ln -sf ${0:a:h}/update.sh $HOME/.local/bin/update
 
 # Get the defaults that most users want.
 # source $VIMRUNTIME/defaults.vim
 
 # if has("vms"); then
 #  set nobackup
-  # do not keep a backup file, use versions instead
+# do not keep a backup file, use versions instead
 # else
 #  set backup
-  # keep a backup file (restore to previous version)
+# keep a backup file (restore to previous version)
 #  if has('persistent_undo'); then
 #    set undofile	# keep an undo file (undo changes after closing)
 #  fi
 # fi
 
 # if [&t_Co > 2 -o has("gui_running")]; then
-  # Switch on highlighting the last used search pattern.
+# Switch on highlighting the last used search pattern.
 #  set hlsearch
 # fi
 
 # Put these in an autocmd group, so that we can delete them easily.
 # augroup vimrcEx
 #  au!
-  # For all text files set 'textwidth' to 78 characters.
+# For all text files set 'textwidth' to 78 characters.
 #  autocmd FileType text setlocal textwidth=78
 # augroup END
 

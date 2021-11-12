@@ -10,5 +10,5 @@ if [[ ! -d $(pyenv root)/plugins/pyenv-virtualenv ]]
 then
 	git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 fi
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

@@ -1,11 +1,10 @@
 alias mem="du -sh"
-alias memfiles="du -sh * | sort -rh;"
+alias memfiles="du -sh * | sort -rh"
 alias py="python"
 alias pip="python -m pip"
 alias pip2="python2 -m pip"
 alias pip3="python3 -m pip"
 
-# alias cat=ccat
 # Git shortcuts
 alias ga="git add -A"
 alias gpo="git push origin"
@@ -17,37 +16,44 @@ alias gplo="git pull origin"
 alias grs="git remote show"
 alias glo="git log --pretty=\"oneline\""
 alias glol="git log --graph --oneline --decorate"
-alias glg="git log --graph --all --decorate"
+alias gl="git log --graph --all --decorate"
 alias grmc="git rm -r --cached ."
 alias gcm="gitmoji -c"
-
-gb() { git branch $@ }
-gi() { git init $@}
-gs() { git status $@ }
-gco() { git checkout $@ }
-gpl() { git pull $@ }
-gr() { git remote $@ }
-gl() { git log $@ }
-gd() { git diff $@ }
-gp() { git push $@ }
+alias gb="git branch"
+alias gi="git init"
+alias gs="git status"
+alias gsw="git switch"
+alias gpl="git pull"
+alias gr="git remote -v"
+alias gd="git diff"
+alias gp="git push"
+alias gk="git checkout"
+alias gm="git merge"
 gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
 }
 gn() { ga; gc $@ }
-gt() { ga; gc $@; git push }
+gt() { ga; gc $@; git pull; git push }
 gfp() {
 	git remote add origin $@
 	git branch -M master
 	git push -u origin master
 }
 
-p() { cd $PROGRAMS_PATH/$@ }
 pj() { cd $GIT_PROJECTS_PATH/$@ }
-
-h() {
-	cd /home/$@
+je() {cd $JUNIOR_PATH/$@ }
+h() {	cd /home/$@ }
+n() {
+	if command -v terminal-notifier; then
+		eval "terminal-notifier -message \"$@\""
+	elif command -v notify-send; then
+		notify-send $@
+	else
+		echo $@
+	fi
 }
+cheat() { curl cheat.sh/$@ }
 
 nodesktopicon() {
 	defaults write com.apple.finder CreateDesktop false
@@ -60,9 +66,9 @@ desktopicon() {
 }
 
 # python programs
-alias webpfix='py /users/marcpartensky/programs/python/repository-2020/webpfix.py'
-alias glou="py /users/marcpartensky/git-projects/glou"
-alias noscreenshots='python /users/marcpartensky/programs/python/repository-2020/no-screenshots.py'
+alias webpfix='python /users/marcpartensky/programs/python/repository-2020/webpfix.py'
+alias glou="python /users/marcpartensky/git-projects/glou"
+# alias noscreenshots='python /users/marcpartensky/programs/python/repository-2020/no-screenshots.py'
 alias video2gif='python /users/marcpartensky/programs/python/repository-2020/video2gif.py'
 alias hyperplanning="python /users/marcpartensky/programs/python/repository-2020/isep-hyperplanning.py"
 alias portail="python /users/marcpartensky/programs/python/repository-2020/isep-portal.py"
@@ -91,17 +97,16 @@ alias hugues="chrome https://www.facebook.com/messages/t/hugues.rubin"
 alias kevin="chrome https://www.facebook.com/messages/t/pandasus.pandasus.1"
 
 # applications
-# alias chrome="open -a 'google chrome' $1"
+# chrome() { open -a Google\ Chrome $@ }
+alias msg="fb-messenger-cli"
 alias unity="open -a 'unity'"
 alias daisy="open -a 'daisydisk'"
 alias terminal="open -a 'iterm'"
 alias postman="open -a 'postman'"
-# alias keybr="chrome https://www.keybr.com/"
-alias touch-typing="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
-alias change-extension="for file in *.$1; do mv '$file' '${file%.txt}.$2'; done"
+alias keybr="chrome https://www.keybr.com/"
+alias touchtyping="open -a 'google chrome' 'https://www.typingclub.com/sportal/program-3.game'"
+alias changeextension="for file in *.$1; do mv '$file' '${file%.$1}.$2'; done"
 search() { open -a 'Google Chrome' "https://www.google.com/search?q=$*" }
-messenger() { open -a 'Google Chrome' "https://www.facebook.com/messages"; }
-messenger-terminal() { exec "fb-messenger-cli"; }
 
 filename=""
 copy() {
@@ -116,13 +121,26 @@ paste() {
 	pbpaste > $filename
 }
 
-# This is why being lazyness in programming even exists
-# function cheat { curl cheat.sh/"$@"; }
-
 compressgif() {
-    ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
+	ffmpeg -i $1 -vf scale=320:-1 -r 10 -f image2pipe -vcodec ppm - | convert -delay 5 -loop 0 - $2
 }
 
-if [[ -d "$HOME/.cargo/env" ]]; then
-	source "$HOME/.cargo/env"
+[[ -d "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+if command -v exa >& /dev/null; then
+	alias ls="exa --classify --icons --group-directories-first"
+	alias la="exa --classify --icons --group-directories-first --all"
+	alias ll="exa --classify --icons --group-directories-first --long --header --group --git"
+	alias lla="exa --classify --icons --group-directories-first --all --long --header --group --git"
+else
+	alias ll="ls -l"
+	alias la="ls -a"
+	alias lla="ls -la"
 fi
+
+if command -v bat >& /dev/null; then
+	alias b="bat"
+else
+	alias b="cat"
+fi
+
