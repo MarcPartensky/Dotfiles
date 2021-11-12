@@ -409,6 +409,23 @@ proxmox() {
 	ssh -NL 127.0.0.1:8006:192.168.0.16:8006 kong
 }
 
+novpn() {
+	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong &
+	sudo ssh -NL 127.0.0.6:443:192.168.0.6:443 kong &
+	sudo ssh -NL 127.0.0.16:443:192.168.0.16:8006 kong &
+	# sudo ssh -NL 127.0.0.18:443:192.168.0.18:443 kong &
+	# sudo ssh -NL 127.0.0.19:443:192.168.0.19:443 kong &
+	# sudo ssh -NL 127.0.0.145:443:192.168.0.145:443 kong &
+	# sudo ssh -NL 127.0.0.29:80:192.168.0.29:80 kong &
+}
+
+darkproxmox() {
+	ssh marc@gigabix sudo ./PVEDiscordDark.sh install
+}
+
+whiteproxmox() {
+	ssh marc@gigabix sudo ./PVEDiscordDark.sh uninstall
+}
 
 
 # progress_bar()
