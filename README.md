@@ -1,6 +1,11 @@
 [![Docker](https://github.com/MarcPartensky/Dotfiles/actions/workflows/docker.yml/badge.svg)](https://github.com/MarcPartensky/Dotfiles/actions/workflows/docker.yml)
 # My dotfiles config.
 
+## Run with Docker
+```
+docker run -it marcpartensky/dotfiles
+```
+
 ## Zsh plugins
 * zsh autocomplete
 
