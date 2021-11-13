@@ -126,6 +126,7 @@ alias showhiddenfiles="defaults write com.apple.finder AppleShowAllFiles -boolea
 alias zshrc="nvim ~/.zshrc"
 alias wh="which"
 alias bindcapslock="gsettings set org.gnome.desktop.input-sources xkb-options \"['caps:escape']\""
+alias path="echo $PATH"
 
 # je
 alias phoenix="ssh phoenix"

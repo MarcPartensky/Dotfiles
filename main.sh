@@ -150,11 +150,6 @@ elif [ "$DISTRIB" = "Solus" ]; then
 	export SSL_CERT_DIR=/dev/null
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-
 # source ${0:a:h}/setup.sh
 source ${0:a:h}/os.sh
 source ${0:a:h}/exports.sh
@@ -165,10 +160,16 @@ source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 source ${0:a:h}/installs/pyenv.sh
 
+
 [[ -f ${0:a:h}/secrets.sh ]] && source ${0:a:h}/secrets.sh
 [[ -f ~/.vimrc ]]	|| touch ~/.vimrc
 [[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" > ~/.zshrc
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 
 if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
