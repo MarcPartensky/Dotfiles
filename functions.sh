@@ -405,8 +405,13 @@ mountall() {
 
 proxmox() {
 	pass -c proxmox
-	$(sleep 0.5 && xdg-open https://127.0.0.1:8006) &
-	ssh -NL 127.0.0.1:8006:192.168.0.16:8006 kong
+	$(sleep 1 && xdg-open https://proxmox) &
+	ssh -NL 127.0.0.6:443:192.168.0.16:8006 kong
+}
+
+webedgix() {
+	$(sleep 1 && xdg-open https://edgix) &
+	ssh -NL 127.0.0.1:443:192.168.0.1:443 kong
 }
 
 novpn() {
