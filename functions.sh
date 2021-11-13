@@ -405,11 +405,13 @@ mountall() {
 
 proxmox() {
 	pass -c proxmox
+	sudo echo https://proxmox
 	$(sleep 1 && xdg-open https://proxmox) &
 	sudo ssh -NL 127.0.0.6:443:192.168.0.16:8006 kong
 }
 
 webedgix() {
+	sudo echo https://edgix
 	$(sleep 1 && xdg-open https://edgix) &
 	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong
 }
