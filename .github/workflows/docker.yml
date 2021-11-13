@@ -29,5 +29,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h)
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$(echo $(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h))
 
