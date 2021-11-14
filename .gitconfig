@@ -18,7 +18,7 @@
 	trustExitCode = true
 [commit]
 	template = ~/.stCommitMsg
-	gpgsign = true
+	gpgsign = false
 [pull]
 	rebase = true
 [init]
