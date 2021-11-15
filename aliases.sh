@@ -128,6 +128,7 @@ alias wh="which"
 alias bindcapslock="gsettings set org.gnome.desktop.input-sources xkb-options \"['caps:escape']\""
 alias path="echo $PATH"
 alias fkill="kill -9"
+alias maxuserinstances="echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
 
 # je
 alias phoenix="ssh phoenix"
