@@ -416,8 +416,21 @@ webedgix() {
 	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong
 }
 
+ipa() {
+    sudo echo https://ipa.juniorisep.com
+    $(sleep 1 && xdg-open https://pi.hole) &
+    sudo ssh -NL 127.0.0.5:443:192.168.0.5:443 kong
+}
+
+pihole() {
+    sudo echo http://pi.hole
+    $(sleep 1 && xdg-open http://pi.hole) &
+    sudo ssh -NL 127.0.0.6:80:192.168.0.6:80 kong
+}
+
 novpn() {
 	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong &
+    sudo ssh -NL 127.0.0.5:443:192.168.0.5:443 kong &
 	sudo ssh -NL 127.0.0.6:443:192.168.0.6:443 kong &
 	sudo ssh -NL 127.0.0.16:443:192.168.0.16:8006 kong &
 	# sudo ssh -NL 127.0.0.18:443:192.168.0.18:443 kong &
