@@ -19,7 +19,9 @@ cd() {
 }
 
 dc() {
-	if [ "$1" != "-f" ]; then
+	if [ "$1" = "-f" ]; then
+        docker-compose --file $@
+    else
 		if [ -f $PWD/docker-compose.yml ]; then
 			docker-compose --file $PWD/docker-compose.yml $@
 		else
@@ -528,4 +530,10 @@ snapbundle() {
 	for dependency in $(cat snapfile.txt); do
 		snap install $dependency
 	done
+}
+getmetasploit() {
+    curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
+  chmod 755 msfinstall && \
+  ./msfinstall
+
 }
