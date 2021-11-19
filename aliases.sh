@@ -129,6 +129,8 @@ alias bindcapslock="gsettings set org.gnome.desktop.input-sources xkb-options \"
 alias path="echo $PATH"
 alias fkill="kill -9"
 alias maxuserinstances="echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
+alias vpn="openvpn"
+alias vpn3="openvpn3"
 
 # je
 alias phoenix="ssh phoenix"

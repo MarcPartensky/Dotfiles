@@ -405,27 +405,27 @@ mountall() {
 
 proxmox() {
 	pass -c proxmox
-	sudo echo https://proxmox
-	$(sleep 1 && xdg-open https://proxmox) &
-	sudo ssh -NL 127.0.0.6:443:192.168.0.16:8006 kong
+	sudo echo https://proxmox.tunnel
+	$(sleep 1 && xdg-open https://proxmox.tunnel) &
+	sudo ssh -NL 127.0.1.6:443:192.168.0.16:8006 kong
 }
 
 webedgix() {
-	sudo echo https://edgix
-	$(sleep 1 && xdg-open https://edgix) &
-	sudo ssh -NL 127.0.0.1:443:192.168.0.1:443 kong
+	sudo echo https://edgix.tunnel
+	$(sleep 1 && xdg-open https://edgix.tunnel) &
+	sudo ssh -NL 127.0.1.1:443:192.168.0.1:443 kong
 }
 
 ipa() {
-    sudo echo https://ipa.juniorisep.com
-    $(sleep 1 && xdg-open https://pi.hole) &
-    sudo ssh -NL 127.0.0.5:443:192.168.0.5:443 kong
+    sudo echo https://ipa.tunnel
+    $(sleep 1 && xdg-open https://ipa.tunnel) &
+    sudo ssh -NL 127.0.1.5:443:192.168.0.5:443 kong
 }
 
 pihole() {
-    sudo echo http://pi.hole
-    $(sleep 1 && xdg-open http://pi.hole) &
-    sudo ssh -NL 127.0.0.6:80:192.168.0.6:80 kong
+    sudo echo http://pihole.tunnel
+    $(sleep 1 && xdg-open http://pihole.tunnel) &
+    sudo ssh -NL 127.0.1.6:80:192.168.0.6:80 kong
 }
 
 novpn() {
