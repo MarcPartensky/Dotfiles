@@ -38,6 +38,7 @@ alias dotg="dotgit"
 alias doti="dotignore"
 alias doth="dotssh"
 alias dotq="dotquick"
+alias dotp="git -C $DOTFILES_PATH pull"
 alias vimrc='nvim ~/.vimrc'
 alias ev="cd ~/.config/nvim"
 alias ez='nvim ~/.zshrc'
