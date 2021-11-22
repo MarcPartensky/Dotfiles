@@ -131,6 +131,7 @@ alias fkill="kill -9"
 alias maxuserinstances="echo fs.inotify.max_user_instances=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p"
 alias vpn="openvpn"
 alias vpn3="openvpn3"
+alias insidegitdir="git rev-parse --is-inside-work-tree"
 
 # je
 alias phoenix="ssh phoenix"
