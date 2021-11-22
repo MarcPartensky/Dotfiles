@@ -1,5 +1,49 @@
 #!/usr/bin/env sh
 
+# je
+alias phoenix="ssh phoenix"
+alias phoenixstaging="ssh phoenix-staging"
+alias edgix="ssh edgix"
+alias boulimix="ssh boulimix"
+alias gigabix="ssh gigabix"
+alias idefix="ssh idefix"
+alias pandemix="ssh pandemix"
+alias memorix="ssh memorix"
+alias vpnix="ssh vpnix"
+alias playground="ssh playground"
+alias caddy="nvim ~/junior/caddix/Caddyfile"
+alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
+alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
+
+# Navigation shortcuts
+alias cdd="cd ~/docker"
+alias desktop="cd ~/desktop"
+alias documents="cd ~/documents"
+alias images="cd ~/images"
+alias downloads="cd ~/downloads"
+alias isep="cd /Volumes/$/isep"
+alias marc="cd ~/desktop/Marc\ Partensky"
+alias programs='cd ~/programs/'
+alias website='cd ~/programs/website'
+alias domination="cd $PROGRAMS_PATH/kingdomino"
+alias esclave="cd $PROGRAMS_PATH/esclave"
+alias web='cd ~/programs/web'
+alias javascript='cd ~/programs/web/javascript'
+alias canvas='cd ~/programs/web/javascript/canvas'
+alias html='cd ~/programs/web/html'
+alias css="cd ~/programs/web/css"
+alias wadjet='cd ~/unity games/asteroids'
+alias gitprojects="cd ~/git-projects"
+alias brain="cd ~/programs/brainperformer"
+alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
+alias junior="cd ~/junior"
+alias cv1="cd $MARCPARTENSKY_PATH/CV/cv-1p"
+alias cv2="cd $MARCPARTENSKY_PATH/CV/cv-2p"
+alias translator="cd ~/pickup/colis21/tools/Traduction/Translator"
+alias colis21="cd ~/pickup/colis21"
+alias tia21="cd ~/pickup/tia21"
+
+# basic
 alias v="nvim"
 alias l="ls"
 alias c="cd"
@@ -135,46 +179,3 @@ alias vpn="openvpn"
 alias vpn3="openvpn3"
 alias insidegitdir="git rev-parse --is-inside-work-tree"
 alias tel="ssh $TEL -p 8022"
-
-# je
-alias phoenix="ssh phoenix"
-alias phoenixstaging="ssh phoenix-staging"
-alias edgix="ssh edgix"
-alias boulimix="ssh boulimix"
-alias gigabix="ssh gigabix"
-alias idefix="ssh idefix"
-alias pandemix="ssh pandemix"
-alias memorix="ssh memorix"
-alias vpnix="ssh vpnix"
-alias playground="ssh playground"
-alias caddy="nvim ~/junior/caddix/Caddyfile"
-alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
-alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
-
-# Navigation shortcuts
-alias cdd="cd ~/docker"
-alias desktop="cd ~/desktop"
-alias documents="cd ~/documents"
-alias images="cd ~/images"
-alias downloads="cd ~/downloads"
-alias isep="cd /Volumes/$/isep"
-alias marc="cd ~/desktop/Marc\ Partensky"
-alias programs='cd ~/programs/'
-alias website='cd ~/programs/website'
-alias domination="cd $PROGRAMS_PATH/kingdomino"
-alias esclave="cd $PROGRAMS_PATH/esclave"
-alias web='cd ~/programs/web'
-alias javascript='cd ~/programs/web/javascript'
-alias canvas='cd ~/programs/web/javascript/canvas'
-alias html='cd ~/programs/web/html'
-alias css="cd ~/programs/web/css"
-alias wadjet='cd ~/unity games/asteroids'
-alias gitprojects="cd ~/git-projects"
-alias brain="cd ~/programs/brainperformer"
-alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
-alias junior="cd ~/junior"
-alias cv1="cd $MARCPARTENSKY_PATH/CV/cv-1p"
-alias cv2="cd $MARCPARTENSKY_PATH/CV/cv-2p"
-alias translator="cd ~/pickup/colis21/tools/Traduction/Translator"
-alias colis21="cd ~/pickup/colis21"
-alias tia21="cd ~/pickup/tia21"
