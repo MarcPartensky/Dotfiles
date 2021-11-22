@@ -170,10 +170,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export HISTFILE=$HOME/.zsh_history
+export HISTTIMEFORMAT="[%F %T] "
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
+export SAVEHIST=1000000
+setopt appendhistory
 
 if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
 	touch $HISTFILE
+    export MCFLY_KEY_SCHEME=vim
 	eval "$(mcfly init zsh)"
 fi
 
