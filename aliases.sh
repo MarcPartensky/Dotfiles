@@ -132,6 +132,7 @@ alias maxuserinstances="echo fs.inotify.max_user_instances=524288 | sudo tee -a 
 alias vpn="openvpn"
 alias vpn3="openvpn3"
 alias insidegitdir="git rev-parse --is-inside-work-tree"
+alias tel="ssh $TEL -p 8022"
 
 # je
 alias phoenix="ssh phoenix"
