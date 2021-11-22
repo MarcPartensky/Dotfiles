@@ -144,3 +144,8 @@ else
 	alias b="cat"
 fi
 
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export HISTFILE=~/.zsh_history
+setopt HIST_FIND_NO_DUPS
+setopt INC_APPEND_HISTORY
