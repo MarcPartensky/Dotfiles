@@ -43,7 +43,13 @@ gfp() {
 
 pj() { cd $GIT_PROJECTS_PATH/$@ }
 je() {cd $JUNIOR_PATH/$@ }
-h() {	cd /home/$@ }
+h() {
+	if [ $# = 0 ]; then
+		cd $HOME
+	else
+		cd /home/$@
+	fi
+}
 n() {
 	if command -v terminal-notifier; then
 		eval "terminal-notifier -message \"$@\""

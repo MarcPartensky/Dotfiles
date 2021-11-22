@@ -537,3 +537,9 @@ getmetasploit() {
   ./msfinstall
 
 }
+fcd() {
+	cd $(find -type d | fzf)
+}
+fv() {
+    nvim $(fzf)
+}
