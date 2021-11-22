@@ -178,6 +178,7 @@ setopt HIST_FIND_NO_DUPS
 setopt INC_APPEND_HISTORY
 export SAVEHIST=1000000
 setopt appendhistory
+setopt EXTENDED_HISTORY
 
 if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
