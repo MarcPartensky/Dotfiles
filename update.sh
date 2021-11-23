@@ -22,6 +22,12 @@ main() {
 			apt upgrade -y &&
 			apt autoremove) | sudo tee $LOG_FOLDER/update_apt.log >> $LOG_FILE 2>&1
 	fi
+	if command -v pkg; then
+		$(pkg --fix-broken install &&
+			pkg update &&
+			pkg upgrade -y &&
+			pkg autoremove) | sudo tee $LOG_FOLDER/update_pkg.log >> $LOG_FILE 2>&1
+	fi
 	if command -v dnf; then
 		$(sudo dnf upgrade -y &&
 			sudo dnf autoremove) sudo tee | $LOG_FOLDER/update_dnf.log >> $LOG_FILE 2>&1
