@@ -75,3 +75,4 @@ if command -v go > /dev/null; then
 	export PATH="$PATH:$(go env GOPATH)/bin"
 	export GOPATH=$(go env GOPATH)
 fi
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
