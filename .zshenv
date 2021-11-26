@@ -29,6 +29,7 @@ alias gd="git diff"
 alias gp="git push"
 alias gk="git checkout"
 alias gm="git merge"
+alias gcl="git clone"
 gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
