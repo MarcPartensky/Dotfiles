@@ -1,5 +1,5 @@
 dump:
-	brew bundle dump
+	brew bundle dump -f
 	snapdump
 restore:
 	brew bundle
