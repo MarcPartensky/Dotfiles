@@ -1,3 +1,6 @@
+update:
+	brew dump
+	snapdump
 build:
 	docker build /home/marc -f Dockerfile -t marcpartensky/env
 push:
