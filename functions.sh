@@ -543,3 +543,11 @@ fcd() {
 fv() {
     nvim $(fzf)
 }
+randomproxy() {
+    shuf -n 1 $PROGRAMS_PATH/secrets/proxy.md
+}
+if ! command -v pbcopy > /dev/stdout ; then
+    pbcopy() {
+        cat $1 | xclip -selection clipboard
+    }
+fi
