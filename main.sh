@@ -131,7 +131,7 @@ if [[ "$OSTYPE" = "linux-gnu"* ]]; then
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
-elif [ "$OSTYPE" = "darwin"* ]; then
+elif [ "$OSTYPE" = "darwin" ]; then
 	export DISTRIB="darwin"
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
