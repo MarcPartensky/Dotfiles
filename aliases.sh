@@ -186,3 +186,4 @@ alias robo3t="docker run --network host -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-u
 alias krakenrestore="mongorestore -v --host localhost --port 27017 --gzip --archive=krakendump.bzip"
 alias merlin="echo merlin"
 alias kraken='git -C $PROGRAMS_PATH/tia21 pull && docker-compose -f $PROGRAMS_PATH/tia21/docker-compose.yml up -d mongo lapin && code $PROGRAMS_PATH/tia21 & $(sleep 5 && xdg-open https://localhost:5000) & dotnet run --project $PROGRAMS_PATH/tia21/src/Pssa.Tia21.Web'
+alias vnc="sudo systemctl start vncserver@:1.service"
