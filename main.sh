@@ -180,6 +180,8 @@ setopt INC_APPEND_HISTORY
 export SAVEHIST=1000000
 setopt appendhistory
 setopt EXTENDED_HISTORY
+export HIST_STAMPS="yyyy-mm-dd"
+# export HISTTIMEFORMAT="%F %T "
 
 if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
