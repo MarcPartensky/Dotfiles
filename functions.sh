@@ -546,8 +546,14 @@ fv() {
 randomproxy() {
     shuf -n 1 $PROGRAMS_PATH/secrets/proxy.md
 }
+
 if ! command -v pbcopy > /dev/stdout ; then
     pbcopy() {
         cat $1 | xclip -selection clipboard
     }
 fi
+
+updatec21mongo() {
+	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=c:\temp\colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore.exe --host=localhost --port=27017 --gzip --archive=c:/temp/colis21_events_dump.bzip
+}
