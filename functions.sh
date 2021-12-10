@@ -557,3 +557,18 @@ updatec21mongo() {
 	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=c:\temp\colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	mongorestore.exe --host=localhost --port=27017 --gzip --archive=c:/temp/colis21_events_dump.bzip
 }
+
+kraken() {
+    git -C $PROGRAMS_PATH/tia21 pull
+    code $PROGRAMS_PATH/tia21
+    docker-compose -f $PROGRAMS_PATH/tia21/docker-compose.yml up -d mongo lapin
+    docker-compose -f $PROGRAMS_PATH/tia21/docker-compose.yml logs -f mongo lapin >> /tmp/kraken.log 2>&1 &
+    dotnet run --project $PROGRAMS_PATH/tia21/src/Pssa.Tia21.Web >> /tmp/kraken.log 2>&1 &
+    dotnet run --project $PROGRAMS_PATH/tia21/src/Pssa.Tia21.PicktalkIn >> /tmp/kraken.log 2>&1 &
+    sleep 5
+    xdg-open https://localhost:5000
+}
+
+findup() {
+    $1
+}
