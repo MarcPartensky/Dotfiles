@@ -553,6 +553,14 @@ if ! command -v pbcopy > /dev/stdout ; then
     }
 fi
 
+dumpc21mongo() {
+	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+}
+
+dumptia21mongo() {
+	mongodump.exe --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+}
+
 updatemongo() {
 	mongodump.exe --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
