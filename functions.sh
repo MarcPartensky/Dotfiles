@@ -591,3 +591,9 @@ kraken() {
 findup() {
     $1
 }
+gwl() {
+    repo=$(gh repo view --json 'nameWithOwner' --jq '.nameWithOwner')
+    gh workflow list | awk '{print $3}' | while read line ; do
+        echo https://github.com/$repo/runs/$line?check_suite_focus=true
+    done
+}
