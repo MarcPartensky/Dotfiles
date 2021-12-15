@@ -182,7 +182,6 @@ alias maxuserinstances="echo fs.inotify.max_user_instances=524288 | sudo tee -a 
 alias vpn="openvpn"
 alias vpn3="openvpn3"
 alias insidegitdir="git rev-parse --is-inside-work-tree"
-alias tel="ssh $TEL -p 8022"
 alias robo3t="docker run --network host -e DISPLAY -v $HOME/.config/3T:/root/.config/3T -v $HOME/.3T:/root/.3T -v $HOME/.ssh/id_rsa:/root/.ssh/id_rsa -v $HOME/.ssh/config:/root/.ssh/config -v /tmp/.X11-unix:/tmp/.X11-unix njordr/robo3t"
 alias krakenrestore="mongorestore -v --host localhost --port 27017 --gzip --archive=krakendump.bzip"
 alias merlin="echo merlin"
