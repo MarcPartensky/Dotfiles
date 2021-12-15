@@ -554,30 +554,37 @@ if ! command -v pbcopy > /dev/stdout ; then
 fi
 
 dumpc21mongo() {
-	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 }
 
 dumptia21mongo() {
-	mongodump.exe --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 }
 
 updatemongo() {
-	mongodump.exe --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore.exe --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
-	mongorestore.exe --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
+	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
 }
 
 updatec21mongo() {
-	mongodump.exe --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore.exe --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
 }
 updatetia21mongo() {
-	mongodump.exe --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore.exe --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
+}
+
+dumpmongolocalhost() {
+     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=./colis21_events_dump.bzip
+
 }
 
 kraken() {
+    git -C $PROGRAMS_PATH/colis21 pull
+    git -C $PROGRAMS_PATH/tia21 pull
     git -C $PROGRAMS_PATH/tia21 pull
     code $PROGRAMS_PATH/tia21
     docker-compose -f $PROGRAMS_PATH/tia21/docker-compose.yml up -d mongo lapin
