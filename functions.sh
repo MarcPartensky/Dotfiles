@@ -554,7 +554,7 @@ if ! command -v pbcopy > /dev/stdout ; then
 fi
 
 
-export C21_DUMP_PATH="~/Downloads/pickup/dump"
+export C21_DUMP_PATH="$HOME/Downloads/pickup/dump"
 [[ -d $C21_DUMP_PATH ]] || mkdir -p $C21_DUMP_PATH
 
 dumpc21testv() {
