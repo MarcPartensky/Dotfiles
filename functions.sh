@@ -590,11 +590,11 @@ dumptia21local() {
      mongodump --host "localhost:27017" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
 }
 
-restorec21mongo() {
+restorec21local() {
     docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
 }
 
-restoretia21mongo() {
+restoretia21local() {
     docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus.bzip
 }
 
