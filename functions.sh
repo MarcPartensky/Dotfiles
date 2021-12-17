@@ -582,6 +582,10 @@ dumpmongolocalhost() {
 
 }
 
+restorec21mongo() {
+    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/colis21_events_dump.bzip
+}
+
 kraken() {
     git -C $PROGRAMS_PATH/colis21 pull
     git -C $PROGRAMS_PATH/tia21 pull
