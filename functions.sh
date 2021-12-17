@@ -553,37 +553,49 @@ if ! command -v pbcopy > /dev/stdout ; then
     }
 fi
 
-dumpc21mongo() {
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+
+export C21_DUMP_PATH="~/Downloads/pickup/dump"
+[[ -d $C21_DUMP_PATH ]] || mkdir -p $C21_DUMP_PATH
+
+dumpc21testv() {
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 }
 
-dumptia21mongo() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+dumptia21octopus() {
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 }
 
-updatemongo() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+updatemongolocal() {
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
 	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
 }
 
 updatec21mongo() {
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/tmp/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
+	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
 }
+
 updatetia21mongo() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/tmp/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
+	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
 }
 
-dumpmongolocalhost() {
-     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=./colis21_events_dump.bzip
+dumpc21local() {
+     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
+}
 
+dumptia21local() {
+     mongodump --host "localhost:27017" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
 }
 
 restorec21mongo() {
-    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/colis21_events_dump.bzip
+    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
+}
+
+restoretia21mongo() {
+    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus.bzip
 }
 
 kraken() {
