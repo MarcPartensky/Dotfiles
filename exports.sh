@@ -76,3 +76,6 @@ if command -v go > /dev/null; then
 	export GOPATH=$(go env GOPATH)
 fi
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'
+export PICKUP_DNS_IP="10.138.68.8"
+export PICKUP_C21_IP="10.137.64.217"
+export PICKUP_TIA21_IP="10.137.64.218"
