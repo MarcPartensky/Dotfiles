@@ -63,6 +63,7 @@ dotc() {
     git -C $DOTFILES_PATH add -A
     git -C $DOTFILES_PATH commit -m $1
     git -C $DOTFILES_PATH push
+    exec $SHELL
 }
 
 updategit() {
@@ -553,7 +554,7 @@ fv() {
 }
 
 fp() {
-	cd $(find -type d $PROGRAMS_PATH | fzf)
+	cd $(/bin/ls -1 $PROGRAMS_PATH | fzf)
 }
 
 randomproxy() {
