@@ -13,6 +13,7 @@ set editing-mode vi
 set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
+setopt autocd
 
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
