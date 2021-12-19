@@ -59,6 +59,12 @@ p() {
 	fi
 }
 
+dotc() {
+    git -C $DOTFILES_PATH add -A
+    git -C $DOTFILES_PATH commit -S -m $1
+    git -C $DOTFILES_PATH push
+}
+
 updategit() {
 	for f in `/bin/ls $PROGRAMS_PATH`; do; printf "\e[1m$f\e[0m: "; git -C $f pull ; done
 }
