@@ -554,7 +554,7 @@ fv() {
 }
 
 fp() {
-	cd $(/bin/ls -1 $PROGRAMS_PATH | fzf)
+	cd "$PROGRAMS_PATH/$(/bin/ls -1 $PROGRAMS_PATH | fzf)"
 }
 
 randomproxy() {
