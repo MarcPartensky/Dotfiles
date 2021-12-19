@@ -13,7 +13,13 @@ set editing-mode vi
 set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
-setopt autocd
+
+export SHELL_NAME=$(echo $SHELL | rev | cut -d/ -f1 | rev)
+if [ "$SHELL_NAME" = "zsh" ]; then
+    setopt autocd
+elif [ "$SHELL_NAME" = "bash" ]; then
+    shopt -s autocd
+fi
 
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
