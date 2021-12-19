@@ -591,11 +591,11 @@ dumptia21local() {
 }
 
 restorec21local() {
-    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
+    docker run --rm --network=host -v $C21_DUMP_PATH:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/colis21_events_dump.bzip
 }
 
 restoretia21local() {
-    docker run --network=host -v /home/marc:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus.bzip
+    docker run --rm --network=host -v $C21_DUMP_PATH:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/octopus_dump.bzip
 }
 
 kraken() {
