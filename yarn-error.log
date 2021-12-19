@@ -1,0 +1,94 @@
+Arguments: 
+  /home/marc/.nvm/versions/node/v12.18.3/bin/node /home/linuxbrew/.linuxbrew/Cellar/yarn/1.22.17_2/libexec/bin/yarn.js add v1.22.17 info No lockfile found. [1/4] Resolving packages... [2/4] Fetching packages... [3/4] Linking dependencies... [4/4] Building fresh packages... success Saved lockfile. success Saved 8 new dependencies. info Direct dependencies └─ yarn-upgrade-all@0.5.4 info All dependencies ├─ ansi-styles@4.3.0 ├─ chalk@4.1.2 ├─ color-convert@2.0.1 ├─ color-name@1.1.4 ├─ commander@5.1.0 ├─ has-flag@4.0.0 ├─ supports-color@7.2.0 └─ yarn-upgrade-all@0.5.4 Done in 1.53s. yarn run v1.22.17 $ /home/marc/git/dotfiles/node_modules/.bin/yarn-upgrade-all [Start]: yarn remove yarn-upgrade-all && yarn add --dev yarn-upgrade-all [Done]: yarn remove yarn-upgrade-all && yarn add --dev yarn-upgrade-all Done in 1.46s. yarn upgrade v1.22.17 [1/4] Resolving packages... [2/4] Fetching packages... [3/4] Linking dependencies... [4/4] Rebuilding all packages... success Saved lockfile. success Saved 8 new dependencies. info Direct dependencies └─ yarn-upgrade-all@0.5.4 info All dependencies ├─ ansi-styles@4.3.0 ├─ chalk@4.1.2 ├─ color-convert@2.0.1 ├─ color-name@1.1.4 ├─ commander@5.1.0 ├─ has-flag@4.0.0 ├─ supports-color@7.2.0 └─ yarn-upgrade-all@0.5.4 Done in 1.55s.
+
+PATH: 
+  /home/marc/.pyenv/plugins/pyenv-virtualenv/shims:/home/linuxbrew/.linuxbrew/opt/openvpn/sbin:/home/marc/.nvm/versions/node/v12.18.3/bin:/home/marc/.pyenv/plugins/pyenv-virtualenv/shims:/home/linuxbrew/.linuxbrew/opt/openvpn/sbin:/usr/lib64/ccache:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/var/lib/snapd/snap/bin:/home/marc/bin:/home/marc/.dotnet/tools:/home/marc/.antigen/bundles/romkatv/powerlevel10k:/home/marc/.antigen/bundles/robbyrussell/oh-my-zsh/themes:/home/marc/.antigen/bundles/zsh-users/zsh-completions:/home/marc/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/home/marc/.antigen/bundles/agkozak/zsh-z:/home/marc/git/shell:/home/marc/.pyenv/bin:/home/marc/.pyenv/shims:/usr/local/opt/php@7.1/bin:/usr/local/opt/php@7.2/bin:/usr/local/opt/openjdk@11/bin:/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin:/usr/local/opt/grep/libexec/gnubin:/Users/marcpartensky/flutter/bin:/home/marc/.yarn/bin:/home/marc/.config/yarn/global/node_modules/.bin:/opt/local/bin:/opt/local/sbin:/opt/gradle/gradle-7.0/bin:/home/marc/.cargo/bin:/home/marc/.local/bin:/usr/local/go/bin:/Applications/MAMP/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/marc/go/bin:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin:/home/marc/.antigen/bundles/romkatv/powerlevel10k:/home/marc/.antigen/bundles/robbyrussell/oh-my-zsh/themes:/home/marc/.antigen/bundles/robbyrussell/oh-my-zsh/themes:/home/marc/.antigen/bundles/robbyrussell/oh-my-zsh/themes:/home/marc/.antigen/bundles/zsh-users/zsh-completions:/home/marc/.antigen/bundles/zsh-users/zsh-syntax-highlighting:/home/marc/.antigen/bundles/agkozak/zsh-z:/home/marc/git/shell:/home/marc/.pyenv/bin:/home/marc/.pyenv/shims:/usr/local/opt/php@7.1/bin:/usr/local/opt/php@7.2/bin:/usr/local/opt/openjdk@11/bin:/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin:/usr/local/opt/grep/libexec/gnubin:/Users/marcpartensky/flutter/bin:/home/marc/.yarn/bin:/home/marc/.config/yarn/global/node_modules/.bin:/opt/local/bin:/opt/local/bin:/opt/local/sbin:/opt/gradle/gradle-7.0/bin:/home/marc/.cargo/bin:/home/marc/.local/bin:/usr/local/go/bin:/Applications/MAMP/bin:/var/lib/snapd/snap/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/home/marc/go/bin:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  12.18.3
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.npmjs.org/v1.22.17: Not found
+      at Request.params.callback [as _callback] (/home/linuxbrew/.linuxbrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:67029:18)
+      at Request.self.callback (/home/linuxbrew/.linuxbrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:140883:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/home/linuxbrew/.linuxbrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:141855:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/home/linuxbrew/.linuxbrew/Cellar/yarn/1.22.17_2/libexec/lib/cli.js:141777:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1220:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+
+npm manifest: 
+  {
+    "devDependencies": {
+      "yarn-upgrade-all": "^0.5.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
+  # yarn lockfile v1
+  
+  
+  ansi-styles@^4.1.0:
+    version "4.3.0"
+    resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-4.3.0.tgz#edd803628ae71c04c85ae7a0906edad34b648937"
+    integrity sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==
+    dependencies:
+      color-convert "^2.0.1"
+  
+  chalk@^4.1.0:
+    version "4.1.2"
+    resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
+    integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
+    dependencies:
+      ansi-styles "^4.1.0"
+      supports-color "^7.1.0"
+  
+  color-convert@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-2.0.1.tgz#72d3a68d598c9bdb3af2ad1e84f21d896abd4de3"
+    integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
+    dependencies:
+      color-name "~1.1.4"
+  
+  color-name@~1.1.4:
+    version "1.1.4"
+    resolved "https://registry.yarnpkg.com/color-name/-/color-name-1.1.4.tgz#c2a09a87acbde69543de6f63fa3995c826c536a2"
+    integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
+  
+  commander@^5.1.0:
+    version "5.1.0"
+    resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
+    integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
+  
+  has-flag@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/has-flag/-/has-flag-4.0.0.tgz#944771fd9c81c81265c4d6941860da06bb59479b"
+    integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
+  
+  supports-color@^7.1.0:
+    version "7.2.0"
+    resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.2.0.tgz#1b7dcdcb32b8138801b3e478ba6a51caa89648da"
+    integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+    dependencies:
+      has-flag "^4.0.0"
+  
+  yarn-upgrade-all@^0.5.4:
+    version "0.5.4"
+    resolved "https://registry.yarnpkg.com/yarn-upgrade-all/-/yarn-upgrade-all-0.5.4.tgz#3c00677957739187a30a4ee4824c46f43996c173"
+    integrity sha512-XaFO3Yv6cXEBizancbRxJT3fdgHfiESNJoV/czWzXRXN2CZBk61IQIFbmeMRE6HhXcBGd+rVmnUg5Csw4axdDA==
+    dependencies:
+      chalk "^4.1.0"
+      commander "^5.1.0"
