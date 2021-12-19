@@ -55,6 +55,7 @@ alias t="todo"
 alias f="find"
 alias d="docker"
 alias e='nvim ~/.zshenv'
+alias r="restart"
 alias vim="nvim"
 alias restart="exec $SHELL"
 alias finder="open ."
