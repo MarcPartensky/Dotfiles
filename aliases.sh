@@ -187,4 +187,5 @@ alias krakenrestore="mongorestore -v --host localhost --port 27017 --gzip --arch
 alias merlin="echo merlin"
 alias vnc="sudo systemctl start vncserver@:1.service"
 alias history="history -t'%F %T'"
-alias aptu="apt clean && apt update && apt upgrade -y && apt autoremove -y"
+alias aptu="sudo apt clean && sudo apt update && apt upgrade -y && sudo apt autoremove -y"
+alias dnfu="sudo dnf update -y"
