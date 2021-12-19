@@ -47,9 +47,9 @@ p() {
 	else
 		cd $PROGRAMS_PATH
 		if command -v gh; then
-			gh repo clone $1
+			gh repo clone $1 $2
 		else
-			git clone https://github.com/$1
+			git clone https://github.com/$1 $2
 		fi
 		f=$(basename $1)
 		f=$(/bin/ls | grep -i $f)
