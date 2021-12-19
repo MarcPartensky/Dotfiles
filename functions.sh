@@ -553,7 +553,7 @@ fv() {
 }
 
 fp() {
-	cd $(find -type d | fzf $PROGRAMS_PATH)
+	cd $(find -type d $PROGRAMS_PATH | fzf)
 }
 
 randomproxy() {
