@@ -35,7 +35,8 @@ zstyle -d ':completion:*' select-prompt
 #\\\_ COMPLETIONS _///#
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
-zstyle ':completion:*' extra-verbose no
+# zstyle ':completion:*' extra-verbose no
+zstyle ':completion:*' extra-verbose yes
 zstyle ':completion:*' max-matches-width 0
 zstyle ':completion:*' list-suffixes false
 zstyle ':completion:*' accept-exact true

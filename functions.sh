@@ -61,7 +61,7 @@ p() {
 
 dotc() {
     git -C $DOTFILES_PATH add -A
-    git -C $DOTFILES_PATH commit -S -m $1
+    git -C $DOTFILES_PATH commit -m $1
     git -C $DOTFILES_PATH push
 }
 
@@ -543,12 +543,19 @@ getmetasploit() {
   ./msfinstall
 
 }
+
 fcd() {
 	cd $(find -type d | fzf)
 }
+
 fv() {
     nvim $(fzf)
 }
+
+fp() {
+	cd $(find -type d | fzf $PROGRAMS_PATH)
+}
+
 randomproxy() {
     shuf -n 1 $PROGRAMS_PATH/secrets/proxy.md
 }
