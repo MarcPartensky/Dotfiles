@@ -53,7 +53,10 @@ main() {
 		apk -U upgrade | sudo tee $LOG_FOLDER/update_apk.log >> $LOG_FILE 2>&1
 	fi
 	if command -v snap > /dev/null; then
+<<<<<<< HEAD
         snap refresh
+=======
+>>>>>>> 6f8087f (dotupdate)
 		snap update | sudo tee $LOG_FOLDER/update_snap.log >> $LOG_FILE 2>&1
 	fi
 	if command -v pipupgrade > /dev/null; then
@@ -73,11 +76,11 @@ main() {
 			yarn upgrade --latest) | sudo tee $LOG_FOLDER/update_yarn.log >> $LOG_FILE 2>&1
 	fi
 	if command -v pip > /dev/null; then
-		$($(pip install -U pip &&
-			pip freeze > /tmp/pipfreeze.txt) &&
-		for lib in $(cat /tmp/pipfreeze.txt); do
-			pip install -U $lib &
-		done) | sudo tee $LOG_FOLDER/update_pip.log >> $LOG_FILE 2>&1
+        $(pip install -U pip &&
+        pip freeze | cut -d= -f1 > /tmp/pipfreeze.txt &&
+        for lib in $(cat /tmp/pipfreeze.txt); do
+            pip install -U $lib &
+        done) | sudo tee $LOG_FOLDER/update_pip.log >> $LOG_FILE 2>&1
 	fi
 	if command -v pip3 > /dev/null; then
 		pip3 install -U pip | sudo tee $LOG_FOLDER/update_pip3.log >> $LOG_FILE 2>&1
@@ -100,7 +103,7 @@ main() {
 	fi
 }
 
-sudo echo Updating the system &&
+sudo echo "Updating the system" &&
 	$(main &&
 	sudo tail -f $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log $1>$PID_FILE &&
 	echo Update is done &&
