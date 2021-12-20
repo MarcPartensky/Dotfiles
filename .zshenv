@@ -1,3 +1,6 @@
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/sbin"
+
 alias mem="du -sh"
 alias memfiles="du -sh * | sort -rh"
 alias py="python"
