@@ -174,7 +174,7 @@ source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
 
 getpyenv() {
-    source ${0:a:h}/installs/pyenv.sh
+    source $DOTFILES_PATH/installs/pyenv.sh
 }
 
 
