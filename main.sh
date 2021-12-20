@@ -20,6 +20,12 @@ if [ "$SHELL_NAME" = "zsh" ]; then
 elif [ "$SHELL_NAME" = "bash" ]; then
     shopt -s autocd
 fi
+command_not_found_handler() {
+    if [[ -o interactive && -w $1 ]]; then
+        $EDITOR $1
+    fi
+}
+
 
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
