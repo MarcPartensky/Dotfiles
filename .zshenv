@@ -41,6 +41,7 @@ alias gcl="git clone"
 alias gsp="git stash pop"
 alias gstp="git stash pop"
 alias gst="git stash"
+alias grb="git rebase"
 gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
