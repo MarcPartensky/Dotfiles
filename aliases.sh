@@ -17,18 +17,20 @@ alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
 alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 
 # Navigation shortcuts
-alias cdd="cd ~/docker"
+alias programs="p"
+alias website="p web"
+alias domination="p kingdomino"
+alias esclave="p discord-bot"
+alias web="p web"
+alias pdc="p docker"
+alias colis21="p colis"
+alias tia21="p tia21"
 alias desktop="cd ~/desktop"
 alias documents="cd ~/documents"
 alias images="cd ~/images"
 alias downloads="cd ~/downloads"
 alias isep="cd /Volumes/$/isep"
 alias marc="cd ~/desktop/Marc\ Partensky"
-alias programs='cd ~/programs/'
-alias website='cd ~/programs/website'
-alias domination="cd $PROGRAMS_PATH/kingdomino"
-alias esclave="cd $PROGRAMS_PATH/esclave"
-alias web='cd ~/programs/web'
 alias javascript='cd ~/programs/web/javascript'
 alias canvas='cd ~/programs/web/javascript/canvas'
 alias html='cd ~/programs/web/html'
@@ -40,9 +42,11 @@ alias asteroids="cd ~/programs/web/javascript/canvas/asteroids"
 alias junior="cd ~/junior"
 alias cv1="cd $MARCPARTENSKY_PATH/CV/cv-1p"
 alias cv2="cd $MARCPARTENSKY_PATH/CV/cv-2p"
-alias translator="cd ~/pickup/colis21/tools/Traduction/Translator"
-alias colis21="cd ~/pickup/colis21"
-alias tia21="cd ~/pickup/tia21"
+alias translator="p colis21/tools/Traduction/Translator"
+alias py20="cd ~/programs/python/repository-2020"
+alias pygames="cd ~/programs/python/repository-games"
+alias pyml="cd ~/programs/python/machine-learning"
+alias pyhome="p python"
 
 # basic
 alias v="$EDITOR"
@@ -110,10 +114,6 @@ alias mampstop='/Applications/MAMP/bin/stop.sh'
 alias jsonbeautify="chrome https://jsonformatter.curiousconcept.com/"
 alias github="chrome https://github.com/MarcPartensky/"
 alias activate="source venv/bin/activate"
-alias py20='cd ~/programs/python/repository-2020'
-alias pygames='cd ~/programs/python/repository-games'
-alias pyml='cd ~/programs/python/machine-learning'
-alias pyhome='cd ~/programs/python'
 alias pypackages='cd /library/frameworks/python.framework/versions/3.8/lib/python3.8/site-packages/'
 alias tetris="bastet"
 alias spaceinvader="ninvaders"
