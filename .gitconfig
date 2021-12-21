@@ -27,8 +27,9 @@
 	conf = "!nvim .git/config"
 	pushall = "!git remote | xargs -L1 git push --all"
 	pullall = "!git remote | xargs -L1 git pull"
+    rpull = "!git pull --recurse-submodules"
 	browse = "!gh repo view --web"
-	refresh = !gitrefresh
+	refresh = "!gitrefresh"
 	register = "!gitregister"
 	unregister = "!gitunregister"
 	record = "!gitrecord"

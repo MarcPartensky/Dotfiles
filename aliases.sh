@@ -90,6 +90,7 @@ alias doti="dotignore"
 alias doth="dotssh"
 alias dotq="dotquick"
 alias dotp="dotpull"
+alias ud="dotc"
 alias vimrc='nvim ~/.vimrc'
 alias ev="cd ~/.config/nvim"
 alias ez='nvim ~/.zshrc'
