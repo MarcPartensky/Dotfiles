@@ -187,11 +187,38 @@ if [[ "$OSTYPE" = "linux-gnu"* ]]; then
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
 elif [ "$OSTYPE" = "darwin" ]; then
-	export DISTRIB="darwin"
+	export DISTRIB="Darwin"
 	export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
+
+#
+if [ "$DISTRIB" = "Debian" ]; then
+    export PKM="apt"
+elif [ "$DISTRIB" = "Ubuntu" ]; then
+    export PKM="apt"
+elif [ "$DISTRIB" = "Alpine" ]; then
+    export PKM="apk"
+elif [ "$DISTRIB" = "Termux" ]; then
+    export PKM="pkg"
+elif [ "$DISTRIB" = "Centos" ]; then
+    export PKM="dnf"
+elif [ "$DISTRIB" = "Fedora" ]; then
+    export PKM="dnf"
+elif [ "$DISTRIB" = "OpenSUSE" ]; then
+    export PKM="zipper"
+elif [ "$DISTRIB" = "Solus" ]; then
+    export PKM="eopkg"
+elif [ "$DISTRIB" = "Archlinux" ]; then
+    export PKM="pacman"
+elif [ "$DISTRIB" = "Darwin" ]; then
+    export PKM="brew"
+else [ "$OS" = "Linux" ]
+    export PKM="snap"
+    # or homebrew?
+    export PKM="brew"
+fi
 
 # ssl certificates for dotnet
 if [ "$DISTRIB" = "Fedora" ]; then
