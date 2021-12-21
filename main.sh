@@ -20,9 +20,50 @@ if [ "$SHELL_NAME" = "zsh" ]; then
 elif [ "$SHELL_NAME" = "bash" ]; then
     shopt -s autocd
 fi
+
+if ! which brew > /dev/null; then return; fi
+
+homebrew_command_not_found_handle() {
+
+    local cmd="$1"
+
+    # The code below is based off this Linux Journal article:
+    #   http://www.linuxjournal.com/content/bash-command-not-found
+
+    # do not run when inside Midnight Commander or within a Pipe, except if CI
+    if test -z "$CONTINUOUS_INTEGRATION" && test -n "$MC_SID" -o ! -t 1 ; then
+        [ -n "$BASH_VERSION" ] && \
+            TEXTDOMAIN=command-not-found echo $"$cmd: command not found"
+        # Zsh versions 5.3 and above don't print this for us.
+        [ -n "$ZSH_VERSION" ] && [[ "$ZSH_VERSION" > "5.2" ]] && \
+            echo "zsh: command not found: $cmd" >&2
+        return 127
+    fi
+
+    local txt="$(brew which-formula --explain $cmd 2>/dev/null)"
+
+    if [ -z "$txt" ]; then
+        [ -n "$BASH_VERSION" ] && \
+            TEXTDOMAIN=command-not-found echo $"$cmd: command not found"
+
+        # Zsh versions 5.3 and above don't print this for us.
+        [ -n "$ZSH_VERSION" ] && [[ "$ZSH_VERSION" > "5.2" ]] && \
+            echo "zsh: command not found: $cmd" >&2
+    else
+        echo "$txt"
+    fi
+
+    return 127
+}
+
 command_not_found_handler() {
     if [[ -o interactive && -w $1 ]]; then
         $EDITOR $1
+		elif command -v brew > /dev/null; then
+			homebrew_command_not_found_handle $*
+		else
+			echo $@ not found
+			return $?
     fi
 }
 
