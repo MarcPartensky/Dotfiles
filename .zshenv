@@ -38,6 +38,7 @@ alias gk="git checkout"
 alias gm="git merge"
 alias gcl="git clone"
 alias gsp="git stash pop"
+alias gstp="git stash pop"
 alias gst="git stash"
 gc() {
 	echo "git commit -m \"$@\""
