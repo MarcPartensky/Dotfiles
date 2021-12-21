@@ -192,6 +192,13 @@ clearswap() {
 	rm ~/.local/share/nvim/swap/*
 }
 
+listswap() {
+	ls ~/.local/share/nvim/swap/*
+}
+swaps() {
+	ls ~/.local/share/nvim/swap/*
+}
+
 giterase() {
 	git filter-branch --force --index-filter "git rm --cached --ignore-unmatch $@" --prune-empty --tag-name-filter cat -- --all
 }
