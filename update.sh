@@ -53,10 +53,7 @@ main() {
 		apk -U upgrade | sudo tee $LOG_FOLDER/update_apk.log >> $LOG_FILE 2>&1
 	fi
 	if command -v snap > /dev/null; then
-<<<<<<< HEAD
-        snap refresh
-=======
->>>>>>> 6f8087f (dotupdate)
+		snap refresh
 		snap update | sudo tee $LOG_FOLDER/update_snap.log >> $LOG_FILE 2>&1
 	fi
 	if command -v pipupgrade > /dev/null; then
