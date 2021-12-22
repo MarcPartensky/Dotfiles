@@ -43,7 +43,7 @@
             timelength=$(echo \"16+${#time}-${#timelength}\" | bc);                                 \
             printf \"%${timelength}s    %s %s %s\n\" \"$time\" \"$hash\" \"$branch\" \"\";          \
         done < <(git lt && echo);"'
-    tree = !bash -c '"                                                                             \
+    vtree = !bash -c '"                                                                             \
         while IFS=+ read -r hash time branch message; do                                            \
             timelength=$(echo \"$time\" | sed -r \"s:[^ ][[]([0-9]{1,2}(;[0-9]{1,2})?)?m::g\");     \
             timelength=$(echo \"16+${#time}-${#timelength}\" | bc);                                 \
@@ -71,7 +71,7 @@
                 '"
 
     last   = log --all --decorate=short --color --pretty=format:' %C(dim white)%>(12,trunc)%cr%C(reset) %C(bold 214)%<(7,trunc)%h%C(reset)' -20
-    tree    = log --all --graph --decorate=short --color --pretty=format:'%C(bold 214)%<(7,trunc)%h%C(reset)^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(auto)%>(15,trunc)%D%C(reset)^%C(white)%<(80,trunc)%s%C(reset)'
+    tree    = log --all --graph --decorate=short --color --pretty=format:'%C(bold 214)%<(7,trunc)%h%C(reset)^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(auto)%>(25,trunc)%D%C(reset)^%C(white)%<(80,trunc)%s%C(reset)'
     tree-col= 3
     position    = log --all --graph --decorate=short --color --pretty=format:'^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(cyan)%<(10,trunc)%cs%C(reset)^%C(bold 214)%<(7,trunc)%h%C(reset)^%C(auto)%<(15,trunc)%D%C(reset)^%C(white)%s%C(reset)'
     position-col= 4
