@@ -38,3 +38,10 @@
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
 [http]
 	postBuffer = 157286400
+[log]
+    date = relative
+[format]
+    graph = true
+    online = true
+    pretty = %C(auto,yellow)%h %C(auto,cyan)%>(12,trunc)%ad %C(auto,green)%<(15,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+    ; pretty = %C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s
