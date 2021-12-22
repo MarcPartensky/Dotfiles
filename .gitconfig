@@ -34,6 +34,7 @@
 	unregister = "!gitunregister"
 	record = "!gitrecord"
 	update = "!gitupdate"
+    track = "!for b in `git branch -r | grep -v -- '->'`; do git branch --track ${b##origin/} $b; done"
     delim     = ^
     mtree = log --all --graph --decorate=short --color --format=format:'%C(bold cyan)%h%C(reset) %C(auto)%d%C(reset)\n %C(auto,green)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'
     lt = log --all --graph --decorate=short --color --format=format:'%C(bold yellow)%h%C(reset)+%C(auto, cyan)%cr%C(reset)+%C(auto)%d%C(reset)+%C(auto,green)%an%C(reset)%C(white): %s%C(reset)'
