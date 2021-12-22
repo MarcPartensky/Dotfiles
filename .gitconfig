@@ -71,7 +71,7 @@
                 '"
 
     last   = log --all --decorate=short --color --pretty=format:' %C(dim white)%>(12,trunc)%cr%C(reset) %C(bold 214)%<(7,trunc)%h%C(reset)' -20
-    tree    = log --all --graph --decorate=short --color --pretty=format:'%C(bold 214)%<(7,trunc)%h%C(reset)^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(auto)%>(25,trunc)%D%C(reset)^%C(white)%<(80,trunc)%s%C(reset)'
+    tree    = log --all --graph --decorate=short --color --pretty=format:'%C(bold 214)%<(7,trunc)%h%C(reset)^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(auto)%>(25,trunc)%D%C(reset)^%C(white)%<(50,trunc)%s%C(reset)'
     tree-col= 3
     position    = log --all --graph --decorate=short --color --pretty=format:'^%C(dim white)%>(12,trunc)%cr%C(reset)^%C(cyan)%<(10,trunc)%cs%C(reset)^%C(bold 214)%<(7,trunc)%h%C(reset)^%C(auto)%<(15,trunc)%D%C(reset)^%C(white)%s%C(reset)'
     position-col= 4
