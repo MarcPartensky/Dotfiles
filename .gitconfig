@@ -34,14 +34,34 @@
 	unregister = "!gitunregister"
 	record = "!gitrecord"
 	update = "!gitupdate"
+    mtree = log --all --graph --decorate=short --color --format=format:'%C(bold cyan)%h%C(reset) %C(auto)%d%C(reset)\n %C(auto,green)[%cr]%C(reset)  %x09%C(white)%an: %s %C(reset)'
+    logx = log --all --graph --decorate=short --color --format=format:'%C(bold yellow)%h%C(reset)+%C(auto, cyan)%cr%C(reset)+%C(auto)%d%C(reset)+%C(auto,green)%an%C(reset)%C(white): %s%C(reset)'
+    stree = !bash -c '"                                                                             \
+        while IFS=+ read -r hash time branch message; do                                            \
+            timelength=$(echo \"$time\" | sed -r \"s:[^ ][[]([0-9]{1,2}(;[0-9]{1,2})?)?m::g\");     \
+            timelength=$(echo \"16+${#time}-${#timelength}\" | bc);                                 \
+            printf \"%${timelength}s    %s %s %s\n\" \"$time\" \"$hash\" \"$branch\" \"\";          \
+        done < <(git logx && echo);"'
+    tree = !bash -c '"                                                                             \
+        while IFS=+ read -r hash time branch message; do                                            \
+            timelength=$(echo \"$time\" | sed -r \"s:[^ ][[]([0-9]{1,2}(;[0-9]{1,2})?)?m::g\");     \
+            timelength=$(echo \"16+${#time}-${#timelength}\" | bc);                                 \
+            printf \"%${timelength}s    %s %s %s\n\" \"$time\" \"$hash\" \"$branch\" \"$message\";  \
+        done < <(git logx && echo);"'
+
 
 	; browse = "!$PROGRAMS_PATH/dotfiles/gitbrowse.sh"
 [http]
 	postBuffer = 157286400
 [log]
     date = relative
+    decorate = true
+    reverse = true
+;     graphColors = true
+;     all = true
+;     decorate = true
+;     graphColors = true
+;     oneline = false
 [format]
-    graph = true
-    online = true
-    pretty = %C(auto,yellow)%h %C(auto,cyan)%>(12,trunc)%ad %C(auto,green)%<(15,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
+    pretty = %C(dim cyan)%>(12,trunc)%ad  %C(auto,yellow)%h %C(auto,green)%<(9,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
     ; pretty = %C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s
