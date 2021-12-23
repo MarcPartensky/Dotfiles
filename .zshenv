@@ -69,7 +69,7 @@ n() {
 	if command -v terminal-notifier; then
 		eval "terminal-notifier -message \"$@\""
 	elif command -v notify-send; then
-		notify-send -t 3 $@
+		notify-send $@
 	else
 		echo $@
 	fi

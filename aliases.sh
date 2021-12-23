@@ -208,4 +208,7 @@ alias spotifystop="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify
 alias spotifytoggle="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 alias spotifiprevious="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 alias spotifynext="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+alias previous="spotifypause"
 alias next="spotifynext"
+alias play="spotifyplay"
+alias pause="spotifystop"
