@@ -595,7 +595,7 @@ dumptia21local() {
 }
 
 dockerdumpc21local() {
-	docker run --network host -v $C21_DUMP_PATH:/srv --rm mongo mongodump --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump.bzip
+	docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_local_$(timestamp).bzip
 }
 
 updatemongolocal() {
