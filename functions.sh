@@ -586,6 +586,18 @@ dumptia21octopus() {
 	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 }
 
+dumpc21local() {
+     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
+}
+
+dumptia21local() {
+     mongodump --host "localhost:27017" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
+}
+
+dockerdumpc21local() {
+	docker run --network host -v $C21_DUMP_PATH:/srv --rm mongo mongodump --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump.bzip
+}
+
 updatemongolocal() {
 	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
@@ -601,14 +613,6 @@ updatec21mongo() {
 updatetia21mongo() {
 	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
-}
-
-dumpc21local() {
-     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
-}
-
-dumptia21local() {
-     mongodump --host "localhost:27017" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
 }
 
 restorec21local() {
