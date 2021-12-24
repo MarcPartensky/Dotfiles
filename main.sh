@@ -299,6 +299,10 @@ else
 	echo "No editor found."
 fi
 
+if ! command -v open >& /dev/null; then
+    alias open="xdg-open"
+fi
+
 # if [ "$DESKTOP_SESSION" = "i3" ]; then
 #     xmodmap -e "clear lock" #disable caps lock switch
 #     xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
