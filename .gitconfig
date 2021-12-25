@@ -35,6 +35,7 @@
 	record = "!gitrecord"
 	update = "!gitupdate"
     commit-count = "rev-list HEAD --count"
+    most-commits = "shortlog -s"
     track = "!for b in `git branch -r | grep -v -- '->'`; do git branch --track ${b##origin/} $b; done"
     ; track = "!git branch -r | grep -v '\->' | while read remote; do git branch --track \"${remote#origin/}\" \"$remote\"; done"
     delim     = ^
