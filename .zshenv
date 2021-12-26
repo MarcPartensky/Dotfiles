@@ -71,11 +71,12 @@ n() {
 	elif command -v notify-send; then
 		notify-send $@
 	else
+        nesclave $@
 		echo $@
 	fi
 }
 nesclave() {
-    ssh vps -t http localhost:7010/send/channel id=924411208726110278 message="\"$@\""
+    ssh vps -t http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""
 }
 cheat() { curl cheat.sh/$@ }
 
