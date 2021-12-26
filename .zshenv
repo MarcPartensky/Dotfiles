@@ -68,9 +68,9 @@ h() {
 n() {
     if ! [ "$MAIN_ENV" = "$HOST" ]; then
         if [ "$HOST" = "vps" ]; then
-            nesclavenovps $@
+            nbotnovps $@
         else
-            nesclave $@
+            nbot $@
         fi
     else
         if command -v terminal-notifier; then
