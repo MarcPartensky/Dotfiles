@@ -94,6 +94,9 @@ notif() {
 coding() {
     ssh vps -q -t http -q localhost:7010/send/channel id=$CHCODING message="\"$@\""
 }
+testing() {
+    ssh vps -q -t http -q localhost:7010/send/channel id=$CHTESTING message="\"$@\""
+}
 gd4() {
     ssh vps -q -t http -q localhost:7010/send/channel id=$CHGROUPEDES4 message="\"$@\""
 }
