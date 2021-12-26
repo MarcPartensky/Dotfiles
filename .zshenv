@@ -66,14 +66,21 @@ h() {
 	fi
 }
 n() {
-	if command -v terminal-notifier; then
-		eval "terminal-notifier -message \"$@\""
-	elif command -v notify-send; then
-		notify-send $@
-	else
-        nesclave $@
-		echo $@
-	fi
+    if ! [ "$MAIN_ENV" = "$HOST" ]; then
+        if [ "$HOST" = "vps" ]; then
+            nesclavenovps $@
+        else
+            nesclave $@
+        fi
+    else
+        if command -v terminal-notifier; then
+            eval "terminal-notifier -message \"$@\""
+        elif command -v notify-send &> /dev/null; then
+            notify-send $@
+        else
+            echo $@
+        fi
+    fi
 }
 nesclave() {
     ssh vps -q -t http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""

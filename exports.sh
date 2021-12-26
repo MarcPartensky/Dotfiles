@@ -1,4 +1,5 @@
 #!/bin/sh
+export MAIN_ENV=mi
 
 # Path variables
 export PATH="$PATH:$HOME/git/shell"
