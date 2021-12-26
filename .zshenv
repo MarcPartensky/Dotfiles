@@ -76,7 +76,7 @@ n() {
 	fi
 }
 nesclave() {
-    ssh vps -t http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""
+    ssh vps -q -t http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""
 }
 cheat() { curl cheat.sh/$@ }
 
