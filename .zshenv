@@ -82,11 +82,20 @@ n() {
         fi
     fi
 }
-nesclave() {
-    ssh vps -q -t http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""
+nbot() {
+    ssh vps -q -t http -q localhost:7010/send/channel id=$CHNOTIF message="\"$@\""
 }
-nesclavenovps() {
-    http -q localhost:7010/send/channel id=924411208726110278 message="\"$@\""
+nbotnovps() {
+    http -q localhost:7010/send/channel id=$CHNOTIF message="$@"
+}
+notif() {
+    nbot
+}
+coding() {
+    ssh vps -q -t http -q localhost:7010/send/channel id=$CHCODING message="\"$@\""
+}
+gd4() {
+    ssh vps -q -t http -q localhost:7010/send/channel id=$CHGROUPEDES4 message="\"$@\""
 }
 cheat() { curl cheat.sh/$@ }
 
