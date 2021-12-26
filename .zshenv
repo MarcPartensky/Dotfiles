@@ -88,9 +88,7 @@ nbot() {
 nbotnovps() {
     http -q localhost:7010/send/channel id=$CHNOTIF message="$@"
 }
-notif() {
-    nbot
-}
+alias notif="nbot"
 coding() {
     ssh vps -q -t http -q localhost:7010/send/channel id=$CHCODING message="\"$@\""
 }
