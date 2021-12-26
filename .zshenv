@@ -74,6 +74,9 @@ n() {
 		echo $@
 	fi
 }
+nesclave() {
+    ssh vps -t http localhost:7010/send/channel id=924411208726110278 message=$1
+}
 cheat() { curl cheat.sh/$@ }
 
 nodesktopicon() {
