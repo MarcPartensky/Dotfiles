@@ -607,15 +607,15 @@ updatemongo() {
 	echo Dumping local kraken test-v for backup
 	dmongodump --host "localhost:27017" --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip
 	echo Dumping remote kraken test-v
-	dmongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db kraken --gzip --archive=/srv/octopus_dump_$TIMESTAMP.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	dmongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db kraken --gzip --archive=/srv/kraken_dump_$TIMESTAMP.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	pause
 	echo Dumping remote colis21 test-v
 	dmongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
 	read -rsp $'Press any key to continue...\n' -n1 key
 	echo Restoring local octopus
-	mongorestore --host=localhost --port=27017 --gzip --drop --archive=/tmp/kraken_dump_$TIMESTAMP.bzip
+	mongorestore --host=localhost --port=27017 --gzip --drop --archive=$C21_DUMP_PATH/kraken_dump_$TIMESTAMP.bzip
 	echo Restoring local colis21
-	mongorestore --host=localhost --port=27017 --gzip --drop --archive=/tmp/colis21_events_dump_$TIMESTAMP.bzip
+	mongorestore --host=localhost --port=27017 --gzip --drop --archive=$C21_DUMP_PATH/colis21_events_dump_$TIMESTAMP.bzip
 }
 
 updatemongooctopus() {
