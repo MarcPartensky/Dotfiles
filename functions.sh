@@ -598,10 +598,33 @@ dockerdumpc21local() {
 	docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_local_$(timestamp).bzip
 }
 
-updatemongolocal() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+updatemongo() {
+	DOCKER_C21_MONGO="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo"
+	echo Backing up local mongo
+	$DOCKER_C21_MONGO --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$(timestamp).bzip
+	echo Dumping remote kraken test-v
+	$DOCKER_C21_MONGO --host "srvlh-mdb-b1.paris.pickup.local:45000" --db kraken --gzip --archive=/srv/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	echo Dumping remote colis21 test-v
+	$DOCKER_C21_MONGO --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/srv/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	read -rsp $'Press any key to continue...\n' -n1 key
+	echo Restoring local octopus
+	mongorestore --host=localhost --port=27017 --gzip --drop --archive=/tmp/octopus_dump.bzip
+	echo Restoring local colis21
+	mongorestore --host=localhost --port=27017 --gzip --drop --archive=/tmp/colis21_events_dump.bzip
+}
+
+updatemongooctopus() {
+	DOCKER_C21_MONGO="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo"
+	echo Backing up local mongo
+	$DOCKER_C21_MONGO --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$(timestamp).bzip
+	echo Dumping remote octopus
+	$DOCKER_C21_MONGO --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=/srv/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	echo Dumping remote colis21
+	$DOCKER_C21_MONGO --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/srv/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
+	read -rsp $'Press any key to continue...\n' -n1 key
+	echo Restoring local octopus
 	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/octopus_dump.bzip
+	echo Restoring local colis21
 	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump.bzip
 }
 
