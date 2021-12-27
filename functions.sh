@@ -578,47 +578,53 @@ fi
 export C21_DUMP_PATH="$HOME/Downloads/pickup/dump"
 [[ -d $C21_DUMP_PATH ]] || mkdir -p $C21_DUMP_PATH
 
-dumpc21testv() {
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-}
-
-dumptia21octopus() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-}
-
-dumpc21local() {
-     mongodump --host "localhost:27017" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
-}
-
-dumptia21local() {
-     mongodump --host "localhost:27017" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
-}
-
-dockerdumpc21local() {
-	docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_local_$(timestamp).bzip
-}
-
 alias dmongodump="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo"
-updatemongo() {
-	echo Backing up local mongo
-	TIMESTAMP=$(timestamp)
-	echo Dumping local colis21 test-v for backup
-	dmongodump --host "localhost:27017" --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
-	echo Dumping local kraken test-v for backup
-	dmongodump --host "localhost:27017" --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip
-	echo Dumping remote kraken test-v
-	dmongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db kraken --gzip --archive=/srv/kraken_dump_$TIMESTAMP.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	pause
-	echo Dumping remote colis21 test-v
-	dmongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	read -rsp $'Press any key to continue...\n' -n1 key
-	echo Restoring local octopus
-	mongorestore --host=localhost --port=27017 --gzip --drop --archive=$C21_DUMP_PATH/kraken_dump_$TIMESTAMP.bzip
-	echo Restoring local colis21
-	mongorestore --host=localhost --port=27017 --gzip --drop --archive=$C21_DUMP_PATH/colis21_events_dump_$TIMESTAMP.bzip
+alias dmongorestore="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongorestore mongo"
+
+dumpc21() {
+	dmongodump $C21_MONGO_PARAMS --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
+}
+dumptia21() {
+	dmongodump $TIA21_MONGO_PARAMS --archive=/srv/kraken_dump_$TIMESTAMP.bzip
+}
+dumpoctopus() {
+	dmongodump $OCTOPUS_MONGO_PARAMS --archive=/srv/octopus_dump_$TIMESTAMP.bzip
+}
+dumpc21local() {
+	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
+}
+dumptia21local() {
+	dmongodump --db kraken --gzip --archive=/srv/tia21_dump_backup_$TIMESTAMP.bzip
+}
+restorec21() {
+    dmongorestore -gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
+}
+restoretia21() {
+    dmongorestore --gzip --archive=/srv/tia21_dump_$TIMESTAMP.bzip
+}
+restoreoctopus21() {
+    dmongorestore --gzip --archive=/srv/octopus_dump_$TIMESTAMP.bzip
 }
 
-updatemongooctopus() {
+updatec21tia21() {
+	TIMESTAMP=$(timestamp)
+	echo Backing up local mongo
+	echo Dumping local colis21 test-v for backup
+	dumpc21local
+	echo Dumping local kraken test-v for backup
+	dumptia21local
+	echo Dumping remote kraken test-v
+	dumptia21
+	echo Dumping remote colis21 test-v
+	dumpc21
+	read -rsp $'Press any key to continue...\n' -n1 key
+	echo Restoring local tia21
+	restoretia21
+	echo Restoring local colis21
+	restorec21
+}
+
+updatec21octopus() {
 	DOCKER_C21_MONGO="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo"
 	echo Backing up local mongo
 	TIMESTAMP=$(timestamp)
@@ -634,22 +640,35 @@ updatemongooctopus() {
 	mongorestore --host=localhost --port=27017 --gzip --archive=/tmp/colis21_events_dump_$TIMESTAMP.bzip
 }
 
-updatec21mongo() {
-	mongodump --host "srvlh-mdb-b1.paris.pickup.local:45000" --db colis21_events --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/colis21_events_dump.bzip
+updatec21() {
+	echo Backing up local mongo
+	TIMESTAMP=$(timestamp)
+	echo Dumping local c21 for backup
+	dumpc21local
+	echo Dumping remote c21 test-v
+	dumpc21
+	echo Restoring local c21
+	restorec21
 }
-
-updatetia21mongo() {
-	mongodump --host "srvlh-mdb-b2.paris.pickup.local:45014" --db kraken --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin
-	mongorestore --host=localhost --port=27017 --gzip --archive=$C21_DUMP_PATH/octopus_dump.bzip
+updatetia21() {
+	echo Backing up local mongo
+	TIMESTAMP=$(timestamp)
+	echo Dumping local kraken test-v for backup
+	dumptia21local
+	echo Dumping remote kraken test-v
+	dumptia21
+	echo Restoring local tia21
+	restoretia21
 }
-
-restorec21local() {
-    docker run --rm --network=host -v $C21_DUMP_PATH:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/colis21_events_dump.bzip
-}
-
-restoretia21local() {
-    docker run --rm --network=host -v $C21_DUMP_PATH:/srv cmd.cat/mongorestore mongorestore --host=localhost --port=27017 --gzip --archive=/srv/octopus_dump.bzip
+updateoctopus() {
+	echo Backing up local mongo
+	TIMESTAMP=$(timestamp)
+	echo Dumping local kraken test-v for backup
+	dumptia21local
+	echo Dumping remote kraken test-v
+	dumpoctopus
+	echo Restoring local tia21
+	restoreoctopus
 }
 
 kraken() {
