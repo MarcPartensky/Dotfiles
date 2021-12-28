@@ -687,9 +687,6 @@ kraken() {
     xdg-open https://localhost:5000
 }
 
-findup() {
-    $1
-}
 gwl() {
     repo=$(gh repo view --json 'nameWithOwner' --jq '.nameWithOwner')
     gh workflow list | awk '{print $3}' | while read line ; do
