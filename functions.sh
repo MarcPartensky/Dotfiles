@@ -580,15 +580,18 @@ export C21_DUMP_PATH="$HOME/Downloads/pickup/dump"
 
 alias dmongodump="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongodump mongo"
 alias dmongorestore="docker run --network host -v $C21_DUMP_PATH:/srv --rm --entrypoint mongorestore mongo"
+c21_mongo_params=(--host srvlh-mdb-b1.paris.pickup.local:45000 --db colis21_events --gzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin)
+octopus_mongo_params=(--host srvlh-mdb-b2.paris.pickup.local:45014 --db kraken --gzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin)
+tia21_mongo_params=(--host srvlh-mdb-b1.paris.pickup.local:45004 --db kraken --gzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin)
 
 dumpc21() {
-	dmongodump $C21_MONGO_PARAMS --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
+	dmongodump $c21_mongo_params[@] --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
 }
 dumptia21() {
-	dmongodump $TIA21_MONGO_PARAMS --archive=/srv/kraken_dump_$TIMESTAMP.bzip
+	dmongodump $tia21_mongo_params[@] --archive=/srv/kraken_dump_$TIMESTAMP.bzip
 }
 dumpoctopus() {
-	dmongodump $OCTOPUS_MONGO_PARAMS --archive=/srv/octopus_dump_$TIMESTAMP.bzip
+	dmongodump $octopus_mongo_params[@] --archive=/srv/octopus_dump_$TIMESTAMP.bzip
 }
 dumpc21local() {
 	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
