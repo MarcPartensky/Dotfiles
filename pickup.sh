@@ -28,7 +28,7 @@ dumpc21local() {
 	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
 }
 dumptia21local() {
-	dmongodump --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip
+	dmongodump --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip --excludeCollection attachment
 }
 restorec21() {
     dmongorestore --gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
