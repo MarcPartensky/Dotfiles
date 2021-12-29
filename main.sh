@@ -240,6 +240,7 @@ source ${0:a:h}/functions.sh
 source ${0:a:h}/symlinks.sh
 source ${0:a:h}/.zshenv
 source ${0:a:h}/.p10k.zsh
+source ${0:a:h}/pickup.sh
 
 getpyenv() {
     source $DOTFILES_PATH/installs/pyenv.sh
