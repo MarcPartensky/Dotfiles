@@ -597,16 +597,19 @@ dumpc21local() {
 	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
 }
 dumptia21local() {
-	dmongodump --db kraken --gzip --archive=/srv/tia21_dump_backup_$TIMESTAMP.bzip
+	dmongodump --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip
 }
 restorec21() {
     dmongorestore -gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
 }
 restoretia21() {
-    dmongorestore --gzip --archive=/srv/tia21_dump_$TIMESTAMP.bzip
+    dmongorestore --gzip --archive=/srv/kraken_dump_$TIMESTAMP.bzip
 }
 restoreoctopus21() {
     dmongorestore --gzip --archive=/srv/octopus_dump_$TIMESTAMP.bzip
+}
+restore() {
+    dmongorestore --gzip --archive=/srv/$1 --drop
 }
 
 updatec21tia21() {
@@ -674,7 +677,7 @@ updateoctopus() {
 	restoreoctopus
 }
 
-kraken() {
+runkraken() {
     git -C $PROGRAMS_PATH/colis21 pull
     git -C $PROGRAMS_PATH/tia21 pull
     git -C $PROGRAMS_PATH/tia21 pull
