@@ -31,13 +31,13 @@ dumptia21local() {
 	dmongodump --db kraken --gzip --archive=/srv/kraken_dump_backup_$TIMESTAMP.bzip --excludeCollection attachment
 }
 restorec21() {
-    dmongorestore --gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
+    dmongorestore --gzip --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip --drop
 }
 restoretia21() {
-    dmongorestore --gzip --archive=/srv/kraken_dump_$TIMESTAMP.bzip
+    dmongorestore --gzip --archive=/srv/kraken_dump_$TIMESTAMP.bzip --drop
 }
 restoreoctopus() {
-    dmongorestore --gzip --archive=/srv/octopus_dump_$TIMESTAMP.bzip
+    dmongorestore --gzip --archive=/srv/octopus_dump_$TIMESTAMP.bzip --drop
 }
 restore() {
     dmongorestore --gzip --archive=/srv/$1 --drop
