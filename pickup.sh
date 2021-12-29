@@ -19,10 +19,10 @@ dumpc21() {
 	dmongodump $c21_mongo_params[@] --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
 }
 dumptia21() {
-	dmongodump $tia21_mongo_params[@] --archive=/srv/kraken_dump_$TIMESTAMP.bzip
+	dmongodump $tia21_mongo_params[@] --archive=/srv/kraken_dump_$TIMESTAMP.bzip --excludeCollection attachment
 }
 dumpoctopus() {
-	dmongodump $octopus_mongo_params[@] --archive=/srv/octopus_dump_$TIMESTAMP.bzip
+	dmongodump $octopus_mongo_params[@] --archive=/srv/octopus_dump_$TIMESTAMP.bzip --excludeCollection attachment
 }
 dumpc21local() {
 	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
