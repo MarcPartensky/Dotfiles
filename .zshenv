@@ -59,11 +59,11 @@ gfp() {
 pj() { cd $GIT_PROJECTS_PATH/$@ }
 je() {cd $JUNIOR_PATH/$@ }
 h() {
-	if [ $# = 0 ]; then
-		cd $HOME
-	else
-		cd /home/$@
-	fi
+    if command -v http >& /dev/null; then
+        http --follow $@
+    else
+        curl -L $@
+    fi
 }
 n() {
     if ! [ "$MAIN_ENV" = "$HOST" ]; then
