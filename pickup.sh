@@ -2,6 +2,7 @@
 
 # Choose where to store the dump files
 export C21_DUMP_PATH="$HOME/.pickup/dump"
+export TIMESTAMP=$(date +%s)
 [[ -d $C21_DUMP_PATH ]] || mkdir -p $C21_DUMP_PATH
 
 # mongodump and mongorestore with docker for portability
@@ -110,3 +111,17 @@ updatec21octopus() {
 	restorec21
 }
 
+# Short aliases
+alias dc21="dumpc21"
+alias dt21="dumptia21"
+alias doct="dumpoctopus"
+alias dc21l="dumpc21local"
+alias dt21l="dumptia21local"
+alias rc21="restorec21"
+alias rt21="restoretia21"
+alias roct="restoreoctopus"
+alias uc21="updatec21"
+alias ut21="updatetia21"
+alias uoct="updateoctopus"
+alias uc21t="updatec21tia21"
+alias uc21o="updatec21octopus"
