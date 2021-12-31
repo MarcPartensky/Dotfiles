@@ -1,6 +1,7 @@
 dump:
 	brew bundle dump -f
 	snapdump
+	dconf dump / > ${DOTFILES_PATH}/gnome.conf
 restore:
 	brew bundle
 	snaprestore
