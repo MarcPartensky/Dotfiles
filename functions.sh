@@ -731,3 +731,7 @@ cb() {
         maincopy
     fi
 }
+portkill() {
+    kill -9 $(lsof -i:$1 | tail -1 | awk '{print $2}')
+}
+
