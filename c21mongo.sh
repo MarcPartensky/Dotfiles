@@ -16,13 +16,13 @@ tia21_mongo_params=(--host srvlh-mdb-b1.paris.pickup.local:45004 --db kraken --g
 
 # Dump and restore commands
 dumpc21() {
-	dmongodump $c21_mongo_params[@] --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
+    dmongodump ${c21_mongo_params[@]} --archive=/srv/colis21_events_dump_$TIMESTAMP.bzip
 }
 dumptia21() {
-	dmongodump $tia21_mongo_params[@] --archive=/srv/kraken_dump_$TIMESTAMP.bzip --excludeCollection attachment
+	dmongodump ${tia21_mongo_params[@]} --archive=/srv/kraken_dump_$TIMESTAMP.bzip --excludeCollection attachment
 }
 dumpoctopus() {
-	dmongodump $octopus_mongo_params[@] --archive=/srv/octopus_dump_$TIMESTAMP.bzip --excludeCollection attachment
+	dmongodump ${octopus_mongo_params[@]} --archive=/srv/octopus_dump_$TIMESTAMP.bzip --excludeCollection attachment
 }
 dumpc21local() {
 	dmongodump --db colis21_events --gzip --archive=/srv/colis21_events_dump_backup_$TIMESTAMP.bzip
