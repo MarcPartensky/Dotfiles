@@ -15,6 +15,8 @@ set shiftwidth=4
 set clipboard=unnamedplus
 
 export SHELL_NAME=$(echo $SHELL | rev | cut -d/ -f1 | rev)
+
+# Cd by name of folder
 if [ "$SHELL_NAME" = "zsh" ]; then
     setopt autocd
 elif [ "$SHELL_NAME" = "bash" ]; then
@@ -24,12 +26,9 @@ fi
 if ! which brew > /dev/null; then return; fi
 
 homebrew_command_not_found_handle() {
-
     local cmd="$1"
-
     # The code below is based off this Linux Journal article:
     #   http://www.linuxjournal.com/content/bash-command-not-found
-
     # do not run when inside Midnight Commander or within a Pipe, except if CI
     if test -z "$CONTINUOUS_INTEGRATION" && test -n "$MC_SID" -o ! -t 1 ; then
         [ -n "$BASH_VERSION" ] && \
@@ -39,31 +38,29 @@ homebrew_command_not_found_handle() {
             echo "zsh: command not found: $cmd" >&2
         return 127
     fi
-
     local txt="$(brew which-formula --explain $cmd 2>/dev/null)"
-
     if [ -z "$txt" ]; then
         [ -n "$BASH_VERSION" ] && \
             TEXTDOMAIN=command-not-found echo $"$cmd: command not found"
-
         # Zsh versions 5.3 and above don't print this for us.
         [ -n "$ZSH_VERSION" ] && [[ "$ZSH_VERSION" > "5.2" ]] && \
             echo "zsh: command not found: $cmd" >&2
     else
         echo "$txt"
     fi
-
     return 127
 }
 
 command_not_found_handler() {
     if [[ -o interactive && -w $1 ]]; then
         $EDITOR $1
-		elif command -v brew > /dev/null; then
-			homebrew_command_not_found_handle $*
-		else
-			echo $@ not found
-			return $?
+    elif command -v brew &>/dev/null; then
+        homebrew_command_not_found_handle $*
+    elif command -v fuck &>/dev/null; then
+        fuck
+    else
+        echo $@ not found
+        return $?
     fi
 }
 
@@ -193,7 +190,7 @@ fi
 # "nvim" as manpager
 # export MANPAGER="nvim -c 'set ft=man' -"
 
-#
+# Find distribution
 if [ "$DISTRIB" = "Debian" ]; then
     export PKM="apt"
 elif [ "$DISTRIB" = "Ubuntu" ]; then
@@ -257,6 +254,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# History
 export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 export HISTFILE=$HOME/.zsh_history
@@ -276,6 +274,7 @@ if command -v mcfly >& /dev/null; then
 	eval "$(mcfly init zsh)"
 fi
 
+
 mkdir -p ~/.local/bin
 if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
 	echo "Adding $HOME/.local/bin to \$PATH"
@@ -284,6 +283,7 @@ fi
 
 ln -sf ${0:a:h}/update.sh $HOME/.local/bin/update
 
+# Default editor
 if command -v nvim >& /dev/null; then
 	export EDITOR="nvim"
 elif command -v vim >& /dev/null; then
@@ -302,6 +302,10 @@ fi
 
 if ! command -v open >& /dev/null; then
     alias open="xdg-open"
+fi
+
+if command -z thefuck >& /dev/null; then
+    eval $(thefuck --alias)
 fi
 
 # if [ "$DESKTOP_SESSION" = "i3" ]; then

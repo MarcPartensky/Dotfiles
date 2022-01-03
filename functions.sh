@@ -46,10 +46,12 @@ p() {
 		cd $PROGRAMS_PATH/$1
 	else
 		cd $PROGRAMS_PATH
-		if command -v gh; then
-			gh repo clone $1 $2
+        if [[ $1 =~ $REGEX_URL ]]; then
+            git -C $PROGRAMS_PATH clone $1 $2
+		elif command -v gh; then
+			gh repo clone $1 $PROGRAMS_PATH/$2
 		else
-			git clone https://github.com/$1 $2
+			git clone https://github.com/$1 $PROGRAMS_PATH/$2
 		fi
 		f=$(basename $1)
 		f=$(/bin/ls | grep -i $f)
@@ -64,6 +66,16 @@ dotc() {
     git -C $DOTFILES_PATH commit -m $1
     git -C $DOTFILES_PATH push
     exec $SHELL
+}
+
+pki() {
+    $(command -v apt &>/dev/null && sudo apt install -y $1) ||
+    $(command -v dnf &>/dev/null && sudo dnf install -y $1) ||
+    $(command -v apk &>/dev/null && sudo apk add $1) ||
+    $(command -v brew &>/dev/null && brew install $1) ||
+    $(command -v pip &>/dev/null && pip install $1) ||
+    $(command -v npm &>/dev/null && npm install --global $1) ||
+    $(command -v snap && sudo snap install $1)
 }
 
 updategit() {
