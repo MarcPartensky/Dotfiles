@@ -49,7 +49,7 @@ p() {
         if [[ $1 =~ $REGEX_URL ]]; then
             git -C $PROGRAMS_PATH clone $1 $2
 		elif command -v gh; then
-			gh repo clone $1 $PROGRAMS_PATH/$2
+			gh repo clone $1
 		else
 			git clone https://github.com/$1 $PROGRAMS_PATH/$2
 		fi
