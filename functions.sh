@@ -14,7 +14,7 @@ cd() {
 			pipenv shell
 			pipenv install
 			n Locking
-			$(pipenv lock --pre --clear &> /var/log/pipenv.log && n Locked) & disown
+			$(pipenv lock --pre --clear &> /tmp/pipenv.log && n Locked) & disown
     fi
 }
 
