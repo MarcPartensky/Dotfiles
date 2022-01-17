@@ -2,8 +2,8 @@
 
 # Update all package managers available in a system.
 
-LOG_FOLDER="/var/log"
-[ -d $LOG_FOLDER ] || echo Creating log folder && mkdir -p /var/log
+LOG_FOLDER="/tmp"
+[ -d $LOG_FOLDER ] || echo Creating log folder && mkdir -p $LOG_FOLDER
 
 LOG_FILE="/tmp/update.log"
 [ -f $LOG_FILE ] || touch /tmp/update.log
@@ -53,8 +53,7 @@ main() {
 		apk -U upgrade | sudo tee $LOG_FOLDER/update_apk.log >>$LOG_FILE 2>&1
 	fi
 	if command -v snap > /dev/null; then
-		snap refresh
-		snap update | sudo tee $LOG_FOLDER/update_snap.log >>$LOG_FILE 2>&1
+		sudo snap refresh | sudo tee $LOG_FOLDER/update_snap.log >>$LOG_FILE 2>&1
 	fi
 	if command -v pipupgrade > /dev/null; then
 		pipupgrade | sudo tee $LOG_FOLDER/update_pipupgrade.log >>$LOG_FILE 2>&1
