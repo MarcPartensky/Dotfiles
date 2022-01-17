@@ -18,7 +18,7 @@ alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 
 # Navigation shortcuts
 alias programs="p"
-alias website="p web"
+alias website="p website"
 alias domination="p kingdomino"
 alias esclave="p discord-bot"
 alias web="p web"
