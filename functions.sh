@@ -764,7 +764,7 @@ pt5kill() {
 
 
 pt5log() {
-    tail -f tmp/c21_*.log
+    tail -f /tmp/c21_*.log
 }
 
 extract_pids() {
