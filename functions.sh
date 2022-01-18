@@ -755,3 +755,17 @@ pt5() {
     npm --prefix $PROGRAMS_PATH/colis21/src/Pssa.Colis21.ModuleWebHost/React start >& /tmp/c21_react.log &
     tail -f /tmp/c21_*.log
 }
+
+extract_pids() {
+    awk '{
+        if (NF == 1) { print -$1 }
+        else if (NF > 1) {
+            if ($2 == "+" || $2 == "-") { print -$3 }
+            else { print -$2 }
+        }
+    }'
+}
+
+kaj() {
+    jobs -p | extract_pids | xargs --no-run-if-empty kill -TERM -- || true
+}
