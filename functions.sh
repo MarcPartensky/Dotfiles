@@ -747,3 +747,11 @@ portkill() {
     kill -9 $(lsof -i:$1 | tail -1 | awk '{print $2}')
 }
 
+pt5() {
+    git -C $PROGRAMS_PATH/colis21 pull master:master
+    docker-compose -f $PROGRAMS_PATH/docker-compose.yml up -d mongo lapin
+    dotnet run --project $PROGRAMS_PATH/colis21/src/Pssa.Colis21.MainEventService >& /tmp/c21_maineventservice.log &
+    dotnet run --project $PROGRAMS_PATH/colis21/src/Pssa.Colis21.ModuleWebHost >& /tmp/c21_modulewebhost.log &
+    npm --prefix $PROGRAMS_PATH/colis21/src/Pssa.Colis21.ModuleWebHost/React start >& /tmp/c21_react.log &
+    tail -f /tmp/c21_*.log
+}
