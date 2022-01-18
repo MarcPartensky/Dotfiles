@@ -238,6 +238,7 @@ alias p7b="p prospectix7-api"
 alias p7="p prospectix7"
 alias lzd="lazydocker"
 alias kj="kill -9 %"
+alias kaj='kill $(jobs -p)'
 alias getbrew='/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 alias vpn="openvpn3"
 alias vpnvps="openvpn3 session-start --config vps-mi.ovpn"
