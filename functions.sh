@@ -781,3 +781,6 @@ extract_pids() {
 kaj() {
     jobs -p | extract_pids | xargs --no-run-if-empty kill -TERM -- || true
 }
+whereami() {
+    echo $(pwd) $HOST $(curl -s ipinfo.io | jq -r '[.ip,.city] | @tsv')
+}
