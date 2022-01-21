@@ -10,6 +10,7 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
+	pager = bat
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
@@ -761,3 +762,5 @@
 [format]
     pretty = %C(dim cyan)%>(12,trunc)%ad  %C(auto,yellow)%h %C(auto,green)%<(9,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D
     ; pretty = %C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s
+[pager]
+	branch = false
