@@ -20,6 +20,7 @@
 	trustExitCode = true
 [commit]
 	template = ~/.stCommitMsg
+    gpgsign = true
 [pull]
 	rebase = true
 [init]
