@@ -768,3 +768,5 @@
     ; pretty = %C(yellow)%h %C(cyan)%cd %Cblue%aN%C(auto)%d %Creset%s
 [pager]
 	branch = false
+[gpg]
+	program = gpg2
