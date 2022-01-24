@@ -6,7 +6,7 @@
 [user]
 	name = Marc Partensky
 	email = marc.partensky@gmail.com
-	; signingkey = 516EAE18A5512CE9
+	signingkey = 2A12B6587504372C
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = nvim
