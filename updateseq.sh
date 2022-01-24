@@ -98,7 +98,6 @@ main() {
 # rm -f $LOG_FOLDER/update*.log
 # ls $LOG_FOLDER/update*.log
 
-
 sudo echo "Updating the system" &&
 	main &&
 	sudo tail -f $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log &&
