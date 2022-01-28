@@ -247,7 +247,7 @@ readme() {
 }
 
 url() {
-	http -f --follow post https://marcpartensky.com/u$2 target=$1 description=$3
+	http -f --follow post https://marc.wf/u$2 target=$1 description=$3
 }
 
 format() {
