@@ -318,7 +318,7 @@ urlparse() {
 }
 
 expose() {
-	echo $1
+	# echo $1
 	local source_port=$(httprandomvpsport)
 	# local proto="$(echo $1 | grep :// | sed -e's,^\(.*://\).*,\1,g')"
 	# local url=$(echo $1 | sed -e s,$proto,,g)
@@ -340,8 +340,8 @@ expose() {
 		local port=$2
 		source_port=$3
 	fi
-	echo $host
-	echo $port
+	# echo $host
+	# echo $port
 	echo "${proto}marcpartensky.com:$source_port"
 	if [ -f ~/.ssh/expose ]; then
 		ssh -i ~/.ssh/expose -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
