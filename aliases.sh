@@ -12,7 +12,7 @@ alias memorix="ssh memorix"
 alias vpnix="ssh vpnix"
 alias playground="ssh playground"
 alias passepartix="ssh passepartix"
-alias caddy="nvim ~/junior/caddix/Caddyfile"
+alias caddyfile="nvim ~/junior/caddix/Caddyfile"
 alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
 alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 
