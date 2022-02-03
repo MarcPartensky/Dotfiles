@@ -435,7 +435,7 @@ proxmox() {
 	pass -c proxmox
 	sudo echo https://proxmox.tunnel
 	$(sleep 1 && xdg-open https://proxmox.tunnel) &
-	sudo ssh -NL 127.0.1.6:443:192.168.0.16:8006 kong
+	sudo ssh -NL 127.0.1.16:443:192.168.0.16:8006 kong
 }
 
 webedgix() {
