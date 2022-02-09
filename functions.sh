@@ -784,3 +784,23 @@ kaj() {
 whereami() {
     echo $PWD $HOST $(curl -s ipinfo.io | jq -r '[.ip,.city] | @tsv')
 }
+
+# Give vnc access to tower inside of a docker container
+vnctower() {
+    ssh tower docker-compose -f /home/marc/git/docker/tower.yml up -d novnc
+    ssh -R 5900:localhost:5900 tower
+}
+
+# man() {
+#     LESS_TERMCAP_md=$'\e[01;31m' \
+#     LESS_TERMCAP_me=$'\e[0m' \
+#     LESS_TERMCAP_us=$'\e[01;32m' \
+#     LESS_TERMCAP_ue=$'\e[0m' \
+#     LESS_TERMCAP_so=$'\e[45;93m' \
+#     LESS_TERMCAP_se=$'\e[0m' \
+#     command man "$@"
+# }
+
+set_title() {
+    echo -en "\e]0;$*\a"
+}

@@ -179,7 +179,7 @@ if [[ "$OSTYPE" = "linux-gnu"* ]]; then
 	if [ "$DISTRIB" = "Ubuntu" ]; then
 		export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	elif [ "$DISTRIB" = "Fedora" ]; then
-
+        # export MANPAGER="sh -c 'col -bx | batcat -l man -p'"
 	else
 		export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 	fi
