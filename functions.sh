@@ -807,3 +807,7 @@ set_title() {
 prettyarpscan() {
     sudo arp-scan $@ | awk '/([a-f0-9]{2}:){5}[a-f0-9]{2}/&&!seen[$1]++{print $1}'
 }
+
+iswireless() {
+    lshw -C network | grep Wireless
+}
