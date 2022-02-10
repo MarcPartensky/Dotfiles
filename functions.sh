@@ -804,3 +804,6 @@ vnctower() {
 set_title() {
     echo -en "\e]0;$*\a"
 }
+prettyarpscan() {
+    sudo arp-scan $@ | awk '/([a-f0-9]{2}:){5}[a-f0-9]{2}/&&!seen[$1]++{print $1}'
+}
