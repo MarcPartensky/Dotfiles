@@ -443,6 +443,7 @@ webedgix() {
 	$(sleep 1 && xdg-open https://edgix.tun) &
 	sudo ssh -NL 127.0.1.1:443:192.168.0.1:443 kong
 }
+alias edge="webedgix"
 
 ipa() {
     sudo echo https://ipa.tun
