@@ -790,7 +790,7 @@ whereami() {
 vnctower() {
     ssh tower docker-compose -f /home/marc/git/docker/tower.yml up -d novnc
     ssh -NL 5900:localhost:5910 tower &
-    ssh -NL 8010:localhost:8010 tower &
+    ssh -NL 8066:localhost:8066 tower &
 }
 
 # man() {
