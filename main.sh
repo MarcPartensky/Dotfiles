@@ -23,8 +23,6 @@ elif [ "$SHELL_NAME" = "bash" ]; then
     shopt -s autocd
 fi
 
-if ! which brew > /dev/null; then return; fi
-
 homebrew_command_not_found_handle() {
     local cmd="$1"
     # The code below is based off this Linux Journal article:
