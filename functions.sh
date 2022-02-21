@@ -753,7 +753,7 @@ pt5() {
     echo $$ > /tmp/pt5.pid
     # git -C $PROGRAMS_PATH/colis21 pull pickup master:master
     docker-compose -f $PROGRAMS_PATH/colis21/docker-compose.yml up -d mongo lapin elasticsearch
-    cd $PROGRAMS_PATH/colis21/Pssa.Colis21.Cli/bin/Debug/netcoreapp3.1
+    cd $PROGRAMS_PATH/colis21/src/Pssa.Colis21.Cli/bin/Debug/netcoreapp3.1
     dotnet c21.dll search-index -d 5000
     cd -
     sleep 5
