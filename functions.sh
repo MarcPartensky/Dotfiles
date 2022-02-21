@@ -753,7 +753,7 @@ pt5() {
     echo $$ > /tmp/pt5.pid
     # git -C $PROGRAMS_PATH/colis21 pull pickup master:master
     docker-compose -f $PROGRAMS_PATH/colis21/docker-compose.yml up -d mongo lapin elasticsearch
-    dotnet $PROGRAMS_PATH/colis21/Pssa.Colis21.Cli/bin/Debug/netcoreapp3.1/c21.dll reindex -d 5000
+    dotnet $PROGRAMS_PATH/colis21/Pssa.Colis21.Cli/bin/Debug/netcoreapp3.1/c21.dll search-index -d 5000
     sleep 5
     # dotnet run --project $PROGRAMS_PATH/colis21/src/Pssa.Colis21.MainEventService >& /tmp/c21_maineventservice.log &
     ASPNETCORE_ENVIRONMENT=Development dotnet run --project $PROGRAMS_PATH/colis21/src/Pssa.Colis21.ModuleWebHost >& /tmp/c21_modulewebhost.log &
