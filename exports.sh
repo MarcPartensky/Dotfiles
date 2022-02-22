@@ -100,3 +100,4 @@ export OCTOPUS_MONGO_PARAMS="--host srvlh-mdb-b2.paris.pickup.local:45014 --db k
 export TIA21_MONGO_PARAMS="--host srvlh-mdb-b1.paris.pickup.local:45004 --db colis21_events --gzip -u hprod_RO -p Iv8E2k4Ptu7icBlRaq5A --authenticationDatabase admin"
 export REGEX_URL="^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]\.[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]$"
 export LESS="-FRX"
+export GP="$PROGRAMS_PATH"
