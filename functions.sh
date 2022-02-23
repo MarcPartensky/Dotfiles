@@ -12,9 +12,8 @@ cd() {
     fi
     if [ -f "Pipfile" ] ; then
 			pipenv shell
-			pipenv install
 			n Locking
-			$(pipenv sync --pre --clear &> /tmp/pipenv.log && n Locked) & disown
+			$(pipenv update --pre --clear &> /tmp/pipenv.log && n Locked) & disown
     fi
 }
 
