@@ -751,8 +751,8 @@ portkill() {
 pt5() {
     echo $$ > /tmp/pt5.pid
     # git -C $PROGRAMS_PATH/colis21 pull pickup master:master
-    docker-compose -f $PROGRAMS_PATH/colis21/docker-compose.yml up -d mongo lapin elasticsearch
-    sleep 1
+    docker-compose -f $PROGRAMS_PATH/colis21/docker-compose.yml up -d mongo lapin elasticsearch kibana
+    sleep 2
     cd $PROGRAMS_PATH/colis21/src/Pssa.Colis21.Cli/bin/Debug/netcoreapp3.1
     dotnet c21.dll search-index -d 5000
     cd -
