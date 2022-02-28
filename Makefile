@@ -13,3 +13,5 @@ push:
 run:
 	docker run -it --name env marcpartensky/env
 	docker rm env
+symlinks:
+	./symlinks.sh
