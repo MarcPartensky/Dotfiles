@@ -832,3 +832,7 @@ pathadd() {
         PATH="${PATH:+"$PATH:"}$1"
     fi
 }
+
+dhost() {
+    export DOCKER_HOST=ssh://$1
+}
