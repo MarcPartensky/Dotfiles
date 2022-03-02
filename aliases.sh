@@ -67,6 +67,7 @@ alias d="docker"
 alias e='nvim ~/.zshenv'
 alias r="restart"
 alias u="update"
+alias g="grep"
 alias restart="exec $SHELL"
 alias update="source $DOTFILES_PATH/update.sh"
 alias finder="open ."
