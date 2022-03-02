@@ -437,12 +437,12 @@ proxmox() {
 	sudo ssh -NL 127.0.1.16:443:192.168.0.16:8006 kong
 }
 
-webedgix() {
+oldwebedgix() {
 	sudo echo https://edgix.tun
 	$(sleep 1 && xdg-open https://edgix.tun) &
 	sudo ssh -NL 127.0.1.1:443:192.168.0.1:443 kong
 }
-alias edge="webedgix"
+alias oldedge="webedgix"
 
 ipa() {
     sudo echo https://ipa.tun
