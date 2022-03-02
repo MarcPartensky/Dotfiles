@@ -794,11 +794,11 @@ whereami() {
 }
 
 # Give vnc access to tower inside of a docker container
-vnctower() {
-    ssh tower docker-compose -f /home/marc/git/docker/tower.yml up -d novnc
-    ssh -NL 5900:localhost:5910 tower &
-    ssh -NL 8066:localhost:8066 tower &
-}
+# vnctower() {
+#     ssh tower docker-compose -f /home/marc/git/docker/tower.yml up -d novnc
+#     ssh -NL 5900:localhost:5910 tower &
+#     ssh -NL 8066:localhost:8066 tower &
+# }
 
 # man() {
 #     LESS_TERMCAP_md=$'\e[01;31m' \
