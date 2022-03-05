@@ -33,9 +33,9 @@ dc() {
 					docker-compose logs -f ${@: 2}
 				fi
 			elif [ "$1" = "start" ]; then
-				docker-compose --file -f ${@: 2}
+				docker-compose logs -f ${@: 2}
 			elif [ "$1" = "restart" ]; then
-				docker-compose --file -f ${@: 2}
+				docker-compose logs -f ${@: 2}
 			fi
 		fi
 	fi
