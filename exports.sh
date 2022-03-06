@@ -33,6 +33,7 @@ export PATH="$PATH:/Applications/MAMP/bin"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
 export PATH="$PATH:/opt/metasploit-framework/bin"
 export PATH=$PATH:$DOTNET_ROOT
+export PATH="$PATH:$PROGRAMS_PATH/docker/bin"
 command -v brew >/dev/null && export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export CLICOLOR=1
