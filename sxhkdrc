@@ -4,7 +4,8 @@
 
 # terminal emulator
 super + Return
-    kitty
+    alacritty
+    # kitty
     # gnome-terminal
 	# urxvt program launcher
 super + @space
