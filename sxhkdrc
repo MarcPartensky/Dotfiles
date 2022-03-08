@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-	urxvt
-
-# program launcher
+    kitty
+    # gnome-terminal
+	# urxvt program launcher
 super + @space
 	dmenu_run
 
@@ -122,3 +122,9 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Go to empty workspace
+# alt + shift + {Left,Right,Up,Down}
+# 	dir={west,east,north,south}; \
+# 	bspc node -s "$dir" --follow \
+# 	    || bspc node -m "$dir" --follow
