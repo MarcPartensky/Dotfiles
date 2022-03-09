@@ -70,6 +70,7 @@ alias e='nvim ~/.zshenv'
 alias r="restart"
 alias u="update"
 alias g="grep"
+alias j="jupter-notebook"
 alias x="v $DOTFILES_PATH/sxhkdrc"
 alias restart="exec $SHELL"
 alias update="source $DOTFILES_PATH/update.sh"
