@@ -18,7 +18,7 @@ super + d
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd && notify-send bspwm reloaded || notify-send bspwm failed to reload
 
 #
 # bspwm hotkeys
@@ -131,3 +131,7 @@ super + {Left,Down,Up,Right}
 # 	dir={west,east,north,south}; \
 # 	bspc node -s "$dir" --follow \
 # 	    || bspc node -m "$dir" --follow
+
+# Screenshot
+{shift + ,_} Print
+  scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures ' && notify-send 'Screenshot captured'
