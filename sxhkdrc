@@ -1,6 +1,8 @@
 #
 # wm independent hotkeys
 #
+# key alt + Left
+#     alacritty
 
 # terminal emulator
 super + Return
