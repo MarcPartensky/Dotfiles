@@ -837,3 +837,9 @@ pathadd() {
 dhost() {
     export DOCKER_HOST=ssh://$1
 }
+
+gnomeworkspace() {
+    for i in {1..9}
+        do gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
+    done
+}
