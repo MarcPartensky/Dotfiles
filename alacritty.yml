@@ -59,7 +59,7 @@ window:
   # decorations: full
   # decorations: buttonless
   # decorations: transparent
-  # decorations: none
+  decorations: none
 
   # Startup Mode (changes require restart)
   #
