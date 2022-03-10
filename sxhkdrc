@@ -31,6 +31,10 @@ super + r
 super + alt + {q,r}
 	bspc {quit,wm -r}
 
+# log out = quit
+super + shift + l
+    bspc quit
+
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
