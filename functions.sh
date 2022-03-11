@@ -843,3 +843,10 @@ gnomeworkspace() {
         do gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>$i']"
     done
 }
+
+papericons() {
+    # set the icon theme
+    gsettings set org.gnome.desktop.interface icon-theme "Paper"
+    # or the cursor theme
+    gsettings set org.gnome.desktop.interface cursor-theme "Paper"
+}
