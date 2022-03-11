@@ -1,11 +1,9 @@
 dump:
-	brew bundle dump -f
-	snapdump
 	dconf dump / > ${DOTFILES_PATH}/.gnome.conf
 	dnf history userinstalled > ${DOTFILES_PATH}/.dnf.conf
+	brew bundle dump -f
 restore:
 	brew bundle
-	snaprestore
 build:
 	docker build /home/marc -f Dockerfile -t marcpartensky/env
 push:
@@ -15,5 +13,3 @@ run:
 	docker rm env
 symlinks:
 	./symlinks.sh
-gnome:
-	dconf dump / > .gnome.conf
