@@ -15,3 +15,5 @@ run:
 	docker rm env
 symlinks:
 	./symlinks.sh
+gnome:
+	dconf dump / > .gnome.conf
