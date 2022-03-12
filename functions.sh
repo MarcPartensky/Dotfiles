@@ -581,7 +581,7 @@ randomproxy() {
     shuf -n 1 $PROGRAMS_PATH/secrets/proxy.md
 }
 
-if ! command -v pbcopy > /dev/stdout ; then
+if ! command -v pbcopy > /dev/null ; then
     pbcopy() {
         cat $1 | xclip -selection clipboard
     }
