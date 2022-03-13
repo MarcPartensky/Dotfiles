@@ -2,6 +2,8 @@ version: "3.9"
 services:
   env:
     image: marcpartensky/env
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     stdin_open: true
     tty: true
