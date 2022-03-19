@@ -852,5 +852,5 @@ papericons() {
 }
 
 deploy() {
-    docker stack deploy -c $1 vps
+    docker stack deploy -c $1.yml vps
 }
