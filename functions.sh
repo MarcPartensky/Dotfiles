@@ -850,3 +850,7 @@ papericons() {
     # or the cursor theme
     gsettings set org.gnome.desktop.interface cursor-theme "Paper"
 }
+
+deploy() {
+    docker stack deploy -c $1 vps
+}
