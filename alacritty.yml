@@ -107,8 +107,8 @@ font:
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
-    # family: Source Code Pro
-    family: MesloLGS NF
+    family: Source Code Pro
+    # family: MesloLGS NF
     # family: Avenir
     # family: Konokor
     # family: Ubuntu Mono
