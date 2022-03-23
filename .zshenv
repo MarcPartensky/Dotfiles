@@ -49,6 +49,7 @@ gc() {
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
 }
+gcp() { gc $@; gp }
 gn() { ga; gc $@ }
 gt() { ga; gc $@; git pull; git push }
 gfp() {
