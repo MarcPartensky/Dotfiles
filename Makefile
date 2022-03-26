@@ -1,6 +1,9 @@
-dump:
+dump: gnome dnf brew
+gnome:
 	dconf dump / > ${DOTFILES_PATH}/.gnome.conf
+dnf:
 	dnf history userinstalled > ${DOTFILES_PATH}/.dnf.conf
+brew:
 	brew bundle dump -f
 restore:
 	brew bundle
