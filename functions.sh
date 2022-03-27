@@ -854,3 +854,7 @@ papericons() {
 deploy() {
     docker stack deploy -c $1.yml vps
 }
+
+runas() {
+    su - $1 -c ${@:2}
+}
