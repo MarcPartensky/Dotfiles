@@ -1,4 +1,5 @@
 #!/bin/sh
+echo $OS
 export MAIN_ENV=mi
 
 # Path variables
@@ -11,17 +12,11 @@ export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-# export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
 export PATH="$PATH:/usr/local/opt/php@7.1/bin"
 export PATH="$PATH:/usr/local/opt/php@7.2/bin"
 export PATH="$PATH:/usr/local/opt/openjdk@11/bin"
 export PATH="$PATH:/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
-export PATH="$PATH:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin"
 export PATH="$PATH:/usr/local/opt/grep/libexec/gnubin"
-export PATH="$PATH:/Users/marcpartensky/flutter/bin"
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 export PATH="$PATH:/opt/local/bin"
 export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
@@ -29,11 +24,20 @@ export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/Applications/MAMP/bin"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
 export PATH="$PATH:/opt/metasploit-framework/bin"
 export PATH=$PATH:$DOTNET_ROOT
 export PATH="$PATH:$PROGRAMS_PATH/docker/bin"
+export PATH="$PATH:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin"
+
+# OSX
+# export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
+export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
+export PATH="$PATH:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin"
+export PATH="$PATH:/Users/marcpartensky/flutter/bin"
+export PATH="$PATH:/Applications/MAMP/bin"
 command -v brew >/dev/null && export PATH=$(brew --prefix openvpn)/sbin:$PATH
 
 export CLICOLOR=1

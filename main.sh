@@ -306,10 +306,10 @@ if command -v thefuck >& /dev/null; then
     eval $(thefuck --alias)
 fi
 
-# if [ "$DESKTOP_SESSION" = "i3" ]; then
-#     xmodmap -e "clear lock" #disable caps lock switch
-#     xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
-# fi
+if [ "$DESKTOP_SESSION" = "i3" ]; then
+    xmodmap -e "clear lock" #disable caps lock switch
+    xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
+fi
 
 
 # Get the defaults that most users want.
