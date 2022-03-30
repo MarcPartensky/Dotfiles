@@ -1,5 +1,4 @@
 #!/bin/sh
-echo $OS
 export MAIN_ENV=mi
 
 # Path variables
@@ -28,17 +27,25 @@ export PATH="$PATH:/var/lib/snapd/snap/bin"
 export PATH="$PATH:/opt/metasploit-framework/bin"
 export PATH=$PATH:$DOTNET_ROOT
 export PATH="$PATH:$PROGRAMS_PATH/docker/bin"
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin"
+
+# Homebrew
+if command -v brew >/dev/null
+then
+    export PATH="$PATH:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin"
+    export PATH=$(brew --prefix openvpn)/sbin:$PATH
+fi
 
 # OSX
-# export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
-export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
-export PATH="$PATH:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin"
-export PATH="$PATH:/Users/marcpartensky/flutter/bin"
-export PATH="$PATH:/Applications/MAMP/bin"
-command -v brew >/dev/null && export PATH=$(brew --prefix openvpn)/sbin:$PATH
+if [ $OSTYPE = "Darwin" ]
+then
+    # export PATH="$PATH:/Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/bin"
+    export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin"
+    export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.7/bin"
+    export PATH="$PATH:/Library/Frameworks/Python.framework/Versions/3.8/bin"
+    export PATH="$PATH:/Users/marcpartensky/.pyenv/versions/3.10-dev/bin"
+    export PATH="$PATH:/Users/marcpartensky/flutter/bin"
+    export PATH="$PATH:/Applications/MAMP/bin"
+fi
 
 export CLICOLOR=1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
