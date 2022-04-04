@@ -68,6 +68,12 @@ dotc() {
     exec $SHELL
 }
 
+gigabix() {
+    scp -qp /home/marc/junior/idefix cnje:/tmp/idefix
+    ((sleep 0.5 && ssh cnje rm /tmp/idefix) &)
+    ssh gigabix
+}
+
 pki() {
     $(command -v apt &>/dev/null && sudo apt install -y $1) ||
     $(command -v dnf &>/dev/null && sudo dnf install -y $1) ||
