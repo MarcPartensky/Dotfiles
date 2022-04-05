@@ -139,12 +139,12 @@ super + {Left,Down,Up,Right}
 # 	bspc node -s "$dir" --follow \
 # 	    || bspc node -m "$dir" --follow
 
-# Screenshot
+# screenshot
 {shift + ,_} Print
   scrot {--select,_} '%F_%H-%M-%S_$wx$h.png' -e 'mv $f ~/Pictures ' && notify-send 'Screenshot captured'
   # maim | tee $path | xclip -selection clipboard -t image/png && notify-send "Screenshot"
 
-# Volume Control
+# volume control
 XF86AudioLowerVolume
 	amixer set Master 5%-
 XF86AudioRaiseVolume
@@ -152,8 +152,12 @@ XF86AudioRaiseVolume
 XF86AudioMute
     amixer set Master toggle
 
+# brigthness
 XF86MonBrightnessDown
     xbacklight -dec 5
 
 XF86MonBrightnessUp
     xbacklight -inc 5
+
+# switch workspace by scroll
+bspc {desktop -f,window -d} focused:^{1-9,10}
