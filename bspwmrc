@@ -33,3 +33,6 @@ xset dpms 0 0 0
 xset s 0
 rdb -merge $HOME/.Xresources
 xsetroot -cursor_name left_ptr
+
+# natural scrolling
+xinput set-prop 11 330 1
