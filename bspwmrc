@@ -28,7 +28,7 @@ bspc config presel_feedback_color "#6272a4"
 setxkbmap -option caps:ctrl_modifier
 xcape -e 'Caps_Lock=Escape'
 systemctl --user import-environment DISPLAY
-xset r rate 200 50
+xset r rate 50 50
 xset dpms 0 0 0
 xset s 0
 rdb -merge $HOME/.Xresources
