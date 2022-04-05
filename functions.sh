@@ -584,7 +584,7 @@ fp() {
 }
 
 cf() {
-	cd "~/.config/$(/bin/ls -1 $PROGRAMS_PATH | fzf)"
+	cd "~/.config/$(/bin/ls -1 ~/.config | fzf)"
 }
 
 randomproxy() {
