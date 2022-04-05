@@ -113,3 +113,4 @@ export TIA21_MONGO_PARAMS="--host srvlh-mdb-b1.paris.pickup.local:45004 --db col
 export REGEX_URL="^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]\.[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9\+&@#/%=~_|]$"
 export LESS="-FRX"
 export GP="$PROGRAMS_PATH"
+export MONITOR="eDP-1"

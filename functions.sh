@@ -583,6 +583,10 @@ fp() {
 	cd "$PROGRAMS_PATH/$(/bin/ls -1 $PROGRAMS_PATH | fzf)"
 }
 
+cf() {
+	cd "~/.config/$(/bin/ls -1 $PROGRAMS_PATH | fzf)"
+}
+
 randomproxy() {
     shuf -n 1 $PROGRAMS_PATH/secrets/proxy.md
 }
