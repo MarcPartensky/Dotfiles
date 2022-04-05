@@ -150,9 +150,10 @@ XF86AudioLowerVolume
 XF86AudioRaiseVolume
 	amixer set Master 5%+
 XF86AudioMute
-        amixer set Master toggle
+    amixer set Master toggle
 
-# F2
-#     pulseaudio-ctl up 5%
-# F3
-#     pulseaudio-ctl down 5%
+XF86MonBrightnessDown
+    xbacklight -dec 5
+
+XF86MonBrightnessUp
+    xbacklight -inc 5
