@@ -241,12 +241,11 @@ getpyenv() {
     source $DOTFILES_PATH/installs/pyenv.sh
 }
 
-
-[[ -f ${0:a:h}/secrets.sh ]] && source ${0:a:h}/secrets.sh
-[[ -f ~/.vimrc ]]	|| touch ~/.vimrc
-[[ -f ~/.zshrc ]] || echo "git -C $DOTFILES_PATH pull" >> ~/.zshrc
-[[ -f ~/.zshrc ]] || echo "source ${0:a:h}/main.sh" >> ~/.zshrc
-[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+[ -f ${0:a:h}/secrets.sh ] && source ${0:a:h}/secrets.sh
+[ -f ~/.vimrc ]	|| touch ~/.vimrc
+[ -f ~/.zshrc ] || echo "git -C $DOTFILES_PATH pull" >> ~/.zshrc
+[ -f ~/.zshrc ] || echo "source ${0:a:h}/main.sh" >> ~/.zshrc
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && . "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -311,9 +310,6 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
     xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 fi
 
-
-# Get the defaults that most users want.
-# source $VIMRUNTIME/defaults.vim
 
 # if has("vms"); then
 #  set nobackup
