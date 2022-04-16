@@ -63,18 +63,25 @@ command_not_found_handler() {
 }
 
 
+# autocompletion
+
+if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
+	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
+fi
+
+source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+## zsh completions
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
-
 # zstyle ':completion:*' list-prompt   ''
 # zstyle ':completion:*' select-prompt ''
-
 # zstyle ':completion:*' list-prompt   ''
 # zstyle ':completion:*' select-prompt ''
-
 # zstyle ':completion:*' commands base
-
-#\\\_ COMPLETIONS _///#
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
 # zstyle ':completion:*' extra-verbose no
@@ -92,6 +99,7 @@ zstyle ':completion:*:' group-order \
 	aliases \
 	local-directories directories
 
+## zsh-autocomplete
 zstyle ':autocomplete:*' config on
 zstyle ':autocomplete:*' min-input 3
 # zstyle ':autocomplete:*' default-context ''
@@ -102,30 +110,26 @@ zstyle ':autocomplete:*' min-input 3
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
 	local-directories directories
-	# zstyle ':autocomplete:*' default-context history-incremental-search-backward
-	zstyle ':autocomplete:*' ignored-input ''
-	zstyle ':autocomplete:tab:*' fzf-completion yes
-	zstyle ':autocomplete:tab:*' insert-unambiguous yes
-	zstyle ':autocomplete:tab:*' widget-style menu-complete
-	zstyle ':autocomplete:tab:*' widget-style menu-select
-	# zstyle ':autocomplete:tab:*' widget-style complete-word
-	# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+zstyle ':autocomplete:*' ignored-input ''
+zstyle ':autocomplete:tab:*' fzf-completion yes
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':autocomplete:tab:*' widget-style menu-complete
+zstyle ':autocomplete:tab:*' widget-style menu-select
+# zstyle ':autocomplete:tab:*' widget-style complete-word
+# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 # autoload -Uz compdef && compdef
 # autoload -Uz compinit && compinit
 # autoload -Uz bashcompinit && bashcompinit
 
-# The following lines were added by compinstall
-# zstyle :compinstall filename '/Users/marcpartensky/.zshrc'
-
-# pip zsh completion start
 
 # Antigen
 ANTIGEN_CACHE=false
 source ${0:a:h}/antigen.zsh
 # source $DOTFILES_PATH/antigen.zsh
-#
+
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
 antigen theme kardan
@@ -138,18 +142,6 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle agkozak/zsh-z
 #antigen bundle soimort/translate-shell
 antigen apply
-
-
-if [[ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]]
-then
-	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
-fi
-
-# autocompletion
-source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 
 # bindkey '\t' autosuggest-accept
