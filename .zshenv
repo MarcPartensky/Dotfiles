@@ -1,5 +1,4 @@
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/sbin"
+#!/bin/sh
 
 alias mem="du -sh"
 alias memfiles="du -sh * | sort -rh"

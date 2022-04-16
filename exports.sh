@@ -17,8 +17,12 @@ export PATH="$PATH:/usr/local/opt/openjdk@11/bin"
 export PATH="$PATH:/usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin"
 export PATH="$PATH:/usr/local/opt/grep/libexec/gnubin"
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
-export PATH="$PATH:/opt/local/bin"
-export PATH="$PATH:/opt/local/bin:/opt/local/sbin"
+if [ -d /opt/local/bin ]; then
+    export PATH="$PATH:/opt/local/bin"
+fi
+if [ -d /opt/local/sbin ]; then
+    export PATH="$PATH:/opt/local/sbin"
+fi
 export PATH="$PATH:/opt/gradle/gradle-7.0/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -29,8 +33,10 @@ export PATH=$PATH:$DOTNET_ROOT
 export PATH="$PATH:$PROGRAMS_PATH/docker/bin"
 
 # Homebrew
-if command -v brew >/dev/null
+if [ -d /home/linuxbrew ]
 then
+    export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+    export PATH="$PATH:/home/linuxbrew/.linuxbrew/sbin"
     export PATH="$PATH:/home/linuxbrew/.linuxbrew/Cellar/mongodb-database-tools/100.5.1/bin"
     export PATH=$(brew --prefix openvpn)/sbin:$PATH
 fi
@@ -77,8 +83,8 @@ export VISUAL=bat
 export LESS=-Xr
 # export DOCKER_HOST="tcp://marcpartensky.com:2375"
 export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 export MAC_TEL="fc:19:99:cd:6c:91"
 export MARCPARTENSKY_PATH="$HOME/Desktop/Marc\ Partensky"
 export BACKUPVPS_LOG="/var/log/backupvps.log"

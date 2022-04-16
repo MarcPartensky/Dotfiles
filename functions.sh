@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env zsh
 
 cd() {
     # actually change the directory with all args passed to the function
