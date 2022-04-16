@@ -93,7 +93,7 @@ zstyle ':completion:*:' group-order \
 	local-directories directories
 
 zstyle ':autocomplete:*' config on
-zstyle ':autocomplete:*' min-input 2
+zstyle ':autocomplete:*' min-input 3
 # zstyle ':autocomplete:*' default-context ''
 # zstyle ':autocomplete:*' default-context \
 # 	expansions history-words options \
@@ -146,7 +146,7 @@ then
 fi
 
 # autocompletion
-# source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
