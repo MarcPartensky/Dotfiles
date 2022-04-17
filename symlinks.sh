@@ -13,4 +13,5 @@ ln -snf ${0:a:h}/sxhkdrc $HOME/.config/sxhkd/sxhkdrc
 mkdir -p $HOME/.config/alacritty
 ln -snf ${0:a:h}/alacritty.yml $HOME/.config/alacritty/alacritty.yml
 # ln -snf ${0:a:h}/.docker/config.json $HOME/.docker/config.json
+mkdir -p $HOME/.config/polybar
 ln -snf ${0:a:h}/polybar_config.ini $HOME/.config/polybar/config.ini
