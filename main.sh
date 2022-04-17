@@ -69,6 +69,29 @@ if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
 	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
 fi
 
+## zsh-autocomplete
+zstyle ':autocomplete:*' config on
+zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' list-lines 16
+# zstyle ':autocomplete:*' default-context ''
+# zstyle ':autocomplete:*' default-context \
+# 	expansions history-words options \
+#   aliases functions builtins reserved-words \
+#   executables local-directories directories suffix-aliases
+zstyle ':autocomplete:*' default-context \
+	expansions history-words options \
+	local-directories directories
+zstyle ':autocomplete:*' add-space \
+    executables aliases functions builtins reserved-words commands
+# zstyle ':autocomplete:*' default-context history-incremental-search-backward
+zstyle ':autocomplete:*' ignored-input ''
+zstyle ':autocomplete:tab:*' fzf-completion yes
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':autocomplete:tab:*' widget-style menu-complete
+zstyle ':autocomplete:tab:*' widget-style menu-select
+# zstyle ':autocomplete:tab:*' widget-style complete-word
+# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
+
 source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -98,29 +121,6 @@ zstyle ':completion:*:' group-order \
 	expansions history-words options list=20 \
 	aliases \
 	local-directories directories
-
-## zsh-autocomplete
-zstyle ':autocomplete:*' config on
-zstyle ':autocomplete:*' min-input 3
-zstyle ':autocomplete:*' list-lines 16
-# zstyle ':autocomplete:*' default-context ''
-# zstyle ':autocomplete:*' default-context \
-# 	expansions history-words options \
-#   aliases functions builtins reserved-words \
-#   executables local-directories directories suffix-aliases
-zstyle ':autocomplete:*' default-context \
-	expansions history-words options \
-	local-directories directories
-zstyle ':autocomplete:*' add-space \
-    executables aliases functions builtins reserved-words commands
-# zstyle ':autocomplete:*' default-context history-incremental-search-backward
-zstyle ':autocomplete:*' ignored-input ''
-zstyle ':autocomplete:tab:*' fzf-completion yes
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
-zstyle ':autocomplete:tab:*' widget-style menu-complete
-zstyle ':autocomplete:tab:*' widget-style menu-select
-# zstyle ':autocomplete:tab:*' widget-style complete-word
-# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 # autoload -Uz compdef && compdef
