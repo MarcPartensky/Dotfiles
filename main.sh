@@ -102,6 +102,7 @@ zstyle ':completion:*:' group-order \
 ## zsh-autocomplete
 zstyle ':autocomplete:*' config on
 zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' list-lines 16
 # zstyle ':autocomplete:*' default-context ''
 # zstyle ':autocomplete:*' default-context \
 # 	expansions history-words options \
@@ -110,6 +111,8 @@ zstyle ':autocomplete:*' min-input 3
 zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
 	local-directories directories
+zstyle ':autocomplete:*' add-space \
+    executables aliases functions builtins reserved-words commands
 # zstyle ':autocomplete:*' default-context history-incremental-search-backward
 zstyle ':autocomplete:*' ignored-input ''
 zstyle ':autocomplete:tab:*' fzf-completion yes
@@ -144,14 +147,15 @@ antigen bundle agkozak/zsh-z
 antigen apply
 
 
+## zsh menu selection
 # bindkey '\t' autosuggest-accept
 # bindkey $key[Space] list-expand
 # # bindkey -M menuselect $key[Tab] .accept-line
-# bindkey -M menuselect 'h' vi-backward-char
-# bindkey -M menuselect 'k' vi-up-line-or-history
-# bindkey -M menuselect 'l' vi-forward-char
-# bindkey -M menuselect 'j' vi-down-line-or-history
-# bindkey -v '^?' backward-delete-char
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+# bindkey -v '^?' backward-delete-char # unecessary
 
 
 # ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
