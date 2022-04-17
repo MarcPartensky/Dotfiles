@@ -553,7 +553,7 @@ whiteproxmox() {
 gitregister () { $(echo $1 || echo $PWD) >> $GIT_RECORD }
 gitunregister() { grep -v $1 $GIT_RECORD > /tmp/gitrecord; mv /tmp/gitrecord $GIT_RECORD }
 gitrecord() { cat $GIT_RECORD }
-gitupdate() { for gitpath in $(cat $GIT_RECORD); do; git -c $gitpath pull; done }
+gitupdate() { for gitpath in $(cat $GIT_RECORD); do git -c $gitpath pull; done }
 
 docker-clean() {
 	docker service rm $(docker service ls -q)
