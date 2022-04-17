@@ -69,6 +69,11 @@ if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
 	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
 fi
 
+source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
 ## zsh-autocomplete
 zstyle ':autocomplete:*' config on
 zstyle ':autocomplete:*' min-input 3
@@ -91,11 +96,6 @@ zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
 # zstyle ':autocomplete:tab:*' widget-style complete-word
 # zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
-
-source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
-source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 ## zsh completions
 zstyle -d ':completion:*' list-prompt
