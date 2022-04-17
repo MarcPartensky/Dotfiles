@@ -85,7 +85,11 @@ pki() {
 }
 
 updategit() {
-	for f in `/bin/ls $PROGRAMS_PATH`; do; printf "\e[1m$f\e[0m: "; git -C $f pull ; done
+	for f in `/bin/ls $PROGRAMS_PATH`
+    do
+        printf "\e[1m$f\e[0m: "
+        git -C $f pull
+    done
 }
 
 
