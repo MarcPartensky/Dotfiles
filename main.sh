@@ -74,6 +74,31 @@ source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
+
+# autoload -Uz compdef && compdef
+# autoload -Uz compinit && compinit
+# autoload -Uz bashcompinit && bashcompinit
+
+
+# Antigen
+ANTIGEN_CACHE=false
+source ${0:a:h}/antigen.zsh
+# source $DOTFILES_PATH/antigen.zsh
+
+antigen theme romkatv/powerlevel10k
+antigen theme eastwood
+antigen theme kardan
+antigen theme nicoulaj
+# antigen theme candy
+# antigen theme robbyrussell
+# antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle agkozak/zsh-z
+#antigen bundle soimort/translate-shell
+antigen apply
+
+
 ## zsh completions
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
@@ -121,30 +146,6 @@ zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
 # zstyle ':autocomplete:tab:*' widget-style complete-word
 # zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
-
-
-# autoload -Uz compdef && compdef
-# autoload -Uz compinit && compinit
-# autoload -Uz bashcompinit && bashcompinit
-
-
-# Antigen
-ANTIGEN_CACHE=false
-source ${0:a:h}/antigen.zsh
-# source $DOTFILES_PATH/antigen.zsh
-
-antigen theme romkatv/powerlevel10k
-antigen theme eastwood
-antigen theme kardan
-antigen theme nicoulaj
-# antigen theme candy
-# antigen theme robbyrussell
-# antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle agkozak/zsh-z
-#antigen bundle soimort/translate-shell
-antigen apply
 
 
 ## zsh menu selection
