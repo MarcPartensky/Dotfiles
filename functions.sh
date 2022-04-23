@@ -356,7 +356,7 @@ expose() {
 	if [ -f ~/.ssh/expose ]; then
 		ssh -i ~/.ssh/expose -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
 	else
-		ssh -R $source_port:$host:$port expose@marcpartensky.com -N -p 7022
+		ssh -NR $source_port:$host:$port expose@marcpartensky.com -p 7022
 	fi
 }
 
