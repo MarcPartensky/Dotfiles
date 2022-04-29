@@ -18,7 +18,7 @@ cd() {
 }
 
 dc() {
-    export COMPOSE_FILE="$PROGRAMS_DOCKER_PATH/stacks/docker-compose.yml"
+    # export COMPOSE_FILE="$PROGRAMS_DOCKER_PATH/stacks/docker-compose.yml"
 	if [ "$1" = "-f" ]; then
         docker-compose --file $@
     else
