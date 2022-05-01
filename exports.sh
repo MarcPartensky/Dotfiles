@@ -120,3 +120,4 @@ export REGEX_URL="^(https?|ftp|file)://[-A-Za-z0-9\+&@#/%?=~_|!:,.;]*[-A-Za-z0-9
 export LESS="-FRX"
 export GP="$PROGRAMS_PATH"
 export MONITOR="eDP-1"
+export WALLPAPERS_PATH="$HOME/wallpapers"
