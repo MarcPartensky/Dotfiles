@@ -230,9 +230,9 @@ source ${0:a:h}/exports.sh
 source ${0:a:h}/aliases.sh
 source ${0:a:h}/functions.sh
 source ${0:a:h}/symlinks.sh
-source ${0:a:h}/.zshenv
-source ${0:a:h}/.p10k.zsh
-source ${0:a:h}/c21mongo.sh
+source ${0:a:h}/zsh/.zshenv
+source ${0:a:h}/zsh/.p10k.zsh
+source ${0:a:h}/bin/.local/bin/c21mongo.sh
 
 getpyenv() {
     source $DOTFILES_PATH/installs/pyenv.sh
