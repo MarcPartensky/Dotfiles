@@ -120,6 +120,7 @@ alias doti="dotignore"
 alias doth="dotssh"
 alias dotq="dotquick"
 alias dotp="dotpull"
+alias dotl="dotfiles"
 alias ud="dotc"
 alias vimrc='v $HOME/.vimrc'
 alias ev="cd $HOME/.config/nvim"
