@@ -1,4 +1,15 @@
 #!/usr/bin/env zsh
+
+if command -v stow
+then
+    stow -vt ~ */
+else
+    for folder in */
+    do
+        ln -sf $DOTFILES_PATH/$folder $HOME/$folder
+    done
+fi
+
 # ln -snf ${0:a:h}/.gitconfig $HOME
 # ln -snf ${0:a:h}/.zshenv $HOME
 # ln -snf ${0:a:h}/.p10k.zsh $HOME
