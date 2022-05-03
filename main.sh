@@ -232,11 +232,6 @@ source ${0:a:h}/functions.sh
 source ${0:a:h}/symlinks.sh
 source ${0:a:h}/zsh/.zshenv
 source ${0:a:h}/zsh/.p10k.zsh
-source ${0:a:h}/bin/.local/bin/c21mongo.sh
-
-getpyenv() {
-    source $DOTFILES_PATH/installs/pyenv.sh
-}
 
 [ -f ${0:a:h}/secrets.sh ] && source ${0:a:h}/secrets.sh
 [ -f ~/.vimrc ]	|| touch ~/.vimrc
