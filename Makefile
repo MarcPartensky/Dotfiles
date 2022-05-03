@@ -1,8 +1,8 @@
 dump: gnome dnf brew
 gnome:
-	dconf dump / > ${DOTFILES_PATH}/.gnome.conf
+	dconf dump / > dep/.local/dep/gnome/gnome.conf
 dnf:
-	dnf history userinstalled > ${DOTFILES_PATH}/.dnf.conf
+	dnf history userinstalled > dep/.local/dep/dnf/dnf.conf
 brew:
 	brew bundle dump -f
 restore:
@@ -16,3 +16,5 @@ run:
 	docker rm env
 symlinks:
 	./symlinks.sh
+stow:
+	stow -vt ~ */
