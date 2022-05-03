@@ -268,7 +268,6 @@ if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
 	echo "Adding $HOME/.local/bin to \$PATH"
 	export $PATH="$PATH:$HOME/.local/bin"
 fi
-ln -sf ${0:a:h}/update.sh $HOME/.local/bin/update
 
 # Default editor
 if command -v nvim >& /dev/null; then
