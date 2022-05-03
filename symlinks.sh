@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if command -v stow
+if command -v stow > /dev/null
 then
     stow -vt ~ */
 else
