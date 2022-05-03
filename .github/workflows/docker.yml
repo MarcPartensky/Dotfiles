@@ -2,11 +2,11 @@ name: Docker
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, stow ]
     paths-ignore:
       - '**/README.md'
   pull_request:
-    branches: [ master ]
+    branches: [ master, stow ]
 
 env:
   IMAGE: dotfiles
