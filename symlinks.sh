@@ -1,14 +1,14 @@
 #!/usr/bin/env zsh
 
-if command -v stow > /dev/null
-then
-    stow -vt ~ */
-else
-    for folder in */
-    do
-        ln -sf $DOTFILES_PATH/$folder $HOME/$folder
-    done
-fi
+# if command -v stow > /dev/null
+# then
+#     stow -d $DOTFILES_PATH -vt ~ $(/bin/ls $DOTFILES_PATH/*/)
+# else
+#     for folder in $DOTFILES_PATH/*/
+#     do
+#         ln -sf $DOTFILES_PATH/$folder $HOME/$folder
+#     done
+# fi
 
 # ln -snf ${0:a:h}/.gitconfig $HOME
 # ln -snf ${0:a:h}/.zshenv $HOME
