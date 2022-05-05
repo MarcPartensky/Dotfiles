@@ -121,6 +121,7 @@ alias dotq="dotquick"
 alias dotp="dotpull"
 alias dotl="dotfiles"
 alias ud="dotc"
+alias dw="v $PROGRAMS_PATH/dwm/config.h"
 alias vimrc='v $HOME/.vimrc'
 alias ev="cd $HOME/.config/nvim"
 alias ez="v $HOME/.zshrc"
