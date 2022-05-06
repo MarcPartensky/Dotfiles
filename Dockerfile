@@ -56,6 +56,9 @@ USER root
 ENV PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
 
+WORKDIR /root/git/dotfiles
+RUN make stow
+
 WORKDIR /root
 RUN touch .vimrc
 RUN nvim \
