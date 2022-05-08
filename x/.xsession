@@ -8,4 +8,6 @@
 #/usr/bin/xautolock -locker /usr/local/bin/slock -detectsleep -secure -time 10 &
 #/usr/local/bin/slstatus &
 setxkbmap -option caps:escape
+picom -b
+WALLPAPERS_PATH=/home/marc/wallpapers /home/marc/.local/bin/wpp -n
 /usr/local/bin/dwm
