@@ -35,6 +35,7 @@ RUN apt-get install -y --no-install-recommends \
 			build-essential \
 			tldr \
 			docker \
+            stow \
 			zsh
 
 RUN localedef -i en_US -f UTF-8 en_US.UTF-8
