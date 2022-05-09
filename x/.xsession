@@ -9,5 +9,5 @@
 #/usr/local/bin/slstatus &
 setxkbmap -option caps:escape
 picom -b
-find $WALLPAPERS_PATH -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | tee /dev/tty | xargs -I % feh --bg-fill %
+find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | tee /dev/tty | xargs -I % feh --bg-fill %
 /usr/local/bin/dwm
