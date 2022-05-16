@@ -5,9 +5,11 @@
 # If feh was installed, this can be uncommented.
 #/usr/bin/feh --bg-center 'IMAGE PATH HERE'
 # If xautolocal was installed, this can be uncommented.
-#/usr/bin/xautolock -locker /usr/local/bin/slock -detectsleep -secure -time 10 &
+/usr/bin/xautolock -locker /usr/local/bin/slock -detectsleep -secure -time 10 &
 #/usr/local/bin/slstatus &
 setxkbmap -option caps:escape
+setxkbmap fr -variant us
 picom -b
-find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | tee /dev/tty | xargs -I % feh --bg-fill %
+find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
+~/git/dwm-bar/dwm_bar.sh &
 /usr/local/bin/dwm

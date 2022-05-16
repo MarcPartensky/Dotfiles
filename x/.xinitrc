@@ -32,14 +32,15 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
-setxkbmap -option caps:escape
 
 systemctl --user import-environment DISPLAY
+setxkbmap -option caps:escape
 setxkbmap -option 'caps:ctrl_modifier'
 xcape -e 'Caps_Lock=Escape'
-xset r rate 200 50
-xset dpms 0 0 0
-xset s 0
+setxkbmap fr -variant us
+# xset r rate 200 50
+# xset dpms 0 0 0
+# xset s 0
 xrdb -merge $HOME/.Xresources
 xsetroot -cursor_name left_ptr
 
