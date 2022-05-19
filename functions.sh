@@ -20,7 +20,7 @@ cd() {
 dc() {
     # export COMPOSE_FILE="$PROGRAMS_DOCKER_PATH/stacks/docker-compose.yml"
 	if [ "$1" = "-f" ]; then
-        docker-compose --file $@
+        docker-compose --file ${@: 1}
     else
 		if [ -f $PWD/docker-compose.yml ]; then
 			docker-compose --file $PWD/docker-compose.yml $@
@@ -257,7 +257,7 @@ readme() {
 }
 
 url() {
-	http -f --follow post https://marc.wf/u$2 target=$1 description=$3
+	http -f --follow post https://marcpartensky.com//$2 target=$1 description=$3
 }
 
 format() {
