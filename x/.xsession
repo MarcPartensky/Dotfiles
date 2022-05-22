@@ -9,7 +9,7 @@
 #/usr/local/bin/slstatus &
 setxkbmap -option caps:escape
 setxkbmap fr -variant us
-picom -b
+picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
 ~/git/dwm-bar/dwm_bar.sh &
 ~/.local/bin/startdwm.sh
