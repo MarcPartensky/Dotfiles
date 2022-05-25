@@ -13,7 +13,7 @@
 
 # Mandatorily source xinitrc-common, which is common code shared between the
 # Xsession and xinitrc scripts which has been factored out to avoid duplication
-. /etc/X11/xinit/xinitrc-common
+# . /etc/X11/xinit/xinitrc-common
 
 # The user may have their own clients they want to run.  If they don't,
 # fall back to system defaults.
@@ -44,5 +44,10 @@ setxkbmap fr -variant us
 xrdb -merge $HOME/.Xresources
 xsetroot -cursor_name left_ptr
 
-sxhkd &
-exec bspwm
+setxkbmap -option caps:escape
+setxkbmap fr -variant us
+picom -b --experimental-backends
+find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
+dwm_bar.sh &
+startdwm.sh
+dwm
