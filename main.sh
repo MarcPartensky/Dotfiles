@@ -233,7 +233,6 @@ source ${0:a:h}/zsh/.zshenv
 source ${0:a:h}/zsh/.p10k.zsh
 
 [ -f ${0:a:h}/secrets.sh ] && source ${0:a:h}/secrets.sh
-[ -f ~/.vimrc ]	|| touch ~/.vimrc
 # [ -f ~/.zshrc ] || echo "git -C $DOTFILES_PATH pull" >> ~/.zshrc
 # [ -f ~/.zshrc ] || echo "source ${0:a:h}/main.sh" >> ~/.zshrc
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
