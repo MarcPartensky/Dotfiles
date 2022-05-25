@@ -16,7 +16,6 @@ alias contabo="ssh contabo"
 alias rcontabo=" ssh root@contabo"
 alias hec="ssh hec"
 alias caddyfile="nvim ~/junior/caddix/Caddyfile"
-alias schtroumpfix="cd $PROGRAMS_PATH/schtroumpfix; pipenv shell; nvim main.py"
 alias pass="PASSWORD_STORE_ENABLE_EXTENSIONS=true pass"
 
 # Navigation shortcuts
@@ -127,9 +126,7 @@ alias ez="v $HOME/.zshrc"
 alias ei3="v $HOME/.config/i3/config"
 alias dotfiles="cd $DOTFILES_PATH"
 alias dotpull="git -C $DOTFILES_PATH pull && restart"
-alias dotssh="nvim ~/.ssh/config"
-alias servant="cd ~/discordbot/servant-de-marc"
-alias esclaveaws="ssh -i 'discordbotofmarcpartensky.pem' ubuntu@ec2-15-236-33-61.eu-west-3.compute.amazonaws.com"
+alias dotssh="nvim $HOME/.ssh/config"
 alias mampstart='/Applications/MAMP/bin/start.sh && echo http://localhost:8888/phpmyadmin'
 alias mampstop='/Applications/MAMP/bin/stop.sh'
 alias jsonbeautify="chrome https://jsonformatter.curiousconcept.com/"
