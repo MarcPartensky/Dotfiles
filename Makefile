@@ -8,12 +8,11 @@ brew:
 restore:
 	brew bundle
 build:
-	docker build /home/marc -f Dockerfile -t marcpartensky/env
+	docker-compose -f .docker/docker-compose.yml build debian
 push:
-	docker push marcpartensky/env
+	docker-compose -f .docker/docker-compose.yml push debian
 run:
-	docker run -it --name env marcpartensky/env
-	docker rm env
+	docker-compose -f .docker/docker-compose.yml --rm run debian
 symlinks:
 	./symlinks.sh
 stow:
