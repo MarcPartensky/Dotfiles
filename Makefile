@@ -17,4 +17,4 @@ run:
 symlinks:
 	./symlinks.sh
 stow:
-	stow -vt ~ */
+	stow --override . -vt ~ */
