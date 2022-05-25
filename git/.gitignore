@@ -1,2 +1,10 @@
+# Python
+*.pyc
+__pycache__/
+
+# C
+*.o
+
+# Shell
 secrets.sh
 *.zwc
