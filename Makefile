@@ -16,6 +16,6 @@ run:
 symlinks:
 	./symlinks.sh
 stow:
-	stow --override . -vt ~ */
+	stow -vt ~ */
 zip:
 	zip -r -9 dotfiles.zip .
