@@ -262,6 +262,7 @@ if command -v mcfly >& /dev/null; then
 fi
 
 
+mkdir -p ~/.local/share
 mkdir -p ~/.local/bin
 if [[ ! :$PATH: == *:"$HOME/.local/bin":* ]] ; then
 	echo "Adding $HOME/.local/bin to \$PATH"
