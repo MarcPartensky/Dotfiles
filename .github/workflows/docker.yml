@@ -30,6 +30,9 @@ jobs:
       with:
         context: .docker/debian
         push: true
-        # tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$(echo $(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h))
-        # tags: ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:latest
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/dotfiles:latest
+        tags: |
+          ${{ secrets.DOCKERHUB_USERNAME }}/dotfiles:latest
+          ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$(echo $(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h))
+        # cache-from: |
+        #   marcpartensky/dotfiles:cache
+        #   type=local,src=path/to/dir
