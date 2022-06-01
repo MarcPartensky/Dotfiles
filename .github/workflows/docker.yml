@@ -35,7 +35,7 @@ jobs:
         push: true
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/$${{ env.IMAGE }}:v${{ github.run_number }}.${{ steps.tag.outputs.tag }}
+          ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE }}:v${{ github.run_number }}.${{ steps.tag.outputs.tag }}
         # cache-from: |
         #   marcpartensky/dotfiles:cache
         #   type=local,src=path/to/dir
