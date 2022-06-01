@@ -20,8 +20,9 @@ docker run -it marcpartensky/dotfiles
 * dotg => ~/.gitconfig
 * doti => ~/.gitignore_global
 
-## Symlinks
+## Install Symlinks
 
 ```zsh
-./symlinks.sh
+# Install stow (and make)
+make stow
 ```
