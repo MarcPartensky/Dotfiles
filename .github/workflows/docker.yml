@@ -32,7 +32,7 @@ jobs:
         push: true
         tags: |
           ${{ secrets.DOCKERHUB_USERNAME }}/dotfiles:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/$IMAGE:$(echo $(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h))
+          ${{ secrets.DOCKERHUB_USERNAME }}/dotfiles:$(echo $(date +%Y%m%d-%H%M%S).$(git log -1 --pretty=%h))
         # cache-from: |
         #   marcpartensky/dotfiles:cache
         #   type=local,src=path/to/dir
