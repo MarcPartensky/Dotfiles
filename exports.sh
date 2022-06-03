@@ -122,3 +122,4 @@ export LESS="-FRX"
 export GP="$PROGRAMS_PATH"
 export MONITOR="eDP-1"
 export WALLPAPERS_PATH="$HOME/wallpapers"
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
