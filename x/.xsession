@@ -10,4 +10,3 @@ picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
 ~/git/dwm-bar/dwm_bar.sh &
 ~/.local/bin/startdwm.sh
-/usr/local/bin/dwm
