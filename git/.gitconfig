@@ -9,7 +9,7 @@
     # signingkey = 2A12B6587504372C # subkey
     signingkey = 516EAE18A5512CE9
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /home/marc/.gitignore
 	editor = nvim
 	pager = bat
 [difftool "sourcetree"]

@@ -8,3 +8,6 @@ __pycache__/
 # Shell
 secrets.sh
 *.zwc
+
+# VSCode
+runtimeconfig.json
