@@ -52,26 +52,41 @@ exist() {
 main() {
     # debian based
 	if exist apt; then
-		$(apt --fix-broken install &&
+        updateapt() {
+            apt --fix-broken install &&
 			apt update &&
 			apt upgrade -y &&
-			apt autoremove -y) 2>&1 | tee $LOG_FOLDER/update_apt.log
+			apt autoremove -y
+        }
+        update Apt updateapt 2>&1 | tee $LOG_FOLDER/update_apt.log
 	fi
     # redhat based
 	if exist dnf; then
-		$(sudo dnf upgrade -y &&
-			sudo dnf autoremove -y) 2>&1 | tee $LOG_FOLDER/update_dnf.log
+        updatednf() {
+            sudo dnf upgrade -y &&
+			sudo dnf autoremove -y
+        }
+        update Dnf updatednf 2>&1 | tee $LOG_FOLDER/update_dnf.log
 	elif exist yum; then
-		sudo yum update 2>&1 | tee $LOG_FOLDER/update_yum.log
+        updateyum() {
+            sudo yum update
+        }
+        update Yum updateyum 2>&1 | tee $LOG_FOLDER/update_yum.log
 	fi
 	if exist zipper; then
-		$(zypper refresh &&
-			zypper update) 2>&1 | tee $LOG_FOLDER/update_zypper.log
+        udpatezypper() {
+            zypper refresh &&
+			zypper update
+        }
+        update Zypper updatezypper 2>&1 | tee $LOG_FOLDER/update_zypper.log
 	fi
     # gentoo based
 	if exist emerge; then
-		$(emerge --sync &&
-			emerge --update --deep --with-bdeps=y @world) 2>&1 | tee $LOG_FOLDER/update_emerge.log
+        updateemerge() {
+            emerge --sync &&
+			emerge --update --deep --with-bdeps=y @world
+        }
+        update Emerge updateemerge 2>&1 | tee $LOG_FOLDER/update_emerge.log
 	fi
     # arch based
 	if exist paru; then
@@ -83,11 +98,11 @@ main() {
 	fi
     # alpine based
 	if exist apk; then
-		sudo apk -U upgrade 2>&1 | tee $LOG_FOLDER/update_apk.log
+		update Apk sudo apk -U upgrade 2>&1 | tee $LOG_FOLDER/update_apk.log
 	fi
     # snaps
 	if exist snap; then
-		sudo snap refresh 2>&1 | tee $LOG_FOLDER/update_snap.log
+		update Snap sudo snap refresh 2>&1 | tee $LOG_FOLDER/update_snap.log
 	fi
     # node
 	if exist npm; then
