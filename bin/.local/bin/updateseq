@@ -2,7 +2,7 @@
 
 # Update all package managers available in a system.
 
-LOG_FOLDER="/tmp"
+LOG_FOLDER="$XDG_RUNTIME_DIR"
 [ -d $LOG_FOLDER ] || echo Creating log folder && mkdir -p $LOG_FOLDER
 
 LOG_FILE="/tmp/update.log"
@@ -11,87 +11,153 @@ LOG_FILE="/tmp/update.log"
 PID_FILE="/tmp/update.pid"
 echo $$ > $PID_FILE
 
+r='\e[31m'
+g='\e[32m'
+y='\e[33m'
+b='\e[34m'
+e='\e[0m'
+k='\e[5m'
+
+updating() {
+    printf "\n"
+    printf "$y --------------------------------------------------------------------- $e\n"
+    printf "                       ${y}Updating${b}${k} $@ ${k}${y}packages${e}\n"
+    printf "$y --------------------------------------------------------------------- $e\n"
+    # printf "\n"
+}
+
+updated() {
+    # printf "\n"
+    printf "$g --------------------------------------------------------------------- $e\n"
+    printf "                       ${g}Updated${b} $@ ${g}packages${e}\n"
+    printf "$g --------------------------------------------------------------------- $e\n"
+    # printf "\n\n"
+}
+failed() {
+    # printf "\n"
+    printf "$r --------------------------------------------------------------------- $e\n"
+    printf "                   ${r}Failed to update${b} $@ ${r}packages${e}\n"
+    printf "$r --------------------------------------------------------------------- $e\n"
+    printf "\n\n"
+}
+
+update() {
+    updating $1
+    ${@:2} && updated $1 || failed $1
+}
+
+exist() {
+    command -v $1 > /dev/null
+}
 main() {
-	if command -v apt; then
+    # debian based
+	if exist apt; then
 		$(apt --fix-broken install &&
 			apt update &&
 			apt upgrade -y &&
 			apt autoremove -y) 2>&1 | tee $LOG_FOLDER/update_apt.log
 	fi
-	if command -v dnf; then
+    # redhat based
+	if exist dnf; then
 		$(sudo dnf upgrade -y &&
 			sudo dnf autoremove -y) 2>&1 | tee $LOG_FOLDER/update_dnf.log
-	fi
-	if command -v yum; then
+	elif exist yum; then
 		sudo yum update 2>&1 | tee $LOG_FOLDER/update_yum.log
 	fi
-	if command -v zipper; then
+	if exist zipper; then
 		$(zypper refresh &&
 			zypper update) 2>&1 | tee $LOG_FOLDER/update_zypper.log
 	fi
-	if command -v emerge; then
+    # gentoo based
+	if exist emerge; then
 		$(emerge --sync &&
 			emerge --update --deep --with-bdeps=y @world) 2>&1 | tee $LOG_FOLDER/update_emerge.log
 	fi
-	if command -v pacman; then
-		sudo pacman -Syu 2>&1 | tee $LOG_FOLDER/update_pacman.log
+    # arch based
+	if exist paru; then
+		update Arch paru -Syu 2>&1 | tee $LOG_FOLDER/update_paru.log
+	elif exist yay; then
+		update Arch yay -Syu 2>&1 | tee $LOG_FOLDER/update_yay.log
+	elif exist pacman; then
+		update Arch sudo pacman -Syu 2>&1 | tee $LOG_FOLDER/update_paru.log
 	fi
-	if command -v yay; then
-		yay -Syu 2>&1 | tee $LOG_FOLDER/update_yay.log
-	fi
-	if command -v apk; then
+    # alpine based
+	if exist apk; then
 		sudo apk -U upgrade 2>&1 | tee $LOG_FOLDER/update_apk.log
 	fi
-	if command -v snap; then
+    # snaps
+	if exist snap; then
 		sudo snap refresh 2>&1 | tee $LOG_FOLDER/update_snap.log
 	fi
-	if command -v pipupgrade; then
-        $(pip install bpyutils &&
-            pipupgrade) 2>&1 | tee $LOG_FOLDER/update_pipupgrade.log
+    # node
+	if exist npm; then
+        updatenpm() {
+            npm install -g npm@latest &&
+            npm config set registry https://registry.npmjs.org &&
+            npm cache clean -f &&
+            npm update -g &&
+            npm audit fix &&
+            npm prune
+        }
+		update Npm updatenpm 2>&1 | tee $LOG_FOLDER/update_npm.log
 	fi
-	if command -v npm; then
-		$(npm install npm@latest -g &&
-			npm config set registry https://registry.npmjs.org &&
-			npm cache clean -f &&
-			npm update -g &&
-			npm audit fix &&
-			npm prune) 2>&1 | tee $LOG_FOLDER/update_npm.log
+	if exist yarn; then
+        updateyarn() {
+            yarn add --dev yarn-upgrade-all &&
+            yarn yarn-upgrade-all &&
+            yarn upgrade --latest
+        }
+        update Yarn updateyarn 2>&1 | tee $LOG_FOLDER/update_yarn.log
 	fi
-	if command -v yarn; then
-		$(yarn add --dev yarn-upgrade-all &&
-			yarn yarn-upgrade-all &&
-			yarn upgrade --latest) 2>&1 | tee $LOG_FOLDER/update_yarn.log
+    # python
+	# if exist pipupgrade; then
+        # $(pip install bpyutils &&
+            # pipupgrade) 2>&1 | tee $LOG_FOLDER/update_pipupgrade.log
+	# fi
+	if exist pip; then
+        updatepip() {
+            pip install -U pip &&
+			pip freeze > /tmp/pipfreezefull.txt &&
+            sed  's/==/ /g' /tmp/pipfreezefull.txt | awk '{print $1}' > /tmp/pipfreeze.txt
+            for lib in $(cat /tmp/pipfreeze.txt); do
+                pip install -U $lib
+            done
+        }
+        update Pip updatepip 2>&1 | tee $LOG_FOLDER/update_pip.log
 	fi
-	if command -v pip; then
-		$($(pip install -U pip &&
-			pip freeze > /tmp/pipfreeze.txt) &&
-		for lib in $(cat /tmp/pipfreeze.txt); do
-			pip install -U $lib &
-		done) 2>&1 | tee $LOG_FOLDER/update_pip.log
+	if exist pip3; then
+		update Pip3 pip3 install -U pip 2>&1 | tee $LOG_FOLDER/update_pip3.log
 	fi
-	if command -v pip3; then
-		pip3 install -U pip 2>&1 | tee $LOG_FOLDER/update_pip3.log
+	if exist pip2; then
+		update Pip2 pip2 install -U pip 2>&1 | tee $LOG_FOLDER/update_pip2.log
 	fi
-	if command -v pip2; then
-		pip2 install -U pip 2>&1 | tee $LOG_FOLDER/update_pip2.log
-	fi
-	if command -v cargo; then
-		$(cargo install cargo-update &&
-			cargo install-update -a) 2>&1 | tee $LOG_FOLDER/update_cargo.log
+    # rust
+	if exist cargo; then
+        updatecargo() {
+            cargo install cargo-update &&
+			cargo install-update -a
+        }
+        update Cargo updatecargo 2>&1 | tee $LOG_FOLDER/update_cargo.log
 		# cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 	fi
-	if command -v go; then
+    # golang
+	if exist go; then
 		if [ -z "$GOPATH" ]; then
 			go get -u all 2>&1 | tee $LOG_FOLDER/update_go.log
 		fi
 	fi
-	if command -v tldr; then
-		tldr --update 2>&1 | tee $LOG_FOLDER/update_tldr.log
+    # tldr
+	if exist tldr; then
+		update Tldr tldr --update 2>&1 | tee $LOG_FOLDER/update_tldr.log
 	fi
-	if command -v brew; then
-		$(brew upgrade -f &&
+    # hombrew
+	if exist brew; then
+		 updatebrew() {
+             brew upgrade -f &&
 			brew autoremove &&
-			brew cleanup) 2>&1 | tee $LOG_FOLDER/update_brew.log
+			brew cleanup
+        }
+        update Homebrew updatebrew 2>&1 | tee $LOG_FOLDER/update_brew.log
 	fi
 }
 
@@ -100,6 +166,6 @@ main() {
 
 sudo echo "Updating the system" &&
 	main &&
-	sudo tail -f $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log &&
-	command -v n > /dev/null &&
-	n "Update is done"
+	# sudo tail -f $LOG_FOLDER/update_*.log > $LOG_FOLDER/update.log &&
+	# command -v n > /dev/null &&
+	notify-send "Update is done"
