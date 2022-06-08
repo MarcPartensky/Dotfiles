@@ -11,5 +11,6 @@ find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg
 alacritty &
 firefox &
 spotify &
+systemctl --user start dwmblocks
 ~/.local/bin/startdwm.sh
 # instantwm
