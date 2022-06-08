@@ -8,5 +8,8 @@ setxkbmap -option caps:escape
 setxkbmap fr -variant us
 picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
+alacritty &
+firefox &
+spotify &
 ~/.local/bin/startdwm.sh
 # instantwm
