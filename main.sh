@@ -197,13 +197,23 @@ elif [ "$DISTRIB" = "Termux" ]; then
 elif [ "$DISTRIB" = "Centos" ]; then
     export PKM="dnf"
 elif [ "$DISTRIB" = "Fedora" ]; then
-    export PKM="dnf"
+    if command -v dnf > /dev/null; then
+        export PKM="dnf"
+    else
+        export PKM="dnf"
+    fi
 elif [ "$DISTRIB" = "OpenSUSE" ]; then
     export PKM="zipper"
 elif [ "$DISTRIB" = "Solus" ]; then
     export PKM="eopkg"
-elif [ "$DISTRIB" = "Archlinux" ]; then
-    export PKM="pacman"
+elif [ "$DISTRIB" = "Arch" ]; then
+    if command -v paru > /dev/null; then
+        export PKM="paru"
+    elif command -v yay > /dev/null; then
+        export PKM="yay"
+    else
+        export PKM="pacman"
+    fi
 elif [ "$DISTRIB" = "Darwin" ]; then
     export PKM="brew"
 else [ "$OS" = "Linux" ]
