@@ -64,11 +64,9 @@ command_not_found_handler() {
 
 
 # autocompletion
-
 if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
 	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
 fi
-
 source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -83,7 +81,6 @@ source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlight
 # Antigen
 ANTIGEN_CACHE=false
 source ${0:a:h}/antigen.zsh
-# source $DOTFILES_PATH/antigen.zsh
 
 antigen theme romkatv/powerlevel10k
 antigen theme eastwood
@@ -109,10 +106,6 @@ zstyle ':completion:*' max-matches-width 0
 zstyle ':completion:*' list-suffixes false
 zstyle ':completion:*' accept-exact true
 zstyle ':completion:*' menu select=0
-# zstyle ':completion:*' list-prompt   ''
-# zstyle ':completion:*' select-prompt ''
-# zstyle ':completion:*' list-prompt   ''
-# zstyle ':completion:*' select-prompt ''
 # zstyle ':completion:*' commands base
 # zstyle ':completion:*:' group-order \
 zstyle ':completion:*:' group-order \
