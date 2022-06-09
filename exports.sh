@@ -54,6 +54,22 @@ then
     export PATH="$PATH:/Applications/MAMP/bin"
 fi
 
+export TERMINAL=alacritty
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
+export PAGER=bat
+export READER=zathura
+export BROWSER=firefox-nightly
+export VIDEO=mpv
+export IMAGE=sxiv
+export COLORTERM=truecolor
+export OPENER=xdg-open
+export WM=dwm
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LESS=-Xr
 export CLICOLOR=1
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export TEST="This is a test"
@@ -77,11 +93,6 @@ export LEEKWARS_USERNAME="Mazex"
 export DISCORD_PREFIX="?"
 export DISCORD_DEPLOYMENT="DEVELOPMENT"
 export YTOPTS="-ciw -x --audio-format 'mp3' --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title    )s.%(ext)s' --rm-cache-dir"
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export EDITOR=nvim
-export VISUAL=bat
-export LESS=-Xr
 # export DOCKER_HOST="tcp://marcpartensky.com:2375"
 export LDFLAGS="-I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib"
 # export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
