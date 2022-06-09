@@ -102,27 +102,26 @@ antigen apply
 ## zsh completions
 zstyle -d ':completion:*' list-prompt
 zstyle -d ':completion:*' select-prompt
-# zstyle ':completion:*' list-prompt   ''
-# zstyle ':completion:*' select-prompt ''
-# zstyle ':completion:*' list-prompt   ''
-# zstyle ':completion:*' select-prompt ''
-# zstyle ':completion:*' commands base
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu yes select
-# zstyle ':completion:*' extra-verbose no
 zstyle ':completion:*' extra-verbose yes
 zstyle ':completion:*' max-matches-width 0
 zstyle ':completion:*' list-suffixes false
 zstyle ':completion:*' accept-exact true
 zstyle ':completion:*' menu select=0
+# zstyle ':completion:*' list-prompt   ''
+# zstyle ':completion:*' select-prompt ''
+# zstyle ':completion:*' list-prompt   ''
+# zstyle ':completion:*' select-prompt ''
+# zstyle ':completion:*' commands base
 # zstyle ':completion:*:' group-order \
-#   expansions history-words options \
-#   aliases functions builtins reserved-words \
-#   executables local-directories directories suffix-aliases
 zstyle ':completion:*:' group-order \
 	expansions history-words options list=20 \
 	aliases \
 	local-directories directories
+#   expansions history-words options \
+#   aliases functions builtins reserved-words \
+#   executables local-directories directories suffix-aliases
 
 ## zsh-autocomplete
 zstyle ':autocomplete:*' config on
