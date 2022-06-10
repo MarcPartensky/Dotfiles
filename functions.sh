@@ -340,10 +340,6 @@ pst() {
 	pstree -ps $@
 }
 
-killapp() {
-	osascript -e "quit app \"$1\""
-}
-
 spy() {
 	watch -n 0.5 ps -jFu $@
 }
