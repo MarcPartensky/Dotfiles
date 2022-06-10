@@ -165,14 +165,6 @@ spam() {
 	done
 }
 
-troll() {
-	sleep $1;
-	for i in {1..$2}; do
-		osascript -e 'display notification "you are useless"'
-		say "you are useless"
-	done
-}
-
 dlmusic() {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
