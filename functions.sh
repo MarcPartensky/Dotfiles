@@ -98,11 +98,6 @@ updategit() {
 # 	/usr/bin/env brew $@
 # }
 
-# rename() {
-# 	/usr/bin/env rename >& /dev/null || brew install rename
-# 	/usr/bin/env rename $@
-# }
-
 gh() {
 	/usr/bin/env gh >& /dev/null || brew install gh
 	/usr/bin/env gh $@
