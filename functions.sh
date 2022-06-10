@@ -156,15 +156,6 @@ openyoutube() {
 	open -a 'Google Chrome' "https://www.youtube.com/results?search_query=$1"
 }
 
-spam() {
-	exec "messengerterminal";
-	exec "/search $1";
-	exec "0";
-	for i in {1...$3}; do
-		exec $2;
-	done
-}
-
 dlmusic() {
 	youtube-dl -ciw -x --audio-format "mp3" --audio-quality 0 -f bestaudio --embed-thumbnail -o '%(title)s.%(ext)s' --rm-cache-dir  $*
 }
