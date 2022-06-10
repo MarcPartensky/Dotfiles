@@ -340,10 +340,6 @@ pst() {
 	pstree -ps $@
 }
 
-wallpaper() {
-	osascript -e 'tell application "System Events" to tell first Desktop to get its picture'
-}
-
 killapp() {
 	osascript -e "quit app \"$1\""
 }
