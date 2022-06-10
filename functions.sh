@@ -125,14 +125,6 @@ exists() {
 #     bindkey '^R' percol_select_history
 # fi
 
-div() {
-  local _d=${3:-2}
-  local _n=0000000000
-  _n=${_n:0:$_d}
-  local _r=$(($1$_n/$2))
-  _r=${_r:0:-$_d}.${_r: -$_d}
-  return $_r
-}
 
 # Ffmpeg
 speedup() {
