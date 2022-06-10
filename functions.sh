@@ -144,9 +144,6 @@ paste() {
 	pbpaste > $filename
 }
 
-# alias chrome="open -a 'Google Chrome' $1"
-# alias daisy="open -a 'DaisyDisk'"
-
 search() {
 	open -a 'Google Chrome' "http://www.google.com/search?q=$1"
 }
