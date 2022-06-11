@@ -1,8 +1,10 @@
 #!/bin/sh
 
-[ -v LC_MARC ] || exit
+if [ -v LC_MARC ]
+then
 
-. <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/aliases.sh)
-. <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/functions.sh)
-. <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/exports.sh)
-. <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/.zshenv.sh)
+    . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/aliases.sh)
+    . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/functions.sh)
+    . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/exports.sh)
+    . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/.zshenv.sh)
+fi
