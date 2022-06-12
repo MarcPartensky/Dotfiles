@@ -32,25 +32,4 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
-
-systemctl --user import-environment DISPLAY
-setxkbmap -option caps:escape
-setxkbmap -option 'caps:ctrl_modifier'
-xcape -e 'Caps_Lock=Escape'
-setxkbmap fr -variant us
-# xset r rate 200 50
-# xset dpms 0 0 0
-# xset s 0
-xrdb -merge $HOME/.Xresources
-xsetroot -cursor_name left_ptr
-
-setxkbmap -option caps:escape
-setxkbmap fr -variant us
-picom -b --experimental-backends
-find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
-# instantwm
-alacritty &
-firefox &
-spotify &
-systemctl --user start dwmblocks
-$HOME/.local/bin/startdwm.sh
+$HOME/.local/bin/poststartx
