@@ -52,5 +52,5 @@ find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg
 alacritty &
 firefox &
 spotify &
-systemctl start dwmblocks
-startdwm.sh
+systemctl --user start dwmblocks
+$HOME/.local/bin/startdwm.sh
