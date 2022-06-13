@@ -14,7 +14,7 @@ setxkbmap -option caps:escape
 picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
 alacritty &
-firefox-nigthly &
+firefox-nightly &
 spotify &
 systemctl --user start dwmblocks
 $HOME/.local/bin/startdwm.sh
