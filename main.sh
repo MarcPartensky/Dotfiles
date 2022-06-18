@@ -4,7 +4,6 @@ export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
 export JUNIOR_PATH=$HOME/junior
 export FPATH=$HOME/usr/share/zsh/*/functions:$FPATH
-# $(readlink -f "$(which $0)/..")
 
 # vim mode inside the terminal
 set -o vi
@@ -128,7 +127,7 @@ zstyle ':autocomplete:*' default-context \
 	expansions history-words options \
 	local-directories directories
 zstyle ':autocomplete:*' add-space \
-    executables aliases functions builtins reserved-words commands
+    commands executables aliases functions builtins reserved-words
 # zstyle ':autocomplete:*' default-context history-incremental-search-backward
 zstyle ':autocomplete:*' ignored-input ''
 zstyle ':autocomplete:tab:*' fzf-completion yes
@@ -136,7 +135,6 @@ zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-complete
 zstyle ':autocomplete:tab:*' widget-style menu-select
 # zstyle ':autocomplete:tab:*' widget-style complete-word
-# zstyle ':autocomplete:*' add-space executables aliases functions builtins reserved-words commands
 
 
 ## zsh menu selection
