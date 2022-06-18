@@ -2,8 +2,7 @@
 
 export DOTFILES_PATH=${0:a:h}
 export PROGRAMS_PATH=$(readlink -f "$DOTFILES_PATH/..")
-export JUNIOR_PATH=~/junior
-export GIT_PROJECTS_PATH=/Volumes/$/git-project
+export JUNIOR_PATH=$HOME/junior
 export FPATH=$HOME/usr/share/zsh/*/functions:$FPATH
 # $(readlink -f "$(which $0)/..")
 
@@ -14,6 +13,7 @@ set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
 setxkbmap -option caps:escape
+setxkbmap fr -variant us
 
 export SHELL_NAME=$(echo $SHELL | rev | cut -d/ -f1 | rev)
 
@@ -64,15 +64,6 @@ command_not_found_handler() {
 }
 
 
-# autocompletion
-if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
-	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
-fi
-source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
-source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-
 
 # autoload -Uz compdef && compdef
 # autoload -Uz compinit && compinit
@@ -89,12 +80,22 @@ antigen theme kardan
 antigen theme nicoulaj
 # antigen theme candy
 # antigen theme robbyrussell
-# antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle agkozak/zsh-z
+antigen bundle marlonrichert/zsh-autocomplete@main
 #antigen bundle soimort/translate-shell
 antigen apply
+
+# autocompletion
+# if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
+# 	git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
+# fi
+source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
+# source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 
 ## zsh completions
@@ -236,8 +237,6 @@ source ${0:a:h}/zsh/.zshenv
 source ${0:a:h}/zsh/.p10k.zsh
 
 [ -f ${0:a:h}/secrets.sh ] && source ${0:a:h}/secrets.sh
-# [ -f ~/.zshrc ] || echo "git -C $DOTFILES_PATH pull" >> ~/.zshrc
-# [ -f ~/.zshrc ] || echo "source ${0:a:h}/main.sh" >> ~/.zshrc
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # export NVM_DIR="$HOME/.nvm"
@@ -261,7 +260,7 @@ if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
 	touch $HISTFILE
     export MCFLY_KEY_SCHEME=vim
-	eval "$(mcfly init zsh)"
+	eval `mcfly init zsh`
 fi
 
 
