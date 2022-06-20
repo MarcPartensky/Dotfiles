@@ -260,7 +260,7 @@ if command -v mcfly >& /dev/null; then
 	mkdir -p $HOME/.local/share/zsh
 	touch $HISTFILE
     export MCFLY_KEY_SCHEME=vim
-	eval `mcfly init zsh`
+	eval "`mcfly init zsh`"
 fi
 
 
