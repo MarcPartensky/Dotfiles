@@ -11,8 +11,10 @@ set editing-mode vi
 set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
-setxkbmap -option caps:escape
-setxkbmap fr -variant us
+if command setxkbmap > /dev/null; then
+    setxkbmap -option caps:escape
+    setxkbmap fr -variant us
+fi
 
 export SHELL_NAME=$(echo $SHELL | rev | cut -d/ -f1 | rev)
 
