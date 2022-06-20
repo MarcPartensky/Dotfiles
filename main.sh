@@ -11,7 +11,7 @@ set editing-mode vi
 set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
-if command setxkbmap > /dev/null; then
+if command -v setxkbmap > /dev/null; then
     setxkbmap -option caps:escape
     setxkbmap fr -variant us
 fi
