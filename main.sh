@@ -90,6 +90,9 @@ antigen bundle marlonrichert/zsh-autocomplete@main
 antigen apply
 
 # autocompletion
+# if [ ! -d ~/.antigen/bundles/marlonrichert/zsh-autocomplete ]; then
+#     git clone https://github.com/marlonrichert/zsh-autocomplete.git ~/.antigen/bundles/marlonrichert/zsh-autocomplete
+# fi
 # source ~/.antigen/bundles/zsh-users/zsh-completions/zsh-completions.plugin.zsh
 # source ~/.antigen/bundles/marlonrichert/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # source ~/.antigen/bundles/zsh-users/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
