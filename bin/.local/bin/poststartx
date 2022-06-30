@@ -7,9 +7,9 @@ systemctl --user import-environment DISPLAY
 xrdb -merge $HOME/.Xresources
 xsetroot -cursor_name left_ptr
 
-setxkbmap -option caps:ctrl_modifier
+# setxkbmap -option caps:ctrl_modifier
 # setxkbmap fr -variant us
-# setxkbmap -option caps:escape
+setxkbmap -option caps:escape
 
 picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
