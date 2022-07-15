@@ -6,3 +6,4 @@ set statusbar-fg "#A9B1D6"
 set statusbar-bg "#1A1B26"
 map i recolor
 set selection-clipboard clipboard
+smooth-scroll true
