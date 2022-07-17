@@ -33,3 +33,6 @@ else
 fi
 
 $HOME/.local/bin/poststartx
+systemctl --user start dwmblocks
+$HOME/.local/bin/startdwm.sh
+
