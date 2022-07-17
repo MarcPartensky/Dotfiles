@@ -32,7 +32,6 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
-$HOME/.local/bin/poststartx
 systemctl --user start dwmblocks
 $HOME/.local/bin/startdwm.sh
 
