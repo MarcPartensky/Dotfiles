@@ -21,6 +21,8 @@
 [commit]
 	template = ~/.stCommitMsg
     gpgsign = true
+[push]
+    autoSetupRemote = true
 [pull]
 	rebase = true
 [init]
