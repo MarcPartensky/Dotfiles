@@ -28,7 +28,7 @@ else
     # (we provide fallbacks in Xclients as well) it can't hurt.
     [ -x /usr/bin/xsetroot ] && /usr/bin/xsetroot -solid '#222E45'
     [ -x /usr/bin/xclock ] && /usr/bin/xclock -geometry 100x100-5+5 &
-    [ -x /usr/bin/xterm ] && xterm -geometry 80x50-50+150 &
+    # [ -x /usr/bin/xterm ] && xterm -geometry 80x50-50+150 &
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
