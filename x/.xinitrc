@@ -32,5 +32,5 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
-systemctl --user restart dwmblocks
+systemctl --user restart dwmblocks xfluxd
 $HOME/.local/bin/startdwm.sh
