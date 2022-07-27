@@ -11,7 +11,9 @@ set editing-mode vi
 set keymap vi
 set shiftwidth=4
 set clipboard=unnamedplus
-if command -v setxkbmap > /dev/null; then
+
+# xset q>&/dev/null
+if [ `test -z $DISPLAY` ] && [ `command -v setxkbmap` > /dev/null ]; then
     setxkbmap -option caps:escape
     setxkbmap fr -variant us
 fi
@@ -63,6 +65,7 @@ command_not_found_handler() {
         return $?
     fi
 }
+
 
 
 
