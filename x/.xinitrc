@@ -32,5 +32,9 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
+if [ $XDG_CURRENT_DESKTOP = "hyprland" ]; then
+    hyprpaper
+fi
+
 systemctl --user restart dwmblocks xfluxd
 $HOME/.local/bin/startdwm.sh
