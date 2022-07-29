@@ -1,0 +1,119 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 24,
+	"ipc": true,
+	// "width": 1280, // Waybar width
+	// Choose the order of the modules
+	"modules-left": ["sway/hide", "sway/workspaces", "sway/mode", "custom/playerctl"],
+	"modules-center": ["sway/window"],
+	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "battery#bat2", "clock#UTC", "clock", "tray"],
+	// Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": false,
+		"all-outputs": false,
+		// no format used, prefer formatting in sway with strip-workspace-numbers
+		"format": "{name}"
+//		"format-icons": {
+//			"1": "",
+//			"2": "",
+//			"3": "",
+//			"4": "",
+//			"5": "",
+//			"urgent": "",
+//			"focused": "",
+//			"default": ""
+//		}
+	},
+	"sway/mode": {
+		"format": "{}"
+	},
+	"sway/window": {
+		"icon": false
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"tray": {
+		"icon-size": 20,
+		"spacing": 4
+	},
+	"clock": {
+		"interval": 1,
+		"locale": "C",
+		"format": "{:%T<small> %Z</small>}",
+		"format-alt": "{:<small>%F | %T %Z</small>}",
+		"tooltip-format": "<tt>{calendar}</tt>"
+	},
+	"clock#UTC": {
+		"format": "{:%H:%M<small> %Z</small>}",
+		"format-alt": "<small>{:<small>%F | %H:%M %Z</small>}</small>",
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"timezone": "UTC"
+	},
+	"cpu": {
+		"format": "{usage}% <big></big>"
+	},
+	"memory": {
+		"format": "{}% <big></big>"
+	},
+	"backlight": {
+		// "device": "acpi_video1",
+		"format": "{percent}% {icon}",
+		"on-scroll-up" : "light -A 2.5",
+		"on-scroll-down" : "light -U 2.5",
+		"format-icons": ["", ""]
+	},
+	"battery": {
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{capacity}% <big><big>{icon}</big></big>",
+		// "format-good": "", // An empty format will hide the module
+		// "format-full": "",
+		"format-icons": ["", "", "", "", ""]
+	},
+	"battery#bat2": {
+		"bat": "BAT2"
+	},
+	"network": {
+		// "interface": "wlp2s0", // (Optional) To force the use of this interface
+		"format-wifi": "<small>{ipaddr}</small> ({signalStrength}%)<big> </big>",
+		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+		"format-disconnected": "<small>Disconnected ⚠</small>",
+		"on-click": "alacritty -e nmtui"
+	},
+	"pulseaudio": {
+		//"scroll-step": 1,
+		"format": "{volume}% {icon}",
+		"format-bluetooth": "{volume}% {icon}",
+		"format-muted": "",
+		"format-icons": {
+			"headphones": "",
+			"handsfree": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["", ""]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/playerctl": {
+		"format": "{}",
+		"return-type": "json",
+		"max-length": 40,
+		"exec": "$HOME/.local/lib/waybar/playerctl.sh 2> /dev/null",
+		"on-click": "playerctl play-pause",
+		"on-right-click": "sys-notif media",
+		"on-scroll-up": "playerctl position 3+",
+		"on-scroll-down": "playerctl position 3-"
+	}
+}
+// vim: syntax=json
+

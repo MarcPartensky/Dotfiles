@@ -1,0 +1,944 @@
+/*
+	--baseae:  rgba(  0, 16, 20, 0.8);
+	--basead:  rgba(  0, 43, 54, 0.8);
+	--baseac:  rgba(  7, 54, 66, 0.8);
+	--baseab:  rgba( 88,110,117, 0.8);
+	--baseaa:  rgba(101,123,131, 0.8);
+	--basea:   rgba(131,148,150, 0.8);
+	--baseb:   rgba(147,161,161, 0.8);
+	--basec:   rgba(238,232,213, 0.8);
+	--based:   rgba(253,246,227, 0.8);
+	--yellow:  rgba(181,137,  0, 0.8);
+	--orange:  rgba(203, 75, 22, 0.8);
+	--red:	 rgba(220, 50, 47, 0.8);
+	--magenta: rgba(211, 54,130, 0.8);
+	--violet:  rgba(108,113,196, 0.8);
+	--blue:	rgba( 38,139,210, 0.8);
+	--cyan:	rgba( 42,161,152, 0.8);
+	--green:   rgba(133,153,  0, 0.8);
+*/
+* {
+	border: none;
+	border-radius: 0;
+	font-family: "Noto Sans", Roboto, Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	min-height: 0;
+	color: rgba(253,246,227 , 1);
+}
+
+window#waybar {
+	background: rgba(  0, 0, 0, 0.2);
+	/* border-top: 2px solid rgba(100, 114, 125, 0.5); */
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button {
+	padding: 0 5px;
+	background: transparent;
+	border-top: 2px solid rgba(238,232,213, 0.3);
+}
+
+#workspaces button.focused {
+	border-top: 2px solid rgba(238,232,213, 1);
+}
+
+#mode {
+	background: rgba(  0, 43, 54, 0.8);
+	border-top: 2px rgba(238,232,213, 0.8);
+}
+
+#battery, #cpu, #memory, #backlight, #network, #pulseaudio, #custom-playerctl, #mode, #idle_inhibitor {
+	padding: 0 10px;
+	margin: 0 5px;
+}
+
+#clock {
+	padding: 0 10px;
+	margin: 0 2px 0 0;
+	/* background: rgba( 88,110,117, 0.5); */
+}
+
+#clock.UTC {
+	margin: 0 4px;
+}
+
+#battery {
+	/* background-color: rgba(133,153,  0, 0.8); */
+}
+
+#battery.charging {
+	/* background-color: rgba(133,153,  0, 0.5); */
+}
+
+@keyframes blink {
+	to {
+		background-color: rgba(  0, 16, 20, 0.8);
+	}
+}
+
+#battery.warning:not(.charging) {
+	/* background-color: rgba(181,137,  0, 0.8); */
+}
+
+#battery.warning {
+	/* background-color: rgba(181,137,  0, 0.5); */
+}
+
+#battery.critical:not(.charging) {
+	background: rgba(220, 50, 47, 0.8);
+	animation-name: blink;
+	animation-duration: 0.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+#battery.critical:not(.charging) {
+	background: rgba(220, 50, 47, 0.5);
+}
+
+#cpu {
+	/* background: rgba(211, 54,130, 0.8); */
+}
+
+#memory {
+	/* background: rgba( 42,161,152, 0.8); */
+}
+
+#backlight {
+	/* background: rgba(131,148,150, 0.8); */
+}
+
+#network {
+	/* background: rgba( 38,139,210 , 0.8); */
+}
+
+#network.disconnected {
+	background: rgba( 38,139,210 , 0.5);
+}
+
+#pulseaudio {
+	/* background: rgba(181,137,  0, 0.8); */
+}
+
+#pulseaudio.muted {
+	/* background: rgba(181,137,  0, 0.5); */
+}
+
+/*#custom-playerctl {
+	background: rgba(181,137,  0, 0.8);
+}
+*/
+/* {{{ Progress bar hack */
+#custom-playerctl.0 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 0%,
+		rgba(181,137,  0, 0.4) 0.1%
+	);
+}
+#custom-playerctl.1 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 1%,
+		rgba(181,137,  0, 0.4) 1.1%
+	);
+}
+#custom-playerctl.2 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 2%,
+		rgba(181,137,  0, 0.4) 2.1%
+	);
+}
+#custom-playerctl.3 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 3%,
+		rgba(181,137,  0, 0.4) 3.1%
+	);
+}
+#custom-playerctl.4 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 4%,
+		rgba(181,137,  0, 0.4) 4.1%
+	);
+}
+#custom-playerctl.5 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 5%,
+		rgba(181,137,  0, 0.4) 5.1%
+	);
+}
+#custom-playerctl.6 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 6%,
+		rgba(181,137,  0, 0.4) 6.1%
+	);
+}
+#custom-playerctl.7 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 7%,
+		rgba(181,137,  0, 0.4) 7.1%
+	);
+}
+#custom-playerctl.8 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 8%,
+		rgba(181,137,  0, 0.4) 8.1%
+	);
+}
+#custom-playerctl.9 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 9%,
+		rgba(181,137,  0, 0.4) 9.1%
+	);
+}
+#custom-playerctl.10 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 10%,
+		rgba(181,137,  0, 0.4) 10.1%
+	);
+}
+#custom-playerctl.11 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 11%,
+		rgba(181,137,  0, 0.4) 11.1%
+	);
+}
+#custom-playerctl.12 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 12%,
+		rgba(181,137,  0, 0.4) 12.1%
+	);
+}
+#custom-playerctl.13 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 13%,
+		rgba(181,137,  0, 0.4) 13.1%
+	);
+}
+#custom-playerctl.14 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 14%,
+		rgba(181,137,  0, 0.4) 14.1%
+	);
+}
+#custom-playerctl.15 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 15%,
+		rgba(181,137,  0, 0.4) 15.1%
+	);
+}
+#custom-playerctl.16 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 16%,
+		rgba(181,137,  0, 0.4) 16.1%
+	);
+}
+#custom-playerctl.17 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 17%,
+		rgba(181,137,  0, 0.4) 17.1%
+	);
+}
+#custom-playerctl.18 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 18%,
+		rgba(181,137,  0, 0.4) 18.1%
+	);
+}
+#custom-playerctl.19 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 19%,
+		rgba(181,137,  0, 0.4) 19.1%
+	);
+}
+#custom-playerctl.20 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 20%,
+		rgba(181,137,  0, 0.4) 20.1%
+	);
+}
+#custom-playerctl.21 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 21%,
+		rgba(181,137,  0, 0.4) 21.1%
+	);
+}
+#custom-playerctl.22 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 22%,
+		rgba(181,137,  0, 0.4) 22.1%
+	);
+}
+#custom-playerctl.23 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 23%,
+		rgba(181,137,  0, 0.4) 23.1%
+	);
+}
+#custom-playerctl.24 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 24%,
+		rgba(181,137,  0, 0.4) 24.1%
+	);
+}
+#custom-playerctl.25 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 25%,
+		rgba(181,137,  0, 0.4) 25.1%
+	);
+}
+#custom-playerctl.26 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 26%,
+		rgba(181,137,  0, 0.4) 26.1%
+	);
+}
+#custom-playerctl.27 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 27%,
+		rgba(181,137,  0, 0.4) 27.1%
+	);
+}
+#custom-playerctl.28 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 28%,
+		rgba(181,137,  0, 0.4) 28.1%
+	);
+}
+#custom-playerctl.29 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 29%,
+		rgba(181,137,  0, 0.4) 29.1%
+	);
+}
+#custom-playerctl.30 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 30%,
+		rgba(181,137,  0, 0.4) 30.1%
+	);
+}
+#custom-playerctl.31 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 31%,
+		rgba(181,137,  0, 0.4) 31.1%
+	);
+}
+#custom-playerctl.32 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 32%,
+		rgba(181,137,  0, 0.4) 32.1%
+	);
+}
+#custom-playerctl.33 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 33%,
+		rgba(181,137,  0, 0.4) 33.1%
+	);
+}
+#custom-playerctl.34 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 34%,
+		rgba(181,137,  0, 0.4) 34.1%
+	);
+}
+#custom-playerctl.35 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 35%,
+		rgba(181,137,  0, 0.4) 35.1%
+	);
+}
+#custom-playerctl.36 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 36%,
+		rgba(181,137,  0, 0.4) 36.1%
+	);
+}
+#custom-playerctl.37 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 37%,
+		rgba(181,137,  0, 0.4) 37.1%
+	);
+}
+#custom-playerctl.38 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 38%,
+		rgba(181,137,  0, 0.4) 38.1%
+	);
+}
+#custom-playerctl.39 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 39%,
+		rgba(181,137,  0, 0.4) 39.1%
+	);
+}
+#custom-playerctl.40 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 40%,
+		rgba(181,137,  0, 0.4) 40.1%
+	);
+}
+#custom-playerctl.41 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 41%,
+		rgba(181,137,  0, 0.4) 41.1%
+	);
+}
+#custom-playerctl.42 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 42%,
+		rgba(181,137,  0, 0.4) 42.1%
+	);
+}
+#custom-playerctl.43 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 43%,
+		rgba(181,137,  0, 0.4) 43.1%
+	);
+}
+#custom-playerctl.44 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 44%,
+		rgba(181,137,  0, 0.4) 44.1%
+	);
+}
+#custom-playerctl.45 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 45%,
+		rgba(181,137,  0, 0.4) 45.1%
+	);
+}
+#custom-playerctl.46 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 46%,
+		rgba(181,137,  0, 0.4) 46.1%
+	);
+}
+#custom-playerctl.47 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 47%,
+		rgba(181,137,  0, 0.4) 47.1%
+	);
+}
+#custom-playerctl.48 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 48%,
+		rgba(181,137,  0, 0.4) 48.1%
+	);
+}
+#custom-playerctl.49 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 49%,
+		rgba(181,137,  0, 0.4) 49.1%
+	);
+}
+#custom-playerctl.50 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 50%,
+		rgba(181,137,  0, 0.4) 50.1%
+	);
+}
+#custom-playerctl.51 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 51%,
+		rgba(181,137,  0, 0.4) 51.1%
+	);
+}
+#custom-playerctl.52 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 52%,
+		rgba(181,137,  0, 0.4) 52.1%
+	);
+}
+#custom-playerctl.53 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 53%,
+		rgba(181,137,  0, 0.4) 53.1%
+	);
+}
+#custom-playerctl.54 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 54%,
+		rgba(181,137,  0, 0.4) 54.1%
+	);
+}
+#custom-playerctl.55 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 55%,
+		rgba(181,137,  0, 0.4) 55.1%
+	);
+}
+#custom-playerctl.56 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 56%,
+		rgba(181,137,  0, 0.4) 56.1%
+	);
+}
+#custom-playerctl.57 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 57%,
+		rgba(181,137,  0, 0.4) 57.1%
+	);
+}
+#custom-playerctl.58 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 58%,
+		rgba(181,137,  0, 0.4) 58.1%
+	);
+}
+#custom-playerctl.59 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 59%,
+		rgba(181,137,  0, 0.4) 59.1%
+	);
+}
+#custom-playerctl.60 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 60%,
+		rgba(181,137,  0, 0.4) 60.1%
+	);
+}
+#custom-playerctl.61 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 61%,
+		rgba(181,137,  0, 0.4) 61.1%
+	);
+}
+#custom-playerctl.62 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 62%,
+		rgba(181,137,  0, 0.4) 62.1%
+	);
+}
+#custom-playerctl.63 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 63%,
+		rgba(181,137,  0, 0.4) 63.1%
+	);
+}
+#custom-playerctl.64 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 64%,
+		rgba(181,137,  0, 0.4) 64.1%
+	);
+}
+#custom-playerctl.65 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 65%,
+		rgba(181,137,  0, 0.4) 65.1%
+	);
+}
+#custom-playerctl.66 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 66%,
+		rgba(181,137,  0, 0.4) 66.1%
+	);
+}
+#custom-playerctl.67 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 67%,
+		rgba(181,137,  0, 0.4) 67.1%
+	);
+}
+#custom-playerctl.68 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 68%,
+		rgba(181,137,  0, 0.4) 68.1%
+	);
+}
+#custom-playerctl.69 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 69%,
+		rgba(181,137,  0, 0.4) 69.1%
+	);
+}
+#custom-playerctl.70 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 70%,
+		rgba(181,137,  0, 0.4) 70.1%
+	);
+}
+#custom-playerctl.71 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 71%,
+		rgba(181,137,  0, 0.4) 71.1%
+	);
+}
+#custom-playerctl.72 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 72%,
+		rgba(181,137,  0, 0.4) 72.1%
+	);
+}
+#custom-playerctl.73 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 73%,
+		rgba(181,137,  0, 0.4) 73.1%
+	);
+}
+#custom-playerctl.74 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 74%,
+		rgba(181,137,  0, 0.4) 74.1%
+	);
+}
+#custom-playerctl.75 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 75%,
+		rgba(181,137,  0, 0.4) 75.1%
+	);
+}
+#custom-playerctl.76 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 76%,
+		rgba(181,137,  0, 0.4) 76.1%
+	);
+}
+#custom-playerctl.77 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 77%,
+		rgba(181,137,  0, 0.4) 77.1%
+	);
+}
+#custom-playerctl.78 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 78%,
+		rgba(181,137,  0, 0.4) 78.1%
+	);
+}
+#custom-playerctl.79 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 79%,
+		rgba(181,137,  0, 0.4) 79.1%
+	);
+}
+#custom-playerctl.80 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 80%,
+		rgba(181,137,  0, 0.4) 80.1%
+	);
+}
+#custom-playerctl.81 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 81%,
+		rgba(181,137,  0, 0.4) 81.1%
+	);
+}
+#custom-playerctl.82 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 82%,
+		rgba(181,137,  0, 0.4) 82.1%
+	);
+}
+#custom-playerctl.83 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 83%,
+		rgba(181,137,  0, 0.4) 83.1%
+	);
+}
+#custom-playerctl.84 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 84%,
+		rgba(181,137,  0, 0.4) 84.1%
+	);
+}
+#custom-playerctl.85 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 85%,
+		rgba(181,137,  0, 0.4) 85.1%
+	);
+}
+#custom-playerctl.86 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 86%,
+		rgba(181,137,  0, 0.4) 86.1%
+	);
+}
+#custom-playerctl.87 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 87%,
+		rgba(181,137,  0, 0.4) 87.1%
+	);
+}
+#custom-playerctl.88 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 88%,
+		rgba(181,137,  0, 0.4) 88.1%
+	);
+}
+#custom-playerctl.89 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 89%,
+		rgba(181,137,  0, 0.4) 89.1%
+	);
+}
+#custom-playerctl.90 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 90%,
+		rgba(181,137,  0, 0.4) 90.1%
+	);
+}
+#custom-playerctl.91 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 91%,
+		rgba(181,137,  0, 0.4) 91.1%
+	);
+}
+#custom-playerctl.92 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 92%,
+		rgba(181,137,  0, 0.4) 92.1%
+	);
+}
+#custom-playerctl.93 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 93%,
+		rgba(181,137,  0, 0.4) 93.1%
+	);
+}
+#custom-playerctl.94 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 94%,
+		rgba(181,137,  0, 0.4) 94.1%
+	);
+}
+#custom-playerctl.95 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 95%,
+		rgba(181,137,  0, 0.4) 95.1%
+	);
+}
+#custom-playerctl.96 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 96%,
+		rgba(181,137,  0, 0.4) 96.1%
+	);
+}
+#custom-playerctl.97 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 97%,
+		rgba(181,137,  0, 0.4) 97.1%
+	);
+}
+#custom-playerctl.98 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 98%,
+		rgba(181,137,  0, 0.4) 98.1%
+	);
+}
+#custom-playerctl.99 {
+	/*background: rgba(181,137,  0, 0.8);*/
+	background-image: linear-gradient(
+		to right,
+		rgba(181,137,  0, 0.8) 99%,
+		rgba(181,137,  0, 0.4) 99.1%
+	);
+}
+/* }}} */
+#tray {
+	padding: 0 5px;
+	margin: 0;
+}
+
+#idle_inhibitor {
+	/* background: rgba(101,123,131, 0.5); */
+}
+/* vim:foldmethod=marker:
+ */
+
