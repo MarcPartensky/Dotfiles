@@ -306,8 +306,10 @@ if [ "$DESKTOP_SESSION" = "i3" ]; then
     xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 fi
 
-if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORM=wayland
 fi
 
 # if has("vms"); then
