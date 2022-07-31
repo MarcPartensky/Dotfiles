@@ -79,7 +79,8 @@
 		"format-icons": ["", "", "", "", ""]
 	},
 	"battery#bat2": {
-		"bat": "BAT2"
+		"bat": "BAT2",
+		"on-click": "sh -c 'notify-send \"`acpi`\"'"
 	},
 	"network": {
 		// "interface": "wlp2s0", // (Optional) To force the use of this interface
