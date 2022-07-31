@@ -30,6 +30,7 @@
 [alias]
 	globalconf = "!nvim ~/.gitconfig"
 	conf = "!nvim .git/config"
+    squash = "!git merge --squash $1 && git merge -m 'Merged $1'"
 	pushall = "!git remote | xargs -L1 git push --all"
 	pullall = "!git remote | xargs -L1 git pull"
     rpull = "pull --recurse-submodules"
