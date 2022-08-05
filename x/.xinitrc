@@ -17,6 +17,7 @@
 
 # The user may have their own clients they want to run.  If they don't,
 # fall back to system defaults.
+
 if [ -f $HOME/.Xclients ]; then
     exec $CK_XINIT_SESSION $SSH_AGENT $HOME/.Xclients || \
     exec $CK_XINIT_SESSION $SSH_AGENT $HOME/.Xclients
@@ -32,7 +33,7 @@ else
     [ -x /usr/bin/twm ] && /usr/bin/twm
 fi
 
-if [ $XDG_CURRENT_DESKTOP = "hyprland" ]; then
+if [ "$XDG_CURRENT_DESKTOP" = "hyprland" ]; then
     hyprpaper
 fi
 
