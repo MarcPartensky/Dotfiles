@@ -16,3 +16,7 @@ find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg
 alacritty &
 firefox-nightly &
 spotify &
+
+if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
+    systemctl --user restart hyprpaper waybar waysct
+fi
