@@ -42,7 +42,9 @@ dc() {
 }
 
 dx() {
-    docker exec -it `docker ps | grep $1 | awk '{print $1}'`
+    container=`docker ps | grep $1 | awk '{print $1}'`
+    echo "docker exec -it $container"
+    docker exec -it $container
 }
 
 p() {
