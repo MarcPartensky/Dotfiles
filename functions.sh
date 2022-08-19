@@ -41,6 +41,10 @@ dc() {
 	fi
 }
 
+dx() {
+    docker exec -it `docker ps | grep $1 | awk '{print $1}'`
+}
+
 p() {
 	if [ -d $PROGRAMS_PATH/$1 ]; then
 		cd $PROGRAMS_PATH/$1
