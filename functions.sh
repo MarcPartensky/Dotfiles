@@ -42,7 +42,7 @@ dc() {
 }
 
 dx() {
-    container=`docker ps | grep $1 | awk '{print $1}'`
+    container=`docker ps --filter name=$1 --format "{{.Names}}" | head -1`
     cmd=$2
     echo "docker exec -it $container $cmd"
     docker exec -it $container $cmd
