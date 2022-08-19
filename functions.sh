@@ -48,6 +48,12 @@ dx() {
     docker exec -it $container $cmd
 }
 
+dxf() {
+    container=`docker ps --format "{{.Names}}" | fzf`
+    echo "docker exec -it $container sh"
+    docker exec -it $container sh
+}
+
 p() {
 	if [ -d $PROGRAMS_PATH/$1 ]; then
 		cd $PROGRAMS_PATH/$1
