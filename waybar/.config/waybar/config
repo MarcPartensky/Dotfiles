@@ -44,7 +44,7 @@
 	},
 	"clock": {
 		"interval": 1,
-		"locale": "C",
+		"locale": "fr_FR.UTF-8",
 		"format": "{:%T<small> %Z</small>}",
 		"format-alt": "{:<small>%F | %T %Z</small>}",
 		"tooltip-format": "<tt>{calendar}</tt>"
@@ -70,11 +70,11 @@
 		"format": "{capacity}% <big><big>{icon}</big></big>",
 		// "format-good": "", // An empty format will hide the module
 		// "format-full": "",
-		"format-icons": ["", "", "", "", ""]
+		"format-icons": ["", "", "", "", ""],
+		"on-click": "sh -c 'notify-send \"`acpi`\"'"
 	},
 	"battery#bat2": {
 		"bat": "BAT2",
-		"on-click": "sh -c 'notify-send \"`acpi`\"'"
 	},
 	"network": {
 		// "interface": "wlp2s0", // (Optional) To force the use of this interface
