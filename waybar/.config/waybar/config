@@ -7,7 +7,7 @@
 	// Choose the order of the modules
 	"modules-left": ["sway/hide", "sway/workspaces", "sway/mode", "custom/playerctl"],
 	"modules-center": ["sway/window"],
-	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "battery#bat2", "clock#UTC", "clock", "tray"],
+	"modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "backlight", "battery", "battery#bat2", "clock", "tray"],
 	// Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": false,
@@ -48,12 +48,6 @@
 		"format": "{:%T<small> %Z</small>}",
 		"format-alt": "{:<small>%F | %T %Z</small>}",
 		"tooltip-format": "<tt>{calendar}</tt>"
-	},
-	"clock#UTC": {
-		"format": "{:%H:%M<small> %Z</small>}",
-		"format-alt": "<small>{:<small>%F | %H:%M %Z</small>}</small>",
-		"tooltip-format": "<tt>{calendar}</tt>",
-		"timezone": "UTC"
 	},
 	"cpu": {
 		"format": "{usage}% <big></big>"
