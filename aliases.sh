@@ -139,6 +139,7 @@ alias ud="dotc"
 alias dw="v $PROGRAMS_PATH/dwm/config.h"
 alias vimrc='v $HOME/.vimrc'
 alias ev="cd $HOME/.config/nvim"
+alias eh="cd $HOME/.config/hypr/hyprland.conf"
 alias ez="v $HOME/.zshrc"
 alias ei3="v $HOME/.config/i3/config"
 alias dotfiles="cd $DOTFILES_PATH"
