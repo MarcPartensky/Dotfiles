@@ -3,6 +3,8 @@ import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Ungrab
 
+_terminal = "alacritty"
+
 main :: IO()
 main = xmonad $ def
     {
@@ -11,6 +13,6 @@ main = xmonad $ def
     `additionalKeysP`
     [
         ("M-f", spawn "firefox-nightly"),
-        ("M-a", spawn "alacritty"),
+        ("M-a", spawn _terminal),
         ("M-d", spawn "rofi -show run")
     ]
