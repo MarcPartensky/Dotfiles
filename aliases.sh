@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# numeris
+alias num
+alias numeris="ssh numeris"
+
 # je
 alias phoenix="ssh phoenix"
 alias phoenixstaging="ssh phoenix-staging"
