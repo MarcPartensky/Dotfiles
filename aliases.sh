@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # numeris
-alias num
+alias num="numeris"
 alias numeris="ssh numeris"
 
 # je
