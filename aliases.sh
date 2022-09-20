@@ -3,6 +3,8 @@
 # numeris
 alias num="numeris"
 alias numeris="ssh numeris"
+alias gar="garage"
+alias garage="ssh garage"
 
 # je
 alias phoenix="ssh phoenix"
