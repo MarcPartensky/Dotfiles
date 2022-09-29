@@ -46,7 +46,8 @@
 		"spacing": 10
 	},
     "clock": {
-        "format": "{: %H:%M %p   %d/%m/%Y}"
+        "format": "{: %H:%M %p   %d/%m/%Y}",
+        "on-click": "gnome-calendar"
     },
     "cpu": {
         "interval": 15,
