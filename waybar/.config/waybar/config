@@ -1,8 +1,8 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray"],
+	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray","custom/wallpaper"],
 	"modules-center": ["wlroots/tags"],
-	"modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio","clock", "battery","custom/power"],
+	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -90,6 +90,6 @@
     },
     "custom/wallpaper":{
         "format":" ",
-        "on-click": "bash ~/.config/system_scripts/pkill_bc"
+        "on-click": "systemctl --user restart wpaperd"
     }
 }
