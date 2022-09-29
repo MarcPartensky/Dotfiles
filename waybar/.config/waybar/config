@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray","custom/wallpaper"],
 	"modules-center": ["wlroots/tags"],
-	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
+	"modules-right": ["custom/updates-vps","custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
@@ -10,9 +10,7 @@
 		"format": "{icon} {volume}%",
 		"format-muted": "{icon} {volume}%",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
-		"format-icons": {
-			"default": ["", "", ""]
-		}
+		"format-icons": ["", "", ""]
 	},
 
     "wlroots/tags": {
@@ -87,6 +85,13 @@
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
         "interval": 15,
         "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated' "
+    },
+    "custom/updates-vps":{
+        "format": "{} Update(s)",
+        "exec": "ssh marc@vps checkupdates | wc -l",
+        "exec-if": "[[ $(ssh marc@vps checkupdates | wc -l) != 0 ]]",
+        "interval": 15,
+        "on-click": "ssh marc@vps paru -Syu && notify-send 'The system has been updated' "
     },
     "custom/wallpaper":{
         "format":" ",
