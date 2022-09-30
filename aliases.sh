@@ -157,7 +157,6 @@ alias jsonbeautify="chrome https://jsonformatter.curiousconcept.com/"
 alias github="open https://github.com/MarcPartensky/"
 alias activate="source venv/bin/activate"
 alias pypackages='cd /library/frameworks/python.framework/versions/3.8/lib/python3.8/site-packages/'
-alias tetris="bastet"
 alias spaceinvader="ninvaders"
 alias alacrittyrc="v $DOTFILES_PATH/alacritty/.config/alacritty/alacritty.yml"
 alias yabairc="v $DOTFILES_PATH/yabai/.config/yabai/.yabairc"
