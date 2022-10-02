@@ -41,17 +41,24 @@ dc() {
 	fi
 }
 
-dx() {
+dex() {
     container=`docker ps --filter name=$1 --format "{{.Names}}" | fzf`
     cmd=$2
     echo "docker exec -it $container $cmd"
     docker exec -it $container $cmd
 }
 
-dxf() {
+trysh() {
+    docker exec $1 which $2 >/dev/null &&
+    echo "docker exec -it $1 $2" &&
+    docker exec -it $1 $2
+}
+
+dx() {
     container=`docker ps --format "{{.Names}}" | fzf`
-    echo "docker exec -it $container sh"
-    docker exec -it $container sh
+    for shell in zsh bash sh; do
+        trysh $container $shell && break
+    done
 }
 
 p() {
