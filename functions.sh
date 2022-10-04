@@ -857,3 +857,7 @@ capturehttp() {
  -R'http.request.method == "GET" || http.request.method == "HEAD"'
     tail -f /var/tmp/wireshark*
 }
+
+kick() {
+    kill `ps aux | g $1 | g sshd | g root | awk '{print $2}'`
+}
