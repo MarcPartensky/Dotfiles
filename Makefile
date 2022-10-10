@@ -1,3 +1,5 @@
+stow:
+	stow -vt ~ */
 dump: gnome dnf brew
 gnome:
 	dconf dump / > dep/.local/dep/gnome/gnome.conf
@@ -15,7 +17,5 @@ run:
 	docker-compose -f .docker/docker-compose.yml --rm run debian
 symlinks:
 	./symlinks.sh
-stow:
-	stow -vt ~ */
 zip:
 	zip -r -9 dotfiles.zip .
