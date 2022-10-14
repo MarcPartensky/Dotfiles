@@ -178,7 +178,7 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
+  # use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 # draw_bold_text_with_bright_colors: false
@@ -240,7 +240,7 @@ colors:
       foreground: '#000000'
       background: '#ffffff'
   #
-    bar:
+    footer_bar:
        # background: CellForeground
        # foreground: CellBackground
        text: '#ff00ff'
