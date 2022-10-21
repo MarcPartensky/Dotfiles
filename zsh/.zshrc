@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-unset SHELL
+export SHELL=zsh
 source ~/git/dotfiles/main.sh
 # eval `starship init zsh`
 source ~/.profile
