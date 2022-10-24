@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -v LC_MARC ]
+if [ -v LC_MARC_SHELL ]
 then
     . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/aliases.sh)
     . <(curl -s https://raw.githubusercontent.com/MarcPartensky/Dotfiles/master/functions.sh)
