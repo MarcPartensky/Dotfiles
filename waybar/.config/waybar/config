@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray","custom/wallpaper"],
 	"modules-center": ["wlroots/tags"],
-	"modules-right": ["custom/updates-vps","custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
+	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
