@@ -18,5 +18,5 @@ firefox-nightly &
 spotify &
 
 if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
-    systemctl --user restart hyprpaper waybar waysct wpaperd
+    systemctl --user restart hyprpaper waybar waysct swww # wpaperd
 fi
