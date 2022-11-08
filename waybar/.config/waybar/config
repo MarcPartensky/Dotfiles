@@ -97,6 +97,6 @@
     },
     "custom/wallpaper":{
         "format":" ",
-        "on-click": "systemctl --user restart wpaperd"
+        "on-click": "~/.local/bin/restartwallpaper"
     }
 }
