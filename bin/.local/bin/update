@@ -44,11 +44,12 @@ main() {
 			emerge --update --deep --with-bdeps=y @world) | sudo tee $LOG_FOLDER/update_emerge.log >>$LOG_FILE 2>&1
 	fi
 	if command -v paru > /dev/null; then
-		paru -Syu | sudo tee $LOG_FOLDER/update_paru.log >>$LOG_FILE 2>&1
-	fi
-	if command -v yay > /dev/null; then
+		paru -Syu --noconfirm --overwrite "*" | sudo tee $LOG_FOLDER/update_paru.log >>$LOG_FILE 2>&1
+	elif command -v yay > /dev/null; then
 		yay -Syu | sudo tee $LOG_FOLDER/update_yay.log >>$LOG_FILE 2>&1
-	fi
+	elif command -v pacman > /dev/null; then
+		sudo pacman -Syu --noconfirm | sudo tee $LOG_FOLDER/update_pacman.log >>$LOG_FILE 2>&1
+    fi
 	if command -v apk > /dev/null; then
 		apk -U upgrade | sudo tee $LOG_FOLDER/update_apk.log >>$LOG_FILE 2>&1
 	fi
