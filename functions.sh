@@ -861,3 +861,7 @@ capturehttp() {
 kick() {
     kill `ps aux | g $1 | g sshd | g root | awk '{print $2}'`
 }
+
+domain() {
+    dig -x `curl -sLq https://ipconfig.io` | grep PTR | grep -v ";" | awk '{print $NF}' | sed 's/.$//'
+}
