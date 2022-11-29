@@ -844,6 +844,10 @@ papericons() {
     gsettings set org.gnome.desktop.interface cursor-theme "Paper"
 }
 
+dr() {
+    docker service rm `docker service ls | grep $1 | awk '{print $2}'`
+}
+
 dp() {
     stack=`basename $1 .yml`
     docker stack deploy -c $1 $stack
