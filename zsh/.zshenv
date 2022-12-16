@@ -190,3 +190,5 @@ if command -v bat >& /dev/null; then
 else
 	alias b="cat"
 fi
+
+if [ -e /home/marc/.nix-profile/etc/profile.d/nix.sh ]; then . /home/marc/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
