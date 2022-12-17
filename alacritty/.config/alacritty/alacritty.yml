@@ -717,16 +717,26 @@ key_bindings:
   - { key: A,      mods: Command,            chars: "\x1bggVG" }
 
   # tabs
-  - { key: Key1,      mods: Command,            chars: ":tabn 1\x0a" }
-  - { key: Key2,      mods: Command,            chars: ":tabn 2\x0a" }
-  - { key: Key3,      mods: Command,            chars: ":tabn 3\x0a" }
-  - { key: Key4,      mods: Command,            chars: ":tabn 4\x0a" }
-  - { key: Key5,      mods: Command,            chars: ":tabn 5\x0a" }
-  - { key: Key6,      mods: Command,            chars: ":tabn 6\x0a" }
-  - { key: Key7,      mods: Command,            chars: ":tabn 7\x0a" }
-  - { key: Key8,      mods: Command,            chars: ":tabn 8\x0a" }
-  - { key: Key9,      mods: Command,            chars: ":tabn 9\x0a" }
-  - { key: Key0,      mods: Command,            chars: ":tabn 0\x0a" }
+  # - { key: Key1,      mods: Control,            chars: ":BufferGoto 1\x0a" }
+  # - { key: Key2,      mods: Control,            chars: ":BufferGoto 2\x0a" }
+  # - { key: Key3,      mods: Control,            chars: ":BufferGoto 3\x0a" }
+  # - { key: Key4,      mods: Control,            chars: ":BufferGoto 4\x0a" }
+  # - { key: Key5,      mods: Control,            chars: ":BufferGoto 5\x0a" }
+  # - { key: Key6,      mods: Control,            chars: ":BufferGoto 6\x0a" }
+  # - { key: Key7,      mods: Control,            chars: ":BufferGoto 7\x0a" }
+  # - { key: Key8,      mods: Control,            chars: ":BufferGoto 8\x0a" }
+  # - { key: Key9,      mods: Control,            chars: ":BufferGoto 9\x0a" }
+  # - { key: Key0,      mods: Control,            chars: ":BufferGoto 0\x0a" }
+  - { key: Key1,      mods: Control,            chars: ":tabn 1\x0a" }
+  - { key: Key2,      mods: Control,            chars: ":tabn 2\x0a" }
+  - { key: Key3,      mods: Control,            chars: ":tabn 3\x0a" }
+  - { key: Key4,      mods: Control,            chars: ":tabn 4\x0a" }
+  - { key: Key5,      mods: Control,            chars: ":tabn 5\x0a" }
+  - { key: Key6,      mods: Control,            chars: ":tabn 6\x0a" }
+  - { key: Key7,      mods: Control,            chars: ":tabn 7\x0a" }
+  - { key: Key8,      mods: Control,            chars: ":tabn 8\x0a" }
+  - { key: Key9,      mods: Control,            chars: ":tabn 9\x0a" }
+  - { key: Key0,      mods: Control,            chars: ":tabn 0\x0a" }
   # - { key: J,      mods: Command,            chars: "v\x0a" }
 
 # debug:
