@@ -19,3 +19,5 @@ symlinks:
 	./symlinks.sh
 zip:
 	zip -r -9 dotfiles.zip .
+nixos:
+	sudo ln -sf $(PWD)/nixos/.config/nixos/* /etc/nixos/
