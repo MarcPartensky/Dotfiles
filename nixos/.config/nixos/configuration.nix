@@ -19,7 +19,7 @@
   # boot.loader.grub.version = 2;
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.efiInstallAsRemovable = true;
-  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
@@ -51,10 +51,10 @@
 
   # Configure keymap in X11
   services.xserver.layout = "fr-us";
-  services.xserver.xkbOptions = {
+  # services.xserver.xkbOptions = {
   #   "eurosign:e";
-    "caps:escape" # map caps to escape.
-  };
+  #   "caps:escape"; # map caps to escape.
+  # };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -64,7 +64,7 @@
   hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.marc = {
