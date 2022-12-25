@@ -874,3 +874,9 @@ kick() {
 domain() {
     dig -x `curl -sLq https://ipconfig.io` | grep PTR | grep -v ";" | awk '{print $NF}' | sed 's/.$//'
 }
+encrypt() {
+    7za a -p -mem=AES256 $1.7z $1
+}
+decrypt() {
+    7za d $1
+}
