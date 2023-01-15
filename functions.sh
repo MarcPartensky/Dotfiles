@@ -12,8 +12,8 @@ cd() {
     fi
     if [ -f "Pipfile" ] ; then
 			pipenv shell
-			n Locking
-			$(pipenv update --pre --clear &> /tmp/pipenv.log && n Locked) & disown
+			# n Locking
+			# $(pipenv update --pre --clear &> /tmp/pipenv.log && n Locked) & disown
     fi
 }
 
