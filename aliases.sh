@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# tower
+alias ta="ssh towerarch"
+alias rta="ssh root@towerarch"
+
 # numeris
 alias num="numeris"
 alias numeris="ssh numeris"
