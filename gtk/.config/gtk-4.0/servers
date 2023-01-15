@@ -23,4 +23,24 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="sftp://192.168.0.3/" added="2023-01-09T17:58:43.320484Z" modified="2023-01-09T17:58:43.320490Z" visited="2023-01-09T17:58:43.320486Z">
+    <title>/ sur 192.168.0.3</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-01-09T17:58:43.320487Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://tower/" added="2023-01-09T17:59:06.487366Z" modified="2023-01-14T22:46:26.944537Z" visited="2023-01-14T22:46:26.944535Z">
+    <title>/ sur tower</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2023-01-14T22:46:26.944536Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
