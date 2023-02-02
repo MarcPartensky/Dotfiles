@@ -3,6 +3,7 @@
 # tower
 alias ta="ssh towerarch"
 alias rta="ssh root@towerarch"
+alias lta="ssh 192.168.0.3"
 
 # numeris
 alias num="numeris"

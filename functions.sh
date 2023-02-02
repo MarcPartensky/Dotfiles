@@ -263,8 +263,12 @@ compress() {
 }
 
 mac2ip() {
-	arp -a | grep $1 | awk '{print $2}' | sed -e 's/(//' -e 's/)//'
+	arp-scan -l | grep $1 | awk '{print $2}' | sed -e 's/(//' -e 's/)//'
+	# arp -a | grep $1 | awk '{print $2}' | sed -e 's/(//' -e 's/)//'
 	# arp -a | grep $1 | cut -d "(" -f2 | cut -d ")" -f1
+}
+sshmac() {
+    ssh `mac2ip $1`
 }
 
 sshtel() {
