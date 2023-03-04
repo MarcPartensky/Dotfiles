@@ -884,3 +884,8 @@ encrypt() {
 decrypt() {
     7za d $1
 }
+
+ytdlp() {
+    docker compose -f ~/git/docker/services/yt-dlp.yml up -d
+    docker compose logs -f ytdlp
+}
