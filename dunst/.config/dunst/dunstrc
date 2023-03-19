@@ -4,7 +4,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = 1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -217,7 +217,7 @@
     dmenu = zsh -c "awk '{print $2}'"
 
     # Browser for opening urls in context menu.
-    browser = zsh -c "$BROWSER
+    browser = zsh -c "$BROWSER"
     # browser = /usr/bin/firefox-nightly
 
     # Always run rule-defined scripts, even if the notification is suppressed
