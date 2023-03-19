@@ -14,7 +14,9 @@
 	},
 
     "wlr/workspaces": {
-        "sort-by-number": true
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "on-click": "activate"
     },
 	"network": {
 		"tooltip": false,
