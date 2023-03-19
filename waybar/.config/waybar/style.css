@@ -1,7 +1,7 @@
 * {
 	border: none;
 	border-radius: 10;
-    font-family: "JetbrainsMono Nerd Font" ;
+    font-family: "SF Pro" ;
 	font-size: 15px;
 	min-height: 10px;
 }
@@ -23,7 +23,7 @@ window#waybar.hidden {
     color: transparent;
 	background: transparent;
 }
-#tags {
+#workspaces {
 	margin-top: 6px;
 	margin-left: 12px;
 	font-size: 4px;
@@ -33,7 +33,7 @@ window#waybar.hidden {
 	transition: none;
 }
 
-#tags button {
+#workspaces button {
 	transition: none;
 	color: #B5E8E0;
 	background: transparent;
@@ -41,20 +41,20 @@ window#waybar.hidden {
 	border-radius: 2px;
 }
 
-#tags button.occupied {
+#workspaces button.occupied {
 	transition: none;
 	color: #F28FAD;
 	background: transparent;
 	font-size: 4px;
 }
 
-#tags button.focused {
+#workspaces button.focused {
 	color: #ABE9B3;
     border-top: 2px solid #ABE9B3;
     border-bottom: 2px solid #ABE9B3;
 }
 
-#tags button:hover {
+#workspaces button:hover {
 	transition: none;
 	box-shadow: inherit;
 	text-shadow: inherit;
@@ -63,7 +63,7 @@ window#waybar.hidden {
     color: #E8A2AF;
 }
 
-#tags button.focused:hover {
+#workspaces button.focused:hover {
     color: #E8A2AF;
 }
 
@@ -218,8 +218,8 @@ window#waybar.hidden {
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
-	color: #161320;
-	background: #C9CBFF;
+    color: #89DCEB;
+    background: #161320;
 }
 
 #custom-updates {
@@ -234,14 +234,32 @@ window#waybar.hidden {
 	background: #E8A2AF;
 }
 
-#custom-media {
+#custom-firefox {
 	margin-top: 6px;
 	margin-left: 8px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 15px;
+	padding-right: 5px;
+	margin-bottom: 0px;
+	border-radius: 10px;
+	transition: none;
+	/* color: #B5E8E0; */
+	color: #161320;
+	/* background: #161320; */
+    /* background: #C4302B; */
+    background: #E6928F;
+}
+
+#custom-spotify {
+	margin-top: 6px;
+	margin-left: 8px;
+	padding-left: 15px;
+	padding-right: 5px;
 	margin-bottom: 0px;
 	border-radius: 10px;
 	transition: none;
 	color: #161320;
-	background: #F2CDCD;
+	/* color: #B5E8E0; */
+	/* background: #161320; */
+	/* background: #1DB954; */
+	background: #7FEAA5;
 }

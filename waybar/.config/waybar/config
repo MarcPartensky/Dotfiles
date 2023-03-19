@@ -1,7 +1,7 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","cpu","memory","custom/media","tray","custom/wallpaper"],
-	"modules-center": ["wlroots/tags"],
+	"modules-left": ["custom/launcher","custom/wallpaper", "cpu","memory", "network", "tray"],
+	"modules-center": ["custom/firefox", "wlr/workspaces", "custom/spotify"],
 	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
@@ -13,13 +13,14 @@
 		"format-icons": ["", "", ""]
 	},
 
-    "wlroots/tags": {
-		"num-tags": 6
+    "wlr/workspaces": {
+        "sort-by-number": true
     },
 	"network": {
 		"tooltip": false,
-		"format-wifi": "  {essid}",
-		"format-ethernet": ""
+		"format-wifi": "  {essid} {ipaddr}",
+		"format-ethernet": "",
+        "on-click": "gnome-control-center wifi"
 	},
 	"backlight": {
 		"tooltip": false,
@@ -59,18 +60,21 @@
         "format": " {}%",
         "max-length": 10
     },
-    "custom/media": {
-        "interval": 30,
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 20,
-        "format-icons": {
-            "spotify": " ",
-            "default": " "
-        },
+    "custom/firefox": {
+        "interval": 5,
+        "format": "🔴 {}",
+        "max-length": 30,
         "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+        "exec": "~/.local/bin/firefoxmediaparsemetadata",
         "on-click": "playerctl play-pause"
+    },
+    "custom/spotify": {
+        "interval": 5,
+        "format": " {}",
+        "max-length": 30,
+        "escape": true,
+        "exec": "~/.local/bin/spotifyparsemetadata",
+        "on-click": "playerctl -p spotify play-pause"
     },
     "custom/launcher":{
         "format": " ",
@@ -85,14 +89,14 @@
         "format": "{} Update(s)",
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
+        "interval": 60,
         "on-click": "alacritty -e paru -Syu --noconfirm && notify-send 'The system has been updated' "
     },
     "custom/updates-vps":{
         "format": "{} Update(s)",
         "exec": "ssh marc@vps checkupdates | wc -l",
         "exec-if": "[[ $(ssh marc@vps checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
+        "interval": 60,
         "on-click": "ssh marc@vps paru -Syu && notify-send 'The system has been updated' "
     },
     "custom/wallpaper":{
