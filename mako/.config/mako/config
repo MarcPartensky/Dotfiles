@@ -1,0 +1,31 @@
+max-visible=5
+sort=-time
+
+layer=top
+anchor=top-right
+
+font=monospace 15
+background-color=#040c16
+text-color=#cce9ea
+width=300
+height=300
+margin=10
+padding=15
+border-size=3
+border-color=#92bbed
+border-radius=10
+progress-color=over #5588AAFF
+icons=true
+max-icon-size=64
+
+markup=true
+actions=true
+format=<b>%s</b>\n%b
+default-timeout=7000
+ignore-timeout=false
+
+
+[urgency=high]
+border-color=#E6676B
+
+
