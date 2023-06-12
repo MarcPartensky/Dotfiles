@@ -1,0 +1,7 @@
+! Set background and foreground colors
+nsxiv*background: #000000
+nsxiv*foreground: #ffffff
+
+! Set image view colors
+nsxiv*image.background: #000000
+nsxiv*image.foreground: #ffffff

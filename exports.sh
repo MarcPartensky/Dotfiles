@@ -138,3 +138,4 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python
 export NNN_OPTS="derH"
 export NNN_FIFO=/tmp/nnn.fifo
+export XRESOURCES="$HOME/.config/sxiv/nsxiv-theme"
