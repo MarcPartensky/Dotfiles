@@ -81,6 +81,12 @@ p() {
 	fi
 }
 
+# pf() {
+#     p $@
+#     tmate mprocs
+#     mprocs 
+# }
+
 dotc() {
     git -C $DOTFILES_PATH add -A
     git -C $DOTFILES_PATH commit -m $1
@@ -886,6 +892,27 @@ decrypt() {
 }
 
 ytdlp() {
-    docker compose -f ~/git/docker/services/yt-dlp.yml up -d
+    docker compose -f ~/git/docker/services/yt-dlp.yml up -d yt-dlp
     docker compose logs -f ytdlp
 }
+
+dlp() {
+    yt-dlp \
+        -ciw \
+        -o '%(title)s.%(ext)s' \
+        -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+        --progress \
+        --audio-quality 0 \
+        --embed-thumbnail \
+        --embed-metadata \
+        --embed-subs \
+        --embed-chapters \
+        --rm-cache-dir \
+        --sponsorblock-mark all \
+        $@
+}
+
+dlps() {
+    for ZZ
+}
+
