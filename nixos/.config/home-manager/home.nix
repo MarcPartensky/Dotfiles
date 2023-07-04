@@ -17,10 +17,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages.pkgs = [
-    nmap
-    neovim
-    zsh
+  home.packages= [
+    pkgs.nmap
+    pkgs.neovim
+    pkgs.zsh
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
