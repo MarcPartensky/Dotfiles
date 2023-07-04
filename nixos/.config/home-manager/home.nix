@@ -18,9 +18,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    nmap
-    nvim
-    zsh
+    "nmap"
+    "nvim"
+    "zsh"
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
