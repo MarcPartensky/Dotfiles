@@ -4,6 +4,7 @@
 alias ta="ssh towerarch"
 alias rta="ssh root@towerarch"
 alias lta="ssh 192.168.0.3"
+alias eh="v ~/.config/home-manager/home.nix"
 
 # numeris
 alias num="numeris"
