@@ -22,6 +22,7 @@
     pkgs.neovim
     pkgs.zsh
     pkgs.helm
+    pkgs.tmate
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
