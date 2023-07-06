@@ -21,6 +21,7 @@
     pkgs.nmap
     pkgs.neovim
     pkgs.zsh
+    pkgs.helm
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
