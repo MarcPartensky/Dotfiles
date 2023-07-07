@@ -15,14 +15,14 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  home.docker.containers = [
-      {
-        name = "test";
-        image = "nginx:latest";
-        ports = ["80:80"];
-        volumes = ["/srv:/srv"];
-      }
-    ];
+  home.docker.containers = {
+    test = {
+      name = "test";
+      image = "nginx:latest";
+      ports = ["80:80"];
+      volumes = ["/srv:/srv"];
+    };
+  };
 
 
   # The home.packages option allows you to install Nix packages into your
