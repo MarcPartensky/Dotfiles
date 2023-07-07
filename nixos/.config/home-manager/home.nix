@@ -15,7 +15,7 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  services.docker.containers = [
+  home.docker.containers = [
       {
         name = "test";
         image = "nginx:latest";
