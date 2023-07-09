@@ -124,10 +124,6 @@ updategit() {
 # 	/usr/bin/env brew $@
 # }
 
-gh() {
-	/usr/bin/env gh >& /dev/null || brew install gh
-	/usr/bin/env gh $@
-}
 
 mkcdir() {
     mkdir -p -- "$1" &&
