@@ -47,7 +47,6 @@
 
   systemd.user.services.autossh = {
     enable = true;
-    description = "Connect to my tower remotely";
     unitConfig = {
         Type = "simple";
     };
