@@ -35,6 +35,30 @@
   };
 
 
+  # services.autossh = {
+  #   enable = true;
+  #   description = "Autossh";
+  #   script = "${pkgs.autossh}/bin/autossh";
+  #   scriptArgs = [ "/path/to/your/script.sh" ];
+  #   environment = {
+  #     "VAR_NAME" = "value";
+  #   };
+  # };
+
+  services.tunneltower = {
+    enable = true;
+    description = "Connect to my tower remotely";
+    unitConfig = {
+        Type = "simple";
+    };
+    serviceConfig = {
+        ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+
+
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -47,6 +71,8 @@
     helm
     tmate
     docker
+    podman
+    ag
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
