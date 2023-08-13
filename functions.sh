@@ -569,11 +569,11 @@ fv() {
 }
 
 fp() {
-	cd "$PROGRAMS_PATH/$(/bin/ls -1 $PROGRAMS_PATH | fzf)"
+	cd "$PROGRAMS_PATH/$(ls -1 $PROGRAMS_PATH | fzf)"
 }
 
 cf() {
-	cd "$HOME/.config/$(/bin/ls -1 $HOME/.config | fzf)"
+	cd "$HOME/.config/$(ls -1 $HOME/.config | fzf)"
 }
 
 randomproxy() {
