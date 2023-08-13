@@ -15,6 +15,9 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
   # home.docker.containers = {
   #   test = {
   #     name = "test";
@@ -25,9 +28,13 @@
   # };
 
 
+
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages= with pkgs; [
+    htop
+    fzf
     nmap
     neovim
     zsh
@@ -79,6 +86,4 @@
     EDITOR = "nvim";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 }
