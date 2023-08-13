@@ -46,8 +46,10 @@
   # };
 
   systemd.user.services.autossh = {
-    Enable = true;
-    Unit = { Description = "Autossh tunnel"; };
+    Unit = { 
+      Description = "Autossh tunnel";
+      Enable = true;
+    };
     Service = {
       Type = "exec";
       ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
