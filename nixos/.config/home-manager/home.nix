@@ -45,7 +45,7 @@
   #   };
   # };
 
-  programs.autossh = {
+  systemd.services.autossh = {
     enable = true;
     description = "Connect to my tower remotely";
     unitConfig = {
