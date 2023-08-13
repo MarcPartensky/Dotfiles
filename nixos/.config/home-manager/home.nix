@@ -45,7 +45,7 @@
   #   };
   # };
 
-  services.tunneltower = {
+  services.autossh = {
     enable = true;
     description = "Connect to my tower remotely";
     unitConfig = {
