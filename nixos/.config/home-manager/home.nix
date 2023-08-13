@@ -46,14 +46,22 @@
   # };
 
   systemd.user.services.autossh = {
-    enable = true;
-    unitConfig = {
-        Type = "simple";
+    Unit = { Description = "Autossh tunnel"; };
+    Service = {
+      Type = "exec";
+      ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
+      Restart = "on-failure";
     };
-    serviceConfig = {
-        ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
-    };
-    wantedBy = [ "multi-user.target" ];
+    Install = { WantedBy = [ "default.target" ]; };
+    # enable = true;
+    # description = "Connect to my tower remotely";
+    # unitConfig = {
+    #     Type = "simple";
+    # };
+    # serviceConfig = {
+    #     ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
+    # };
+    # wantedBy = [ "multi-user.target" ];
   };
 
 
