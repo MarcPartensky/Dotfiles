@@ -28,6 +28,12 @@
   # };
 
 
+  services.gpg-agent = {                          
+    enable = true;
+    defaultCacheTtl = 1800;
+    enableSshSupport = true;
+  };
+
 
 
   # The home.packages option allows you to install Nix packages into your
