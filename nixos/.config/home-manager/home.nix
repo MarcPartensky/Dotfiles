@@ -45,7 +45,7 @@
   #   };
   # };
 
-  programs.services.autossh = {
+  programs.autossh = {
     enable = true;
     description = "Connect to my tower remotely";
     unitConfig = {
