@@ -46,6 +46,7 @@
   # };
 
   systemd.user.services.autossh = {
+    Enable = true;
     Unit = { Description = "Autossh tunnel"; };
     Service = {
       Type = "exec";
