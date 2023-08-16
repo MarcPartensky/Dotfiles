@@ -69,7 +69,7 @@ p() {
 			git clone https://github.com/$1 $PROGRAMS_PATH/$2
 		fi
 		f=$(basename $1)
-		f=$(/bin/ls | grep -i $f)
+		f=$(env ls | grep -i $f)
 		fm=$(echo $f | tr '[A-Z]' '[a-z]')
 		mv -v $f $fm
 		cd $fm
@@ -564,11 +564,11 @@ fv() {
 }
 
 fp() {
-	cd "$PROGRAMS_PATH/$(/bin/env ls -1 $PROGRAMS_PATH | fzf)"
+	cd "$PROGRAMS_PATH/$(env ls -1 $PROGRAMS_PATH | fzf)"
 }
 
 cf() {
-	cd "$HOME/.config/$(/bin/env ls -1 $HOME/.config | fzf)"
+	cd "$HOME/.config/$(env ls -1 $HOME/.config | fzf)"
 }
 
 randomproxy() {
