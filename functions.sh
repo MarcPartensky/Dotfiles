@@ -10,11 +10,6 @@ cd() {
     if [ -d ".git" ] ; then
 			git pull
     fi
-    if [ -f "Pipfile" ] ; then
-			pipenv shell
-			# n Locking
-			# $(pipenv update --pre --clear &> /tmp/pipenv.log && n Locked) & disown
-    fi
 }
 
 dc() {
@@ -569,11 +564,11 @@ fv() {
 }
 
 fp() {
-	cd "$PROGRAMS_PATH/$(ls -1 $PROGRAMS_PATH | fzf)"
+	cd "$PROGRAMS_PATH/$(/bin/env ls -1 $PROGRAMS_PATH | fzf)"
 }
 
 cf() {
-	cd "$HOME/.config/$(ls -1 $HOME/.config | fzf)"
+	cd "$HOME/.config/$(/bin/env ls -1 $HOME/.config | fzf)"
 }
 
 randomproxy() {
