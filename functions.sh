@@ -381,12 +381,6 @@ comments() {
     cat $HISTFILE | cut -d';' -f2 | grep -P '^\#'
 }
 
-ms() {
-	echo "Playlist: $1"
-	mkdir /Volumes/\$/Musique/Youtube/$1
-	cd /Volumes/\$/Musique/Youtube/$1
-}
-
 sshupdate(){
 	ssh vps $(curl -sL marcpartensky.com//update | bash) &
 	ssh tower $(curl -sL marcpartensky.com//update | bash) &
@@ -902,8 +896,3 @@ dlp() {
         --sponsorblock-mark all \
         $@
 }
-
-dlps() {
-    for ZZ
-}
-
