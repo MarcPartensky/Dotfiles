@@ -17,6 +17,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  wayland.windowManager.hyprland.enable = true;
 
   # home.docker.containers = {
   #   test = {
@@ -82,9 +83,11 @@
   home.packages= with pkgs; [
     htop
     fzf
-    nmap
+    stow
     neovim
+    autossh
     zsh
+    nmap
     helm
     tmate
     docker

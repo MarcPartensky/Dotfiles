@@ -898,10 +898,10 @@ dlp() {
 }
 
 hms() {
-    git add $HOME/git/dotfiles
+    git -C $DOTFILES_PATH add $DOTFILES_PATH/nixos
 	echo "git add $HOME/git/dotfiles/nixos"
 	echo "git commit -m \"$@\""
 	eval "git commit -m \"$@\""
     home-manager switch
-    git push
+    git -C $DOTFILES_PATH push
 }
