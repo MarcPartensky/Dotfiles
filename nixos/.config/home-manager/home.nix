@@ -83,7 +83,7 @@
     podman
     silver-searcher
     cloudflared
-    doas-sudo
+    doas
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
