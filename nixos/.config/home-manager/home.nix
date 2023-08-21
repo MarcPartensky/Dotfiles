@@ -94,6 +94,7 @@
     cloudflared
     doas
     doas-sudo-shim
+    k3s
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
