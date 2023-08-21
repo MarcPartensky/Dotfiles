@@ -97,6 +97,7 @@
     doas
     doas-sudo-shim
     k3s
+    hyprland
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
