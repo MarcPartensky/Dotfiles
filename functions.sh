@@ -896,3 +896,11 @@ dlp() {
         --sponsorblock-mark all \
         $@
 }
+
+hms() {
+    git add $HOME/git/dotfiles
+	echo "git add $HOME/git/dotfiles/nixos"
+	echo "git commit -m \"$@\""
+	eval "git commit -m \"$@\""
+    home manager switch
+}
