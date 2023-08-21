@@ -27,7 +27,6 @@
   #   };
   # };
 
-  services.k3s.enable = true;
   services.gpg-agent = {                          
     enable = true;
     defaultCacheTtl = 1800;
@@ -47,7 +46,7 @@
 
   systemd.user.services.autossh = {
     Unit = { 
-      Description = "Autossh tunnel";
+      Description = "Connect to my tower remotely.";
     };
     Service = {
       Type = "exec";
@@ -64,7 +63,7 @@
     };
     Install = { WantedBy = [ "default.target" ]; };
     # enable = true;
-    # description = "Connect to my tower remotely";
+    # description = "";
     # unitConfig = {
     #     Type = "simple";
     # };
