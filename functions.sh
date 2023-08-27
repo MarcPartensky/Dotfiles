@@ -901,7 +901,7 @@ hms() {
     git -C $DOTFILES_PATH add $DOTFILES_PATH/nixos
 	echo "git add $HOME/git/dotfiles/nixos"
 	echo "git commit -m \"$@\""
-	eval "git commit -m \"$@\""
+	eval "git -C $DOTFILES_PATH commit -m \"$@\""
     home-manager switch
     git -C $DOTFILES_PATH push
 }
