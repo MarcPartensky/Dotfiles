@@ -315,7 +315,6 @@
   #   };
   # };
 
-  services.dbus.enable = true;
 
   services.gpg-agent = {                          
     enable = true;
