@@ -379,6 +379,7 @@
     firefox
     wlsunset
     waybar
+    spotify
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
