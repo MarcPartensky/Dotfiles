@@ -446,6 +446,7 @@
     wdisplays
     mako
     wl-clipboard
+    xdg-utils
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
