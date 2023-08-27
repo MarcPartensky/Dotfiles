@@ -332,6 +332,18 @@
   #   };
   # };
 
+  systemd.user.services.waybar = {
+    Unit = { 
+      Description = "Waybar";
+    };
+    Service = {
+      Type = "exec";
+      ExecStart = "${pkgs.autossh}/bin/waybar";
+      Restart = "on-failure";
+    };
+    Install = { WantedBy = [ "default.target" ]; };
+  };
+
   systemd.user.services.autossh = {
     Unit = { 
       Description = "Connect to my tower remotely.";
