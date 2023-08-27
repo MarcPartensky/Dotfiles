@@ -373,9 +373,12 @@
     # wantedBy = [ "multi-user.target" ];
   };
 
-
-
-
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
