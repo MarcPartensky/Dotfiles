@@ -445,6 +445,7 @@
     mako
     wl-clipboard
     pcmanfm
+    gvfs
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
