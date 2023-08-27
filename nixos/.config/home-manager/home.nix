@@ -446,7 +446,6 @@
     pcmanfm
     gvfs
     glpaper
-    wlvncc
     swww
     # pkgs.hello
 
