@@ -446,7 +446,6 @@
     pcmanfm
     gvfs
     glpaper
-    neatvnc
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
