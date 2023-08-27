@@ -375,7 +375,7 @@
 
 
   source = builtins.fetchGit {
-    url = "git@github.com/marcpartensky/wallpapers";
+    url = "git@github.com:marcpartensky/wallpapers";
     rev = "e7e3f89eab78390cce674273cfe2f4f110ccdfeb";
   };
 
