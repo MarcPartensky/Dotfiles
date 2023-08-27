@@ -376,7 +376,7 @@
 
   source = builtins.fetchGit {
     url = "https://github.com/marcpartensky/wallpapers";
-    # rev = "07fca786154551f90f36535bfb21f8ca4abd5027";
+    rev = "master";
   };
 
 
