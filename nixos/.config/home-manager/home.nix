@@ -444,7 +444,6 @@
     wdisplays
     mako
     wl-clipboard
-    nautilus
     pcmanfm
     # pkgs.hello
 
