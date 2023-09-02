@@ -450,6 +450,7 @@
     glpaper
     swww
     mcfly
+    neofetch
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
