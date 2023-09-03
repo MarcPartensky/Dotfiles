@@ -320,7 +320,6 @@
     defaultCacheTtl = 1800;
     enableSshSupport = true;
   };
-  services.blueman.enable = true;
 
 
   # services.autossh = {
