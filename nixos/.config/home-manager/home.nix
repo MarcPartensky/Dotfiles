@@ -350,7 +350,8 @@
     };
     Service = {
       Type = "exec";
-      ExecStart = "${pkgs.autossh}/bin/autossh -M 0 \
+      ExecStart = ''
+        ${pkgs.autossh}/bin/autossh -M 0 \
         -o ServerAliveInterval=300 \
         -o ServerAliveCountMax=10 \
         -o PubkeyAuthentication=yes \
@@ -358,7 +359,8 @@
         -NR localhost:42071:localhost:22 \
         -p 42069 \
         -i ~/.ssh/id_rsa \
-        marc@207.180.235.56";
+        marc@207.180.235.56
+        '';
       Restart = "on-failure";
     };
     Install = { WantedBy = [ "default.target" ]; };
