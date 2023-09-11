@@ -414,6 +414,15 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages= with pkgs; [
+    neofetch
+    doas-sudo-shim
+    pipewire
+    wireplumber
+    wdisplays
+    mako
+    wl-clipboard
+    pavucontrol
+    bluetuith
     exa
     htop
     fzf
@@ -429,7 +438,6 @@
     silver-searcher
     cloudflared
     doas
-    doas-sudo-shim
     k3s
     alacritty
     wayvnc
@@ -444,20 +452,13 @@
     swaylock
     tmux
     glib
-    wdisplays
-    mako
-    wl-clipboard
     pcmanfm
     gvfs
     glpaper
     swww
     mcfly
-    neofetch
-    pavucontrol
-    bluetuith
     kodi
-    pipewire
-    wireplumber
+    tldr
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
