@@ -15,8 +15,6 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  nixpkgs.config.allowUnfree = true; 
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   wayland.windowManager.hyprland.enable = true;
@@ -467,8 +465,6 @@
     ydotool
     # pkgs.hello
 
-    ### Proprietary
-    spotify
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -483,5 +479,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # Add additional package names here
+      spotify
+    ];
+}
 
 }
