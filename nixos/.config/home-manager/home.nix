@@ -19,6 +19,33 @@
   programs.home-manager.enable = true;
   wayland.windowManager.hyprland.enable = true;
 
+  programs.firejail = {
+    enable = true;
+    wrappedBinaries = {
+      # librewolf = {
+      #   executable = "${pkgs.librewolf}/bin/librewolf";
+      #   profile = "${pkgs.firejail}/etc/firejail/librewolf.profile";
+      #   extraArgs = [
+      #     # Required for U2F USB stick
+      #     "--ignore=private-dev"
+      #     # Enforce dark mode
+      #     "--env=GTK_THEME=Adwaita:dark"
+      #     # Enable system notifications
+      #     "--dbus-user.talk=org.freedesktop.Notifications"
+      #   ];
+      # };
+      spotify = {
+        executable = "${pkgs.spotify}/bin/spotify";
+        profile = "${pkgs.firejail}/etc/firejail/spotify.profile";
+        # extraArgs = [ "--env=LC_ALL=C" "--env=GTK_THEME=Adwaita:dark" ];
+      };
+      discord = {
+        executable = "${pkgs.discord}/bin/discord";
+        profile = "${pkgs.firejail}/etc/firejail/discord.profile";
+        # extraArgs = [ "--env=LC_ALL=C" "--env=GTK_THEME=Adwaita:dark" ];
+      };
+    };
+  };
 
   programs.waybar.package = pkgs.waybar.overrideAttrs (oa: {
     mesonFlags = (oa.mesonFlags or  []) ++ [ "-Dexperimental=true" ];
