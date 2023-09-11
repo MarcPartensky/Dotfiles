@@ -465,6 +465,7 @@
     xfce.thunar
     ydotool
     # pkgs.hello
+    firejail
 
     ### Proprietary
     spotify
