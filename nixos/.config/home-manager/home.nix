@@ -485,6 +485,5 @@
       # Add additional package names here
       spotify
     ];
-}
 
 }
