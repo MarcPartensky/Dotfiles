@@ -464,6 +464,7 @@
     xfce.thunar
     ydotool
     # pkgs.hello
+    signal
 
     ### Proprietary
     spotify
