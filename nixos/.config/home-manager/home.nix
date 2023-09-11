@@ -17,6 +17,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.firejail.enable = true;
   wayland.windowManager.hyprland.enable = true;
 
 
@@ -464,7 +465,6 @@
     xfce.thunar
     ydotool
     # pkgs.hello
-    signal
 
     ### Proprietary
     spotify
