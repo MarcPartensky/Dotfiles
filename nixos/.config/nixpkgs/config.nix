@@ -4,7 +4,6 @@
       inherit pkgs;
     };
   };
-  allowUnfree = true;
 }
 # {
 #   nixpkgs.config.packageOverrides = pkgs: {

@@ -467,6 +467,7 @@
 
     ### Proprietary
     spotify
+    discord
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -486,6 +487,7 @@
     builtins.elem (lib.getName pkg) [
       # Add additional package names here
       "spotify"
+      "discord"
     ];
 
 }
