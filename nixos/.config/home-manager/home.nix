@@ -15,9 +15,12 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true; 
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   wayland.windowManager.hyprland.enable = true;
+
 
   programs.waybar.package = pkgs.waybar.overrideAttrs (oa: {
     mesonFlags = (oa.mesonFlags or  []) ++ [ "-Dexperimental=true" ];
