@@ -382,7 +382,7 @@
         Timer = {
           Unit = "autossh";
           OnBootSec = "1m";
-          OnUnitActiveSec = "1m";
+          OnUnitActiveSec = "24h";
         };
         Install.WantedBy = [ "timers.target" ];
       };
