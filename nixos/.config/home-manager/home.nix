@@ -477,6 +477,7 @@
     ydotool
     # pkgs.hello
     signal-desktop
+    httpie
 
     ### Proprietary
     spotify
