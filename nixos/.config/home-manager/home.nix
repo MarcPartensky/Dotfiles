@@ -478,6 +478,7 @@
     # pkgs.hello
     signal-desktop
     httpie
+    postgresql
 
     ### Proprietary
     spotify
