@@ -348,6 +348,8 @@
   systemd.user.services.autossh = {
     Unit = { 
       Description = "Connect to my tower remotely.";
+      StartLimitBurst = "10";
+      StartLimitIntervalSec = "5";
     };
     Service = {
       Type = "exec";
@@ -363,8 +365,6 @@
         marc@207.180.235.56
         '';
       Restart = "on-failure";
-      StartLimitBurst = "10";
-      StartLimitIntervalSec = "5";
     };
     Install = { WantedBy = [ "network.target" ]; };
     # enable = true;
