@@ -381,8 +381,9 @@
         Unit.Description = "Restart autossh tunnel juste to be sure";
         Timer = {
           Unit = "autossh";
-          OnBootSec = "1m";
-          OnUnitActiveSec = "24h";
+          # OnBootSec = "1m";
+          # OnUnitActiveSec = "24h";
+          OnCalendar="*-*-* 4:00:00";
         };
         Install.WantedBy = [ "timers.target" ];
       };
