@@ -384,7 +384,7 @@
           # OnBootSec = "1m";
           # OnUnitActiveSec = "24h";
           OnCalendar = "*-*-* 4:00:00";
-          Persistent = true
+          Persistent = true;
         };
         Install.WantedBy = [ "timers.target" ];
       };
