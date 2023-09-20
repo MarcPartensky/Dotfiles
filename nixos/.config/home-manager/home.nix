@@ -363,8 +363,10 @@
         marc@207.180.235.56
         '';
       Restart = "on-failure";
+      StartLimitBurst = "10";
+      StartLimitIntervalSec = "5";
     };
-    Install = { WantedBy = [ "default.target" ]; };
+    Install = { WantedBy = [ "network.target" ]; };
     # enable = true;
     # description = "";
     # unitConfig = {
