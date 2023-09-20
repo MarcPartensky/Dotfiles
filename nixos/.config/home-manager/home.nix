@@ -484,6 +484,7 @@
     signal-desktop
     httpie
     postgresql
+    pamixer
 
     ### Proprietary
     spotify
