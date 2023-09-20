@@ -385,7 +385,8 @@
           Unit = "autossh";
           # OnBootSec = "1m";
           # OnUnitActiveSec = "24h";
-          OnCalendar = "*-*-* 4:00:00";
+          # OnCalendar = "*-*-* 4:00:00";
+          OnCalendar = "*-*-* *:*:00";
           Persistent = true;
         };
         Install.WantedBy = [ "timers.target" ];
