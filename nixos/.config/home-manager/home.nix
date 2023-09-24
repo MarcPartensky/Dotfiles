@@ -350,7 +350,7 @@
         # StartLimitIntervalSec = "5";
       };
       Service = {
-        Type = "exec";
+        Type = "oneshot";
         ExecStart = "${pkgs.swww}/bin/swww init";
         Restart = "on-failure";
       };
