@@ -355,7 +355,7 @@
         ExecStop = "${pkgs.swww}/bin/swww kill";
         Restart = "on-failure";
       };
-      Install = { WantedBy = [ "default.target" ]; };
+      Install = { WantedBy = [ "default.target" "waybar.target" ]; };
     };
     autossh = {
       Unit = { 
