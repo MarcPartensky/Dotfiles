@@ -335,12 +335,19 @@
 
   systemd.user.services = {
     waybar = {
-      Unit = { 
-        Description = "Waybar";
-      };
+        Unit.Description = "Waybar";
       Service = {
         Type = "exec";
         ExecStart = "${pkgs.waybar}/bin/waybar";
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "default.target" ]; };
+    };
+    swww = {
+      Unit.Description = "Swww";
+      Service = {
+        Type = "exec";
+        ExecStart = "${pkgs.swww}/bin/swww";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "default.target" ]; };
