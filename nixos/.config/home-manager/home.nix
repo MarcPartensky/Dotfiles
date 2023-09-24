@@ -344,7 +344,11 @@
       Install = { WantedBy = [ "default.target" ]; };
     };
     swww = {
-      Unit.Description = "Swww";
+      Unit = {
+        Description = "Swww";
+        StartLimitBurst = "10";
+        StartLimitIntervalSec = "5";
+      };
       Service = {
         Type = "exec";
         ExecStart = "${pkgs.swww}/bin/swww";
