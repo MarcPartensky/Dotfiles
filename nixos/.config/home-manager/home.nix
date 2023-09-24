@@ -352,6 +352,7 @@
       Service = {
         Type = "oneshot";
         ExecStart = "${pkgs.swww}/bin/swww init";
+        ExecStop = "${pkgs.swww}/bin/swww kill";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "default.target" ]; };
