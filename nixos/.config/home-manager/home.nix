@@ -485,7 +485,6 @@
     httpie
     postgresql
     pamixer
-    pagraphcontrol
 
     ### Proprietary
     spotify
