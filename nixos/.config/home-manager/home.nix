@@ -339,7 +339,7 @@
     };
     Service = {
       Type = "exec";
-      ExecStart = "${pkgs.autossh}/bin/waybar";
+      ExecStart = "${pkgs.waybar}/bin/waybar";
       Restart = "on-failure";
     };
     Install = { WantedBy = [ "default.target" ]; };
