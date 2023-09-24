@@ -346,12 +346,12 @@
     swww = {
       Unit = {
         Description = "Swww";
-        StartLimitBurst = "10";
-        StartLimitIntervalSec = "5";
+        # StartLimitBurst = "10";
+        # StartLimitIntervalSec = "5";
       };
       Service = {
         Type = "exec";
-        ExecStart = "${pkgs.swww}/bin/swww";
+        ExecStart = "${pkgs.swww}/bin/swww init";
         Restart = "on-failure";
       };
       Install = { WantedBy = [ "default.target" ]; };
