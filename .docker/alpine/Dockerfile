@@ -50,7 +50,7 @@ RUN source ~/git/dotfiles/main.sh
 # ENV PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 # RUN git clone https://github.com/marcpartensky/nvim ~/.config/nvim
 
-WORKDIR /root/git/dotfiles
+WORKDIR /home/marc/git/dotfiles
 RUN make stow
 
 WORKDIR /root
