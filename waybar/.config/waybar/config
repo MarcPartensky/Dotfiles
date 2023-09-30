@@ -23,7 +23,7 @@
 		"format-wifi": "  {essid}",
 		/* "format-wifi": "  {essid} {ipaddr}", */
 		"format-ethernet": "",
-        "on-click": "gnome-control-center wifi"
+        "on-click": "rofi-connman"
 	},
 	"backlight": {
 		"tooltip": false,
