@@ -35,7 +35,7 @@ RUN npm i -g yarn
 USER marc
 RUN pip install --user neovim
 RUN git clone https://github.com/marcpartensky/dotfiles ~/git/dotfiles
-SHELL ["/usr/bin/zsh", "-c"]
+SHELL ["/bin/zsh", "-c"]
 RUN curl https://pyenv.run | bash
 RUN source ~/git/dotfiles/main.sh
 
