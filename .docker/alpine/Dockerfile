@@ -24,7 +24,7 @@ RUN apk add neovim \
             stow \
 			zsh
 
-RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+# RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 RUN npm i -g yarn
 RUN pip3 install --user neovim
 
