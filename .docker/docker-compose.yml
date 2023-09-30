@@ -3,7 +3,12 @@ services:
   debian:
     image: marcpartensky/env:debian
     build:
-      context: .
-      dockerfile: .docker/Dockerfile
+      context: .docker/debian
+    stdin_open: true
+    tty: true
+  alpine:
+    image: marcpartensky/env:alpine
+    build:
+      context: .docker/alpine
     stdin_open: true
     tty: true

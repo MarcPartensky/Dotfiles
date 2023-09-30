@@ -26,7 +26,7 @@ RUN apk add neovim \
 
 # RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 RUN npm i -g yarn
-RUN pip3 install --user neovim
+RUN pip install --user neovim
 
 RUN git clone https://github.com/marcpartensky/dotfiles ~/git/dotfiles
 RUN chsh -s /usr/bin/zsh
