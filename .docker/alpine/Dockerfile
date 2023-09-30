@@ -11,6 +11,7 @@ RUN apk add neovim \
 			make \
 			nmap \
 			exa \
+            curl \
 			wget \
             python3 \
             py3-pip \
@@ -24,6 +25,7 @@ RUN apk add neovim \
 			docker \
             stow \
 			zsh \
+            bash \
             shadow
 
 RUN useradd --create-home --groups wheel --shell /usr/bin/zsh marc
