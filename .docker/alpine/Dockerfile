@@ -14,7 +14,6 @@ RUN apk add neovim \
 			exa \
 			wget \
             python3 \
-			apt-transport-https \
 			ca-certificates \
 			gnupg-agent \
 			openssh-server \
