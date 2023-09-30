@@ -13,8 +13,7 @@ RUN apk add neovim \
 			tldr \
 			exa \
 			wget \
-			python3-dev \
-			python3-pip \
+            python3 \
 			apt-transport-https \
 			ca-certificates \
 			gnupg-agent \
