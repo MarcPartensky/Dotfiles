@@ -53,7 +53,7 @@ RUN source ~/git/dotfiles/main.sh
 WORKDIR /home/marc/git/dotfiles
 RUN make stow
 
-WORKDIR /root
+WORKDIR /home/marc
 RUN touch .vimrc
 RUN nvim \
 	+"source ~/.config/nvim/vim-plug/plugins.vim" \
