@@ -5,24 +5,21 @@ LABEL maintainer="Marc Partensky <marc.partensky@gmail.com>"
 RUN apk upgrade
 RUN apk add neovim \
 			git \
-			golang \
+			go \
 			nodejs \
 			npm \
 			make \
 			nmap \
-			tldr \
 			exa \
 			wget \
             python3 \
 			ca-certificates \
-			gnupg-agent \
+			# gnupg-agent \
 			openssh-server \
-			tmate \
 			neovim \
-			locales \
+			# locales \
 			sudo \
-			build-essential \
-			tldr \
+			# build-essential \
 			docker \
             stow \
 			zsh
