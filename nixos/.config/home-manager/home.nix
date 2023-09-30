@@ -510,6 +510,7 @@
     helm
     tmate
     docker
+    docker-compose
     podman
     silver-searcher
     cloudflared
