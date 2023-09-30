@@ -23,7 +23,8 @@ RUN apk add neovim \
 			# build-essential \
 			docker \
             stow \
-			zsh
+			zsh \
+            util-linux
 
 # RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 RUN npm i -g yarn
