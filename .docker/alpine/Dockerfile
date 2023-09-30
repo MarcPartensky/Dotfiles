@@ -29,6 +29,7 @@ RUN apk add neovim \
 RUN useradd --create-home --groups wheel --shell /usr/bin/zsh marc
 RUN passwd -d marc
 RUN echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+USER marc
 
 
 # RUN localedef -i en_US -f UTF-8 en_US.UTF-8
