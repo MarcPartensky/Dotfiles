@@ -26,6 +26,11 @@ RUN apk add neovim \
 			zsh \
             shadow
 
+RUN useradd --create-home --groups wheel --shell /usr/bin/zsh marc
+RUN passwd -d marc
+RUN echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers
+
+
 # RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 RUN npm i -g yarn
 RUN pip install --user neovim
