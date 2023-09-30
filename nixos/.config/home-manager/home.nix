@@ -389,13 +389,57 @@
       # };
       # wantedBy = [ "multi-user.target" ];
     };
+    autossh2 = {
+      Unit = { 
+        Description = "Connect to my tower remotely.";
+        StartLimitBurst = "10";
+        StartLimitIntervalSec = "5";
+      };
+      Service = {
+        Type = "exec";
+        ExecStart = ''
+          ${pkgs.autossh}/bin/autossh -M 0 \
+          -o ServerAliveInterval=300 \
+          -o ServerAliveCountMax=10 \
+          -o PubkeyAuthentication=yes \
+          -o PasswordAuthentication=no \
+          -NR localhost:42072:localhost:22 \
+          -p 42069 \
+          -i ~/.ssh/id_rsa \
+          marc@207.180.235.56
+          '';
+        Restart = "on-failure";
+      };
+      Install = { WantedBy = [ "network.target" ]; };
+      # enable = true;
+      # description = "";
+      # unitConfig = {
+      #     Type = "simple";
+      # };
+      # serviceConfig = {
+      #     ExecStart = "${pkgs.autossh}/bin/autossh -M 0 -o ServerAliveInterval=30 -o ServerAliveCountMax=3 -o PubkeyAuthentication=yes -o PasswordAuthentication=no -NR localhost:42071:localhost:22 -p 42069 -i ~/.ssh/id_rsa marc@207.180.235.56";
+      # };
+      # wantedBy = [ "multi-user.target" ];
+    };
   };
 
     systemd.user.timers = {
       autossh = {
-        Unit.Description = "Restart autossh tunnel juste to be sure";
+        Unit.Description = "Restart autossh tunnel just to be sure";
         Timer = {
           Unit = "autossh";
+          # OnBootSec = "1m";
+          OnUnitActiveSec = "1m";
+          # OnCalendar = "*-*-* 4:00:00";
+          # OnCalendar = "Hourly";
+          Persistent = true;
+        };
+        Install.WantedBy = [ "timers.target" ];
+      };
+      autossh2 = {
+        Unit.Description = "Restart autossh tunnel just to be sure";
+        Timer = {
+          Unit = "autossh2";
           # OnBootSec = "1m";
           OnUnitActiveSec = "1m";
           # OnCalendar = "*-*-* 4:00:00";
