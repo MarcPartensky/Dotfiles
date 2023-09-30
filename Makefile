@@ -10,11 +10,11 @@ brew:
 restore:
 	brew bundle
 build:
-	docker-compose -f .docker/docker-compose.yml build debian
+	docker-compose -f .docker/docker-compose.yml build alpine
 push:
-	docker-compose -f .docker/docker-compose.yml push debian
+	docker-compose -f .docker/docker-compose.yml push alpine
 run:
-	docker-compose -f .docker/docker-compose.yml --rm run debian
+	docker-compose -f .docker/docker-compose.yml --rm run alpine
 symlinks:
 	./symlinks.sh
 zip:
