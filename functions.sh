@@ -892,8 +892,16 @@ dlp() {
         --embed-metadata \
         --embed-subs \
         --embed-chapters \
+        --embed-info-json \
+        --embed-chapters \
         --rm-cache-dir \
+        --no-keep-fragments \
         --sponsorblock-mark all \
+        --sponsorblock-remove all \
+        --retry-sleep 10 \
+        --retries 1000 \
+        --file-access-retries 1000 \
+        --extractor-retries 1000 \
         $@
 }
 
