@@ -67,6 +67,7 @@ export COLORTERM=truecolor
 export OPENER=xdg-open
 export WM=dwm
 
+export XDG_CONFIG_HOME=$HOME/.config
 export LC_ALL=en_US.UTF-8
 export LC_MARC=1
 export LANG=en_US.UTF-8
