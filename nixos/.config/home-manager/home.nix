@@ -543,6 +543,7 @@
     httpie
     postgresql
     pamixer
+    ncdu
 
     ### Proprietary
     spotify
