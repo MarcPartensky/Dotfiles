@@ -544,6 +544,7 @@
     postgresql
     pamixer
     ncdu
+    dig
 
     ### Proprietary
     spotify
