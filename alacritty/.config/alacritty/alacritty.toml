@@ -1,0 +1,299 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 2
+
+[colors.bright]
+black = "#666666"
+blue = "#7aa6da"
+cyan = "#70c0b1"
+green = "#b9ca4a"
+magenta = "#c397d8"
+red = "#d54e53"
+white = "#eaeaea"
+yellow = "#e7c547"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[colors.dim]
+black = "#131415"
+blue = "#556a7d"
+cyan = "#5b7d78"
+green = "#777c44"
+magenta = "#75617b"
+red = "#864343"
+white = "#828482"
+yellow = "#9e824c"
+
+[colors.normal]
+black = "#1d1f21"
+blue = "#81a2be"
+cyan = "#8abeb7"
+green = "#b5bd68"
+magenta = "#b294bb"
+red = "#cc6666"
+white = "#c5c8c6"
+yellow = "#f0c674"
+
+[colors.primary]
+background = "#111111"
+bright_foreground = "#eaeaea"
+dim_foreground = "#828482"
+foreground = "#c5c8c6"
+
+[colors.search.footer_bar]
+cursor = "#ff00ff"
+text = "#ff00ff"
+
+[colors.search.matches]
+background = "#ffffff"
+foreground = "#000000"
+
+[colors.selection]
+background = "CellForeground"
+text = "CellBackground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
+
+[cursor]
+style = "Block"
+thickness = 0.15
+vi_mode_style = "None"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 15
+
+[font.bold]
+family = "MesloLGS NF"
+style = "Bold"
+
+[font.bold_italic]
+family = "MesloLGS NF"
+style = "Bold Italic"
+
+[font.italic]
+family = "MesloLGS NF"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGS NF"
+style = "Regular"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "K"
+mode = "~Vi"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ClearHistory"
+key = "K"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B'"
+key = "Apostrophe"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B["
+key = "LBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B]"
+key = "RBracket"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Hide"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Minimize"
+key = "M"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Quit"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F"
+mods = "Command|Control"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:w
+"""
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:tabnew
+"""
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:tabprevious
+"""
+key = "Left"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = """
+:tabnext
+"""
+key = "Right"
+mods = "Command|Alt"
+
+[[keyboard.bindings]]
+chars = """
+:Commentary
+"""
+key = "Slash"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:!\"%:p\"
+"""
+key = "I"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:!pylint %
+"""
+key = "Y"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001BggVG"
+key = "A"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 1
+"""
+key = "Key1"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 2
+"""
+key = "Key2"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 3
+"""
+key = "Key3"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 4
+"""
+key = "Key4"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 5
+"""
+key = "Key5"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 6
+"""
+key = "Key6"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 7
+"""
+key = "Key7"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 8
+"""
+key = "Key8"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 9
+"""
+key = "Key9"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = """
+:tabn 0
+"""
+key = "Key0"
+mods = "Control"
+
+[scrolling]
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+decorations = "none"
+dynamic_padding = false
+dynamic_title = true
+gtk_theme_variant = "none"
+opacity = 0.8
+startup_mode = "Windowed"
+title = ""
+
+[window.padding]
+x = 7
+y = 3
