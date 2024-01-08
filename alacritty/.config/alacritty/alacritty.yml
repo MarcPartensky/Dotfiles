@@ -240,11 +240,11 @@ colors:
       foreground: '#000000'
       background: '#ffffff'
   #
-    footer_bar:
-       # background: CellForeground
-       # foreground: CellBackground
-       text: '#ff00ff'
-       cursor: '#ff00ff'
+  #   footer_bar:
+  #      # background: CellForeground
+  #      # foreground: CellBackground
+  #      text: '#ff00ff'
+  #      cursor: '#ff00ff'
 
   # Normal colors
   normal:

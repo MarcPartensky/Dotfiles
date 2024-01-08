@@ -45,10 +45,6 @@ bright_foreground = "#eaeaea"
 dim_foreground = "#828482"
 foreground = "#c5c8c6"
 
-[colors.search.footer_bar]
-cursor = "#ff00ff"
-text = "#ff00ff"
-
 [colors.search.matches]
 background = "#ffffff"
 foreground = "#000000"
@@ -111,7 +107,7 @@ mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u001B'"
-key = "Apostrophe"
+key = "'"
 mods = "Command"
 
 [[keyboard.bindings]]
@@ -183,9 +179,7 @@ key = "Right"
 mods = "Command|Alt"
 
 [[keyboard.bindings]]
-chars = """
-:Commentary
-"""
+chars = "gcc"
 key = "Slash"
 mods = "Command"
 
@@ -289,7 +283,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 decorations = "none"
 dynamic_padding = false
 dynamic_title = true
-gtk_theme_variant = "none"
+# gtk_theme_variant = "none"
 opacity = 0.8
 startup_mode = "Windowed"
 title = ""
