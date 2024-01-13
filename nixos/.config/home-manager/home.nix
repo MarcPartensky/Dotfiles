@@ -545,6 +545,7 @@
     pamixer
     ncdu
     dig
+    wget
 
     ### Proprietary
     spotify
