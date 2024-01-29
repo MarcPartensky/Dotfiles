@@ -547,7 +547,7 @@
     dig
     wget
     nodejs
-    7z
+    7zip
 
     ### Proprietary
     spotify
