@@ -546,6 +546,7 @@
     ncdu
     dig
     wget
+    nodejs
 
     ### Proprietary
     spotify
