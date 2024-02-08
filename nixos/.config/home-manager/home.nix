@@ -548,6 +548,7 @@
     wget
     nodejs
     poetry
+    nautilus
 
     ### Proprietary
     spotify
