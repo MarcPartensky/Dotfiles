@@ -549,7 +549,7 @@
     nodejs
     poetry
     gnome3.gvfs
-    gnomme3.nautilus
+    gnome3.nautilus
 
     ### Proprietary
     spotify
