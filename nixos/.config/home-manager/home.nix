@@ -550,6 +550,7 @@
     poetry
     # gnome3.gvfs
     gnome3.nautilus
+    gnome.nautilus
 
     ### Proprietary
     spotify
