@@ -548,7 +548,7 @@
     wget
     nodejs
     poetry
-    gnome3.gvfs
+    # gnome3.gvfs
     gnome3.nautilus
 
     ### Proprietary
