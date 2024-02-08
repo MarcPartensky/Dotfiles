@@ -548,7 +548,7 @@
     wget
     nodejs
     poetry
-    gnomme.nautilus
+    gnomme3.nautilus
 
     ### Proprietary
     spotify
