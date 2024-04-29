@@ -552,7 +552,7 @@
     gnome3.nautilus
     gnome.nautilus
     gparted
-    transmission
+    tor-browser-bundle-bin
 
     ### Proprietary
     spotify
