@@ -554,7 +554,7 @@
     gparted
     tor-browser-bundle-bin
     zathura
-    unstable.firefoxpwa
+    geary
 
     ### Proprietary
     spotify
