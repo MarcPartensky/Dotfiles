@@ -553,6 +553,7 @@
     gnome.nautilus
     gparted
     tor-browser-bundle-bin
+    zathura
 
     ### Proprietary
     spotify
