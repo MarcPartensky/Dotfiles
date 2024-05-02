@@ -17,8 +17,8 @@
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
-  wayland.windowManager.hyprland.enable = true;
-    wayland.windowManager.hyprland = {
+  # wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland = {
     # Whether to enable Hyprland wayland compositor
     enable = true;
     # The hyprland package to use
