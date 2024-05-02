@@ -87,6 +87,10 @@
             tap-to-click=true
         }
     }
+
+    font {
+        normal=nerdfonts
+    }
     
     general {
         sensitivity=1 # for mouse cursor
