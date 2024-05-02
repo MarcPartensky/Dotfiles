@@ -89,7 +89,10 @@
     }
 
     font {
-        normal=nerdfonts
+        normal {
+            family=nerdfonts
+            style=Regular
+        }
     }
     
     general {
