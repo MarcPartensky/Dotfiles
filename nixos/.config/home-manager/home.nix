@@ -516,7 +516,7 @@
     cloudflared
     doas
     k3s
-    alacritty
+    # alacritty
     wayvnc
     wofi
     firefox
