@@ -88,13 +88,6 @@
         }
     }
 
-    font {
-        normal {
-            family=nerdfonts
-            style=Regular
-        }
-    }
-    
     general {
         sensitivity=1 # for mouse cursor
         # main_mod=SUPER
