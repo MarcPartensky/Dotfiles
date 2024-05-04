@@ -6,6 +6,16 @@
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+
+      # no news
+      lib.homeManagerConfiguration.disableHomeManagerNews = {
+        # disabledModules = [ "misc/news.nix" ];
+        config = {
+          news.display = "silent";
+          news.json = lib.mkForce { };
+          news.entries = lib.mkForce [ ];
+        };
+      };
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
