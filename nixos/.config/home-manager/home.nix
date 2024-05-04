@@ -15,6 +15,9 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  # No time for news
+  news.enable = false;
+
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
   # wayland.windowManager.hyprland.enable = true;
