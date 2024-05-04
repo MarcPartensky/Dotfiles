@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
 
       # no news
-      lib.homeManagerConfiguration.disableHomeManagerNews = {
+      homeManagerConfiguration.disableHomeManagerNews = {
         # disabledModules = [ "misc/news.nix" ];
         config = {
           news.display = "silent";
