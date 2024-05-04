@@ -16,7 +16,14 @@
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   # No time for news
-  news.enable = false;
+  disableHomeManagerNews = {
+    # disabledModules = [ "misc/news.nix" ];
+    config = {
+      news.display = "silent";
+      news.json = lib.mkForce { };
+      news.entries = lib.mkForce [ ];
+    };
+  };
 
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
