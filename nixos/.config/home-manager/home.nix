@@ -567,6 +567,7 @@
     tor-browser-bundle-bin
     zathura
     thunderbird
+    protonmail-bridge
 
     ### Proprietary
     spotify
