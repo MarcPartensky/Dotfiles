@@ -1,0 +1,8 @@
+[default]
+path = "/home/marc/wallpapers/"
+duration = "30m"
+
+[eDP-1]
+path = "/home/marc/wallpapers"
+duration = "30m"
+# apply-shadow = true
