@@ -1,4 +1,4 @@
-stow:
+links:
 	stow -vt ~ */
 dump: gnome dnf brew
 gnome:
