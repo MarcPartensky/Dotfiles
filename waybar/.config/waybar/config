@@ -31,7 +31,7 @@
 		"interval":1,
         "on-scroll-up": "light -A 5",
 		"on-scroll-down": "light -U 5",
-        "on-click": "brightnessctl set 1%"
+        "on-click": "~/.local/bin/brightcontrol set 1"
 	},
     "battery": {
         "states": {
@@ -50,7 +50,7 @@
 		"spacing": 10
 	},
     "clock": {
-        "format": "{: %H:%M %p   %d/%m/%Y}",
+        "format": "{:%H:%M %p   %d/%m/%Y}",
         "on-click": "gnome-calendar"
     },
     "cpu": {
@@ -69,15 +69,15 @@
         "max-length": 30,
         "escape": true,
         "exec": "~/.local/bin/firefoxmediaparsemetadata",
-        "on-click": "playerctl play-pause"
+        "on-click": "playerctl -p firefox play-pause"
     },
     "custom/spotify": {
         "interval": 5,
         "format": " {}",
         "max-length": 30,
         "escape": true,
-        "exec": "~/.local/bin/spotifyparsemetadata",
-        "on-click": "playerctl -p spotify play-pause"
+        "exec": "~/.local/bin/spotubeparsemetadata",
+        "on-click": "playerctl -p Spotube play-pause"
     },
     "custom/launcher":{
         "format": " ",
