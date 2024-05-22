@@ -1,7 +1,7 @@
 {
 	"layer": "top",
 	"modules-left": ["custom/launcher","custom/wallpaper", "cpu","memory", "network", "tray"],
-	"modules-center": ["custom/firefox", "wlr/workspaces", "custom/spotify"],
+	"modules-center": ["custom/firefox", "hyprland/workspaces", "custom/spotify"],
 	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
@@ -13,7 +13,7 @@
 		"format-icons": ["", "", ""]
 	},
 
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
         "format-active": " {icon} ",
         "on-click": "activate"
@@ -93,7 +93,7 @@
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
         "interval": 60,
-        "on-click": "alacritty -e paru -Syu --noconfirm && notify-send 'The system has been updated' "
+        "on-click": "alacritty -e update && notify-send 'The system has been updated' "
     },
     "custom/updates-vps":{
         "format": "{} Update(s)",
