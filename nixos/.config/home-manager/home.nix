@@ -568,6 +568,7 @@
     zathura
     thunderbird
     protonmail-bridge
+    lsof
 
     ### Proprietary
     spotify
