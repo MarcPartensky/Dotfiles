@@ -569,6 +569,7 @@
     thunderbird
     protonmail-bridge
     lsof
+    wstunnel
 
     ### Proprietary
     spotify
