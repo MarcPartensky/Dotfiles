@@ -571,6 +571,7 @@
     lsof
     wstunnel
     openssl
+    bash-language-server
 
     ### Proprietary
     spotify
