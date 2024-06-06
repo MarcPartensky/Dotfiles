@@ -570,6 +570,7 @@
     protonmail-bridge
     lsof
     wstunnel
+    openssl
 
     ### Proprietary
     spotify
