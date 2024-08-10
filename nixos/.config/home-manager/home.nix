@@ -572,6 +572,7 @@
     wstunnel
     openssl
     bash-language-server
+    p7zip
 
     ### Proprietary
     spotify
