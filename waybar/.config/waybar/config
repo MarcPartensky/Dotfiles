@@ -93,7 +93,7 @@
         "exec": "checkupdates | wc -l",
         "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
         "interval": 60,
-        "on-click": "alacritty -e update && notify-send 'The system has been updated' "
+        "on-click": "alacritty -e ~/.local/bin/update && notify-send 'The system has been updated' "
     },
     "custom/updates-vps":{
         "format": "{} Update(s)",
