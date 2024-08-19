@@ -3,8 +3,11 @@ file:///home/marc/Videos/Youtube
 file:///home/marc/Documents Documents
 file:///home/marc/Syncthing/Marc%20Partensky
 file:///home/marc/Syncthing
+file:///home/marc/Syncthing/Camera
 file:///home/marc/wallpapers
 file:///home/marc/git git
 file:///zfs zfs
+file:///home/marc/Syncthing/Marc%20Partensky/CV/2024 cv
 file:///home/marc/Documents/Marc%20Partensky/CV/Autre/lettre%20de%20motivation lettre de motivation
-file:///home/marc/Documents/Marc%20Partensky/CV/cv%202024
+sftp://vpsmarc/home/marc tower
+sftp://localhost:8022/home/marc wssh tower

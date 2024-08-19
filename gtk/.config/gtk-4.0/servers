@@ -43,4 +43,34 @@
       </metadata>
     </info>
   </bookmark>
+  <bookmark href="sftp://vpsmarc/" added="2024-06-03T23:26:47.290136Z" modified="2024-06-17T12:26:39.097768Z" visited="2024-06-17T12:26:39.097765Z">
+    <title>/ sur vpsmarc</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2024-06-17T12:26:39.097766Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://127.0.0.1:8022/" added="2024-06-17T12:24:35.333462Z" modified="2024-06-17T12:24:35.333465Z" visited="2024-06-17T12:24:35.333462Z">
+    <title>/ sur 127.0.0.1</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2024-06-17T12:24:35.333463Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="sftp://localhost:8022/" added="2024-06-17T12:24:47.673074Z" modified="2024-06-17T12:24:47.673082Z" visited="2024-06-17T12:24:47.673076Z">
+    <title>/ sur localhost</title>
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <bookmark:applications>
+          <bookmark:application name="org.gnome.Nautilus" exec="&apos;org.gnome.Nautilus %u&apos;" modified="2024-06-17T12:24:47.673078Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
 </xbel>
