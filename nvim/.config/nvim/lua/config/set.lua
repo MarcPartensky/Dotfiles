@@ -15,6 +15,7 @@ opt.linebreak = true
 opt.ignorecase = true
 opt.guicursor = ""
 -- opt.laststatus = 3
+opt.background = "dark"
 
 -- tabs indents
 opt.expandtab = true

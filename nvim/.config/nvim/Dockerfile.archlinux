@@ -1,23 +1,21 @@
-FROM alpine:latest
+FROM archlinux:latest
 
-LABEL maintainer="Marc Partensky <marc.partensky@proton.me"
+LABEL maintainer="Marc Partensky <marc.partensky@gmail.com"
 
 RUN touch .vimrc
-# RUN localedef -i en_US -f UTF-8 en_US.UTF-8
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 
-RUN apk update
-RUN apk add \
+RUN pacman -Syu --noconfirm \
         git \
         npm \
         yarn \
-        python3 \
 #         go \
 #         make \
-        # python-pip \
+        python-pip \
         neovim
 
-# RUN npm i -g neovim
-# RUN pip install neovim
+RUN npm i -g neovim
+RUN pip install neovim
 
 RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
