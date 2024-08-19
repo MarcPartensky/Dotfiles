@@ -16,6 +16,7 @@ find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg
 alacritty &
 firefox &
 spotube &
+element-desktop &
 
 if [ "$XDG_CURRENT_DESKTOP" = "Hyprland" ]; then
     systemctl --user restart waybar waysct wpaperd dunst# swww
