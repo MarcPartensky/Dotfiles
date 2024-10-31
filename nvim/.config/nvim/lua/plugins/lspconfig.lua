@@ -2,7 +2,8 @@ return {
     -- 'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
     config = function()
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+        local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
         capabilities.textDocument.completion.completionItem.snippetSupport = true
 
         -- Mappings.
@@ -135,6 +136,7 @@ return {
 
         require('lspconfig')['pyright'].setup {
             on_attach = on_attach,
+            capabilities = capabilities,
             flags = lsp_flags,
         }
         require('lspconfig')['ts_ls'].setup {

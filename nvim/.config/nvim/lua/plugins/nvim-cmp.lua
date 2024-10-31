@@ -1,10 +1,11 @@
 return {
     'hrsh7th/nvim-cmp',
-    requires = {
+    dependencies = {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
         'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/vim-vsnip',
     },
     config = function()
         local cmp = require 'cmp'
@@ -41,7 +42,11 @@ return {
                 -- { name = 'snippy' }, -- For snippy users.
             }, {
                 { name = 'buffer' },
-            })
+            }),
+            completion = {
+                autocomplete = { require('cmp.types').cmp.TriggerEvent.TextChanged },
+                completeopt = "menu,menuone,noselect",
+            }
         })
     end
 }
