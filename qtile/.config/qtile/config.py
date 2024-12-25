@@ -25,13 +25,15 @@
 # SOFTWARE.
 
 import os
+import subprocess
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
 mod = "mod4"
+alt = "mod1"
 # terminal = guess_terminal()
 terminal = "alacritty"
 
@@ -82,12 +84,7 @@ keys = [
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key(
-        [mod],
-        "d",
-        lazy.spawn("rofi -show run"),
-        desc="Spawn Rofi",
-    ),
+    Key([mod], "d", lazy.spawn("rofi -show drun"), desc="Spawn Rofi"),
     Key(
         [mod, "shift"],
         "w",
@@ -97,6 +94,37 @@ keys = [
         desc="Switch to the next wallpaper",
     ),
     # Key([mod, "control"], "w", next_wallpaper(), desc="Switch to the next wallpaper"),
+
+    # Volume controls
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +5%"), desc="Increase volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -5%"), desc="Decrease volume"),
+    Key([], "XF86AudioMute", lazy.spawn("pactl set-sink-mute @DEFAULT_SINK@ toggle"), desc="Mute/unmute volume"),
+
+    # Brightness controls
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +1%"), desc="More brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 1%-"), desc="Less brightness"),
+
+    # toggle floating
+    Key([mod, "shift"], "f", lazy.window.toggle_floating(), desc="Toggle floating"),
+
+    # toggle fulllscreen
+    Key([mod], "m", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+
+    # Toggle between layouts
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+
+    # Volume controls
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause"), desc="Play/Pause media"),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next"), desc="Next track"),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous"), desc="Previous track"),
+
+    # Key([alt], "d", lazy.spawn("playerctl play-pause"), desc="Play/Pause media"),
+    Key([alt], "d", lazy.spawn("playerctl next"), desc="Next track"),
+    Key([alt], "s", lazy.spawn("playerctl previous"), desc="Previous track"),
+
+    # Switch workspace to left or right with 3-finger swipe gesture
+    Key([mod], "Left", lazy.group.prev_window()),  # Or map left
+    Key([mod], "Right", lazy.group.next_window()),  # Or map right
 ]
 
 
@@ -114,7 +142,7 @@ for i in groups:
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
-                [mod, "shift"],
+                [alt],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
@@ -133,7 +161,7 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+   # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -149,6 +177,60 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+# Widget for showing song in the bar
+song_widget = widget.TextBox(
+    text="No music playing",  # Default text
+    name="music",
+    fontsize=12,
+    padding=50,
+    # foreground="white",
+    background="#005500",  # Or any color you prefer
+)
+
+def get_song():
+    try:
+        song = subprocess.check_output(["playerctl", "-p", "spotube", "metadata", "title"]).decode("utf-8").strip()
+        artist = subprocess.check_output(["playerctl", "-p", "spotube", "metadata", "artist"]).decode("utf-8").strip()
+        music = f"{song} - {artist}"
+        return music[:70]
+    except subprocess.CalledProcessError:
+        return "No music playing"
+
+
+
+# @hook.subscribe.client_focus
+def update_song():
+    song_widget.text = get_song()
+    # screens[0].bottom.draw()
+    # subprocess.check_output(["notify-send", ""])
+    # song_widget.draw()  # Force the bar to redraw
+    # song_widget.draw(text=get_song())  # Force the bar to redraw
+
+update_song()
+
+# Function to update the song widget
+# hook.subscribe.client_focus(update_song)
+
+# import threading
+
+# @hook.subscribe.startup_once
+# threading.Timer(1, update_song).start()
+
+# def periodic_song_update():
+#     # subproceks.run(["notify-send", "title", "update"])
+#     # We will use Qtile's clock mechanism for periodic updates
+#     # hook.add_timeout(1, update_song_widget)
+#     update_song_widget()
+
+# # Timer function to update the song kitle
+# def update_song():
+#     screen = qtile.current_screen
+#     screen.top.widgets_map["music"].text = get_playerctl_song()
+
+# # Set a timer to update the song every 5 seconds
+# timer.add_once(2, update_song)
+# timer.add_repeat(2, update_song)
+
 screens = [
     Screen(
         bottom=bar.Bar(
@@ -156,20 +238,30 @@ screens = [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                widget.WindowName(),
+                # widget.WindowName(),
+                song_widget,
+                # widget.TextBox(
+                #     text=get_playerctl_song(),  # Get the current song
+                #     name="music",  # Name the widget so we can update it later
+                #     background="#005500",
+                #     padding=10,
+                #     fontsize=12
+                # ),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.Spacer(),
+                widget.Volume(),
+                # widget.TextBox("default config", name="default"),
+                # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(),
+                # widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
+                # widget.QuickExit(),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
@@ -187,7 +279,10 @@ mouse = [
         start=lazy.window.get_position(),
     ),
     Drag(
-        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+        [mod],
+        "Button3",
+        lazy.window.set_size_floating(),
+        start=lazy.window.get_size()
     ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
