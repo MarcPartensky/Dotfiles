@@ -85,3 +85,6 @@ keymap("n", "<c-o>", ":Neotree toggle<cr>", opts)
 keymap('n', '<c-f>', ':SessionManager load_session<cr>', opts)
 keymap('n', '<c-x>', ':SessionManager save_current_session<cr>', opts)
 keymap('n', '<c-q>', ':SessionManager delete_session<CR>', opts)
+
+-- chatgpt with gp
+keymap("n", "<C-r>", ":GpRewrite<CR>", opts)

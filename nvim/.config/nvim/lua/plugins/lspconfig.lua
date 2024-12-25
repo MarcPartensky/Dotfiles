@@ -138,6 +138,16 @@ return {
             on_attach = on_attach,
             capabilities = capabilities,
             flags = lsp_flags,
+            on_init = function(client)
+                local venv = vim.fn.getcwd() .. '/.venv/bin/python' -- Chemin typique de `venv`
+                if vim.fn.filereadable(venv) == 1 then
+                    client.config.settings.python.pythonPath = venv
+                else
+                    client.config.settings.python.pythonPath = vim.fn.exepath('python')
+                end
+                client.notify("workspace/didChangeConfiguration")
+                return true
+            end,
         }
         require('lspconfig')['ts_ls'].setup {
             on_attach = on_attach,
