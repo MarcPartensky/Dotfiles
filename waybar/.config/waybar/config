@@ -1,7 +1,7 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/wallpaper", "cpu","memory", "network", "tray"],
-	"modules-center": ["custom/firefox", "hyprland/workspaces", "custom/spotify"],
+	"modules-left": ["custom/launcher","custom/wallpaper", "cpu","memory", "network", "custom/weather"],
+	"modules-center": ["custom/firefox", "hyprland/workspaces", "custom/spotify", ""],
 	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
@@ -105,5 +105,12 @@
     "custom/wallpaper":{
         "format":" ",
         "on-click": "~/.local/bin/restartwallpaper"
-    }
+    },
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 2,
+        "exec": "wttrbar --main-indicator=FeelsLikeC --date-format=%d.%m.%Y",
+        "return-type": "json"
+    } 
 }
