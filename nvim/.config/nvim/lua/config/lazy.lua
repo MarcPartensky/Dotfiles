@@ -19,9 +19,9 @@ require('lazy').setup({
         -- import your plugins
         -- { import = "plugins" },
         -- { import = "plugins.tokyonight" },        -- theme
-        { import = "plugins.onedark" },           -- theme
+        { import = "plugins.onedark" }, -- theme
         -- { import = "plugins.wal" },               -- theme
-        { import = "plugins.treesitter" },        -- syntax coloring
+        -- { import = "plugins.treesitter" },        -- syntax coloring
         { import = "plugins.bufferline" },        -- tabs
         { import = "plugins.telescope" },         -- search
         { import = "plugins.lspconfig" },         -- language autocompletion
