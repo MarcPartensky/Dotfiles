@@ -1,14 +1,14 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/wallpaper", "backlight", "pulseaudio", "bluetooth", "network", "custom/updates"],
-	"modules-center": ["custom/firefox", "custom/spotify"],
-	"modules-right": ["memory", "cpu", "battery", "custom/weather", "clock", "custom/power"],
+	"modules-left": ["custom/launcher","custom/wallpaper", "cpu","memory", "network", "bluetooth", "custom/weather"],
+	"modules-center": ["custom/firefox", "hyprland/workspaces", "custom/spotify", ""],
+	"modules-right": ["custom/updates","backlight","pulseaudio","clock", "battery","custom/power"],
 	
 	"pulseaudio": {
 		"tooltip": false,
 		"scroll-step": 5,
 		"format": "{icon} {volume}%",
-		"format-muted": "🔇 {volume}%",
+		"format-muted": "{icon} {volume}%",
 		"on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
 		"format-icons": ["", "", ""]
 	},
@@ -20,19 +20,18 @@
     },
     "bluetooth": {
     	"format": " {status}",
-    	"format-connected": "",
-    	"format-connected-battery": "",
+    	"format-connected": " {device_alias}",
+    	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
     	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-    	"tooltip-format": " {controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    	"tooltip-format-connected": " {device_alias}\t{device_battery_percentage}%\n\n{controller_alias}\t{controller_address}\t{num_connections} connected",
+    	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-		"interval": 60
+    	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
 	"network": {
-		"tooltip": true,
-		"format-wifi": "  ",
-		"tooltip-format": " \t{essid} {ipaddr}",
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		/* "format-wifi": "  {essid} {ipaddr}", */
 		"format-ethernet": "",
         "on-click": "rofi-connman"
 	},
@@ -61,19 +60,17 @@
 		"spacing": 10
 	},
     "clock": {
-        "format": "{:%H:%M %p  %d/%m/%y}",
-        "tooltip": true, 
-        "tooltip-format":  "{:%H:%M %p  %d/%m/%y}",
+        "format": "{:%H:%M %p   %d/%m/%Y}",
         "on-click": "gnome-calendar"
     },
     "cpu": {
         "interval": 15,
-        "format": "🌡️{}%",
+        "format": " {}%",
         "max-length": 10
     },
     "memory": {
         "interval": 30,
-        "format": "📀 {}%",
+        "format": " {}%",
         "max-length": 10
     },
     "custom/firefox": {
@@ -90,11 +87,11 @@
         "max-length": 30,
         "escape": true,
         "exec": "~/.local/bin/spotubeparsemetadata",
-        "on-click": "playerctl -p spotube play-pause"
+        "on-click": "playerctl -p Spotube play-pause"
     },
     "custom/launcher":{
         "format": " ",
-        "on-click": "rofi --insensitive -show drun",
+        "on-click": "wofi --insensitive --show drun",
         "on-click-right": "killall rofi"
     },
     "custom/power":{

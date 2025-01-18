@@ -1,0 +1,18 @@
+/* @import "dreamy.css"; */
+/* @import "s3.css"; */
+/* @import "black.css"; */
+/* @import "default.css"; */
+
+@import "./catppuccin/themes/macchiato.css";
+@import "default.css";
+
+* {
+  /* reference the color by using @color-name */
+  color: @text;
+}
+
+window#waybar {
+  /* you can also GTK3 CSS functions! */
+  background-color: shade(@base, 0.9);
+  border: 2px solid alpha(@crust, 0.3);
+}
