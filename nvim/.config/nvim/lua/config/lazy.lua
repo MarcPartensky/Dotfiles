@@ -42,7 +42,8 @@ require('lazy').setup({
         { import = "plugins.session-manager" },   -- notifications
         { import = "plugins.dressing" },          -- nice ui for selection
         -- { import = "plugins.chatgpt" }            -- chatgpt completion
-        { import = "plugins.gp" }                 -- chatgpt completion
+        { import = "plugins.gp" },                -- chatgpt completion
+        { import = "markdown-preview" }
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.

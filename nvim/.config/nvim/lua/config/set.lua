@@ -29,3 +29,10 @@ opt.hlsearch = false
 opt.incsearch = true
 opt.wrap = false
 opt.nu = true
+
+-- Activer le wrapping pour les fichiers Markdown
+vim.cmd([[autocmd FileType markdown setlocal wrap]])
+
+-- Ajuster la largeur de texte et la marge de wrap
+vim.cmd([[autocmd FileType markdown setlocal textwidth=80]]) -- Par exemple, 80 caractères par ligne
+vim.cmd([[autocmd FileType markdown setlocal wrapmargin=2]]) -- Le texte sera cassé lorsque la marge est atteinte
