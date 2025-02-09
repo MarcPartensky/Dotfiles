@@ -1,10 +1,4 @@
-{ config, pkgs, lib, ... }: # let
-#   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-
-#   hyprland = (import flake-compat {
-#     src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/main.tar.gz";
-#   }).defaultNix;
-# in {
+{ config, pkgs, lib, ... }:
 {
   # wayland.windowManager.hyprland = {
   #   enable = true;
