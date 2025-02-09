@@ -12,6 +12,13 @@
   #   package = hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   # };
 
+  wayland.windowManager.hyprland = {
+    # ...
+    extraConfig = ''
+      plugin = ${hy3.packages.x86_64-linux.hy3}/lib/libhy3.so
+    '';
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "marc";
