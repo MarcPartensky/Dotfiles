@@ -29,6 +29,7 @@
   # home.stateVersion = "24.11"; # Please read the comment before changing.
 
   programs.kitty.enable = true;
+  programs.swaylock.enable = true;
   
 
   # Let Home Manager install and manage itself.
