@@ -561,7 +561,6 @@
     ncspot
     hyprpaper
     acpi
-    # swaylock
     tmux
     glib
     pcmanfm
