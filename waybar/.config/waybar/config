@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/wallpaper", "backlight", "pulseaudio", "bluetooth", "network", "custom/updates"],
+	"modules-left": ["custom/launcher","custom/wallpaper", "backlight", "pulseaudio", "bluetooth", "network", "custom/updates", "custom/crypto"],
 	"modules-center": ["custom/firefox", "custom/spotify"],
 	"modules-right": ["memory", "cpu", "battery", "custom/weather", "clock", "custom/power"],
 	
@@ -13,13 +13,14 @@
 		"format-icons": ["", "", ""]
 	},
 
+
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-active": " {icon} ",
         "on-click": "activate"
     },
     "bluetooth": {
-    	"format": " {status}",
+    	"format": "",
     	"format-connected": "",
     	"format-connected-battery": "",
     	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
@@ -29,13 +30,19 @@
     	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
 		"interval": 60
     },
-	"network": {
-		"tooltip": true,
-		"format-wifi": "  ",
-		"tooltip-format": " \t{essid} {ipaddr}",
-		"format-ethernet": "",
-        "on-click": "rofi-connman"
-	},
+    "network": {
+    	"format": "",
+    	"format-wifi": " ",
+    	"format-ethernet": "{ifname} ",
+    	"format-disconnected": "", //An empty format will hide the module.
+    	"format-disconnected": "",
+    	"tooltip-format": "{ifname}\n{bandwidthUpOctets} up\n{bandwidthDownOctets} down",
+    	"tooltip-format-wifi": "{essid} ({signalStrength}%) \n{bandwidthUpOctets} up\n{bandwidthDownOctets} down",
+    	"tooltip-format-ethernet": "{ifname} ",
+    	"tooltip-format-disconnected": "Disconnected",
+        "on-click": "iwgtk",
+    	"max-length": 50
+    },
 	"backlight": {
 		"tooltip": false,
 		"format": " {}%",
@@ -89,8 +96,8 @@
         "format": " {}",
         "max-length": 30,
         "escape": true,
-        "exec": "~/.local/bin/spotubeparsemetadata",
-        "on-click": "playerctl -p spotube play-pause"
+        "exec": "~/.local/bin/spotifyparsemetadata",
+        "on-click": "playerctl -p spotify play-pause"
     },
     "custom/launcher":{
         "format": " ",
@@ -125,5 +132,12 @@
         "interval": 2,
         "exec": "wttrbar --main-indicator=FeelsLikeC --date-format=%d.%m.%Y",
         "return-type": "json"
-    } 
+    },
+    "custom/crypto": {
+        "format": "{}",
+        "interval": 600,
+        "return-type": "json",
+        "exec": "waybar-crypto", // change this if you installed manually
+        "exec-if": "ping pro-api.coinmarketcap.com -c1"
+    }
 }
