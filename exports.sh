@@ -141,3 +141,4 @@ export NNN_OPTS="derH"
 export NNN_FIFO=/tmp/nnn.fifo
 export XRESOURCES="$HOME/.config/sxiv/nsxiv-theme"
 export NDK_HOME="/opt/android-ndk/"
+export CALIBRE_USE_DARK_PALETTE=1
