@@ -32,6 +32,7 @@ export PATH="$PATH:/opt/metasploit-framework/bin"
 export PATH=$PATH:$DOTNET_ROOT
 export PATH="$PATH:$PROGRAMS_PATH/docker/bin"
 export PATH="$PATH:$HOME/.local/share/npm/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 
 # Homebrew
 if [ -d /home/linuxbrew ]
