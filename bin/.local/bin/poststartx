@@ -15,7 +15,14 @@ picom -b --experimental-backends
 find ~/wallpapers -name '*.jpg' | shuf -n 1 | tee /tmp/wpp | xargs -I % feh --bg-fill %
 alacritty &
 firefox &
-spotube &
+# spotube &
+# env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify & # spotify-adblock
+# env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify & # spotify-adblock
+gtk-launch FFPWA-01JN4H9BHQTEQWQTSYYDED1KKW.desktop &
+gtk-launch spotify-adblock.desktop &
+
+
+
 
 # element-desktop &
 
