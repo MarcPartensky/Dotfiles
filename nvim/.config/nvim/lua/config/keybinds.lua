@@ -87,4 +87,7 @@ keymap('n', '<c-x>', ':SessionManager save_current_session<cr>', opts)
 keymap('n', '<c-q>', ':SessionManager delete_session<CR>', opts)
 
 -- chatgpt with gp
-keymap("n", "<C-r>", ":GpRewrite<CR>", opts)
+-- keymap("n", "<C-r>", ":GpRewrite<CR>", opts)
+keymap("n", "<c-h>",
+    [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+    { noremap = true, silent = true })
