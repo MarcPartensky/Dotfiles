@@ -70,6 +70,7 @@ keymap("n", "<c-l>", "<C-w>l", opts)
 -- comments.nvim
 keymap("n", "<c-/>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<cr>", opts)
 keymap("i", "<c-/>", "<Cmd>lua require('Comment.api').toggle.linewise.current()<cr>", opts)
+-- keymap("v", "<c-/>", "<Cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<cr>", opts)
 -- keymap("v", "<c-/>", "<Cmd>lua require('Comment.api').toggle.blockwise.current()<cr>", opts)
 keymap("v", "<c-/>", "gc", opts)
 
@@ -91,3 +92,15 @@ keymap('n', '<c-q>', ':SessionManager delete_session<CR>', opts)
 keymap("n", "<c-;>",
     [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
     { noremap = true, silent = true })
+
+-- keymap("n", "<C-r>", ":GpRewrite<CR>", opts)
+-- keymap("n", "<c-,>",
+--     [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
+--     { noremap = true, silent = true })
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "ToggleMyPrompt",
+    callback = function() require("avante.config").override({ system_prompt = "MY CUSTOM SYSTEM PROMPT" }) end,
+})
+
+keymap("v", "<c-;>", ":AvanteToggle<cr>", { desc = "avante: toggle my prompt" })
