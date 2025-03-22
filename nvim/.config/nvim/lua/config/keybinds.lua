@@ -29,7 +29,7 @@ keymap('n', '<c-m>', ":call jobstart(['alacritty', '-e', 'make'])<CR>", opts)
 
 -- tabs
 keymap('n', '<c-t>', ":tabnew<cr>", opts)
-keymap('n', '<c-w>', ":q<cr>", opts)
+keymap('n', '<c-w>', ":qa<cr>", opts)
 keymap('n', '<tab>', ':BufferLineCycleNext<cr>', opts)
 keymap('n', '<s-tab>', ':BufferLineCyclePrev<cr>', opts)
 -- keymap('n', '<c-w>', ":BufferClose<cr>", opts)
@@ -88,6 +88,6 @@ keymap('n', '<c-q>', ':SessionManager delete_session<CR>', opts)
 
 -- chatgpt with gp
 -- keymap("n", "<C-r>", ":GpRewrite<CR>", opts)
-keymap("n", "<c-h>",
+keymap("n", "<c-;>",
     [[<cmd>lua require('telescope').extensions.recent_files.pick()<CR>]],
     { noremap = true, silent = true })
