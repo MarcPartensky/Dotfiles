@@ -71,7 +71,7 @@
         "format": "{:%H:%M %p  %d/%m/%y}",
         "tooltip": true, 
         "tooltip-format":  "{:%H:%M %p  %d/%m/%y}",
-        "on-click": "gnome-calendar"
+        "on-click": "gtk-launch FFPWA-01JN4H9BHQTEQWQTSYYDED1KKW.desktop"
     },
     "cpu": {
         "interval": 15,
