@@ -56,24 +56,39 @@ dx() {
     done
 }
 
-p() {
-	if [ -d $PROGRAMS_PATH/$1 ]; then
-		cd $PROGRAMS_PATH/$1
-	else
-		cd $PROGRAMS_PATH
-        if [[ $1 =~ $REGEX_URL ]]; then
-            git -C $PROGRAMS_PATH clone $1
-		elif command -v gh; then
-			gh repo clone $1
-		else
-			git clone https://github.com/$1 $PROGRAMS_PATH/$2
-		fi
-		f=$(basename $1)
-		f=$(env ls | grep -i $f)
-		fm=$(echo $f | tr '[A-Z]' '[a-z]')
-		mv -v $f $fm
-		cd $fm
-	fi
+p () {
+    local repo="$1"
+    local repo_basename target_dir
+    local REGEX_URL="${REGEX_URL:-^(https?|git)://}"
+
+    # Determine target directory name
+    if [[ "$repo" =~ $REGEX_URL ]]; then
+        repo_basename=$(basename "$repo" .git)
+    else
+        repo_basename=$(basename "$repo")
+    fi
+    target_dir=$(echo "$repo_basename" | tr '[:upper:]' '[:lower:]')
+
+    if [ -d "$PROGRAMS_PATH/$target_dir" ]; then
+        cd "$PROGRAMS_PATH/$target_dir" || return 1
+    else
+        cd "$PROGRAMS_PATH" || return 1
+
+        if [[ "$repo" =~ $REGEX_URL ]]; then
+            git clone "$repo" "$target_dir"
+        elif command -v gh >/dev/null 2>&1; then
+            gh repo clone "$repo" "$target_dir"
+        else
+            git clone "https://github.com/$repo" "$target_dir"
+        fi
+
+        if [ -d "$target_dir" ]; then
+            cd "$target_dir" || return 1
+        else
+            echo "Error: Failed to clone repository '$repo' into '$target_dir'." >&2
+            return 1
+        fi
+    fi
 }
 
 # pf() {
