@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"modules-left": ["custom/launcher","custom/wallpaper", "backlight", "pulseaudio", "bluetooth", "network", "custom/updates", "custom/crypto"],
+	"modules-left": ["custom/launcher","custom/wallpaper", "backlight", "pulseaudio", "bluetooth", "network", "custom/updates"],
 	"modules-center": ["custom/firefox", "custom/spotify"],
 	"modules-right": ["memory", "cpu", "battery", "custom/weather", "clock", "custom/power"],
 	
@@ -93,11 +93,13 @@
     },
     "custom/spotify": {
         "interval": 5,
-        "format": " {}",
+        "format": " {text}",
         "max-length": 30,
         "escape": true,
-        "exec": "~/.local/bin/spotifyparsemetadata",
-        "on-click": "playerctl -p spotify play-pause"
+        "return-type": "json",
+        "exec": "~/.local/bin/spotifymeta",
+        "on-click": "playerctl -p spotify play-pause",
+        "tooltip": true
     },
     "custom/launcher":{
         "format": " ",
