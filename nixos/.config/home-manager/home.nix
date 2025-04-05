@@ -595,6 +595,7 @@
     ### Proprietary
     spotify
     discord
+    davinci-resolve
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -615,6 +616,7 @@
       # Add additional package names here
       "spotify"
       "discord"
+      "davinci-resolve"
     ];
 
 }
