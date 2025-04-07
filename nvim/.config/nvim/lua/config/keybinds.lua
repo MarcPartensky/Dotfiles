@@ -56,7 +56,8 @@ keymap('n', 'gr', ":!grsh<cr>", opts)
 -- fn
 keymap('n', '<f1>', ":Lazy update<cr>", opts)
 -- keymap('n', '<f1>', ":PackerSync<cr>", opts)
-keymap('n', '<f2>', ":!curl --silent ipconfig.io<cr>", opts)
+-- keymap('n', '<f2>', ":!curl --silent ipconfig.io<cr>", opts)
+keymap("n", "<f2>", ":terminal<cr>", opts)
 
 -- markdown preview
 -- keymap('n', '<mp>', ":MarkdownPreviewToggle", opts)

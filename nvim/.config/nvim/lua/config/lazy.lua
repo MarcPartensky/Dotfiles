@@ -46,6 +46,7 @@ require('lazy').setup({
         { import = "plugins.markdown-preview" },
         { import = "plugins.avante" },                 -- avante
         { import = "plugins.telescope-recent-files" }, -- recent files in telescope
+        { import = "plugins.bufterm" },                -- terminal buffer
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
