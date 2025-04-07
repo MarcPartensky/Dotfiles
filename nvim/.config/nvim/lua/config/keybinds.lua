@@ -57,7 +57,17 @@ keymap('n', 'gr', ":!grsh<cr>", opts)
 keymap('n', '<f1>', ":Lazy update<cr>", opts)
 -- keymap('n', '<f1>', ":PackerSync<cr>", opts)
 -- keymap('n', '<f2>', ":!curl --silent ipconfig.io<cr>", opts)
-keymap("n", "<f2>", ":terminal<cr>", opts)
+-- keymap("n", "<f2>", ":terminal<cr>", opts)
+
+-- local term = require('bufterm.terminal')
+-- local ui   = require('bufterm.ui')
+
+-- vim.keymap.set({ 'n', 't' }, '<f2>', function()
+--     local recent_term = term.get_recent_term()
+--     ui.toggle_float(recent_term.bufnr)
+-- end, {
+--     desc = 'Toggle floating window with terminal buffers',
+-- })
 
 -- markdown preview
 -- keymap('n', '<mp>', ":MarkdownPreviewToggle", opts)
