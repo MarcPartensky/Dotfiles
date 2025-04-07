@@ -57,7 +57,7 @@ keymap('n', 'gr', ":!grsh<cr>", opts)
 keymap('n', '<f1>', ":Lazy update<cr>", opts)
 -- keymap('n', '<f1>', ":PackerSync<cr>", opts)
 -- keymap('n', '<f2>', ":!curl --silent ipconfig.io<cr>", opts)
--- keymap("n", "<f2>", ":terminal<cr>", opts)
+keymap("n", "<f2>", ":ToggleTerm<cr>", opts)
 
 -- local term = require('bufterm.terminal')
 -- local ui   = require('bufterm.ui')
